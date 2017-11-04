@@ -8,7 +8,7 @@
 <html>
     <head><title>Join Form</title></head>
     <body>
-        <h2>Join Form</h2>
+        <h2>PhongJang Join</h2>
         <%if ((status != null) && !status.isSuccessful()) {%>
         <font color="red">There were problems processing your request:
         <ul><%Iterator errors = status.getExceptions();
@@ -28,6 +28,9 @@
                 <tr><td>Address:</td><td>
                         <input type="text" name="address" size="50"></td></tr></table>
             <input type="submit" value="Submit">
-        </form>         
+        </form>
+        <form action="main.jsp" method="post">
+            <input type="submit" value="main">
+        </form>
     </body>
 </html>

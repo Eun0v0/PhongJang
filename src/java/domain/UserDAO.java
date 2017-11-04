@@ -34,6 +34,8 @@ public class UserDAO {
             stmt.setString(2, userID);
             stmt.setString(3, password);
             rset = stmt.executeQuery();
+            
+            //데이터 베이스에서 유저 데이터 가져오기
             while (rset.next()) {
                 String UserID = rset.getString("UserID");
                 String UserType = rset.getString("UserType");
@@ -77,7 +79,7 @@ public class UserDAO {
             }
         }
     }
-
+ 
     void userCreate(String userID, String usertype, String username, String password, String phoneNum, String address) {
         Connection conn = null;
         PreparedStatement stmt = null;

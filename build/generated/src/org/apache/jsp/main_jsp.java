@@ -54,34 +54,9 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("    <head><title>Login</title></head>\n");
       out.write("    <body>\n");
-      out.write("        <h2>PhongJang Login</h2>\n");
-      out.write("        ");
-if ((status != null) && !status.isSuccessful()) {
-      out.write("\n");
-      out.write("        <font color=\"red\">There were problems processing your request:\n");
-      out.write("        <ul>");
-Iterator errors = status.getExceptions();
-            while (errors.hasNext()) {
-                Exception ex = (Exception) errors.next();
-      out.write("\n");
-      out.write("            <li>");
-      out.print( ex.getMessage());
-}
-      out.write("</ul></font>");
-}
-      out.write("\n");
-      out.write("        <form action=\"login\" method=\"post\">\n");
-      out.write("            <table>\n");
-      out.write("                <tr><td>Login Select:</td>\n");
-      out.write("                    <td><select name=\"usertype\">\n");
-      out.write("                            <option name=\"usertype\" value=\"unknown\">Your Select\n");
-      out.write("                            <option name=\"usertype\" value=\"A\">Administrator\n");
-      out.write("                            <option name=\"usertype\" value=\"C\">Customer</select></td></tr>\n");
-      out.write("                <tr><td>UserID:</td><td>\n");
-      out.write("                        <input type=\"text\" name=\"userID\" size=\"24\"></td></tr>\n");
-      out.write("                <tr><td>Password:</td><td>\n");
-      out.write("                        <input type=\"password\" name=\"password\" size=\"24\"></td></tr></table>\n");
-      out.write("            <input type=\"submit\" value=\"Submit\">\n");
+      out.write("        <h2>PhongJang</h2>\n");
+      out.write("        <form action=\"login.jsp\" method=\"post\">\n");
+      out.write("            <input type=\"submit\" value=\"Login\">\n");
       out.write("        </form>\n");
       out.write("        if you have not your ID, you should join to my shopping site!\n");
       out.write("        <form action=\"join.jsp\" method=\"post\">\n");
