@@ -54,7 +54,7 @@ public final class LoginServlet extends HttpServlet {
             }
 
             if (!status.isSuccessful()) {
-                view = request.getRequestDispatcher("main.jsp");
+                view = request.getRequestDispatcher("login.jsp");
                 view.forward(request, response);
                 return;
             }
