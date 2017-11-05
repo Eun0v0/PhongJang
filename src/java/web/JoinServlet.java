@@ -73,7 +73,7 @@ public class JoinServlet extends HttpServlet {
                     view.forward(request, response);
                     return;
                 }
-                view = request.getRequestDispatcher("joinconfirm.jsp");
+                view = request.getRequestDispatcher("joinConfirm.jsp");
                 view.forward(request, response);
 
             } catch (Exception e) {
