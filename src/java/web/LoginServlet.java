@@ -2,12 +2,16 @@ package web;
 
 import domain.UserService;
 import domain.User;
+import domain.PhoneCase;
+import domain.PhoneCaseService;
 import javax.servlet.http.*;
 import javax.servlet.*;
 import java.io.*;
 import java.sql.*;
 import oracle.jdbc.pool.OracleDataSource;
 import util.Status;
+import java.util.ArrayList;
+
 
 public final class LoginServlet extends HttpServlet {
 
@@ -22,6 +26,8 @@ public final class LoginServlet extends HttpServlet {
             throws IOException, ServletException {
         RequestDispatcher view = null;
         UserService UserService = null;
+        PhoneCaseService PhoneCaseService = null;
+        
         Status status = new Status();
         request.setAttribute("status", status);
 
@@ -43,24 +49,27 @@ public final class LoginServlet extends HttpServlet {
         }
 
         User user = null;
-
+        ArrayList<PhoneCase> phoneCases = null; 
         try {
             UserService = new UserService();
             user = UserService.getUser(usertype, userID, password);
-
+            PhoneCaseService = new PhoneCaseService();
+            phoneCases = PhoneCaseService.getAllPhoneCase();
             if (user == null) {
                 status.addException(new Exception(
                         "Fill in forms correctly"));
             }
-
+            if (phoneCases == null) {
+                status.addException(new Exception(
+                        "The product database error"));
+            }
             if (!status.isSuccessful()) {
                 view = request.getRequestDispatcher("login.jsp");
                 view.forward(request, response);
                 return;
             }
-
             request.setAttribute("user", user);
-
+            request.setAttribute("phoneCases", phoneCases);
         } catch (Exception e) {
             status.addException(e);
             view = request.getRequestDispatcher("main.jsp");
@@ -73,7 +82,7 @@ public final class LoginServlet extends HttpServlet {
         }
 
         if (usertype.equals("C")) { //고객 모드
-            view = request.getRequestDispatcher("loginConfirm.jsp");
+            view = request.getRequestDispatcher("phoneCaseList.jsp");
             view.forward(request, response);
         }
     }
