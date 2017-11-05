@@ -16,5 +16,8 @@
         <form action="join.jsp" method="post">
             <input type="submit" value="Join">
         </form>
+        <form method="cart">
+            <input type="submit" value="Cart">
+        </form>
     </body>
 </html>
