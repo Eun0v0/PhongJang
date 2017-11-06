@@ -1,6 +1,7 @@
 package web;
 import domain.PhoneCase;
 import domain.PhoneCaseService;
+import domain.User;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -8,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public final class SearchPhoneCaseServlet extends HttpServlet {
 
@@ -22,15 +24,16 @@ public final class SearchPhoneCaseServlet extends HttpServlet {
             throws IOException, ServletException {
         RequestDispatcher view = null;
         PhoneCaseService phoneCaseService = null;
-
         String phoneCaseName = request.getParameter("caseName");
-
+        HttpSession HttpSession=request.getSession();
+        
         ArrayList<PhoneCase> cases = null;
         phoneCaseService = new PhoneCaseService();
         cases = phoneCaseService.getPhoneCase(phoneCaseName);
-
         request.setAttribute("phoneCases", cases);
-        view = request.getRequestDispatcher("phoneCaseList.jsp");
+        request.setAttribute("user", HttpSession.getAttribute("user"));
+        //view = request.getRequestDispatcher("phoneCaseList.jsp");
+        view = request.getRequestDispatcher("customerMain.jsp");
         view.forward(request, response);
     }
 }

@@ -3,13 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/채은3-2/소공/팀플/phongJang/web/loginConfirm.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/phongJang/web/index.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/phongJang/src/java/util/Status.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/web/phoneCaseList.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/phongJang/web/joinConfirm.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/src/java/domain/PhoneCaseDAO.java</file>
             <file>file:/E:/채은3-2/소공/팀플/phongJang/src/java/web/LoginServlet.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/src/java/web/SearchPhoneCaseServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/phongJang/src/java/domain/User.java</file>
             <file>file:/E:/채은3-2/소공/팀플/phongJang/web/META-INF/context.xml</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/src/java/domain/PhoneCaseService.java</file>
             <file>file:/E:/채은3-2/소공/팀플/phongJang/src/java/domain/UserDAO.java</file>
             <file>file:/E:/채은3-2/소공/팀플/phongJang/web/join.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/phongJang/src/java/domain/UserService.java</file>
@@ -17,8 +20,11 @@
             <file>file:/E:/채은3-2/소공/팀플/phongJang/web/login.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/phongJang/src/java/web/JoinServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/phongJang/web/WEB-INF/web.xml</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/src/java/domain/PhoneCase.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/web/customerMain.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/phongJang/web/OracleConnection.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/phongJang/src/java/util/DBConnectionPool.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/nbproject/build-impl.xml</file>
         </group>
     </open-files>
 </project-private>

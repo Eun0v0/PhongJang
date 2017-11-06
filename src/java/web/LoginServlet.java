@@ -11,6 +11,12 @@ import java.sql.*;
 import oracle.jdbc.pool.OracleDataSource;
 import util.Status;
 import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public final class LoginServlet extends HttpServlet {
@@ -30,7 +36,7 @@ public final class LoginServlet extends HttpServlet {
         
         Status status = new Status();
         request.setAttribute("status", status);
-
+        
         String usertype = request.getParameter("usertype");
         String userID = request.getParameter("userID");
         String password = request.getParameter("password");
@@ -82,7 +88,8 @@ public final class LoginServlet extends HttpServlet {
         }
 
         if (usertype.equals("C")) { //고객 모드
-            view = request.getRequestDispatcher("phoneCaseList.jsp");
+            //view = request.getRequestDispatcher("phoneCaseList.jsp");
+            view = request.getRequestDispatcher("customerMain.jsp");
             view.forward(request, response);
         }
     }

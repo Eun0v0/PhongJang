@@ -5,6 +5,7 @@
 --%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.PhoneCase"%>
+<%@page import="domain.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <html>
@@ -12,8 +13,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>퐁장 상품 목록</title>
         <% ArrayList<PhoneCase> phoneCase = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");%>
+        <% User user = (User) request.getAttribute("user");%>
+        <%session.setAttribute("user", user);%>
     </head>
     <body>
+        <h1>안녕하세요, <%=user.getName()%>님</h1>
         <h2>퐁장 상품 목록</h2>
         <form action="search" method="post">
             상품 검색 :

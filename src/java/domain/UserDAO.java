@@ -50,6 +50,7 @@ public class UserDAO {
                 user = new User(UserID, UserType, UserName, Password, PhoneNum, Address);
             }
             return user;
+            
         } catch (SQLException se) {
             throw new RuntimeException(
                     "A database error occurred. " + se.getMessage());
