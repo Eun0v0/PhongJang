@@ -2,6 +2,7 @@
     Document   : main
     Created on : 2017. 11. 3, ?? 12:35:30
     Author     : yukih
+    modify     : ha0
 --%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.PhoneCase"%>
@@ -101,15 +102,17 @@
 
         <hr size="5" color="black">
     <center>
-        <a href="Top-main.jsp"><img src="image\top.jpg" height="30" width="120"></a>
-        <img src="image\space.jpg" height="30" width="100">
-        <a href="Bottom-main.jsp"><img src="image\bottom.jpg" height="30" width="120"></a>
-        <img src="image\space.jpg" height="30" width="100">
-        <a href="Outer-main.jsp"><img src="image\outer.jpg" height="30" width="120"></a>
-        <img src="image\space.jpg" height="30" width="100">
-        <a href="Sho-main.jsp"><img src="image\shoes.jpg" height="30" width="120"></a>
-        <img src="image\space.jpg" height="30" width="100">
-        <a href="event.jsp"><img src="image\event.jpg" height="30" width="120"></a>
+        <a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a>
+        
+        <img src="image\space.jpg" height="35" width="80">
+        
+        <a href="Bottom-main.jsp"><img src="image\bumperCase2.jpg" height="35" width="140"></a>
+        <img src="image\space.jpg" height="35" width="80">
+        <a href="Outer-main.jsp"><img src="image\hardCase.jpg" height="35" width="140"></a>
+        <img src="image\space.jpg" height="35" width="80">
+        <a href="Sho-main.jsp"><img src="image\jellyCase.jpg" height="35" width="140"></a>
+        <img src="image\space.jpg" height="35" width="80">
+        <a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a>
     </center>
     <hr size="5" color="black">
 
