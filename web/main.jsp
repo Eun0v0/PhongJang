@@ -97,7 +97,7 @@
         <a href="join.jsp"><img src="image\join.jpg"></a>
         <a href="board\board-list.jsp"><img src="image\q&a.jpg"></a>
 
-    <center> <div align="middle"> <img src="image\banner.jpg" onClick="location.assign('main.jsp')"> </div> </center>
+    <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('main.jsp')"> </div> </center>
 
     <hr size="5" color="black">
     <center>
