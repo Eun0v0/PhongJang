@@ -67,7 +67,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta charset=\"UTF-8\">\n");
       out.write("        <title>Phong Jang</title>\n");
       out.write("        <script type=\"text/javascript\">\n");
-      out.write("        //<![CDATA[\n");
+      out.write("            //<![CDATA[\n");
       out.write("            function initMoving(target, position, topLimit, btmLimit) {\n");
       out.write("                if (!target)\n");
       out.write("                    return false;\n");
@@ -127,7 +127,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    obj.style.top = obj.top + 220 + \"px\";\n");
       out.write("                }, 30)\n");
       out.write("            }\n");
-      out.write("        //]]>\n");
+      out.write("            //]]>\n");
       out.write("        </script>\n");
       out.write("\n");
       out.write("        <style type=\"text/css\">\n");
@@ -138,25 +138,24 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <body>\n");
       out.write("        ");
   String name = "";
-    if (name == null || name.equals("")) { 
+            if (name == null || name.equals("")) { 
       out.write("\n");
       out.write("        <img src=\"image\\login.jpg\" onClick=\"location.assign('login.jsp')\">\n");
       out.write("        ");
- } 
-    else { 
+ } else { 
       out.write("\n");
       out.write("        <img src=\"image\\logout.jpg\" onClick=\"location.assign('logout.jsp')\">\n");
       out.write("        ");
   }
       out.write("\n");
-      out.write("        <a href=\"cart_list.jsp\"><img src=\"image\\cart.jpg\"></a>\n");
+      out.write("        <a href=\"cart.jsp\"><img src=\"image\\cart.jpg\"></a>\n");
       out.write("        <a href=\"order_list.jsp\"><img src=\"image\\order.jpg\"></a>\n");
       out.write("        <a href=\"join.jsp\"><img src=\"image\\join.jpg\"></a>\n");
       out.write("        <a href=\"board\\board-list.jsp\"><img src=\"image\\q&a.jpg\"></a>\n");
       out.write("\n");
       out.write("    <center> <div align=\"middle\"> <img src=\"image\\banner.jpg\" onClick=\"location.assign('main.jsp')\"> </div> </center>\n");
       out.write("\n");
-      out.write("        <hr size=\"5\" color=\"black\">\n");
+      out.write("    <hr size=\"5\" color=\"black\">\n");
       out.write("    <center>\n");
       out.write("        <a href=\"Top-main.jsp\"><img src=\"image\\top.jpg\" height=\"30\" width=\"120\"></a>\n");
       out.write("        <img src=\"image\\space.jpg\" height=\"30\" width=\"100\">\n");

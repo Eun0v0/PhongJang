@@ -16,7 +16,7 @@
         <meta charset="UTF-8">
         <title>Phong Jang</title>
         <script type="text/javascript">
-        //<![CDATA[
+            //<![CDATA[
             function initMoving(target, position, topLimit, btmLimit) {
                 if (!target)
                     return false;
@@ -76,7 +76,7 @@
                     obj.style.top = obj.top + 220 + "px";
                 }, 30)
             }
-        //]]>
+            //]]>
         </script>
 
         <style type="text/css">
@@ -86,20 +86,19 @@
     </head>
     <body>
         <%  String name = "";
-    if (name == null || name.equals("")) { %>
+            if (name == null || name.equals("")) { %>
         <img src="image\login.jpg" onClick="location.assign('login.jsp')">
-        <% } 
-    else { %>
+        <% } else { %>
         <img src="image\logout.jpg" onClick="location.assign('logout.jsp')">
         <%  }%>
-        <a href="cart_list.jsp"><img src="image\cart.jpg"></a>
+        <a href="cart.jsp"><img src="image\cart.jpg"></a>
         <a href="order_list.jsp"><img src="image\order.jpg"></a>
         <a href="join.jsp"><img src="image\join.jpg"></a>
         <a href="board\board-list.jsp"><img src="image\q&a.jpg"></a>
 
     <center> <div align="middle"> <img src="image\banner.jpg" onClick="location.assign('main.jsp')"> </div> </center>
 
-        <hr size="5" color="black">
+    <hr size="5" color="black">
     <center>
         <a href="Top-main.jsp"><img src="image\top.jpg" height="30" width="120"></a>
         <img src="image\space.jpg" height="30" width="100">

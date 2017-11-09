@@ -19,6 +19,10 @@
     <body>
         <h1>안녕하세요, <%=user.getName()%>님</h1>
         <h2>퐁장 상품 목록</h2>
+        <form action="cart" method="post">
+            <input type="hidden" name="userID" value="<%=user.getId()%>">
+            <input type="submit" value="장바구니">
+        </form>
         <form action="search" method="post">
             상품 검색 :
             <input type="text" name="caseName" size="24">
@@ -31,6 +35,7 @@
                 <th width="200">타입</th>
                 <th width="400">설명</th>
                 <th width="150">가격</th>
+                <th width="200">장바구니에 담기</th>
             </tr>
             <%
                 for (int i = 0; i < phoneCase.size(); i++) {
@@ -42,10 +47,18 @@
                 <td align="center"><%=phonecase.getCaseType()%></td>
                 <td align="center"><%=phonecase.getExplanation()%></td>
                 <td align="center"><%=phonecase.getPrice()%>원</td>
+                <td align="center">
+                    <form action="take" method="post">
+                        원하는 수량을 입력하세요 :
+                        <input type="hidden" name="userID" value="<%=user.getId()%>">
+                        <input type="hidden" name="caseID" value="<%=phonecase.getCaseID()%>">
+                        <input type="text" name ="numbers" size="5">
+                        <input type="submit" value="담기">
+                   </form>
             </tr>
             <% } %>
         </table>
         <form action="main.jsp" method="post">
-            <input type="submit" value="main">
+            <input type="submit" value="메인으로">
     </body>
 </html>
