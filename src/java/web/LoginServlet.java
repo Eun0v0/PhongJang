@@ -43,15 +43,15 @@ public final class LoginServlet extends HttpServlet {
 
         if (usertype.equals("unknown")) {
             status.addException(new Exception(
-                    "Select login type"));
+                    "로그인 타입을 선택해주세요"));
         }
         if ((userID == null) || (userID.length() == 0)) {
             status.addException(new Exception(
-                    "Type ID"));
+                    "아이디를 입력해주세요"));
         }
         if ((password == null) || (password.length() == 0)) {
             status.addException(new Exception(
-                    "Type password"));
+                    "비밀번호를 입력해주세요"));
         }
 
         User user = null;
