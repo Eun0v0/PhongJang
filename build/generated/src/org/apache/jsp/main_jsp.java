@@ -165,8 +165,24 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <td><a href=\"join.jsp\"><img src=\"image\\join.jpg\"></a></td>\r\n");
       out.write("            <td><a href=\"board\\board-list.jsp\"><img src=\"image\\q&a.jpg\"></a></td>\r\n");
       out.write("        </tr>\r\n");
-      out.write("    </table>    \r\n");
-      out.write("    <center> <div align=\"middle\"> <img src=\"image\\banner2.jpg\" onClick=\"location.assign('main.jsp')\"> </div> </center>\r\n");
+      out.write("    </table>\r\n");
+      out.write("            ");
+ if (user != null) { 
+      out.write("\r\n");
+      out.write("            <center> <div align=\"middle\">\r\n");
+      out.write("                <form action=\"main\" method=\"post\">\r\n");
+      out.write("                    <input type=\"hidden\" name=\"userID\" value=\"");
+      out.print(user.getId());
+      out.write("\">\r\n");
+      out.write("                    <input type=\"image\" src=\"image\\banner.jpg\" name=\"Submit\">\r\n");
+      out.write("                </form>\r\n");
+      out.write("            </div> </center>\r\n");
+      out.write("            ");
+ } else {
+      out.write("\r\n");
+      out.write("            <center> <div align=\"middle\"> <img src=\"image\\banner2.jpg\" onClick=\"location.assign('main.jsp')\"> </div> </center>\r\n");
+      out.write("            ");
+ } 
       out.write("\r\n");
       out.write("    <hr size=\"5\" color=\"black\">\r\n");
       out.write("    <center>\r\n");

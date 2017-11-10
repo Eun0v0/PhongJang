@@ -45,7 +45,7 @@
             <%  }
               }%>
         </table>
-        <form action="main.jsp" method="post">
+        <form action="main" method="post">
             <input type="hidden" name="userID" value="<%=user.getId()%>">
             <input type="submit" value="메인으로">
         </form>

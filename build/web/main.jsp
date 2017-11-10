@@ -15,7 +15,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Phong Jang</title>
+        <title>퐁장-나만의 폰 공장</title>
         <script type="text/javascript">
             //<![CDATA[
             function initMoving(target, position, topLimit, btmLimit) {
@@ -105,9 +105,17 @@
             <td><a href="join.jsp"><img src="image\join.jpg"></a></td>
             <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
         </tr>
-    </table>    
-    <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('main.jsp')"> </div> </center>
-
+    </table>
+            <% if (user != null) { %>
+            <center> <div align="middle">
+                <form action="main" method="post">
+                    <input type="hidden" name="userID" value="<%=user.getId()%>">
+                    <input type="image" src="image\banner.jpg" name="Submit">
+                </form>
+            </div> </center>
+            <% } else {%>
+            <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('main.jsp')"> </div> </center>
+            <% } %>
     <hr size="5" color="black">
     <center>
         <a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a>

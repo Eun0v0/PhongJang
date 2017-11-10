@@ -34,7 +34,6 @@ public class AddCartServlet extends HttpServlet {
         request.setAttribute("status", status);
         
         HttpSession HttpSession=request.getSession();
-        //String userID = "ce";
         String userID = request.getParameter("userID");
         int caseID = Integer.parseInt(request.getParameter("caseID"));
         int numbers = Integer.parseInt(request.getParameter("numbers"));
