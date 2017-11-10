@@ -26,8 +26,9 @@
                 <th width="400">수량</th>
             </tr>
             <%
-                for (int i = 0; i < carts.size(); i++) {
-                    Cart cart = carts.get(i);
+                if(carts != null){
+                    for (int i = 0; i < carts.size(); i++) {
+                        Cart cart = carts.get(i);
             %>
             <tr>
                 <td align="center"><%=cart.getCartID()%></td>
@@ -41,7 +42,8 @@
                         <input type="submit" value="삭제">
                     </form></td>
             </tr>
-            <% } %>
+            <%  }
+              }%>
         </table>
         <form action="main.jsp" method="post">
             <input type="hidden" name="userID" value="<%=user.getId()%>">

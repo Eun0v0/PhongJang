@@ -32,6 +32,7 @@ public class DeleteCartServlet extends HttpServlet {
         
         ArrayList<Cart> carts = null;
         CartService.deleteFromCart(userID, cartID);
+        carts = CartService.getCart(userID);
         request.setAttribute("carts", carts);
         request.setAttribute("user", HttpSession.getAttribute("user"));
         
