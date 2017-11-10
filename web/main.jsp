@@ -7,7 +7,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.PhoneCase"%>
 <%@page import="domain.User"%>
-<%@page session="false" import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
+<%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <jsp:useBean id="status" scope="request" class="util.Status"/>
 <%@ page import="java.sql.*" %>
 <% request.setCharacterEncoding("UTF-8"); %>
@@ -84,19 +84,28 @@
             #gotop {position: absolute; right: 0px; top: 50px; width: 100px; height: 100px;}
             a{color:black; text-decoration:none;}
         </style>
+     
     </head>
     <body>
-        <%  String name = "";
-            if (name == null || name.equals("")) { %>
-        <img src="image\login.jpg" onClick="location.assign('login.jsp')">
-        <% } else { %>
-        <img src="image\logout.jpg" onClick="location.assign('logout.jsp')">
-        <%  }%>
-        <a href="cart.jsp"><img src="image\cart.jpg"></a>
-        <a href="order_list.jsp"><img src="image\order.jpg"></a>
-        <a href="join.jsp"><img src="image\join.jpg"></a>
-        <a href="board\board-list.jsp"><img src="image\q&a.jpg"></a>
-
+        <table border="0px">
+        <tr>
+            <%  User user = (User) request.getAttribute("user");
+            if (user == null) { %>
+            <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
+            <td><td><a href="cart.jsp"><img src="image\cart.jpg"></a></td>
+                <% } else { session.setAttribute("user", user); %>
+            <td><img src="image\logout.jpg" onClick="location.assign('logout.jsp')"></td>
+            <td><form action="cart" method="post">
+                    <input type="hidden" name="userID" value="<%=user.getId()%>">
+                    <input type="image" src="image\cart.jpg" name="Submit" value ="장바구니">
+                </form> </td>
+                <%  }%>
+            
+            <td><a href="order_list.jsp"><img src="image\order.jpg"></a></td>
+            <td><a href="join.jsp"><img src="image\join.jpg"></a></td>
+            <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
+        </tr>
+    </table>    
     <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('main.jsp')"> </div> </center>
 
     <hr size="5" color="black">

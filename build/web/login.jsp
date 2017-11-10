@@ -52,8 +52,9 @@
             </table>
         </center>
         <center>
+
             <input type="image" src="image\loginbutton.jpg" name="Submit" value ="Submit" aline="absmiddle">
-            <input type="image" src="image\clearbutton.jpg" name="Reset" value ="Reset" aline="absmiddle">
+            <input type="image" src="image\clearbutton.jpg" name="Reset" value ="Retry" aline="absmiddle">
         </center>
     </form>
 </body>

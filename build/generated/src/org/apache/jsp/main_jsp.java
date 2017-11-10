@@ -26,6 +26,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
         throws java.io.IOException, ServletException {
 
     PageContext pageContext = null;
+    HttpSession session = null;
     ServletContext application = null;
     ServletConfig config = null;
     JspWriter out = null;
@@ -36,10 +37,11 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
     try {
       response.setContentType("text/html; charset=euc-kr");
       pageContext = _jspxFactory.getPageContext(this, request, response,
-      			null, false, 8192, true);
+      			null, true, 8192, true);
       _jspx_page_context = pageContext;
       application = pageContext.getServletContext();
       config = pageContext.getServletConfig();
+      session = pageContext.getSession();
       out = pageContext.getOut();
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
@@ -134,26 +136,37 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            #gotop {position: absolute; right: 0px; top: 50px; width: 100px; height: 100px;}\r\n");
       out.write("            a{color:black; text-decoration:none;}\r\n");
       out.write("        </style>\r\n");
+      out.write("     \r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
-      out.write("        ");
-  String name = "";
-            if (name == null || name.equals("")) { 
+      out.write("        <table border=\"0px\">\r\n");
+      out.write("        <tr>\r\n");
+      out.write("            ");
+  User user = (User) request.getAttribute("user");
+            if (user == null) { 
       out.write("\r\n");
-      out.write("        <img src=\"image\\login.jpg\" onClick=\"location.assign('login.jsp')\">\r\n");
-      out.write("        ");
- } else { 
+      out.write("            <td><img src=\"image\\login.jpg\" onClick=\"location.assign('login.jsp')\"></td>\r\n");
+      out.write("            <td><td><a href=\"cart.jsp\"><img src=\"image\\cart.jpg\"></a></td>\r\n");
+      out.write("                ");
+ } else { session.setAttribute("user", user); 
       out.write("\r\n");
-      out.write("        <img src=\"image\\logout.jpg\" onClick=\"location.assign('logout.jsp')\">\r\n");
-      out.write("        ");
+      out.write("            <td><img src=\"image\\logout.jpg\" onClick=\"location.assign('logout.jsp')\"></td>\r\n");
+      out.write("            <td><form action=\"cart\" method=\"post\">\r\n");
+      out.write("                    <input type=\"hidden\" name=\"userID\" value=\"");
+      out.print(user.getId());
+      out.write("\">\r\n");
+      out.write("                    <input type=\"image\" src=\"image\\cart.jpg\" name=\"Submit\" value =\"장바구니\">\r\n");
+      out.write("                </form> </td>\r\n");
+      out.write("                ");
   }
       out.write("\r\n");
-      out.write("        <a href=\"cart.jsp\"><img src=\"image\\cart.jpg\"></a>\r\n");
-      out.write("        <a href=\"order_list.jsp\"><img src=\"image\\order.jpg\"></a>\r\n");
-      out.write("        <a href=\"join.jsp\"><img src=\"image\\join.jpg\"></a>\r\n");
-      out.write("        <a href=\"board\\board-list.jsp\"><img src=\"image\\q&a.jpg\"></a>\r\n");
-      out.write("\r\n");
-      out.write("    <center> <div align=\"middle\"> <img src=\"image\\banner.jpg\" onClick=\"location.assign('main.jsp')\"> </div> </center>\r\n");
+      out.write("            \r\n");
+      out.write("            <td><a href=\"order_list.jsp\"><img src=\"image\\order.jpg\"></a></td>\r\n");
+      out.write("            <td><a href=\"join.jsp\"><img src=\"image\\join.jpg\"></a></td>\r\n");
+      out.write("            <td><a href=\"board\\board-list.jsp\"><img src=\"image\\q&a.jpg\"></a></td>\r\n");
+      out.write("        </tr>\r\n");
+      out.write("    </table>    \r\n");
+      out.write("    <center> <div align=\"middle\"> <img src=\"image\\banner2.jpg\" onClick=\"location.assign('main.jsp')\"> </div> </center>\r\n");
       out.write("\r\n");
       out.write("    <hr size=\"5\" color=\"black\">\r\n");
       out.write("    <center>\r\n");

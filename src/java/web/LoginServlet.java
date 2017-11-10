@@ -88,8 +88,8 @@ public final class LoginServlet extends HttpServlet {
         }
 
         if (usertype.equals("C")) { //고객 모드
-            view = request.getRequestDispatcher("phoneCaseList.jsp");
-            //view = request.getRequestDispatcher("customerMain.jsp");
+            //view = request.getRequestDispatcher("phoneCaseList.jsp");
+            view = request.getRequestDispatcher("main.jsp");
             view.forward(request, response);
         }
     }
