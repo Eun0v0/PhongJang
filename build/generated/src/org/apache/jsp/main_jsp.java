@@ -153,7 +153,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <a href=\"join.jsp\"><img src=\"image\\join.jpg\"></a>\r\n");
       out.write("        <a href=\"board\\board-list.jsp\"><img src=\"image\\q&a.jpg\"></a>\r\n");
       out.write("\r\n");
-      out.write("    <center> <div align=\"middle\"> <img src=\"image\\banner.jpg\" onClick=\"location.assign('main.jsp')\"> </div> </center>\r\n");
+      out.write("    <center> <div align=\"middle\"> <img src=\"image\\banner2.jpg\" onClick=\"location.assign('main.jsp')\"> </div> </center>\r\n");
       out.write("\r\n");
       out.write("    <hr size=\"5\" color=\"black\">\r\n");
       out.write("    <center>\r\n");
