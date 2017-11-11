@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import util.DBConnectionPool;
 public class PaymentDAO {
-    private DBConnectionPool connPool;
+   /* private DBConnectionPool connPool;
     private static final String ALLRETRIEVE_STMT
             = "SELECT * FROM shoppingPayment";
     private static final String RETRIEVE_STMT
@@ -156,5 +156,5 @@ public class PaymentDAO {
                 }
             }
         }
-    }
+    }*/
 }

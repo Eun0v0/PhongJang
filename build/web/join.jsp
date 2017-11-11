@@ -9,7 +9,7 @@
     <head><title>회원가입</title></head>
     <body>
         <%  String name = "";
-             if (name == null || name.equals("")) { %>
+            if (name == null || name.equals("")) { %>
         <img src="image\login.jpg" onClick="location.assign('login.jsp')">
         <% } else { %>
         <img src="image\logout.jpg" onClick="location.assign('logout.jsp')">
@@ -20,6 +20,26 @@
         <a href="board\board-list.jsp"><img src="image\q&a.jpg"></a>
 
     <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('main.jsp')"> </div> </center>
+    <form action ="search.action" name="search" method="search">
+        <img src="image\search.png" height="17" width="17">
+        <input type="text" size="16" name="keyword" value="${keyword}">
+        <input type="button" value="검색" onClick="check()">
+    </form>
+
+    <hr size="5" color="black">
+    <center>
+        <a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a>
+        <img src="image\space.jpg" height="35" width="80">
+        <a href="Bottom-main.jsp"><img src="image\bumperCase2.jpg" height="35" width="140"></a>
+        <img src="image\space.jpg" height="35" width="80">
+        <a href="Outer-main.jsp"><img src="image\hardCase.jpg" height="35" width="140"></a>
+        <img src="image\space.jpg" height="35" width="80">
+        <a href="Sho-main.jsp"><img src="image\jellyCase.jpg" height="35" width="140"></a>
+        <img src="image\space.jpg" height="35" width="80">
+        <a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a>
+    </center>
+    <hr size="5" color="black">
+
 
     <%if ((status != null) && !status.isSuccessful()) {%>
     <font color="red">There were problems processing your request:
@@ -28,7 +48,7 @@
             Exception ex = (Exception) errors.next();%>
         <li><%= ex.getMessage()%><%}%></ul></font><%}%>
     <form name ="join" action="join" method="post">
-        <center> <br>
+        <center> <br> <br>
             <table>
                 <tr>
                     <td><img src="image\id.JPG" width=150 height=35"></td>

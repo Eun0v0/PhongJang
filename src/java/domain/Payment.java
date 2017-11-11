@@ -1,6 +1,6 @@
 package domain;
 public class Payment {
-    int paymentID;
+    /*int paymentID;
     String userID;
     String caseName;
     int numbers;
@@ -94,5 +94,5 @@ public class Payment {
         this.creditCardPassword = creditCardPassword;
     }
     
-    
+    */
 }

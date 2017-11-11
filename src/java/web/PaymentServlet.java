@@ -1,4 +1,5 @@
 package web;
+/*
 import domain.Basket;
 import domain.Product;
 import domain.ProductService;
@@ -46,4 +47,4 @@ public class AddPaymentServlet extends HttpServlet {
         view = request.getRequestDispatcher("addpayment.jsp");
         view.forward(request, response);
     }
-}
+}*/

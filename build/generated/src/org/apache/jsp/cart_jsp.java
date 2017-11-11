@@ -3,9 +3,11 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import java.util.Iterator;
+import java.util.ArrayList;
+import domain.Cart;
+import domain.User;
 
-public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class cart_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -22,6 +24,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
         throws java.io.IOException, ServletException {
 
     PageContext pageContext = null;
+    HttpSession session = null;
     ServletContext application = null;
     ServletConfig config = null;
     JspWriter out = null;
@@ -30,12 +33,13 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     PageContext _jspx_page_context = null;
 
     try {
-      response.setContentType("text/html; charset=euc-kr");
+      response.setContentType("text/html;charset=UTF-8");
       pageContext = _jspxFactory.getPageContext(this, request, response,
-      			null, false, 8192, true);
+      			null, true, 8192, true);
       _jspx_page_context = pageContext;
       application = pageContext.getServletContext();
       config = pageContext.getServletConfig();
+      session = pageContext.getSession();
       out = pageContext.getOut();
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
@@ -43,25 +47,27 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      util.Status status = null;
-      synchronized (request) {
-        status = (util.Status) _jspx_page_context.getAttribute("status", PageContext.REQUEST_SCOPE);
-        if (status == null){
-          status = new util.Status();
-          _jspx_page_context.setAttribute("status", status, PageContext.REQUEST_SCOPE);
-        }
-      }
+      out.write("\r\n");
       out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
-      out.write("        <title>로그인</title>\r\n");
+      out.write("        <title>장바구니</title>\r\n");
+      out.write("        ");
+ArrayList<Cart> carts = (ArrayList<Cart>) request.getAttribute("carts");
+      out.write("\r\n");
+      out.write("        ");
+User user = (User) request.getAttribute("user");
+      out.write("\r\n");
+      out.write("        ");
+session.setAttribute("user", user);
+      out.write("\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
       out.write("        ");
   String name = "";
-            if (name == null || name.equals("")) { 
+                   if (name == null || name.equals("")) { 
       out.write("\r\n");
       out.write("        <img src=\"image\\login.jpg\" onClick=\"location.assign('login.jsp')\">\r\n");
       out.write("        ");
@@ -77,14 +83,14 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <a href=\"board\\board-list.jsp\"><img src=\"image\\q&a.jpg\"></a>\r\n");
       out.write("\r\n");
       out.write("    <center> <div align=\"middle\"> <img src=\"image\\banner2.jpg\" onClick=\"location.assign('main.jsp')\"> </div> </center>\r\n");
-      out.write("    <form action =\"search.action\" name=\"search\" method=\"search\">\r\n");
-      out.write("        <img src=\"image\\search.png\" height=\"17\" width=\"17\">\r\n");
-      out.write("        <input type=\"text\" size=\"16\" name=\"keyword\" value=\"");
+      out.write("            <form action =\"search.action\" name=\"search\" method=\"search\">\r\n");
+      out.write("                <img src=\"image\\search.png\" height=\"17\" width=\"17\">\r\n");
+      out.write("                <input type=\"text\" size=\"16\" name=\"keyword\" value=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${keyword}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\">\r\n");
-      out.write("        <input type=\"button\" value=\"검색\" onClick=\"check()\">\r\n");
-      out.write("    </form>\r\n");
-      out.write("\r\n");
+      out.write("                <input type=\"button\" value=\"검색\" onClick=\"check()\">\r\n");
+      out.write("            </form>\r\n");
+      out.write("                \r\n");
       out.write("    <hr size=\"5\" color=\"black\">\r\n");
       out.write("    <center>\r\n");
       out.write("        <a href=\"Top-main.jsp\"><img src=\"image\\customCase3.jpg\" height=\"35\" width=\"140\"></a>\r\n");
@@ -99,45 +105,67 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    </center>\r\n");
       out.write("    <hr size=\"5\" color=\"black\">\r\n");
       out.write("\r\n");
-      out.write("\r\n");
-      out.write("    ");
-if ((status != null) && !status.isSuccessful()) {
-      out.write("\r\n");
-      out.write("    <font color=\"red\">There were problems processing your request:\r\n");
-      out.write("    <ul>");
-Iterator errors = status.getExceptions();
-        while (errors.hasNext()) {
-            Exception ex = (Exception) errors.next();
-      out.write("\r\n");
-      out.write("        <li>");
-      out.print( ex.getMessage());
-}
-      out.write("</ul></font>    \r\n");
+      out.write("    \r\n");
+      out.write("    <br>\r\n");
+      out.write("    <center> <img src=\"image\\shoppingcart.jpg\" width=200 height=60\"> </center>\r\n");
+      out.write("    <center> <br>\r\n");
+      out.write("    <!--<h2>");
+      out.print( user.getName());
+      out.write(" 고객님, 장바구니 입니다.</h2>-->\r\n");
+      out.write("        \r\n");
+      out.write("    <table bordercellspacing = 1 cellpadding = 7>\r\n");
+      out.write("        <tr>\r\n");
+      out.write("            <th width=\"125\"><img src=\"image\\number.jpg\" width=125 height=35\"></th>\r\n");
+      out.write("            <th width=\"170\">제품명</th>\r\n");
+      out.write("            <th width=\"170\">색상</th>\r\n");
+      out.write("            <th width=\"120\">수량</th>\r\n");
+      out.write("            <th width=\"120\">가격</th>\r\n");
+      out.write("        </tr>\r\n");
       out.write("        ");
-}
+
+            if (carts != null) {
+                for (int i = 0; i < carts.size(); i++) {
+                    Cart cart = carts.get(i);
+        
       out.write("\r\n");
-      out.write("    <form action=\"login\" method=\"post\">\r\n");
-      out.write("        <center> <br> <br>\r\n");
-      out.write("            <table>\r\n");
-      out.write("                <tr>\r\n");
-      out.write("                    <td> <img src=\"image\\usertype.jpg\" width=150 height=35\"></td>\r\n");
-      out.write("                    <td><select name=\"usertype\" >\r\n");
-      out.write("                            <option name=\"usertype\" value=\"unknown\">-----\r\n");
-      out.write("                            <option name=\"usertype\" value=\"A\">관리자\r\n");
-      out.write("                            <option name=\"usertype\" value=\"C\">고객</select></td></tr>\r\n");
-      out.write("                <tr>\r\n");
-      out.write("                    <td><img src=\"image\\id.JPG\" width=150 height=35\"></td>\r\n");
-      out.write("                    <td><input type=\"text\" name=\"userID\" size=\"40\" padding=\"10px\"></td></tr>\r\n");
-      out.write("                <tr>\r\n");
-      out.write("                    <td><img src=\"image\\password.JPG\" width=150 height=35\"></td>\r\n");
-      out.write("                    <td><input type=\"password\" name=\"password\" size=\"40\"></td></tr>\r\n");
-      out.write("                <tr><td><img src=\"image\\white.jpg\" height = 35></td></tr>\r\n");
-      out.write("            </table>\r\n");
-      out.write("        </center>\r\n");
-      out.write("        <center>\r\n");
-      out.write("            <input type=\"image\" src=\"image\\loginbutton.jpg\" name=\"Submit\" value =\"Submit\" aline=\"absmiddle\">\r\n");
-      out.write("            <input type=\"image\" src=\"image\\clearbutton.jpg\" name=\"Reset\" value =\"Retry\" aline=\"absmiddle\">\r\n");
-      out.write("        </center>\r\n");
+      out.write("        <tr>\r\n");
+      out.write("            <td bgcolor=\"#ffeecc\" align=\"center\">");
+      out.print(cart.getCartID());
+      out.write("</td>\r\n");
+      out.write("            <td align=\"center\">");
+      out.print(cart.getCaseName());
+      out.write("</td>\r\n");
+      out.write("            <td align=\"center\">");
+      out.print(cart.getColor());
+      out.write("</td>\r\n");
+      out.write("            <td align=\"center\">");
+      out.print(cart.getNumbers());
+      out.write("</td>\r\n");
+      out.write("            <td align=\"center\">");
+      out.print(cart.getPrice());
+      out.write("</td>\r\n");
+      out.write("            <td align =\"center\">\r\n");
+      out.write("                <form action=\"delete\" method=\"post\">\r\n");
+      out.write("                    <input type=\"hidden\" name=\"cartID\" value=\"");
+      out.print(cart.getCartID());
+      out.write("\">\r\n");
+      out.write("                    <input type=\"hidden\" name=\"userID\" value=\"");
+      out.print(user.getId());
+      out.write("\">\r\n");
+      out.write("                    <input type=\"submit\" value=\"삭제\">\r\n");
+      out.write("                </form></td>\r\n");
+      out.write("        </tr>\r\n");
+      out.write("        ");
+  }
+                }
+      out.write("\r\n");
+      out.write("    </table>\r\n");
+      out.write("    </center>\r\n");
+      out.write("    <form action=\"main\" method=\"post\">\r\n");
+      out.write("        <input type=\"hidden\" name=\"userID\" value=\"");
+      out.print(user.getId());
+      out.write("\">\r\n");
+      out.write("        <input type=\"submit\" value=\"메인으로\">\r\n");
       out.write("    </form>\r\n");
       out.write("</body>\r\n");
       out.write("</html>\r\n");
