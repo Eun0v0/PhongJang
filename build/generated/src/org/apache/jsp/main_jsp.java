@@ -156,7 +156,11 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("    <center> <div align=\"middle\"> <img src=\"image\\banner.jpg\" onClick=\"location.assign('main.jsp')\"> </div> </center>\r\n");
       out.write("\r\n");
+<<<<<<< HEAD
       out.write("        <hr size=\"5\" color=\"black\">\r\n");
+=======
+      out.write("    <hr size=\"5\" color=\"black\">\r\n");
+>>>>>>> parent of 99d5e4d... 영쨩의 검색ui만들기
       out.write("    <center>\r\n");
       out.write("        <a href=\"Top-main.jsp\"><img src=\"image\\customCase3.jpg\" height=\"35\" width=\"140\"></a>\r\n");
       out.write("        \r\n");
