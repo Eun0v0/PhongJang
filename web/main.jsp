@@ -100,12 +100,16 @@
 
     <center> <div align="middle"> <img src="image\banner.jpg" onClick="location.assign('main.jsp')"> </div> </center>
 
+    <form action="search.action" name="search" method="phonecase">
+        <img src="image\search.png" heigh="17" width="17">
+        <input type="text" size="16" name="keyword" value="${keyword}">
+        <input type="button" value="°Ë»ö" onClick="check()">
+    </form>
+        
         <hr size="5" color="black">
     <center>
         <a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a>
-        
         <img src="image\space.jpg" height="35" width="80">
-        
         <a href="Bottom-main.jsp"><img src="image\bumperCase2.jpg" height="35" width="140"></a>
         <img src="image\space.jpg" height="35" width="80">
         <a href="Outer-main.jsp"><img src="image\hardCase.jpg" height="35" width="140"></a>
