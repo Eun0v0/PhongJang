@@ -67,7 +67,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
       out.write("        <meta charset=\"UTF-8\">\r\n");
-      out.write("        <title>퐁장-나만의 폰 공장</title>\r\n");
+      out.write("        <title>Phong Jang</title>\r\n");
       out.write("        <script type=\"text/javascript\">\r\n");
       out.write("            //<![CDATA[\r\n");
       out.write("            function initMoving(target, position, topLimit, btmLimit) {\r\n");
@@ -184,21 +184,12 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            ");
  } 
       out.write("\r\n");
-      out.write("                \r\n");
-      out.write("            ");
-      out.write("\r\n");
-      out.write("            <form action=\"search.action\" name=\"search\" method=\"phoneCase\">\r\n");
-      out.write("            <img src=\"image\\search.png\" height=\"17\" width=\"17\">\r\n");
-      out.write("            <input type=\"text\" size=\"16\" name=\"keyword\" value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${keyword }", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\">\r\n");
-      out.write("            <input type=\"button\" value=\"검색\" onClick=\"check()\">\r\n");
-      out.write("            </form>\r\n");
-      out.write("    \r\n");
-      out.write("            <hr size=\"5\" color=\"black\">\r\n");
+      out.write("    <hr size=\"5\" color=\"black\">\r\n");
       out.write("    <center>\r\n");
       out.write("        <a href=\"Top-main.jsp\"><img src=\"image\\customCase3.jpg\" height=\"35\" width=\"140\"></a>\r\n");
-      out.write("        <img src=\"image\\space.jpg\" height=\"35\" width=\"80\">        \r\n");
+      out.write("        \r\n");
+      out.write("        <img src=\"image\\space.jpg\" height=\"35\" width=\"80\">\r\n");
+      out.write("        \r\n");
       out.write("        <a href=\"Bottom-main.jsp\"><img src=\"image\\bumperCase2.jpg\" height=\"35\" width=\"140\"></a>\r\n");
       out.write("        <img src=\"image\\space.jpg\" height=\"35\" width=\"80\">\r\n");
       out.write("        <a href=\"Outer-main.jsp\"><img src=\"image\\hardCase.jpg\" height=\"35\" width=\"140\"></a>\r\n");
