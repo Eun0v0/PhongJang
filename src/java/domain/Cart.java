@@ -12,18 +12,19 @@ package domain;
 public class Cart {
     int cartID;
     String userID;
-    int caseID;
+    String caseName;
+    String color;
     int numbers;
-    int validity;
+    int price;
 
-    public Cart(int cartID, String userID, int caseID, int numbers, int validity) {
+    public Cart(int cartID, String userID, String caseName, String color, int numbers, int price) {
         this.cartID = cartID;
         this.userID = userID;
-        this.caseID = caseID;
+        this.caseName = caseName;
+        this.color = color;
         this.numbers = numbers;
-        this.validity = validity;
+        this.price = price;
     }
-
     public int getCartID() {
         return cartID;
     }
@@ -40,12 +41,20 @@ public class Cart {
         this.userID = userID;
     }
 
-    public int getCaseID() {
-        return caseID;
+    public String getCaseName() {
+        return caseName;
     }
 
-    public void setCaseID(int caseID) {
-        this.caseID = caseID;
+    public void setCaseName(String caseName) {
+        this.caseName = caseName;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public int getNumbers() {
@@ -56,12 +65,12 @@ public class Cart {
         this.numbers = numbers;
     }
 
-    public int getValidity() {
-        return validity;
+    public int getPrice() {
+        return price;
     }
 
-    public void setValidity(int validity) {
-        this.validity = validity;
+    public void setPrice(int price) {
+        this.price = price;
     }
     
     

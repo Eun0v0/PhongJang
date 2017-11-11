@@ -21,9 +21,11 @@
         <table border="2px">
             <tr>
                 <th width="100">장바구니 ID</th>
-                <th width="150">고객 이름</th>
-                <th width="200">제품 ID</th>
+                <th width="150">제품명</th>
+                <th width="200">색상</th>
                 <th width="400">수량</th>
+                <th width="450">가격</th>
+                
             </tr>
             <%
                 if(carts != null){
@@ -32,9 +34,10 @@
             %>
             <tr>
                 <td align="center"><%=cart.getCartID()%></td>
-                <td align="center"><%=cart.getUserID()%></td>
-                <td align="center"><%=cart.getCaseID()%></td>
+                <td align="center"><%=cart.getCaseName()%></td>
+                <td align="center"><%=cart.getColor()%></td>
                 <td align="center"><%=cart.getNumbers()%></td>
+                <td align="center"><%=cart.getPrice()%></td>
                 <td align ="center">
                     <form action="delete" method="post">
                         <input type="hidden" name="cartID" value="<%=cart.getCartID()%>">
