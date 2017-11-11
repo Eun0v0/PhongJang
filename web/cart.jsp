@@ -109,8 +109,7 @@
     <br>
     <center>
         <form action ="payment" methoe="post">
-            <input type="image" src="image\paybutton.jpg" name="Submit" value ="결제하기" aline="absmiddle">
-            <!-- <input type="submit" value="결제하기">-->
+            <input type="image" src="image\paybutton.jpg" name="submit" value ="결제하기" aline="absmiddle">
         </form>
     </center>
 </body>

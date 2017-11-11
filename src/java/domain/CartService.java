@@ -29,7 +29,7 @@ public class CartService {
     public void deleteFromCart(String userID, int caseID){
         cartDataAccess.deleteFromCart(userID, caseID);
     }
-    /*public void cleanCart(String userID){
-        cartDataAccess.cleanCart(userID);
-    }*/
+    public void cleanCart(String userID, int cartID){
+        cartDataAccess.cleanCart(userID, cartID);
+    }
 }

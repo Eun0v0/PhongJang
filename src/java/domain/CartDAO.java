@@ -22,7 +22,7 @@ public class CartDAO {
     private static final String GETID_STMT = "SELECT COUNT(CartID) FROM shoppingCart2";
     private static final String ADD_STMT = "INSERT INTO shoppingCart2 VALUES(?,?,?,?,?,?)";
     private static final String DELETE_STMT = "DELETE FROM shoppingCart2 WHERE userID = ? AND CartID = ?";
-    //private static final String CLEAN_STMT = "UPDATE shoppingCart SET validity = 2 WHERE userID = ? AND CartID = ?";
+    private static final String CLEAN_STMT = "DELETE FROM shoppingCart2 WHERE userID = ? AND CartID = ?";
     
     ArrayList<Cart> cartRetrieve(String userID) throws SQLException{
         ArrayList<Cart> carts = new ArrayList<Cart>();
@@ -147,7 +147,7 @@ public class CartDAO {
             }
         }
     }
-    /*void cleanCart(String userID){
+    void cleanCart(String userID, int cartID){
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
@@ -155,6 +155,7 @@ public class CartDAO {
             conn = connPool.getPoolConnection();
             stmt = conn.prepareStatement(CLEAN_STMT);
             stmt.setString(1, userID);
+            stmt.setInt(2, cartID);
             stmt.executeQuery();
         } catch(SQLException se){
             throw new RuntimeException("A database eroor occured." + se.getMessage());
@@ -174,5 +175,5 @@ public class CartDAO {
                 }
             }
         }
-    }*/
+    }
 }

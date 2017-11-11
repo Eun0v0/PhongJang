@@ -74,4 +74,31 @@
         <servlet-name>MainController</servlet-name>
         <url-pattern>/main</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AddPaymentController</servlet-name>
+        <servlet-class>web.AddPaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddPaymentController</servlet-name>
+        <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ProcessPaymentController</servlet-name>
+        <servlet-class>web.ProcessPaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProcessPaymentController</servlet-name>
+        <url-pattern>/pay</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>RetrievePaymentController</servlet-name>
+        <servlet-class>web.RetrievePaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RetrievePaymentController</servlet-name>
+        <url-pattern>/paymentlist</url-pattern>
+    </servlet-mapping>
 </web-app>

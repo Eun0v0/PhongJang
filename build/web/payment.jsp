@@ -1,75 +1,55 @@
 <%-- 
     Document   : payment
-    Created on : 2017. 11. 11, 오후 5:33:37
+    Created on : 2017. 11. 11, 오후 11:00:51
     Author     : yukih
 --%>
 
-<%@page import="domain.Product"%>
-<%@page import="domain.User"%>
-<%@page import="domain.Basket"%>
+<%@page import="domain.Payment"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="domain.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Product List</title>
-        <%  ArrayList<Basket> baskets = (ArrayList<Basket>) request.getAttribute("baskets");
-            User user = (User) request.getAttribute("user");
-            int totalprice = (int) request.getAttribute("totalprice");
-            ArrayList<Product> myproducts = (ArrayList<Product>) request.getAttribute("myproducts");
-            session.setAttribute("baskets", baskets);
-            session.setAttribute("user", user);%>
+        <% ArrayList<Payment> payments = (ArrayList<Payment>) request.getAttribute("payments");%>
+        <% User user = (User) request.getAttribute("user");%>
+        <% session.setAttribute("user", user);%>
     </head>
     <body>
-        <h2>Hello, <%= user.getUsername()%></h2>
+        <% if (user != null) {%>
+    <center> <div align="middle">
+            <form action="main" method="post">
+                <input type="hidden" name="userID" value="<%=user.getId()%>">
+                <input type="image" src="image\banner.jpg" name="Submit">
+            </form>
+        </div> </center>
+        <% } else {%>
+    <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('main.jsp')"> </div> </center>
+            <% }%>
+        <h2><%= user.getName()%>님 주문 목록 입니다.</h2>
         <table border="2px">
-            <thead>
-                <tr>
-                    <th width="200">Buyer Name</th>
-                    <th width="200">Product Name</th>
-                    <th width="200">Numbers</th>
-                </tr>
-            </thead>
+            <tr>
+                <th width="100">결제 번호</th>
+                <th width="100">제품명</th>
+                <th width="100">수량</th>               
+                <th width="100">가격</th>                                
+                <th width="200">주소</th>
+                <th width="200">전화번호</th>
+            </tr>
             <%
-                for (int i = 0; i < baskets.size(); i++) {
-                    Basket basket = baskets.get(i);
-                    Product product = myproducts.get(i);
+                for (int i = 0; i < payments.size(); i++) {
+                    Payment payment = payments.get(i);
             %> 
-            <tbody>
-                <tr>
-                    <td align="center"><%=user.getUsername()%></td>
-                    <td align="center"><%=product.getProductname()%></td>
-                    <td align="center"><%=basket.getNumbers()%></td>
-                </tr>
-                <% }%>
-            </tbody>
-        </table><br/>
-        <table border="2px">
-            <thead>
-                <tr>
-                    <th width="600">Payment Information</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td align="center">
-                        Your Address : <%=user.getAddress()%></br>
-                        Your Contact : <%=user.getContact()%></br>
-                        Total Price : <%=totalprice%>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center">
-                        <form action="pay" method="post">
-                            Enter your Credit Card Number
-                            <input type="text" name="creditcardnumber"></br>
-                            Enter your Credit Card Password
-                            <input type="password" name="creditcardpassword"></br>
-                            <input type="submit" value="Pay">
-                        </form>
-                    </td>
-                </tr>
-            </tbody>
+            <tr>
+                <td align="center"><%=payment.getPaymentID()%></td>
+                <td align="center"><%=payment.getCaseName()%></td>
+                <td align="center"><%=payment.getNumbers()%></td>
+                <td align="center"><%=payment.getPrice()%></td>
+                <td align="center"><%=payment.getAddress()%></td>
+                <td align="center"><%=payment.getPhoneNumber()%></td>                
+            </tr>
+            <% }%>
         </table>
     </body>
 </html>

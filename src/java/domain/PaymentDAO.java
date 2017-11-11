@@ -6,13 +6,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import util.DBConnectionPool;
 public class PaymentDAO {
-   /* private DBConnectionPool connPool;
+    private DBConnectionPool connPool;
     private static final String ALLRETRIEVE_STMT
             = "SELECT * FROM shoppingPayment";
     private static final String RETRIEVE_STMT
             = "SELECT * FROM shoppingPayment WHERE UserID = ?";
     private static final String GETID_STMT = "SELECT COUNT(PaymentID) FROM shoppingPayment";
-    private static final String ADD_STMT = "INSERT INTO shoppingPayment VALUES(?,?,?,?,?,?,?,?)";
+    private static final String ADD_STMT = "INSERT INTO shoppingPayment VALUES(?,?,?,?,?,?,?,?,?)";
     ArrayList<Payment> allpaymentRetrieve() throws SQLException {
         ArrayList<Payment> payments = new ArrayList<Payment>();
         Connection conn = null;
@@ -24,14 +24,15 @@ public class PaymentDAO {
             rset = stmt.executeQuery();
             while (rset.next()) {
                 int PaymentID = rset.getInt(1);
-                int UserID = rset.getInt(2);
-                int ProductID = rset.getInt(3);
+                String UserID = rset.getString(2);
+                String CaseName = rset.getString(3);
                 int Numbers = rset.getInt(4);
-                String Address = rset.getString(5);
-                String Contact = rset.getString(6);
-                String CreditCardNumber = rset.getString(7);
-                String CreditCardPassword = rset.getString(8);
-                payments.add(new Payment(PaymentID, UserID, ProductID, Numbers, Address, Contact, CreditCardNumber, CreditCardPassword));
+                int Price = rset.getInt(5);
+                String Address = rset.getString(6);
+                String PhoneNumber = rset.getString(7);
+                String CreditCardNumber = rset.getString(8);
+                String CreditCardPassword = rset.getString(9);
+                payments.add(new Payment(PaymentID, UserID, CaseName, Numbers, Price, Address, PhoneNumber, CreditCardNumber, CreditCardPassword));
             }
             return payments;
         } catch (SQLException se) {
@@ -63,26 +64,28 @@ public class PaymentDAO {
             }
         }
     }
-    ArrayList<Payment> paymentRetrieve(int userid) throws SQLException {
+    ArrayList<Payment> paymentRetrieve(String userID) throws SQLException {
         ArrayList<Payment> payments = new ArrayList<Payment>();
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
         try {
+            //String RETRIEVE_STMT= "SELECT * FROM shoppingPayment WHERE UserID = ?";
             conn = connPool.getPoolConnection();
             stmt = conn.prepareStatement(RETRIEVE_STMT);
-            stmt.setInt(1, userid);
+            stmt.setString(1, userID);
             rset = stmt.executeQuery();
             while (rset.next()) {
                 int PaymentID = rset.getInt(1);
-                int UserID = rset.getInt(2);
-                int ProductID = rset.getInt(3);
+                String UserID = rset.getString(2);
+                String CaseName = rset.getString(3);
                 int Numbers = rset.getInt(4);
-                String Address = rset.getString(5);
-                String Contact = rset.getString(6);
-                String CreditCardNumber = rset.getString(7);
-                String CreditCardPassword = rset.getString(8);
-                payments.add(new Payment(PaymentID, UserID, ProductID, Numbers, Address, Contact, CreditCardNumber, CreditCardPassword));
+                int Price = rset.getInt(5);
+                String Address = rset.getString(6);
+                String Contact = rset.getString(7);
+                String CreditCardNumber = rset.getString(8);
+                String CreditCardPassword = rset.getString(9);
+                payments.add(new Payment(PaymentID, UserID, CaseName, Numbers, Price, Address, Contact, CreditCardNumber, CreditCardPassword));
             }
             return payments;
         } catch (SQLException se) {
@@ -115,11 +118,14 @@ public class PaymentDAO {
         }
     }
     
-    void paymentAdd(int userid, int productid, int numbers, String address, String contact, String creditcardnumber, String creditcardpassword) {
+    void paymentAdd(String userID, String caseName, int numbers, int price, String address, String phoneNumber, String creditCardNumber, String creditcardPassword) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
         try {
+            //String GETID_STMT = "SELECT COUNT(PaymentID) FROM shoppingPayment";
+            //String ADD_STMT = "INSERT INTO shoppingPayment VALUES(?,?,?,?,?,?,?,?,?)";
+   
             conn = connPool.getPoolConnection();
             stmt = conn.prepareStatement(GETID_STMT);
             rset = stmt.executeQuery();
@@ -129,13 +135,14 @@ public class PaymentDAO {
             ID++;
             stmt = conn.prepareStatement(ADD_STMT);
             stmt.setInt(1, ID);
-            stmt.setInt(2, userid);
-            stmt.setInt(3, productid);
+            stmt.setString(2, userID);
+            stmt.setString(3, caseName);
             stmt.setInt(4, numbers);
-            stmt.setString(5, address);
-            stmt.setString(6, contact);
-            stmt.setString(7, creditcardnumber);
-            stmt.setString(8, creditcardpassword);
+            stmt.setInt(5, price);
+            stmt.setString(6, address);
+            stmt.setString(7, phoneNumber);
+            stmt.setString(8, creditCardNumber);
+            stmt.setString(9, creditcardPassword);
             stmt.executeQuery();
         } catch (SQLException se) {
             throw new RuntimeException(
@@ -156,5 +163,5 @@ public class PaymentDAO {
                 }
             }
         }
-    }*/
+    }
 }
