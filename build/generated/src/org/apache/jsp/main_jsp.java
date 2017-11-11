@@ -26,6 +26,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
         throws java.io.IOException, ServletException {
 
     PageContext pageContext = null;
+    HttpSession session = null;
     ServletContext application = null;
     ServletConfig config = null;
     JspWriter out = null;
@@ -36,10 +37,11 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
     try {
       response.setContentType("text/html; charset=euc-kr");
       pageContext = _jspxFactory.getPageContext(this, request, response,
-      			null, false, 8192, true);
+      			null, true, 8192, true);
       _jspx_page_context = pageContext;
       application = pageContext.getServletContext();
       config = pageContext.getServletConfig();
+      session = pageContext.getSession();
       out = pageContext.getOut();
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
@@ -67,7 +69,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta charset=\"UTF-8\">\r\n");
       out.write("        <title>Phong Jang</title>\r\n");
       out.write("        <script type=\"text/javascript\">\r\n");
-      out.write("        //<![CDATA[\r\n");
+      out.write("            //<![CDATA[\r\n");
       out.write("            function initMoving(target, position, topLimit, btmLimit) {\r\n");
       out.write("                if (!target)\r\n");
       out.write("                    return false;\r\n");
@@ -127,47 +129,67 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    obj.style.top = obj.top + 220 + \"px\";\r\n");
       out.write("                }, 30)\r\n");
       out.write("            }\r\n");
-      out.write("        //]]>\r\n");
+      out.write("            //]]>\r\n");
       out.write("        </script>\r\n");
       out.write("\r\n");
       out.write("        <style type=\"text/css\">\r\n");
       out.write("            #gotop {position: absolute; right: 0px; top: 50px; width: 100px; height: 100px;}\r\n");
       out.write("            a{color:black; text-decoration:none;}\r\n");
       out.write("        </style>\r\n");
+      out.write("     \r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
-      out.write("        ");
-  String name = "";
-    if (name == null || name.equals("")) { 
+      out.write("        <table border=\"0px\">\r\n");
+      out.write("        <tr>\r\n");
+      out.write("            ");
+  User user = (User) request.getAttribute("user");
+            if (user == null) { 
       out.write("\r\n");
-      out.write("        <img src=\"image\\login.jpg\" onClick=\"location.assign('login.jsp')\">\r\n");
-      out.write("        ");
- } 
-    else { 
+      out.write("            <td><img src=\"image\\login.jpg\" onClick=\"location.assign('login.jsp')\"></td>\r\n");
+      out.write("            <td><td><a href=\"cart.jsp\"><img src=\"image\\cart.jpg\"></a></td>\r\n");
+      out.write("                ");
+ } else { session.setAttribute("user", user); 
       out.write("\r\n");
-      out.write("        <img src=\"image\\logout.jpg\" onClick=\"location.assign('logout.jsp')\">\r\n");
-      out.write("        ");
+      out.write("            <td><img src=\"image\\logout.jpg\" onClick=\"location.assign('logout.jsp')\"></td>\r\n");
+      out.write("            <td><form action=\"cart\" method=\"post\">\r\n");
+      out.write("                    <input type=\"hidden\" name=\"userID\" value=\"");
+      out.print(user.getId());
+      out.write("\">\r\n");
+      out.write("                    <input type=\"image\" src=\"image\\cart.jpg\" name=\"Submit\" value =\"장바구니\">\r\n");
+      out.write("                </form> </td>\r\n");
+      out.write("                ");
   }
       out.write("\r\n");
-      out.write("        <a href=\"cart_list.jsp\"><img src=\"image\\cart.jpg\"></a>\r\n");
-      out.write("        <a href=\"order_list.jsp\"><img src=\"image\\order.jpg\"></a>\r\n");
-      out.write("        <a href=\"join.jsp\"><img src=\"image\\join.jpg\"></a>\r\n");
-      out.write("        <a href=\"board\\board-list.jsp\"><img src=\"image\\q&a.jpg\"></a>\r\n");
+      out.write("            \r\n");
+      out.write("            <td><a href=\"order_list.jsp\"><img src=\"image\\order.jpg\"></a></td>\r\n");
+      out.write("            <td><a href=\"join.jsp\"><img src=\"image\\join.jpg\"></a></td>\r\n");
+      out.write("            <td><a href=\"board\\board-list.jsp\"><img src=\"image\\q&a.jpg\"></a></td>\r\n");
+      out.write("        </tr>\r\n");
+      out.write("    </table>\r\n");
+      out.write("            ");
+ if (user != null) { 
       out.write("\r\n");
-      out.write("    <center> <div align=\"middle\"> <img src=\"image\\banner.jpg\" onClick=\"location.assign('main.jsp')\"> </div> </center>\r\n");
-      out.write("\r\n");
-      out.write("    <form action=\"search.action\" name=\"search\" method=\"phonecase\">\r\n");
-      out.write("        <img src=\"image\\search.png\" heigh=\"17\" width=\"17\">\r\n");
-      out.write("        <input type=\"text\" size=\"16\" name=\"keyword\" value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${keyword}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("            <center> <div align=\"middle\">\r\n");
+      out.write("                <form action=\"main\" method=\"post\">\r\n");
+      out.write("                    <input type=\"hidden\" name=\"userID\" value=\"");
+      out.print(user.getId());
       out.write("\">\r\n");
-      out.write("        <input type=\"button\" value=\"검색\" onClick=\"check()\">\r\n");
-      out.write("    </form>\r\n");
-      out.write("        \r\n");
-      out.write("        <hr size=\"5\" color=\"black\">\r\n");
+      out.write("                    <input type=\"image\" src=\"image\\banner.jpg\" name=\"Submit\">\r\n");
+      out.write("                </form>\r\n");
+      out.write("            </div> </center>\r\n");
+      out.write("            ");
+ } else {
+      out.write("\r\n");
+      out.write("            <center> <div align=\"middle\"> <img src=\"image\\banner2.jpg\" onClick=\"location.assign('main.jsp')\"> </div> </center>\r\n");
+      out.write("            ");
+ } 
+      out.write("\r\n");
+      out.write("    <hr size=\"5\" color=\"black\">\r\n");
       out.write("    <center>\r\n");
       out.write("        <a href=\"Top-main.jsp\"><img src=\"image\\customCase3.jpg\" height=\"35\" width=\"140\"></a>\r\n");
+      out.write("        \r\n");
       out.write("        <img src=\"image\\space.jpg\" height=\"35\" width=\"80\">\r\n");
+      out.write("        \r\n");
       out.write("        <a href=\"Bottom-main.jsp\"><img src=\"image\\bumperCase2.jpg\" height=\"35\" width=\"140\"></a>\r\n");
       out.write("        <img src=\"image\\space.jpg\" height=\"35\" width=\"80\">\r\n");
       out.write("        <a href=\"Outer-main.jsp\"><img src=\"image\\hardCase.jpg\" height=\"35\" width=\"140\"></a>\r\n");

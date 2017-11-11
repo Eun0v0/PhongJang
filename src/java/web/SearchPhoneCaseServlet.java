@@ -33,7 +33,7 @@ public final class SearchPhoneCaseServlet extends HttpServlet {
         request.setAttribute("phoneCases", cases);
         request.setAttribute("user", HttpSession.getAttribute("user"));
         //view = request.getRequestDispatcher("phoneCaseList.jsp");
-        view = request.getRequestDispatcher("customerMain.jsp"); //c7stomer 전용
+        view = request.getRequestDispatcher("main.jsp"); //c7stomer 전용
         view.forward(request, response);
     }
 }
