@@ -22,6 +22,8 @@ public class CreatePhoneCaseServlet extends HttpServlet {
             throws IOException, ServletException {
         RequestDispatcher view = null;
         HttpSession HttpSession = request.getSession();
+        
+        request.setCharacterEncoding("EUC-KR");
         request.setAttribute("user", HttpSession.getAttribute("user"));
         view = request.getRequestDispatcher("admin/create.jsp");
         view.forward(request, response);

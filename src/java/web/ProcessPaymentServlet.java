@@ -29,6 +29,9 @@ public class ProcessPaymentServlet extends HttpServlet {
             throws IOException, ServletException {
         RequestDispatcher view = null;
         HttpSession HttpSession = request.getSession();
+        
+        request.setCharacterEncoding("EUC-KR");
+        
         ArrayList<Cart> carts = (ArrayList<Cart>) HttpSession.getAttribute("carts");
         User user = (User) HttpSession.getAttribute("user");
         String userID = user.getId();

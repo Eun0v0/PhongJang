@@ -33,6 +33,8 @@ public class AddCartServlet extends HttpServlet {
         Status status = new Status();
         request.setAttribute("status", status);
         
+        request.setCharacterEncoding("EUC-KR");
+        
         HttpSession HttpSession=request.getSession();
         String userID = request.getParameter("userID");
         String caseName = request.getParameter("caseName");

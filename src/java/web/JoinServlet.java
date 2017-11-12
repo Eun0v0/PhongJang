@@ -12,7 +12,6 @@ package web;
 import domain.User;
 import domain.UserService;
 import java.io.IOException;
-import java.sql.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,7 +33,7 @@ public class JoinServlet extends HttpServlet {
         UserService UserService = null;
         Status status = new Status();
         request.setAttribute("status", status);
-
+        request.setCharacterEncoding("EUC-KR");
         try {
             String userID = request.getParameter("userID");
             String userName = request.getParameter("userName");

@@ -27,6 +27,8 @@ public final class SearchPhoneCaseServlet extends HttpServlet {
         String phoneCaseName = request.getParameter("caseName");
         HttpSession HttpSession=request.getSession();
         
+        request.setCharacterEncoding("EUC-KR");
+        
         ArrayList<PhoneCase> cases = null;
         phoneCaseService = new PhoneCaseService();
         cases = phoneCaseService.getPhoneCase(phoneCaseName);
