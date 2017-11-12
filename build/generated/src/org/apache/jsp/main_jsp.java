@@ -5,6 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import java.util.ArrayList;
 import domain.PhoneCase;
+import domain.Payment;
 import domain.User;
 import java.util.Iterator;
 import java.sql.*;
@@ -46,6 +47,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -146,7 +148,12 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
             if (user == null) { 
       out.write("\r\n");
       out.write("            <td><img src=\"image\\login.jpg\" onClick=\"location.assign('login.jsp')\"></td>\r\n");
-      out.write("            <td><td><a href=\"cart.jsp\"><img src=\"image\\cart.jpg\"></a></td>\r\n");
+      out.write("            <td><a OnClick=\"alert('로그인을 해주세요!')\" style=\"cursor:pointer\">\r\n");
+      out.write("                   <img src=\"image\\cart.jpg\"></a>\r\n");
+      out.write("            </td>\r\n");
+      out.write("            <td><a OnClick=\"alert('로그인을 해주세요!')\" style=\"cursor:pointer\">\r\n");
+      out.write("                    <img src=\"image\\order.jpg\"></a>\r\n");
+      out.write("            </td>\r\n");
       out.write("                ");
  } else { session.setAttribute("user", user); 
       out.write("\r\n");
@@ -156,12 +163,16 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.print(user.getId());
       out.write("\">\r\n");
       out.write("                    <input type=\"image\" src=\"image\\cart.jpg\" name=\"Submit\" value =\"장바구니\">\r\n");
-      out.write("                </form> </td>\r\n");
+      out.write("                </form> \r\n");
+      out.write("            </td>\r\n");
+      out.write("            <td><form action=\"paymentlist\" method=\"post\">\r\n");
+      out.write("                    <input type=\"image\" src=\"image\\order.jpg\" name=\"Submit\" value =\"주문 목록\">\r\n");
+      out.write("                </form>    \r\n");
+      out.write("            </td>\r\n");
       out.write("                ");
   }
       out.write("\r\n");
       out.write("            \r\n");
-      out.write("            <td><a href=\"order_list.jsp\"><img src=\"image\\order.jpg\"></a></td>\r\n");
       out.write("            <td><a href=\"join.jsp\"><img src=\"image\\join.jpg\"></a></td>\r\n");
       out.write("            <td><a href=\"board\\board-list.jsp\"><img src=\"image\\q&a.jpg\"></a></td>\r\n");
       out.write("        </tr>\r\n");

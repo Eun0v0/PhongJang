@@ -6,6 +6,7 @@
 --%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.PhoneCase"%>
+<%@page import="domain.Payment"%>
 <%@page import="domain.User"%>
 <%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <jsp:useBean id="status" scope="request" class="util.Status"/>
@@ -92,16 +93,25 @@
             <%  User user = (User) request.getAttribute("user");
             if (user == null) { %>
             <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
-            <td><td><a href="cart.jsp"><img src="image\cart.jpg"></a></td>
+            <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                   <img src="image\cart.jpg"></a>
+            </td>
+            <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                    <img src="image\order.jpg"></a>
+            </td>
                 <% } else { session.setAttribute("user", user); %>
             <td><img src="image\logout.jpg" onClick="location.assign('logout.jsp')"></td>
             <td><form action="cart" method="post">
                     <input type="hidden" name="userID" value="<%=user.getId()%>">
                     <input type="image" src="image\cart.jpg" name="Submit" value ="장바구니">
-                </form> </td>
+                </form> 
+            </td>
+            <td><form action="paymentlist" method="post">
+                    <input type="image" src="image\order.jpg" name="Submit" value ="주문 목록">
+                </form>    
+            </td>
                 <%  }%>
             
-            <td><a href="payment.jsp"><img src="image\order.jpg"></a></td>
             <td><a href="join.jsp"><img src="image\join.jpg"></a></td>
             <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
         </tr>
