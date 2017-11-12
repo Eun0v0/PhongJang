@@ -27,12 +27,25 @@ public final class RetrievePaymentServlet extends HttpServlet {
         RequestDispatcher view = null;
         HttpSession HttpSession = request.getSession();
         String userID = ((User) HttpSession.getAttribute("user")).getId();
+        String userType = ((User) HttpSession.getAttribute("user")).getUsertype();
         ArrayList<Payment> payments = null;
         PaymentService PaymentService = new PaymentService();
-        payments = PaymentService.getAllPayment(userID);
+        
+        if(userType.equals("C")){
+            payments = PaymentService.getAllPayment(userID);
+        } else {
+            payments = PaymentService.getAllPayment();
+        }
         request.setAttribute("user", HttpSession.getAttribute("user"));
         request.setAttribute("payments", payments);
-        view = request.getRequestDispatcher("payment.jsp");
-        view.forward(request, response);
+        
+        if(userType.equals("C")){
+            view = request.getRequestDispatcher("payment.jsp");
+            view.forward(request, response);
+        } else {
+            view = request.getRequestDispatcher("admin/payment.jsp");
+            view.forward(request, response);
+        }
+        
     }
 } 

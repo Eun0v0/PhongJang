@@ -83,7 +83,7 @@ public final class LoginServlet extends HttpServlet {
         }
 
         if (usertype.equals("A")) { //관리자 모드
-            view = request.getRequestDispatcher("admin/adminLoginConfirm.jsp");
+            view = request.getRequestDispatcher("admin/main.jsp");
             view.forward(request, response);
         }
 
