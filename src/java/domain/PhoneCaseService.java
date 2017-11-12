@@ -39,6 +39,7 @@ public class PhoneCaseService {
         phoneCaseDataAccess.productInsert(caseType, caseName, explanation, price);
     }
     
+    //(int caseID, String caseType, String caseName, String explanation, int price)
     public void updatePhoneCase(int caseID, String caseType, String caseName, String explanation, int price) {
         phoneCaseDataAccess.productUpdate(caseID, caseType, caseName, explanation, price);
     }

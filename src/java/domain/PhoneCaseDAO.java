@@ -19,8 +19,8 @@ public class PhoneCaseDAO {
     private DBConnectionPool connPool;
     private static final String ALLRETRIEVE_STMT
             = "SELECT * FROM shoppingproduct";
-    private static final String INSERT_STMT = "INSERT INTO shoppingproduct VALUES(?,?,?,?,?)";
-    private static final String UPDATE_STMT = "UPDATE shoppingproduct SET CaseName = ? CaseType = ? Explanation = ? Price = ? WHERE CaseID = ?";
+    private static final String INSERT_STMT = "INSERT INTO shoppingProduct VALUES(?,?,?,?,?)";
+    private static final String UPDATE_STMT = "UPDATE shoppingProduct SET CaseName = ?, CaseType = ?, Explanation = ?, Price = ? WHERE CaseID = ?";
     private static final String GETID_STMT = "SELECT COUNT(CaseID) FROM shoppingproduct";
 
     //모든 데이터를 가져온다
@@ -167,6 +167,8 @@ public class PhoneCaseDAO {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
+        //UPDATE_STMT = "UPDATE shoppingProduct SET CaseName = ?, CaseType = ?, Explanation = ?, Price = ?, WHERE CaseID = ?";
+    
         try {
             conn = connPool.getPoolConnection();
             stmt = conn.prepareStatement(UPDATE_STMT);

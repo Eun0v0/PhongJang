@@ -15,6 +15,8 @@
         <% ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");%>
         <% User user = (User) request.getAttribute("user");%>
         <% session.setAttribute("user", user);%>
+        <% session.setAttribute("phoneCases", phoneCases);%>
+        
     </head>
     <body>
         <h2>Hello, <%= user.getName()%></h2>
@@ -28,6 +30,7 @@
                 <th width="200">케이스 이름</th>
                 <th width="400">설명</th>
                 <th width="150">가격</th>
+                <th width="150">수정</th>
             </tr>
             <%
                 for (int i = 0; i < phoneCases.size(); i++) {
@@ -39,8 +42,21 @@
                 <td align="center"><%=phoneCase.getCaseName()%></td>
                 <td align="center"><%=phoneCase.getExplanation()%></td>
                 <td align="center">$<%=phoneCase.getPrice()%></td>
+                <td align="center">
+                    <form action="update" method="post">
+                        <input type="hidden" name="caseID" value="<%=phoneCase.getCaseID()%>">
+                        <input type="hidden" name="caseType" value="<%=phoneCase.getCaseType()%>">
+                        <input type="hidden" name="caseName" value="<%=phoneCase.getCaseName()%>">
+                        <input type="hidden" name="explanation" value="<%=phoneCase.getExplanation()%>">
+                        <input type="hidden" name="price" value="<%=phoneCase.getPrice()%>">
+                        <input type="submit" value="수정">
+                    </form>
+                </td>
             </tr>
             <% }%>
-        </table>
+        </table>    
+        <form action="create" method="post">
+            <input type="submit" value="새 상품 추가">
+        </form>
     </body>
 </html>
