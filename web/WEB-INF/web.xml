@@ -146,4 +146,14 @@
         <servlet-name>UpdateProcessPhoneCaseController</servlet-name>
         <url-pattern>/updateprocess</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeletePhoneCaseController</servlet-name>
+        <servlet-class>web.DeletePhoneCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeletePhoneCaseController</servlet-name>
+        <url-pattern>/deleteCase</url-pattern>
+    </servlet-mapping>
+ 
 </web-app>

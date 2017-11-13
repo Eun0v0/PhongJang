@@ -31,6 +31,7 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         PhoneCaseService PhoneCaseService = new PhoneCaseService();
         HttpSession HttpSession = request.getSession();
         User user = (User) HttpSession.getAttribute("user");
+        
         int caseID = Integer.parseInt(request.getParameter("caseID"));
         String caseType = request.getParameter("caseType");
         String caseName = request.getParameter("caseName");

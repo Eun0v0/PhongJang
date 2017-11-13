@@ -31,6 +31,7 @@
                 <th width="400">설명</th>
                 <th width="150">가격</th>
                 <th width="150">수정</th>
+                <th width="150">삭제</th>
             </tr>
             <%
                 for (int i = 0; i < phoneCases.size(); i++) {
@@ -52,9 +53,16 @@
                         <input type="submit" value="수정">
                     </form>
                 </td>
+                <td align="center">
+                    <form action="deleteCase" method="post">
+                        <input type="hidden" name="caseID" value="<%=phoneCase.getCaseID()%>">
+                        <input type="submit" value="삭제">
+                    </form>
+                </td>
             </tr>
             <% }%>
         </table>    
+        
         <form action="create" method="post">
             <input type="submit" value="새 상품 추가">
         </form>
