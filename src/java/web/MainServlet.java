@@ -1,5 +1,7 @@
 package web;
 
+import domain.PhoneCase;
+import domain.PhoneCaseService;
 import domain.UserService;
 import domain.User;
 import java.io.IOException;
@@ -25,8 +27,23 @@ public final class MainServlet extends HttpServlet {
         RequestDispatcher view = null;
         HttpSession HttpSession=request.getSession();
         
+        PhoneCaseService PhoneCaseService = null;
+        ArrayList<PhoneCase> phoneCases = null; 
+        
+        PhoneCaseService = new PhoneCaseService();     
+        phoneCases = PhoneCaseService.getAllPhoneCase();
+            
         request.setAttribute("user", HttpSession.getAttribute("user"));
-        view = request.getRequestDispatcher("main.jsp"); //c7stomer 전용
-        view.forward(request, response);
+        request.setAttribute("phoneCases", phoneCases);
+        
+        String userType = ((User) HttpSession.getAttribute("user")).getUsertype();    
+        
+        if(userType.equals("C")){
+            view = request.getRequestDispatcher("main.jsp"); //c7stomer 전용
+            view.forward(request, response);
+        } else {
+            view = request.getRequestDispatcher("admin/main.jsp");
+            view.forward(request, response);
+        }
     }
 }

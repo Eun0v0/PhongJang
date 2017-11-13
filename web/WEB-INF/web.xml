@@ -101,4 +101,40 @@
         <servlet-name>RetrievePaymentController</servlet-name>
         <url-pattern>/paymentlist</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>CreatePhoneCaseController</servlet-name>
+        <servlet-class>web.CreatePhoneCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreatePhoneCaseController</servlet-name>
+        <url-pattern>/create</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ProcessPhoneCaseController</servlet-name>
+        <servlet-class>web.ProcessPhoneCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProcessPhoneCaseController</servlet-name>
+        <url-pattern>/createprocess</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>UpdatePhoneCaseController</servlet-name>
+        <servlet-class>web.UpdatePhoneCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdatePhoneCaseController</servlet-name>
+        <url-pattern>/update</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>UpdateProcessPhoneCaseController</servlet-name>
+        <servlet-class>web.UpdateProcessPhoneCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateProcessPhoneCaseController</servlet-name>
+        <url-pattern>/updateprocess</url-pattern>
+    </servlet-mapping>
 </web-app>
