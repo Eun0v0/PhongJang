@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import util.Status;
+/*
+    관리자모드 - 상품 삭제
+*/
 public class DeletePhoneCaseServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)

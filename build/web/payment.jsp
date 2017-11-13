@@ -24,7 +24,10 @@
                 <td><td><a href="cart.jsp"><img src="image\cart.jpg"></a></td>
                         <% } else {
                             session.setAttribute("user", user);%>
-                <td><img src="image\logout.jpg" onClick="location.assign('logout.jsp')"></td>
+                <td><form action="logout" method="post">
+                    <input type="image" src="image\logout.jpg" name="Submit" value ="로그아웃">
+                </form> 
+                </td>
                 <td><form action="cart" method="post">
                         <input type="hidden" name="userID" value="<%=user.getId()%>">
                         <input type="image" src="image\cart.jpg" name="Submit" value ="장바구니">

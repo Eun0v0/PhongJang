@@ -6,6 +6,7 @@
 package domain;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class UserService {
 
@@ -14,7 +15,17 @@ public class UserService {
     public UserService() {
         userDataAccess = new UserDAO();
     }
-
+    
+    public ArrayList<User> getAllUser() {
+        ArrayList<User> users = null;
+        try {
+            users = userDataAccess.allUserRetrieve();
+        } catch (Exception e) {
+            users = null;
+        }
+        return users;
+    }
+    
     public User getUser(String usertype, String userID, String password) {
         User user = null;
         try {

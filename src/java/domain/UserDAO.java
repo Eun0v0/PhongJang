@@ -10,17 +10,70 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import util.DBConnectionPool;
 
 public class UserDAO {
 
     private DBConnectionPool connPool;
+    private static final String CREATE_STMT = "INSERT INTO shoppingUser VALUES(?,?,?,?,?,?)";
+
     private static final String RETRIEVE_STMT
             = "SELECT * FROM shoppingUser WHERE UserType=? AND UserID=? AND Password =?";
     private static final String GETID_STMT = "SELECT COUNT(UserID) FROM shoppinguser";
-    private static final String CREATE_STMT = "INSERT INTO shoppingUser VALUES(?,?,?,?,?,?)";
-
+    private static final String ALLRETRIEVE_STMT = "SELECT * FROM shoppingUser WHERE UserType=?";
+    
+    //모든 데이터를 가져온다
+    ArrayList<User> allUserRetrieve() throws SQLException {
+        ArrayList<User> users = new ArrayList<User>();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        try {
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(ALLRETRIEVE_STMT);
+            rset = stmt.executeQuery();
+            while (rset.next()) {
+                String UserID = rset.getString(1);
+                String UserType = rset.getString(2);
+                String UserName = rset.getString(3);
+                String Password = rset.getString(4);
+                String PhoneNum = rset.getString(5);
+                String Address = rset.getString(6);
+                users.add(new User(UserID, UserType, UserName, Password, PhoneNum, Address));
+            }
+            return users;
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("Exception: " + e.getMessage());
+        } finally {
+            if (rset != null) {
+                try {
+                    rset.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
+    //유저의 데이터를 가져온다
     User userRetrieve(String usertype, String userID, String password) throws SQLException {
         User user = null;
         Connection conn = null;
@@ -80,7 +133,7 @@ public class UserDAO {
             }
         }
     }
- 
+    //새로운 고객의 정보를 DB에 추가
     void userCreate(String userID, String usertype, String username, String password, String phoneNum, String address) {
         Connection conn = null;
         PreparedStatement stmt = null;
