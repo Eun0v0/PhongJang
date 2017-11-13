@@ -3,16 +3,25 @@
     Created on : 2017. 11. 4, ?? 6:34:30
     Author     : yukih
 --%>
+<%@page import="domain.User"%>
+<%@page import="java.util.ArrayList"%>
 <%@page session="false" import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
-<jsp:useBean id="status" scope="request" class="util.Status                                                                                            "/>
+<jsp:useBean id="status" scope="request" class="util.Status"/>
 <html>
-    <head><title>회원가입</title></head>
+    <head><title>회원가입</title>
+        <% ArrayList<User> users = (ArrayList<User>) request.getAttribute("users");%>
+
+    </head>
     <body>
+        
         <%  String name = "";
             if (name == null || name.equals("")) { %>
         <img src="image\login.jpg" onClick="location.assign('login.jsp')">
         <% } else { %>
-        <img src="image\logout.jpg" onClick="location.assign('logout.jsp')">
+            <form action="logout" method="post">
+                    <input type="image" src="image\logout.jpg" name="Submit" value ="로그아웃">
+            </form> 
+        </td>
         <%  }%>
         <a href="cart_list.jsp"><img src="image\cart.jpg"></a>
         <a href="order_list.jsp"><img src="image\order.jpg"></a>
@@ -52,7 +61,9 @@
             <table>
                 <tr>
                     <td><img src="image\id.JPG" width=150 height=35"></td>
-                    <td><input type="text" name="userID" size="24"></td></tr>
+                    <td><input type="text" name="userID" size="24">
+                    <input type="button" name ="confirm_id" value="중복 체크"/></td>
+                    </td></tr>
                 <tr>
                     <td><img src="image\password.JPG" width=150 height=35"></td>
                     <td><input type="password" name="password" size="24"></td></tr>
@@ -68,6 +79,7 @@
                 <tr><td><img src="image\white.jpg" height = 35></td></tr>
             </table>
         </center>
+          
         <center>
             <form action="join" method="post">
                 <input type="image" src="image\loginbutton.jpg" name="Submit">

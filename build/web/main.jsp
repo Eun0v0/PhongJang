@@ -114,8 +114,10 @@
                 </form>    
             </td>
                 <%  }%>
-            
-            <td><a href="join.jsp"><img src="image\join.jpg"></a></td>
+            <td><form action="IDCheck" method="post">
+                    <input type="image" src="image\join.jpg" name="Submit" value ="회원가입">
+                </form>    
+            </td>
             <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
         </tr>
     </table>
