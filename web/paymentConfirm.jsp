@@ -12,7 +12,7 @@
         <title>결제 완료!</title>
     </head>
     <body>
-               <table border="0px">
+ <!--              <table border="0px">
         <tr>
             <%  User user = (User) request.getAttribute("user");
             if (user == null) { %>
@@ -70,7 +70,7 @@
         <a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a>
     </center>
     <hr size="5" color="black">
-
+-->
         <h1>결제 완료!</h1>
         <form action="main.jsp" method="post">
             <input type="submit" value="main">

@@ -24,7 +24,7 @@
         <table border="0px">
             <tr>
                 <%
-                if (user == null) { %>
+                    if (user == null) { %>
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\cart.jpg"></a>
@@ -104,33 +104,35 @@
                 </tr>
                 <% }%>
             </tbody>
-        </table><br/>
-        <br>
-        <table border="2px">
+        </table><br/> </center>
+    <center><br>
+        <table>
             <thead>
                 <tr>
-                    <th width="600">결제 정보</th>
+                    <th width="600" height ="35"><img src="image\paymentinfo.jpg" width=600 height=40></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td align="center">
+                    <td align="center" td bgcolor="#dcdcdc" height ="35">
                         주소 : <%=user.getAddress()%></br>
                         전화번호 : <%=user.getPhone()%></br>
                         총 금액 : <%=totalprice%>
                     </td>
                 </tr>
                 <tr>
-                    <td align="center">
+                    <td align="center" td bgcolor="#dcdcdc" height ="35">
                         <form action="pay" method="post">
                             신용 카드 번호를 입력하세요
                             <input type="text" name="creditcardnumber"></br>
                             신용 카드 비밀번호를 입력하세요
-                            <input type="password" name="creditcardpassword"></br>
-                            <input type="submit" value="Pay">
+                            <input type="password" name="creditcardpassword">
                         </form>
                     </td>
                 </tr>
+                <tr> 
+                <td align="center" bgcolor="#dcdcdc" height ="35"><input type="submit" value="Pay"></td>
+            </tr>
             </tbody>
         </table>
     </center>
