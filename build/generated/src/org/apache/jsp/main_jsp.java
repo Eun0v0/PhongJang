@@ -157,7 +157,10 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                ");
  } else { session.setAttribute("user", user); 
       out.write("\r\n");
-      out.write("            <td><img src=\"image\\logout.jpg\" onClick=\"location.assign('logout.jsp')\"></td>\r\n");
+      out.write("            <td><form action=\"logout\" method=\"post\">\r\n");
+      out.write("                    <input type=\"image\" src=\"image\\logout.jpg\" name=\"Submit\" value =\"로그아웃\">\r\n");
+      out.write("                </form> \r\n");
+      out.write("            </td>\r\n");
       out.write("            <td><form action=\"cart\" method=\"post\">\r\n");
       out.write("                    <input type=\"hidden\" name=\"userID\" value=\"");
       out.print(user.getId());

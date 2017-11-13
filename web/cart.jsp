@@ -1,17 +1,17 @@
 <%-- 
     Document   : cart.jsp
-    Created on : 2017. 11. 9, Ïò§ÌõÑ 9:34:45
+    Created on : 2017. 11. 9, ø¿»ƒ 9:34:45
     Author     : yukih
 --%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.Cart"%>
 <%@page import="domain.User"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Ïû•Î∞îÍµ¨Îãà</title>
+        <title>¿ÂπŸ±∏¥œ</title>
         <%ArrayList<Cart> carts = (ArrayList<Cart>) request.getAttribute("carts");%>
         <%User user = (User) request.getAttribute("user");%>
         <%session.setAttribute("user", user);%>
@@ -29,11 +29,11 @@
                 <td><img src="image\logout.jpg" onClick="location.assign('logout.jsp')"></td>
                 <td><form action="cart" method="post">
                         <input type="hidden" name="userID" value="<%=user.getId()%>">
-                        <input type="image" src="image\cart.jpg" name="Submit" value ="Ïû•Î∞îÍµ¨Îãà">
+                        <input type="image" src="image\cart.jpg" name="Submit" value ="¿ÂπŸ±∏¥œ">
                     </form> 
                 </td>
                 <td><form action="paymentlist" method="post">
-                    <input type="image" src="image\order.jpg" name="Submit" value ="Ï£ºÎ¨∏ Î™©Î°ù">
+                    <input type="image" src="image\order.jpg" name="Submit" value ="¡÷πÆ ∏Ò∑œ">
                 </form>    
                 </td>    
                     <%  }%>
@@ -56,7 +56,7 @@
     <form action ="search.action" name="search" method="search">
         <img src="image\search.png" height="17" width="17">
         <input type="text" size="16" name="keyword" value="${keyword}">
-        <input type="button" value="Í≤ÄÏÉâ" onClick="check()">
+        <input type="button" value="∞Àªˆ" onClick="check()">
     </form>
 
     <hr size="5" color="black">
@@ -76,11 +76,10 @@
     <br>
     <center> <img src="image\shoppingcart.jpg" width=200 height=60"> </center>
     <center> <br>
-    <!--<h2><%= user.getName()%> Í≥†Í∞ùÎãò, Ïû•Î∞îÍµ¨Îãà ÏûÖÎãàÎã§.</h2>-->
+    <!--<h2><%= user.getName()%> ∞Ì∞¥¥‘, ¿ÂπŸ±∏¥œ ¿‘¥œ¥Ÿ.</h2>-->
 
         <table>
             <tr>
-                <th width="120" height = "35"><img src="image\number2.jpg" width=120 height=40></th>
                 <th width="170" height = "35"><img src="image\casename2.jpg" width=170 height=40"></th>
                 <th width="120" height = "35"><img src="image\color.jpg" width=120 height=40"></th>
                 <th width="120" height = "35"><img src="image\amount2.jpg" width=120 height=40"></th>
@@ -94,7 +93,6 @@
                         Cart cart = carts.get(i);
             %>
             <tr>
-                <td bgcolor="#dcdcdc" align="center"><%=cart.getCartID()%></td>
                 <td bgcolor="#dcdcdc" align="center"><%=cart.getCaseName()%></td>
                 <td bgcolor="#dcdcdc" align="center"><%=cart.getColor()%></td>
                 <td bgcolor="#dcdcdc" align="center"><%=cart.getNumbers()%></td>
@@ -103,7 +101,7 @@
                     <form action="delete" method="post">
                         <input type="hidden" name="cartID" value="<%=cart.getCartID()%>">
                         <input type="hidden" name="userID" value="<%=user.getId()%>">
-                        <input type="image" src="image\delete.jpg" name="Submit" value ="ÏÇ≠Ï†ú" aline="absmiddle">
+                        <input type="image" src="image\delete.jpg" name="Submit" value ="ªË¡¶" aline="absmiddle">
                     </form></td>
             </tr>
             <%  }
@@ -113,7 +111,7 @@
     <br>
     <center>
         <form action ="payment" methoe="post">
-            <input type="image" src="image\paybutton.jpg" name="submit" value ="Í≤∞Ï†úÌïòÍ∏∞" aline="absmiddle">
+            <input type="image" src="image\paybutton.jpg" name="submit" value ="∞·¡¶«œ±‚" aline="absmiddle">
         </form>
     </center>
 </body>

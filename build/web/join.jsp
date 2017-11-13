@@ -4,7 +4,7 @@
     Author     : yukih
 --%>
 <%@page session="false" import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
-<jsp:useBean id="status" scope="request" class="util.Status"/>
+<jsp:useBean id="status" scope="request" class="util.Status                                                                                            "/>
 <html>
     <head><title>회원가입</title></head>
     <body>

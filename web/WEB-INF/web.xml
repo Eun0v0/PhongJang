@@ -22,6 +22,15 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>web.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>JoinController</servlet-name>
         <servlet-class>web.JoinServlet</servlet-class>
     </servlet>

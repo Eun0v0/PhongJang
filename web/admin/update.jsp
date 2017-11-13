@@ -11,7 +11,9 @@
 <%@page import="java.util.ArrayList"%>
 <jsp:useBean id="status" scope="request" class="util.Status"/>
 <html>
-    <head><title>Update Form</title>
+    <head>
+        
+        <title>Update Form</title>
         <%  ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
   
             User user = (User)request.getAttribute("user");

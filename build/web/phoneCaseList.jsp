@@ -1,41 +1,40 @@
 <%-- 
     Document   : login
-    Created on : 2017. 11. 4, ì˜¤í›„ 7:17:19
+    Created on : 2017. 11. 4, ¿ÀÈÄ 7:17:19
     Author     : yukih
 --%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.PhoneCase"%>
 <%@page import="domain.User"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>íìž¥ ìƒí’ˆ ëª©ë¡</title>
+        <title>ÆþÀå »óÇ° ¸ñ·Ï</title>
         <% ArrayList<PhoneCase> phoneCase = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");%>
         <% User user = (User) request.getAttribute("user");%>
         <%session.setAttribute("user", user);%>
     </head>
     <body>
-        <h1>ì•ˆë…•í•˜ì„¸ìš”, <%=user.getName()%>ë‹˜</h1>
-        <h2>íìž¥ ìƒí’ˆ ëª©ë¡</h2>
+        <h1>¾È³çÇÏ¼¼¿ä, <%=user.getName()%>´Ô</h1>
+        <h2>ÆþÀå »óÇ° ¸ñ·Ï</h2>
         <form action="cart" method="post">
             <input type="hidden" name="userID" value="<%=user.getId()%>">
-            <input type="submit" value="ìž¥ë°”êµ¬ë‹ˆ">
+            <input type="submit" value="Àå¹Ù±¸´Ï">
         </form>
         <form action="search" method="post">
-            ìƒí’ˆ ê²€ìƒ‰ :
+            »óÇ° °Ë»ö :
             <input type="text" name="caseName" size="24">
-            <input type="submit" value="ê²€ìƒ‰">
+            <input type="submit" value="°Ë»ö">
         </form>
         <table border="2px">
             <tr>
-                <th width="100">ì¼€ì´ìŠ¤ ID</th>
-                <th width="150">ì¼€ì´ìŠ¤ ì´ë¦„</th>
-                <th width="200">íƒ€ìž…</th>
-                <th width="400">ì„¤ëª…</th>
-                <th width="150">ê°€ê²©</th>
-                <th width="200">ìž¥ë°”êµ¬ë‹ˆì— ë‹´ê¸°</th>
+                <th width="100">ÄÉÀÌ½º ID</th>
+                <th width="150">ÄÉÀÌ½º ÀÌ¸§</th>
+                <th width="200">Å¸ÀÔ</th>
+                <th width="400">¼³¸í</th>
+                <th width="150">°¡°Ý</th>
+                <th width="200">Àå¹Ù±¸´Ï¿¡ ´ã±â</th>
             </tr>
             <%
                 for (int i = 0; i < phoneCase.size(); i++) {
@@ -46,19 +45,19 @@
                 <td align="center"><%=phonecase.getCaseName()%></td>
                 <td align="center"><%=phonecase.getCaseType()%></td>
                 <td align="center"><%=phonecase.getExplanation()%></td>
-                <td align="center"><%=phonecase.getPrice()%>ì›</td>
+                <td align="center"><%=phonecase.getPrice()%>¿ø</td>
                 <td align="center">
                     <form action="take" method="post">
-                        ì›í•˜ëŠ” ìˆ˜ëŸ‰ì„ ìž…ë ¥í•˜ì„¸ìš” :
+                        ¿øÇÏ´Â ¼ö·®À» ÀÔ·ÂÇÏ¼¼¿ä :
                         <input type="hidden" name="userID" value="<%=user.getId()%>">
                         <input type="hidden" name="caseID" value="<%=phonecase.getCaseID()%>">
                         <input type="text" name ="numbers" size="5">
-                        <input type="submit" value="ë‹´ê¸°">
+                        <input type="submit" value="´ã±â">
                    </form>
             </tr>
             <% } %>
         </table>
         <form action="main.jsp" method="post">
-            <input type="submit" value="ë©”ì¸ìœ¼ë¡œ">
+            <input type="submit" value="¸ÞÀÎÀ¸·Î">
     </body>
 </html>

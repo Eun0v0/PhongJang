@@ -1,6 +1,6 @@
 <%-- 
     Document   : payment
-    Created on : 2017. 11. 11, 오후 5:33:37
+    Created on : 2017. 11. 11, ���� 5:33:37
     Author     : yukih
 --%>
 
@@ -8,7 +8,7 @@
 <%@page import="domain.User"%>
 <%@page import="domain.Cart"%>
 <%@page import="java.util.ArrayList"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -26,10 +26,10 @@
                 <%
                     if (user == null) { %>
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
-                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                <td><a OnClick="alert('�α����� ���ּ���!')" style="cursor:pointer">
                         <img src="image\cart.jpg"></a>
                 </td>
-                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                <td><a OnClick="alert('�α����� ���ּ���!')" style="cursor:pointer">
                         <img src="image\order.jpg"></a>
                 </td>
                 <% } else {
@@ -37,11 +37,11 @@
                 <td><img src="image\logout.jpg" onClick="location.assign('logout.jsp')"></td>
                 <td><form action="cart" method="post">
                         <input type="hidden" name="userID" value="<%=user.getId()%>">
-                        <input type="image" src="image\cart.jpg" name="Submit" value ="장바구니">
+                        <input type="image" src="image\cart.jpg" name="Submit" value ="��ٱ���">
                     </form> 
                 </td>
                 <td><form action="paymentlist" method="post">
-                        <input type="image" src="image\order.jpg" name="Submit" value ="주문 목록">
+                        <input type="image" src="image\order.jpg" name="Submit" value ="�ֹ� ���">
                     </form>    
                 </td>
                 <%  }%>
@@ -64,7 +64,7 @@
     <form action ="search.action" name="search" method="search">
         <img src="image\search.png" height="17" width="17">
         <input type="text" size="16" name="keyword" value="${keyword}">
-        <input type="button" value="검색" onClick="check()">
+        <input type="button" value="�˻�" onClick="check()">
     </form>
 
     <hr size="5" color="black">
@@ -115,17 +115,17 @@
             <tbody>
                 <tr>
                     <td align="center" td bgcolor="#dcdcdc" height ="35">
-                        주소 : <%=user.getAddress()%></br>
-                        전화번호 : <%=user.getPhone()%></br>
-                        총 금액 : <%=totalprice%>
+                        �ּ� : <%=user.getAddress()%></br>
+                        ��ȭ��ȣ : <%=user.getPhone()%></br>
+                        �� �ݾ� : <%=totalprice%>
                     </td>
                 </tr>
                 <tr>
                     <td align="center" td bgcolor="#dcdcdc" height ="35">
                         <form action="pay" method="post">
-                            신용 카드 번호를 입력하세요
+                            �ſ� ī�� ��ȣ�� �Է��ϼ���
                             <input type="text" name="creditcardnumber"></br>
-                            신용 카드 비밀번호를 입력하세요
+                            �ſ� ī�� ��й�ȣ�� �Է��ϼ���
                             <input type="password" name="creditcardpassword">
                         </form>
                     </td>

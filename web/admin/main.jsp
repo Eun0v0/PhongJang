@@ -7,7 +7,7 @@
 <%@page import="domain.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.PhoneCase"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,16 +21,16 @@
     <body>
         <h2>Hello, <%= user.getName()%></h2>
         <form action="paymentlist" method="post">
-            <input type="submit" value="Î™®Îì† Í≤∞Ï†úÎÇ¥Ïó≠">
+            <input type="submit" value="∏µÁ ∞·¡¶≥ªø™">
         </form>        
         <table border="2px">
             <tr>
-                <th width="100">ÏºÄÏù¥Ïä§ ID</th>
-                <th width="150">ÌÉÄÏûÖ</th>
-                <th width="200">ÏºÄÏù¥Ïä§ Ïù¥Î¶Ñ</th>
-                <th width="400">ÏÑ§Î™Ö</th>
-                <th width="150">Í∞ÄÍ≤©</th>
-                <th width="150">ÏàòÏ†ï</th>
+                <th width="100">ƒ…¿ÃΩ∫ ID</th>
+                <th width="150">≈∏¿‘</th>
+                <th width="200">ƒ…¿ÃΩ∫ ¿Ã∏ß</th>
+                <th width="400">º≥∏Ì</th>
+                <th width="150">∞°∞›</th>
+                <th width="150">ºˆ¡§</th>
             </tr>
             <%
                 for (int i = 0; i < phoneCases.size(); i++) {
@@ -49,14 +49,14 @@
                         <input type="hidden" name="caseName" value="<%=phoneCase.getCaseName()%>">
                         <input type="hidden" name="explanation" value="<%=phoneCase.getExplanation()%>">
                         <input type="hidden" name="price" value="<%=phoneCase.getPrice()%>">
-                        <input type="submit" value="ÏàòÏ†ï">
+                        <input type="submit" value="ºˆ¡§">
                     </form>
                 </td>
             </tr>
             <% }%>
         </table>    
         <form action="create" method="post">
-            <input type="submit" value="ÏÉà ÏÉÅÌíà Ï∂îÍ∞Ä">
+            <input type="submit" value="ªı ªÛ«∞ √ﬂ∞°">
         </form>
     </body>
 </html>

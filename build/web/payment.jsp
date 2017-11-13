@@ -1,13 +1,13 @@
 <%-- 
     Document   : payment
-    Created on : 2017. 11. 11, ì˜¤í›„ 11:00:51
+    Created on : 2017. 11. 11, ¿ÀÈÄ 11:00:51
     Author     : yukih
 --%>
 
 <%@page import="domain.Payment"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.User"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,11 +27,11 @@
                 <td><img src="image\logout.jpg" onClick="location.assign('logout.jsp')"></td>
                 <td><form action="cart" method="post">
                         <input type="hidden" name="userID" value="<%=user.getId()%>">
-                        <input type="image" src="image\cart.jpg" name="Submit" value ="ìž¥ë°”êµ¬ë‹ˆ">
+                        <input type="image" src="image\cart.jpg" name="Submit" value ="Àå¹Ù±¸´Ï">
                     </form> 
                 </td>
                 <td><form action="paymentlist" method="post">
-                    <input type="image" src="image\order.jpg" name="Submit" value ="ì£¼ë¬¸ ëª©ë¡">
+                    <input type="image" src="image\order.jpg" name="Submit" value ="ÁÖ¹® ¸ñ·Ï">
                 </form>    
                 </td>    
                     <%  }%>
@@ -54,7 +54,7 @@
     <form action ="search.action" name="search" method="search">
         <img src="image\search.png" height="17" width="17">
         <input type="text" size="16" name="keyword" value="${keyword}">
-        <input type="button" value="ê²€ìƒ‰" onClick="check()">
+        <input type="button" value="°Ë»ö" onClick="check()">
     </form>
     
     <hr size="5" color="black">
@@ -71,15 +71,15 @@
     </center>
     <hr size="5" color="black">    
 
-        <h2><%= user.getName()%>ë‹˜ ì£¼ë¬¸ ëª©ë¡ ìž…ë‹ˆë‹¤.</h2>
+        <h2><%= user.getName()%>´Ô ÁÖ¹® ¸ñ·Ï ÀÔ´Ï´Ù.</h2>
         <table border="2px">
             <tr>
-                <th width="100">ê²°ì œ ë²ˆí˜¸</th>
-                <th width="100">ì œí’ˆëª…</th>
-                <th width="100">ìˆ˜ëŸ‰</th>               
-                <th width="100">ê°€ê²©</th>                                
-                <th width="200">ì£¼ì†Œ</th>
-                <th width="200">ì „í™”ë²ˆí˜¸</th>
+                <th width="100">°áÁ¦ ¹øÈ£</th>
+                <th width="100">Á¦Ç°¸í</th>
+                <th width="100">¼ö·®</th>               
+                <th width="100">°¡°Ý</th>                                
+                <th width="200">ÁÖ¼Ò</th>
+                <th width="200">ÀüÈ­¹øÈ£</th>
             </tr>
             <%
                 for (int i = 0; i < payments.size(); i++) {

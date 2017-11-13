@@ -35,6 +35,8 @@ public class ProcessPhoneCaseServlet extends HttpServlet {
         phoneCases = PhoneCaseService.getAllPhoneCase();
         request.setAttribute("phoneCases", phoneCases);
         request.setAttribute("user", user);
+        request.setCharacterEncoding("EUC-KR");
+        
         try {
             String caseType = request.getParameter("caseType");
             String caseName = request.getParameter("caseName");
