@@ -21,13 +21,74 @@
             session.setAttribute("user", user);%>
     </head>
     <body>
-        <h2>Hello, <%= user.getName()%></h2>
-        <table border="2px">
+        <table border="0px">
+            <tr>
+                <%
+                if (user == null) { %>
+                <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
+                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                        <img src="image\cart.jpg"></a>
+                </td>
+                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                        <img src="image\order.jpg"></a>
+                </td>
+                <% } else {
+                    session.setAttribute("user", user);%>
+                <td><img src="image\logout.jpg" onClick="location.assign('logout.jsp')"></td>
+                <td><form action="cart" method="post">
+                        <input type="hidden" name="userID" value="<%=user.getId()%>">
+                        <input type="image" src="image\cart.jpg" name="Submit" value ="장바구니">
+                    </form> 
+                </td>
+                <td><form action="paymentlist" method="post">
+                        <input type="image" src="image\order.jpg" name="Submit" value ="주문 목록">
+                    </form>    
+                </td>
+                <%  }%>
+
+                <td><a href="join.jsp"><img src="image\join.jpg"></a></td>
+                <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
+            </tr>
+        </table>
+        <% if (user != null) {%>
+    <center> <div align="middle">
+            <form action="main" method="post">
+                <input type="hidden" name="userID" value="<%=user.getId()%>">
+                <input type="image" src="image\banner.jpg" name="Submit">
+            </form>
+        </div> </center>
+        <% } else {%>
+    <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('main.jsp')"> </div> </center>
+            <% }%>
+
+    <form action ="search.action" name="search" method="search">
+        <img src="image\search.png" height="17" width="17">
+        <input type="text" size="16" name="keyword" value="${keyword}">
+        <input type="button" value="검색" onClick="check()">
+    </form>
+
+    <hr size="5" color="black">
+    <center>
+        <a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a>
+        <img src="image\space.jpg" height="35" width="80">
+        <a href="Bottom-main.jsp"><img src="image\bumperCase2.jpg" height="35" width="140"></a>
+        <img src="image\space.jpg" height="35" width="80">
+        <a href="Outer-main.jsp"><img src="image\hardCase.jpg" height="35" width="140"></a>
+        <img src="image\space.jpg" height="35" width="80">
+        <a href="Sho-main.jsp"><img src="image\jellyCase.jpg" height="35" width="140"></a>
+        <img src="image\space.jpg" height="35" width="80">
+        <a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a>
+    </center>
+    <hr size="5" color="black">
+
+    <center>
+        <br><h2>Hello, <%= user.getName()%></h2>
+        <table>
             <thead>
                 <tr>
-                    <th width="200">구매자 이름</th>
-                    <th width="200">상품명</th>
-                    <th width="200">수량</th>
+                    <th width="170" height = "35"><img src="image\username.JPG" width=170 height=40></th>
+                    <th width="170" height = "35"><img src="image\productname.JPG" width=170 height=40></th>
+                    <th width="170" height = "35"><img src="image\amount.jpg" width=170 height=40></th>
                 </tr>
             </thead>
             <%
@@ -37,13 +98,14 @@
             %> 
             <tbody>
                 <tr>
-                    <td align="center"><%=user.getName()%></td>
-                    <td align="center"><%=phoneCase.getCaseName()%></td>
-                    <td align="center"><%=cart.getNumbers()%></td>
+                    <td bgcolor="#dcdcdc" align="center" height = "35"><%=user.getName()%></td>
+                    <td bgcolor="#dcdcdc" align="center" height = "35"><%=phoneCase.getCaseName()%></td>
+                    <td bgcolor="#dcdcdc" align="center" height = "35"><%=cart.getNumbers()%></td>
                 </tr>
                 <% }%>
             </tbody>
         </table><br/>
+        <br>
         <table border="2px">
             <thead>
                 <tr>
@@ -71,5 +133,6 @@
                 </tr>
             </tbody>
         </table>
-    </body>
+    </center>
+</body>
 </html>
