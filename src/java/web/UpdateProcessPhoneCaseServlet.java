@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import util.Status;
+
 public class UpdateProcessPhoneCaseServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
@@ -31,6 +32,7 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         PhoneCaseService PhoneCaseService = new PhoneCaseService();
         HttpSession HttpSession = request.getSession();
         User user = (User) HttpSession.getAttribute("user");
+        
         int caseID = Integer.parseInt(request.getParameter("caseID"));
         String caseType = request.getParameter("caseType");
         String caseName = request.getParameter("caseName");

@@ -24,6 +24,7 @@ public class CartDAO {
     private static final String DELETE_STMT = "DELETE FROM shoppingCart2 WHERE userID = ? AND CartID = ?";
     private static final String CLEAN_STMT = "DELETE FROM shoppingCart2 WHERE userID = ? AND CartID = ?";
     
+    //장바구니의 모든 정보를 가져온다
     ArrayList<Cart> cartRetrieve(String userID) throws SQLException{
         ArrayList<Cart> carts = new ArrayList<Cart>();
         Connection conn = null;
@@ -73,6 +74,7 @@ public class CartDAO {
             }
         }
     }
+    //장바구니에 상품을 추가한다
     void addToCart(String userID, String caseName, String color, int numbers, int price){
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -116,6 +118,7 @@ public class CartDAO {
         }
     }
     
+    //장바구니에서 상품을 삭제한다
     void deleteFromCart(String userID, int cartID){
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -147,6 +150,7 @@ public class CartDAO {
             }
         }
     }
+    //장바구니에서 모든 상품을 지운다
     void cleanCart(String userID, int cartID){
         Connection conn = null;
         PreparedStatement stmt = null;

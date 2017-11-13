@@ -43,4 +43,8 @@ public class PhoneCaseService {
     public void updatePhoneCase(int caseID, String caseType, String caseName, String explanation, int price) {
         phoneCaseDataAccess.productUpdate(caseID, caseType, caseName, explanation, price);
     }
+    
+    public void deletePhoneCase(int caseID) {
+        phoneCaseDataAccess.productDelete(caseID);
+    }
 }

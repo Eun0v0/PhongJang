@@ -13,6 +13,8 @@ public class PaymentDAO {
             = "SELECT * FROM shoppingPayment WHERE UserID = ?";
     private static final String GETID_STMT = "SELECT COUNT(PaymentID) FROM shoppingPayment";
     private static final String ADD_STMT = "INSERT INTO shoppingPayment VALUES(?,?,?,?,?,?,?,?,?)";
+    
+    //관리자 모드- 모든 고객이 결제한 내역을 가져온다
     ArrayList<Payment> allpaymentRetrieve() throws SQLException {
         ArrayList<Payment> payments = new ArrayList<Payment>();
         Connection conn = null;
@@ -64,6 +66,8 @@ public class PaymentDAO {
             }
         }
     }
+    
+    //고객 모드- 결제한 내역을 가져온다
     ArrayList<Payment> paymentRetrieve(String userID) throws SQLException {
         ArrayList<Payment> payments = new ArrayList<Payment>();
         Connection conn = null;
@@ -118,6 +122,7 @@ public class PaymentDAO {
         }
     }
     
+    //고객이 결제한 내용을 데이터베이스에 저장한다.
     void paymentAdd(String userID, String caseName, int numbers, int price, String address, String phoneNumber, String creditCardNumber, String creditcardPassword) {
         Connection conn = null;
         PreparedStatement stmt = null;

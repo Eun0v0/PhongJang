@@ -6,7 +6,6 @@
 package domain;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +21,9 @@ public class PhoneCaseDAO {
     private static final String INSERT_STMT = "INSERT INTO shoppingProduct VALUES(?,?,?,?,?)";
     private static final String UPDATE_STMT = "UPDATE shoppingProduct SET CaseName = ?, CaseType = ?, Explanation = ?, Price = ? WHERE CaseID = ?";
     private static final String GETID_STMT = "SELECT COUNT(CaseID) FROM shoppingproduct";
-
+    private static final String DELETE_STMT = "DELETE FROM shoppingProduct WHERE CaseID = ?";
+    
+    
     //모든 데이터를 가져온다
     ArrayList<PhoneCase> allPhoneCaseRetrieve() throws SQLException {
         ArrayList<PhoneCase> phoneCase = new ArrayList<PhoneCase>();
@@ -177,6 +178,38 @@ public class PhoneCaseDAO {
             stmt.setString(3, explanation);
             stmt.setInt(4, price);
             stmt.setInt(5, caseID);
+            stmt.executeQuery();
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
+    //상품 데이터를 삭제한다.
+    void productDelete(int caseID) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        //DELETE_STMT = "DELETE FROM shoppingProduct WHERE CaseID = ?";
+        
+        try {
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(DELETE_STMT);
+            stmt.setInt(1, caseID);
             stmt.executeQuery();
         } catch (SQLException se) {
             throw new RuntimeException(

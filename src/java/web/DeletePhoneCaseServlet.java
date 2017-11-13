@@ -1,8 +1,11 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package web;
-
 import domain.PhoneCase;
 import domain.PhoneCaseService;
-import domain.UserService;
 import domain.User;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,39 +15,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-public final class MainServlet extends HttpServlet {
-
+import util.Status;
+/*
+    관리자모드 - 상품 삭제
+*/
+public class DeletePhoneCaseServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
         processRequest(request, response);
     }
-
     public void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
         RequestDispatcher view = null;
-        HttpSession HttpSession=request.getSession();
+        Status status = new Status();
+        request.setAttribute("status", status);
+        PhoneCaseService PhoneCaseService = new PhoneCaseService();
+        HttpSession HttpSession = request.getSession();
+        User user = (User) HttpSession.getAttribute("user");
         
-        PhoneCaseService PhoneCaseService = null;
-        ArrayList<PhoneCase> phoneCases = null; 
+        int caseID = Integer.parseInt(request.getParameter("caseID"));
+        ArrayList<PhoneCase> phoneCases = null;
+        PhoneCaseService.deletePhoneCase(caseID);
         
-        PhoneCaseService = new PhoneCaseService();     
         phoneCases = PhoneCaseService.getAllPhoneCase();
-            
+
         request.setCharacterEncoding("EUC-KR");
-        request.setAttribute("user", HttpSession.getAttribute("user"));
+        request.setAttribute("user", user);
         request.setAttribute("phoneCases", phoneCases);
         
-        String userType = ((User) HttpSession.getAttribute("user")).getUsertype();    
-        
-        if(userType.equals("C")){
-            view = request.getRequestDispatcher("main.jsp"); //c7stomer 전용
-            view.forward(request, response);
-        } else {
-            view = request.getRequestDispatcher("admin/main.jsp");
-            view.forward(request, response);
-        }
+        view = request.getRequestDispatcher("admin/main.jsp");
+        view.forward(request, response);
     }
 }

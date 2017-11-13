@@ -1,7 +1,6 @@
 package web;
 
-import domain.PhoneCase;
-import domain.PhoneCaseService;
+
 import domain.UserService;
 import domain.User;
 import java.io.IOException;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public final class MainServlet extends HttpServlet {
+public final class IDCheckServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
@@ -27,24 +26,16 @@ public final class MainServlet extends HttpServlet {
         RequestDispatcher view = null;
         HttpSession HttpSession=request.getSession();
         
-        PhoneCaseService PhoneCaseService = null;
-        ArrayList<PhoneCase> phoneCases = null; 
+        UserService UserService = null;
+        ArrayList<User> users = null; 
         
-        PhoneCaseService = new PhoneCaseService();     
-        phoneCases = PhoneCaseService.getAllPhoneCase();
+        UserService = new UserService();     
+        users = UserService.getAllUser();
             
         request.setCharacterEncoding("EUC-KR");
-        request.setAttribute("user", HttpSession.getAttribute("user"));
-        request.setAttribute("phoneCases", phoneCases);
+        request.setAttribute("users", users);
         
-        String userType = ((User) HttpSession.getAttribute("user")).getUsertype();    
-        
-        if(userType.equals("C")){
-            view = request.getRequestDispatcher("main.jsp"); //c7stomer 전용
-            view.forward(request, response);
-        } else {
-            view = request.getRequestDispatcher("admin/main.jsp");
-            view.forward(request, response);
-        }
+        view = request.getRequestDispatcher("join.jsp");
+        view.forward(request, response);
     }
 }

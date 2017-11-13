@@ -31,6 +31,16 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>IDCheckController</servlet-name>
+        <servlet-class>web.IDCheckServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IDCheckController</servlet-name>
+        <url-pattern>/IDCheck</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
         <servlet-name>JoinController</servlet-name>
         <servlet-class>web.JoinServlet</servlet-class>
     </servlet>
@@ -38,7 +48,7 @@
         <servlet-name>JoinController</servlet-name>
         <url-pattern>/join</url-pattern>
     </servlet-mapping>
-    
+        
     <servlet>
         <servlet-name>SearchController</servlet-name>
         <servlet-class>web.SearchPhoneCaseServlet</servlet-class>
@@ -146,4 +156,14 @@
         <servlet-name>UpdateProcessPhoneCaseController</servlet-name>
         <url-pattern>/updateprocess</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeletePhoneCaseController</servlet-name>
+        <servlet-class>web.DeletePhoneCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeletePhoneCaseController</servlet-name>
+        <url-pattern>/deleteCase</url-pattern>
+    </servlet-mapping>
+ 
 </web-app>
