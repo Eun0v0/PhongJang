@@ -152,6 +152,9 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                   <img src=\"image\\cart.jpg\"></a>\r\n");
       out.write("            </td>\r\n");
       out.write("            <td><a OnClick=\"alert('로그인을 해주세요!')\" style=\"cursor:pointer\">\r\n");
+      out.write("                    <input type=\"submit\" value =\"MY PAGE\"></a>\r\n");
+      out.write("            </td>\r\n");
+      out.write("            <td><a OnClick=\"alert('로그인을 해주세요!')\" style=\"cursor:pointer\">\r\n");
       out.write("                    <img src=\"image\\order.jpg\"></a>\r\n");
       out.write("            </td>\r\n");
       out.write("                ");
@@ -168,8 +171,11 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <input type=\"image\" src=\"image\\cart.jpg\" name=\"Submit\" value =\"장바구니\">\r\n");
       out.write("                </form> \r\n");
       out.write("            </td>\r\n");
-      out.write("            <td><form action=\"paymentlist\" method=\"post\">\r\n");
-      out.write("                    <input type=\"image\" src=\"image\\order.jpg\" name=\"Submit\" value =\"주문 목록\">\r\n");
+      out.write("            <td><form action=\"myPage\" method=\"post\">\r\n");
+      out.write("                    <input type=\"hidden\" name=\"userID\" value=\"");
+      out.print(user.getId());
+      out.write("\">\r\n");
+      out.write("                    <input type=\"submit\" value =\"MY PAGE\">\r\n");
       out.write("                </form>    \r\n");
       out.write("            </td>\r\n");
       out.write("                ");
@@ -179,6 +185,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <input type=\"image\" src=\"image\\join.jpg\" name=\"Submit\" value =\"회원가입\">\r\n");
       out.write("                </form>    \r\n");
       out.write("            </td>\r\n");
+      out.write("            \r\n");
       out.write("            <td><a href=\"board\\board-list.jsp\"><img src=\"image\\q&a.jpg\"></a></td>\r\n");
       out.write("        </tr>\r\n");
       out.write("    </table>\r\n");
@@ -201,12 +208,10 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
  } 
       out.write("\r\n");
       out.write("            \r\n");
-      out.write("            <form action =\"search.action\" name=\"search\" method=\"search\">\r\n");
+      out.write("            <form action =\"search\" method=\"post\">\r\n");
       out.write("                <img src=\"image\\search.png\" height=\"17\" width=\"17\">\r\n");
-      out.write("                <input type=\"text\" size=\"16\" name=\"keyword\" value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${keyword}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\">\r\n");
-      out.write("                <input type=\"button\" value=\"검색\" onClick=\"check()\">\r\n");
+      out.write("                <input type=\"text\" size=\"16\" name=\"caseName\">\r\n");
+      out.write("                <input type=\"submit\" value=\"검색\">\r\n");
       out.write("            </form>\r\n");
       out.write("                \r\n");
       out.write("    <hr size=\"5\" color=\"black\">\r\n");

@@ -127,12 +127,11 @@
                             <input type="text" name="creditcardnumber"></br>
                             신용 카드 비밀번호를 입력하세요
                             <input type="password" name="creditcardpassword">
+                            </br>
+                            <input type="image" src="image\paymentbutton.jpg" name="Submit" value ="삭제" aline="absmiddle">   
                         </form>
                     </td>
                 </tr>
-                <tr> 
-                <td align="center" bgcolor="#dcdcdc" height ="35"><input type="submit" value="Pay"></td>
-            </tr>
             </tbody>
         </table>
     </center>

@@ -97,6 +97,9 @@
                    <img src="image\cart.jpg"></a>
             </td>
             <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                    <input type="submit" value ="MY PAGE"></a>
+            </td>
+            <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                     <img src="image\order.jpg"></a>
             </td>
                 <% } else { session.setAttribute("user", user); %>
@@ -109,8 +112,9 @@
                     <input type="image" src="image\cart.jpg" name="Submit" value ="장바구니">
                 </form> 
             </td>
-            <td><form action="paymentlist" method="post">
-                    <input type="image" src="image\order.jpg" name="Submit" value ="주문 목록">
+            <td><form action="myPage" method="post">
+                    <input type="hidden" name="userID" value="<%=user.getId()%>">
+                    <input type="submit" value ="MY PAGE">
                 </form>    
             </td>
                 <%  }%>
@@ -118,6 +122,7 @@
                     <input type="image" src="image\join.jpg" name="Submit" value ="회원가입">
                 </form>    
             </td>
+            
             <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
         </tr>
     </table>
@@ -132,10 +137,10 @@
             <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('main.jsp')"> </div> </center>
             <% } %>
             
-            <form action ="search.action" name="search" method="search">
+            <form action ="search" method="post">
                 <img src="image\search.png" height="17" width="17">
-                <input type="text" size="16" name="keyword" value="${keyword}">
-                <input type="button" value="검색" onClick="check()">
+                <input type="text" size="16" name="caseName">
+                <input type="submit" value="검색">
             </form>
                 
     <hr size="5" color="black">
