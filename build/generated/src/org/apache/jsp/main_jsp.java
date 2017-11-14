@@ -175,8 +175,10 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                ");
   }
       out.write("\r\n");
-      out.write("            \r\n");
-      out.write("            <td><a href=\"join.jsp\"><img src=\"image\\join.jpg\"></a></td>\r\n");
+      out.write("            <td><form action=\"IDCheck\" method=\"post\">\r\n");
+      out.write("                    <input type=\"image\" src=\"image\\join.jpg\" name=\"Submit\" value =\"회원가입\">\r\n");
+      out.write("                </form>    \r\n");
+      out.write("            </td>\r\n");
       out.write("            <td><a href=\"board\\board-list.jsp\"><img src=\"image\\q&a.jpg\"></a></td>\r\n");
       out.write("        </tr>\r\n");
       out.write("    </table>\r\n");
