@@ -23,6 +23,7 @@ public class UserDAO {
             = "SELECT * FROM shoppingUser WHERE UserType=? AND UserID=? AND Password =?";
     private static final String GETID_STMT = "SELECT COUNT(UserID) FROM shoppinguser";
     private static final String ALLRETRIEVE_STMT = "SELECT * FROM shoppingUser WHERE UserType=?";
+    private static final String UPDATE_STMT = "UPDATE shoppingUser SET UserName = ?, PhoneNum = ?, Address = ? WHERE UserID = ?";
     
     //모든 데이터를 가져온다
     ArrayList<User> allUserRetrieve() throws SQLException {
@@ -150,6 +151,41 @@ public class UserDAO {
             stmt.setString(4, password);
             stmt.setString(5, phoneNum);
             stmt.setString(6, address);
+            stmt.executeQuery();
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
+    //상품 데이터를 수정한다.
+    void userUpdate(String userID, String username, String phoneNum, String address) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        //UPDATE_STMT = "UPDATE shoppingUser SET UserName = ?, PhoneNum = ?, Address = ? WHERE UserID = ?";
+    
+        try {
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(UPDATE_STMT);
+            stmt.setString(1, username);
+            stmt.setString(2, phoneNum);
+            stmt.setString(3, address);
+            stmt.setString(4, userID);
             stmt.executeQuery();
         } catch (SQLException se) {
             throw new RuntimeException(

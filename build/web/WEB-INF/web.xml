@@ -173,4 +173,22 @@
         <servlet-name>MyPageController</servlet-name>
         <url-pattern>/myPage</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>MyInfoController</servlet-name>
+        <servlet-class>web.MyInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyInfoController</servlet-name>
+        <url-pattern>/MyInfo</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>MyInfoUpdateController</servlet-name>
+        <servlet-class>web.MyInfoUpdateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyInfoUpdateController</servlet-name>
+        <url-pattern>/updateMyInfo</url-pattern>
+    </servlet-mapping>
 </web-app>

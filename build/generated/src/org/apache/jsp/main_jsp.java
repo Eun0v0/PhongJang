@@ -152,10 +152,10 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                   <img src=\"image\\cart.jpg\"></a>\r\n");
       out.write("            </td>\r\n");
       out.write("            <td><a OnClick=\"alert('로그인을 해주세요!')\" style=\"cursor:pointer\">\r\n");
-      out.write("                    <input type=\"submit\" value =\"MY PAGE\"></a>\r\n");
+      out.write("                    <img src=\"image\\order.jpg\"></a>\r\n");
       out.write("            </td>\r\n");
       out.write("            <td><a OnClick=\"alert('로그인을 해주세요!')\" style=\"cursor:pointer\">\r\n");
-      out.write("                    <img src=\"image\\order.jpg\"></a>\r\n");
+      out.write("                    <input type=\"submit\" value =\"MY PAGE\"></a>\r\n");
       out.write("            </td>\r\n");
       out.write("                ");
  } else { session.setAttribute("user", user); 

@@ -91,7 +91,10 @@
                     <input type="image" src="image\cart.jpg" name="Submit" value ="장바구니">
                 </form> </td>
             </tr>
-            <tr><td> <input type="submit" value="MY INFO"></td>
+            <tr><td> <form action="MyInfo" method="post">
+                        <input type="hidden" name="userID" value="<%=user.getId()%>">
+                        <input type="submit" value ="MY INFO">
+                    </form> </td>
                 <td> <input type="submit" value="MY BOARD"></td>
             </tr>
         </table>  

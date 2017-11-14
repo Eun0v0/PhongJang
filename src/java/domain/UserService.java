@@ -39,5 +39,8 @@ public class UserService {
     public void userCreate(String userID, String usertype, String username, String password, String phoneNum, String address) {
         userDataAccess.userCreate(userID, usertype, username, password, phoneNum, address);
     }
+    public void userUpdate(String userID, String username, String phoneNum, String address) {
+        userDataAccess.userUpdate(userID, username, phoneNum, address);
+    }
 }
 
