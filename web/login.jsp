@@ -13,24 +13,33 @@
         <title>로그인</title>
     </head>
     <body>
-        <%  String name = "";
-            if (name == null || name.equals("")) { %>
-        <img src="image\login.jpg" onClick="location.assign('login.jsp')">
-        <% } else { %>
-        <img src="image\logout.jpg" onClick="location.assign('logout.jsp')">
-        <%  }%>
-        <a href="cart_list.jsp"><img src="image\cart.jpg"></a>
-        <a href="order_list.jsp"><img src="image\order.jpg"></a>
-        <a href="join.jsp"><img src="image\join.jpg"></a>
-        <a href="board\board-list.jsp"><img src="image\q&a.jpg"></a>
+        <table>
+            <%  String name = "";
+                if (name == null || name.equals("")) { %>
+            <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
+                <% } else { %>
+            <td><img src="image\logout.jpg" onClick="location.assign('logout.jsp')"></td>
+                <%  }%>
+            <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                    <img src="image\cart.jpg"></a>
+            </td>
+            
+            <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                    <img src="image\order.jpg"></a>
+            </td>
+            <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                    <input type="submit" value ="MY PAGE"></a>
+            </td>
+            <td><a href="join.jsp"><img src="image\join.jpg"></a></td>
+            <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
+        </table>
 
     <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('main.jsp')"> </div> </center>
-    <form action ="search.action" name="search" method="search">
+    <form action ="search" method="post">
         <img src="image\search.png" height="17" width="17">
-        <input type="text" size="16" name="keyword" value="${keyword}">
-        <input type="button" value="검색" onClick="check()">
+        <input type="text" size="16" name="caseName">
+        <input type="submit" value="검색">
     </form>
-
     <hr size="5" color="black">
     <center>
         <a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a>

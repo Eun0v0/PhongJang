@@ -37,6 +37,11 @@
                     <input type="image" src="image\order.jpg" name="Submit" value ="주문 목록">
                 </form>    
                 </td>    
+                <td><form action="myPage" method="post">
+                    <input type="hidden" name="userID" value="<%=user.getId()%>">
+                    <input type="submit" value ="MY PAGE">
+                </form>    
+                </td>
                     <%  }%>
 
                 <td><a href="join.jsp"><img src="image\join.jpg"></a></td>

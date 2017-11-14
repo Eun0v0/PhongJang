@@ -40,6 +40,10 @@
                     <input type="image" src="image\cart.jpg" name="Submit" value ="장바구니">
                 </form> 
             </td>
+            <td><form action="paymentlist" method="post">
+                    <input type="image" src="image\order.jpg" name="Submit" value ="주문 목록">
+                </form>    
+            </td>
             <td><form action="myPage" method="post">
                     <input type="hidden" name="userID" value="<%=user.getId()%>">
                     <input type="submit" value ="MY PAGE">

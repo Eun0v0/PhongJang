@@ -38,8 +38,7 @@
         <servlet-name>IDCheckController</servlet-name>
         <url-pattern>/IDCheck</url-pattern>
     </servlet-mapping>
-    
-    
+
     <servlet>
         <servlet-name>JoinController</servlet-name>
         <servlet-class>web.JoinServlet</servlet-class>
@@ -166,4 +165,12 @@
         <url-pattern>/deleteCase</url-pattern>
     </servlet-mapping>
  
+    <servlet>
+        <servlet-name>MyPageController</servlet-name>
+        <servlet-class>web.MyPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyPageController</servlet-name>
+        <url-pattern>/myPage</url-pattern>
+    </servlet-mapping>
 </web-app>

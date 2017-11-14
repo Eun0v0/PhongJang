@@ -38,7 +38,14 @@
                 <td><form action="paymentlist" method="post">
                     <input type="image" src="image\order.jpg" name="Submit" value ="주문 목록">
                 </form>    
-                </td>    
+                </td> 
+                <td><form action="myPage" method="post">
+                    <input type="hidden" name="userID" value="<%=user.getId()%>">
+                    <input type="submit" value ="MY PAGE">
+                </form>    
+                </td>
+                  
+            </td>
                     <%  }%>
 
                 <td><a href="join.jsp"><img src="image\join.jpg"></a></td>
@@ -108,14 +115,19 @@
                     </form></td>
             </tr>
             <%  }
-                }%>
+            }%>
         </table>
     </center>
     <br>
     <center>
+        <% if(carts.size() == 0) { %>
+        <a OnClick="alert('결제할 항목이 없습니다!')" style="cursor:pointer">
+                   <img src="image\paybutton.jpg"></a>
+        <% } else { %>
         <form action ="payment" methoe="post">
             <input type="image" src="image\paybutton.jpg" name="submit" value ="결제하기" aline="absmiddle">
         </form>
+        <% } %>
     </center>
 </body>
 </html>

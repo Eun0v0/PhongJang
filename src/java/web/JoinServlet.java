@@ -33,8 +33,11 @@ public class JoinServlet extends HttpServlet {
         RequestDispatcher view = null;
         UserService UserService = null;
         Status status = new Status();
+        User user = null;
         
         request.setAttribute("status", status);
+        request.setAttribute("user", user);
+        
         request.setCharacterEncoding("EUC-KR");
         try {
             String userID = request.getParameter("userID");
