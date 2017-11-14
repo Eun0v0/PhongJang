@@ -63,10 +63,10 @@
     <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('main.jsp')"> </div> </center>
             <% }%>
 
-    <form action ="search.action" name="search" method="search">
+    <form action ="search" method="post">
         <img src="image\search.png" height="17" width="17">
-        <input type="text" size="16" name="keyword" value="${keyword}">
-        <input type="button" value="검색" onClick="check()">
+        <input type="text" size="16" name="caseName">
+        <input type="submit" value="검색">
     </form>
 
     <hr size="5" color="black">

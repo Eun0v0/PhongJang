@@ -58,11 +58,11 @@
     </servlet-mapping>
     
     <servlet>
-        <servlet-name>TakeController</servlet-name>
+        <servlet-name>AddCartController</servlet-name>
         <servlet-class>web.AddCartServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>TakeController</servlet-name>
+        <servlet-name>AddCartController</servlet-name>
         <url-pattern>/take</url-pattern>
     </servlet-mapping>
     

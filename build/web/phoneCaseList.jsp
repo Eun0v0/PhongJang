@@ -81,15 +81,7 @@
         <h1>안녕하세요, <%=user.getName()%>님</h1>
         
         <h2>퐁장 상품 목록</h2>
-        <form action="cart" method="post">
-            <input type="hidden" name="userID" value="<%=user.getId()%>">
-            <input type="submit" value="장바구니">
-        </form>
-        <%--<form action="search" method="post">
-            상품 검색 :
-            <input type="text" name="caseName" size="24">
-            <input type="submit" value="검색">
-        </form>--%>
+        
         <table border="2px">
             <tr>
                 <th width="100">케이스 ID</th>
@@ -113,7 +105,8 @@
                     <form action="take" method="post">
                         원하는 수량을 입력하세요 :
                         <input type="hidden" name="userID" value="<%=user.getId()%>">
-                        <input type="hidden" name="caseID" value="<%=phonecase.getCaseID()%>">
+                        <input type="hidden" name="caseName" value="<%=phonecase.getCaseName()%>">
+                        <input type="hidden" name="price" value="<%=phonecase.getPrice()%>">
                         <input type="text" name ="numbers" size="5">
                         <input type="submit" value="담기">
                     </form> </td>
@@ -126,11 +119,6 @@
         
         <h2>퐁장 상품 목록</h2>
         
-        <%--<form action="search" method="post">
-            상품 검색 :
-            <input type="text" name="caseName" size="24">
-            <input type="submit" value="검색">
-        </form>--%>
         <table border="2px">
             <tr>
                 <th width="100">케이스 ID</th>
@@ -154,9 +142,7 @@
         </table>
 
         <% } %>
-        <form action="main.jsp" method="post">
-            <input type="submit" value="메인으로"> 
-        </form>
+        
         </center>
     </body>
 </html>

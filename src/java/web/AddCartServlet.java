@@ -38,7 +38,7 @@ public class AddCartServlet extends HttpServlet {
         HttpSession HttpSession=request.getSession();
         String userID = request.getParameter("userID");
         String caseName = request.getParameter("caseName");
-        String color = request.getParameter("color");
+        String color = "투명";
         int numbers = Integer.parseInt(request.getParameter("numbers"));
         int price = Integer.parseInt(request.getParameter("price"));
         
@@ -63,7 +63,7 @@ public class AddCartServlet extends HttpServlet {
                 view.forward(request, response);
                 return;
             }
-            view = request.getRequestDispatcher("phoneCaseList.jsp"); //c7stomer 전용
+            view = request.getRequestDispatcher("cart.jsp"); //c7stomer 전용
             view.forward(request, response);
         } catch (Exception e){
             status.addException(e);
