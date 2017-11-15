@@ -9,8 +9,10 @@ public class Payment {
     String phoneNumber;
     String creditCardNumber;
     String creditCardPassword;
+    String status;
+    String parcelNumber;
 
-    public Payment(int paymentID, String userID, String caseName, int numbers, int price, String address, String phoneNumber, String creditCardNumber, String creditCardPassword) {
+    public Payment(int paymentID, String userID, String caseName, int numbers, int price, String address, String phoneNumber, String creditCardNumber, String creditCardPassword, String status, String parcelNumber) {
         this.paymentID = paymentID;
         this.userID = userID;
         this.caseName = caseName;
@@ -20,6 +22,24 @@ public class Payment {
         this.phoneNumber = phoneNumber;
         this.creditCardNumber = creditCardNumber;
         this.creditCardPassword = creditCardPassword;
+        this.status= status;
+        this.parcelNumber=parcelNumber;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getParcelNumber() {
+        return parcelNumber;
+    }
+
+    public void setParcelNumber(String parcelNumber) {
+        this.parcelNumber = parcelNumber;
     }
 
     public int getPaymentID() {

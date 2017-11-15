@@ -89,6 +89,8 @@
             <th width="120" height = "35"><img src="image\price.jpg" width=120 height=40"></th>                          
             <th width="230" height = "35"><img src="image\address2.jpg" width=230 height=40"></th>
             <th width="200" height = "35"><img src="image\phonenumber.jpg" width=200 height=40"></th>
+            <th width="200" height = "35"><img src="image\phonenumber.jpg" width=200 height=40"></th>
+            <th width="200" height = "35"><img src="image\phonenumber.jpg" width=200 height=40"></th>
         </tr>
         <%
             for (int i = 0; i < payments.size(); i++) {
@@ -100,7 +102,10 @@
             <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getNumbers()%></td>
             <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getPrice()%></td>
             <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getAddress()%></td>
-            <td bgcolor="#dcdcdc"  align="center" height = "35"><%=payment.getPhoneNumber()%></td>                
+            <td bgcolor="#dcdcdc"  align="center" height = "35"><%=payment.getPhoneNumber()%></td>    
+            <td bgcolor="#dcdcdc"  align="center" height = "35"><%=payment.getStatus()%></td>    
+            <td bgcolor="#dcdcdc"  align="center" height = "35"><%=payment.getParcelNumber()%></td>    
+            <td> <input type="submit" value="주문취소"></td>
         </tr>
         <% }%>
     </table>
