@@ -89,7 +89,7 @@
 
         <center>
             <form action="join" method="post">
-                <input type="image" src="image\loginbutton.jpg" name="Submit">
+                <input type="image" src="image\joinbutton.jpg" name="Submit">
             </form>
             <input type="image" src="image\clearbutton.jpg" name="Reset" value ="Reset" aline="absmiddle">
         </center>

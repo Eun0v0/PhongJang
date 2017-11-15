@@ -6,15 +6,11 @@
 package domain;
 
 import java.sql.Date;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class UserService {
 
     private UserDAO userDataAccess;
-    private User user;
 
     public UserService() {
         userDataAccess = new UserDAO();
@@ -45,14 +41,6 @@ public class UserService {
     }
     public void userUpdate(String userID, String username, String phoneNum, String address) {
         userDataAccess.userUpdate(userID, username, phoneNum, address);
-    }
-    public User getUserInfo(String userID) {
-        try {
-            user = userDataAccess.getUserInfo(userID);
-        } catch (Exception e) {
-            user = null;
-        }
-        return user;
     }
 }
 

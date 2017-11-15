@@ -30,8 +30,7 @@ public final class MyInfoUpdateServlet extends HttpServlet {
         request.setAttribute("status", status);
         
         User user = (User) HttpSession.getAttribute("user");
-        User userSave= null;
-        UserService userSerice = new UserService();
+        UserService UserSerice = new UserService();
                 
         String userID = user.getId();
         request.setCharacterEncoding("EUC-KR");
@@ -57,27 +56,29 @@ public final class MyInfoUpdateServlet extends HttpServlet {
                         "Please enter your address"));
             }
             
-            //(int caseID, String caseType, String caseName, String explanation, int price)
-            request.setCharacterEncoding("EUC-KR");
-                    
-            request.setAttribute("userName", userName);
-            request.setAttribute("phoneNumber", phoneNumber);
-            request.setAttribute("address", address);
-       
             try {
+<<<<<<< HEAD
                 userSerice.userUpdate(userID, userName, phoneNumber, address);
                 userSave = userSerice.getUserInfo(userID);
+=======
+                //(int caseID, String caseType, String caseName, String explanation, int price)
+                UserSerice.userUpdate(userID, userName, phoneNumber, address);
+>>>>>>> 5814b138bda8703ee64d0be15482fdd24fd3858c
                 
                 request.setCharacterEncoding("EUC-KR");
                 request.setAttribute("user", userSave);
                 request.setAttribute("userID", userID);
+                request.setAttribute("userName", userName);
+                request.setAttribute("phoneNumber", phoneNumber);
+                request.setAttribute("address", address);
+        
                 
                 if (!status.isSuccessful()) {
                     view = request.getRequestDispatcher("myInfo.jsp");
                     view.forward(request, response);
                     return;
                 }
-                view = request.getRequestDispatcher("myPage.jsp");
+                view = request.getRequestDispatcher("myInfo.jsp");
                 view.forward(request, response);
             } catch (Exception e) {
                 status.addException(e);

@@ -86,7 +86,7 @@
     <br>
     <center> <img src="image\shoppingcart.jpg" width=200 height=60"> </center>
     <center> <br>
-    <!--<h2><%= user.getName()%> ∞Ì∞¥¥‘, ¿ÂπŸ±∏¥œ ¿‘¥œ¥Ÿ.</h2>-->
+    <h2><%= user.getName()%> ∞Ì∞¥¥‘, ¿ÂπŸ±∏¥œ ¿‘¥œ¥Ÿ.</h2>
 
         <table>
             <tr>
