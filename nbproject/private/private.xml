@@ -3,36 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/paymentConfirm.jsp</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/phoneCaseList.jsp</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/image/id.JPG</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/image/shoppingcart.jpg</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/AddPaymentServlet.java</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/image/bottom.jpg</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/JoinServlet.java</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/PhoneCaseDAO.java</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/addPayment.jsp</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/payment.jsp</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/CreatePhoneCaseServlet.java</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/WEB-INF/web.xml</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/login.jsp</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/AddCartServlet.java</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/SearchPhoneCaseServlet.java</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/main.jsp</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/cart.jsp</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/PhoneCaseService.java</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/LoginServlet.java</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/Payment.java</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/User.java</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/MyInfoUpdateServlet.java</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/image/paybutton.jpg</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/PaymentDAO.java</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/DeleteCartServlet.java</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/image/banner.jpg</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/UserService.java</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/image/number.jpg</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/UserDAO.java</file>
-            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/join.jsp</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/myPage.jsp</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/login.jsp</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/paymentConfirm.jsp</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/join.jsp</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/jelly1.jsp</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/phoneCaseList.jsp</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/main.jsp</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/cart.jsp</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/payment.jsp</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/myInfo.jsp</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/joinConfirm.jsp</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/addPayment.jsp</file>
         </group>
     </open-files>
 </project-private>

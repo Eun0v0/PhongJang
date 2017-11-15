@@ -83,39 +83,36 @@
     <hr size="5" color="black">
 
     <br>
-    <center> <img src="image\shoppingcart.jpg" width=200 height=60"> </center>
+    <center> <img src="image\myInfoTitle.jpg" width=150 height=60"> </center>
     <center> <br>
     <!--<h2><%= user.getName()%> 고객님 회원 정보 입니다.</h2>-->
 
         <table>
-            <tr>
-                <th width="170" height = "35"><img src="image\casename2.jpg" width=170 height=40"></th>
-                <th width="120" height = "35"><img src="image\color.jpg" width=120 height=40"></th>
-                <th width="120" height = "35"><img src="image\amount2.jpg" width=120 height=40"></th>
-                <th width="120" height = "35"><img src="image\price.jpg" width=120 height=40"></th>
-                <th width="40" height = "35"><img src="image\blank2.jpg" width=50 height=40"></th>
-
-            </tr>
             
             <form action="updateMyInfo" method="post">
             <table>
                 
-                <tr><td>이름:</td><td>
+                <tr><td><img src="image\name.jpg" width=120 height=35">&nbsp;</td><td>
                         <textarea name="userName" size="20"><%=request.getAttribute("userName")%></textarea>
-                <tr><td>ID:</td><td>
+                <tr><td><img src="image\id.JPG" width=120 height=35">&nbsp;</td><td>
                         <%=request.getAttribute("userID")%>
-                <tr><td>핸드폰 번호:</td><td>
+                <tr><td><img src="image\phone.jpg" width=120 height=35">&nbsp;</td><td>
                         <textarea name="phoneNumber" size="20"><%=request.getAttribute("phoneNumber")%></textarea>
-                <tr><td>주소:</td><td>
+                <tr><td><img src="image\address.jpg" width=120 height=35">&nbsp;</td><td>
                         <textarea name = "address" size="50"><%= request.getAttribute("address")%></textarea>
             </table>
-            <input type="submit" value="수정하기">
-        </form>  
+            
+            <table><tr>
+                    <td><input type="image" src="image\modify.jpg" width="170" height="70" name="Submit" value ="수정하기">&nbsp;</td>
+        </form> 
+            
         <form action="myPage" method="post">
             <input type="hidden" name="userID" value="<%=user.getId()%>">
-            &nbsp;
-            <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <td><input type="image" src="image\back.jpg" width="170" height="70" name="Submit" value ="MY PAGE"></td>
         </form> 
+        </tr>
+             </table>
     </center>
     </body>
 </html>
