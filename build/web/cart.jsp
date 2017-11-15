@@ -41,7 +41,8 @@
                 </td> 
                 <td><form action="myPage" method="post">
                     <input type="hidden" name="userID" value="<%=user.getId()%>">
-                    <input type="submit" value ="MY PAGE">
+                    &nbsp;
+                    <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE">
                 </form>    
                 </td>
                   

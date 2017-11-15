@@ -116,6 +116,14 @@
             </td>
                 <%  }%>
             
+                <td><form action="myPage" method="post">
+                    <%--
+                        <input type="hidden" name="userID" value="<%=user.getId()%>">
+                  --%>
+                    &nbsp;
+                    <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE">
+                </form>    
+                </td>
             <td><a href="join.jsp"><img src="image\join.jpg"></a></td>
             <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
         </tr>

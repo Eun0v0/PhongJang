@@ -25,7 +25,8 @@
                    <img src="image\cart.jpg"></a>
             </td>
             <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                    <input type="submit" value ="MY PAGE"></a>
+                    &nbsp;
+                    <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE"></a>
             </td>
             <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                     <img src="image\order.jpg"></a>
@@ -46,7 +47,8 @@
             </td>
             <td><form action="myPage" method="post">
                     <input type="hidden" name="userID" value="<%=user.getId()%>">
-                    <input type="submit" value ="MY PAGE">
+                    &nbsp;
+                    <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE">
                 </form>    
             </td>
                 <%  }%>
