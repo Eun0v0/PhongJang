@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package web;
+import domain.Cart;
 import domain.CartService;
 import domain.PhoneCase;
 import domain.PhoneCaseService;
@@ -28,7 +29,7 @@ public class AddCartServlet extends HttpServlet {
             HttpServletResponse response)
             throws IOException, ServletException {
         RequestDispatcher view = null;
-        CartService CartService = new CartService();
+        CartService cartService = new CartService();
         PhoneCaseService phoneCaseService = new PhoneCaseService();
         Status status = new Status();
         request.setAttribute("status", status);
@@ -54,21 +55,31 @@ public class AddCartServlet extends HttpServlet {
         cases = phoneCaseService.getAllPhoneCase();
         request.setAttribute("phoneCases", cases);
         request.setAttribute("user", HttpSession.getAttribute("user"));
+       
         
         try{
-            CartService = new CartService();
-            CartService.addToCart(userID, caseName, color, numbers, price);
+            cartService = new CartService();
+            cartService.addToCart(userID, caseName, color, numbers, price);
+            
+            ArrayList<Cart> carts = null;
+            carts = cartService.getCart(userID);
+        
+        
             if(!status.isSuccessful()){
                 view = request.getRequestDispatcher("phoneCaseList.jsp"); //c7stomer 전용
                 view.forward(request, response);
                 return;
             }
+        
+            request.setAttribute("user", HttpSession.getAttribute("user"));
+            request.setAttribute("carts", carts);
+        
             view = request.getRequestDispatcher("cart.jsp"); //c7stomer 전용
             view.forward(request, response);
         } catch (Exception e){
             status.addException(e);
-                view = request.getRequestDispatcher("phoneCaseList.jsp"); //c7stomer 전용
-                view.forward(request, response); 
+            view = request.getRequestDispatcher("phoneCaseList.jsp"); //c7stomer 전용
+            view.forward(request, response); 
         }
     }
 }

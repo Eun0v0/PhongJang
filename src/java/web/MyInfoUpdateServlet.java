@@ -30,7 +30,8 @@ public final class MyInfoUpdateServlet extends HttpServlet {
         request.setAttribute("status", status);
         
         User user = (User) HttpSession.getAttribute("user");
-        UserService UserSerice = new UserService();
+        User userSave = null;
+        UserService userSerice = new UserService();
                 
         String userID = user.getId();
         request.setCharacterEncoding("EUC-KR");
@@ -57,11 +58,12 @@ public final class MyInfoUpdateServlet extends HttpServlet {
             }
             
             try {
-                //(int caseID, String caseType, String caseName, String explanation, int price)
-                UserSerice.userUpdate(userID, userName, phoneNumber, address);
-                
+
+                userSerice.userUpdate(userID, userName, phoneNumber, address);
+                userSave = userSerice.getUserInfo(userID);
+
                 request.setCharacterEncoding("EUC-KR");
-                request.setAttribute("user", user);
+                request.setAttribute("user", userSave);
                 request.setAttribute("userID", userID);
                 request.setAttribute("userName", userName);
                 request.setAttribute("phoneNumber", phoneNumber);
@@ -73,7 +75,7 @@ public final class MyInfoUpdateServlet extends HttpServlet {
                     view.forward(request, response);
                     return;
                 }
-                view = request.getRequestDispatcher("myInfo.jsp");
+                view = request.getRequestDispatcher("myPage.jsp");
                 view.forward(request, response);
             } catch (Exception e) {
                 status.addException(e);

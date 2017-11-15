@@ -39,6 +39,8 @@ public class ProcessPaymentServlet extends HttpServlet {
         String phoneNumber = user.getPhone();
         String creditcardNumber = request.getParameter("creditcardNumber");
         String creditcardPassword = request.getParameter("creditcardPassword");
+        String status = "배송 준비중";
+        String parcelNumber = "준비중";
         ArrayList<PhoneCase> phonecases = null;
         PhoneCaseService PhoneCaseService = new PhoneCaseService();
         phonecases = PhoneCaseService.getAllPhoneCase();
@@ -46,7 +48,7 @@ public class ProcessPaymentServlet extends HttpServlet {
         request.setAttribute("user", HttpSession.getAttribute("user"));
         PaymentService PaymentService = new PaymentService();
         for (int i = 0; i < carts.size(); i++) {
-            PaymentService.paymentAdd(userID, carts.get(i).getCaseName(), carts.get(i).getNumbers(),carts.get(i).getPrice(), address, phoneNumber, creditcardNumber, creditcardPassword);
+            PaymentService.paymentAdd(userID, carts.get(i).getCaseName(), carts.get(i).getNumbers(),carts.get(i).getPrice(), address, phoneNumber, creditcardNumber, creditcardPassword, status, parcelNumber);
             int cartID = carts.get(i).getCartID();
             CartService CartService = new CartService();
             CartService.cleanCart(userID, cartID);
