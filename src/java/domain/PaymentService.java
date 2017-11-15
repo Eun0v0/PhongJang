@@ -33,5 +33,7 @@ public class PaymentService {
     public void paymentAdd(String userid, String caseName, int numbers, int price, String address, String phoneNumber, String creditcardNumber, String creditcardPassword, String status, String parcelNumber) {
         paymentDataAccess.paymentAdd(userid, caseName, numbers, price, address, phoneNumber, creditcardNumber, creditcardPassword, status, parcelNumber);
     }
-    
+    public void paymentDelete(int paymentID) {
+        paymentDataAccess.paymentDelete(paymentID);
+    }
 }

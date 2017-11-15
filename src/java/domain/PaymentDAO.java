@@ -13,6 +13,7 @@ public class PaymentDAO {
             = "SELECT * FROM shoppingPayment WHERE UserID = ?";
     private static final String GETID_STMT = "SELECT COUNT(PaymentID) FROM shoppingPayment";
     private static final String ADD_STMT = "INSERT INTO shoppingPayment VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String DELETE_STMT = "DELETE FROM shoppingPayment WHERE PaymentID = ?";
     
     //관리자 모드- 모든 고객이 결제한 내역을 가져온다
     ArrayList<Payment> allpaymentRetrieve() throws SQLException {
@@ -156,6 +157,35 @@ public class PaymentDAO {
             stmt.setString(10,status);
             stmt.setString(11,parcelNumber);
             
+            stmt.executeQuery();
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
+     void paymentDelete(int paymentID) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        try {
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(DELETE_STMT);
+            stmt.setInt(1, paymentID);
             stmt.executeQuery();
         } catch (SQLException se) {
             throw new RuntimeException(
