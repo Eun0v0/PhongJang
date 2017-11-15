@@ -66,10 +66,10 @@ public final class MyInfoUpdateServlet extends HttpServlet {
        
             try {
                 userSerice.userUpdate(userID, userName, phoneNumber, address);
-                user = userSerice.getUserInfo(userID);
+                userSave = userSerice.getUserInfo(userID);
                 
                 request.setCharacterEncoding("EUC-KR");
-                request.setAttribute("user", user);
+                request.setAttribute("user", userSave);
                 request.setAttribute("userID", userID);
                 
                 if (!status.isSuccessful()) {

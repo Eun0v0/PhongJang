@@ -136,7 +136,7 @@ public class PaymentDAO {
             rset = stmt.executeQuery();
             int ID = -1;
             rset.next();
-            ID = rset.getInt("COUNT(PaymentID)");
+            ID = rset.getInt("COUNT(PaymentID)")+ 1103010720;
             ID++;
             stmt = conn.prepareStatement(ADD_STMT);
             stmt.setInt(1, ID);
