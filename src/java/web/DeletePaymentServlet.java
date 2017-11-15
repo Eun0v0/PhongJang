@@ -38,9 +38,9 @@ public class DeletePaymentServlet extends HttpServlet {
         String userID = ((User) HttpSession.getAttribute("user")).getId();
         String userType = ((User) HttpSession.getAttribute("user")).getUsertype();
         ArrayList<Payment> payments = null;
-        Payment payment = (Payment) request.getAttribute("payment");
+        int paymentID = (int) HttpSession.getAttribute("paymentID");
         
-        paymentService.paymentDelete(payment.getPaymentID());
+        paymentService.paymentDelete(paymentID);
        
         if(userType.equals("C")){
             payments = paymentService.getAllPayment(userID);

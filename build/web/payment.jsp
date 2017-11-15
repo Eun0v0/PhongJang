@@ -106,7 +106,12 @@
             <td bgcolor="#dcdcdc"  align="center" height = "35"><%=payment.getPhoneNumber()%></td>    
             <td bgcolor="#dcdcdc"  align="center" height = "35"><%=payment.getStatus()%></td>    
             <td bgcolor="#dcdcdc"  align="center" height = "35"><%=payment.getParcelNumber()%></td>    
-            <td> <input type="submit" value="林巩秒家"></td>
+            <td> <form action="deletePayment" method="post">
+                <input type="hidden" name="paymentID" value="<%=payment.getPaymentID()%>">
+                <% session.setAttribute("paymentID", payment.getPaymentID());%>
+                &nbsp;
+                <input type="Submit" value ="搬力 秒家">
+                </form></td> 
         </tr>
         <% }%>
     </table>
