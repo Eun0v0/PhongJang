@@ -36,8 +36,6 @@ public final class MyPageServlet extends HttpServlet {
         request.setCharacterEncoding("EUC-KR");
         request.setAttribute("user", HttpSession.getAttribute("user"));
         
-        String userType = ((User) HttpSession.getAttribute("user")).getUsertype();    
-        
         view = request.getRequestDispatcher("myPage.jsp");
         view.forward(request, response);
         

@@ -84,8 +84,6 @@
     <br>
     <center> <img src="image\shoppingcart.jpg" width=200 height=60"> </center>
     <center> <br>
-    <!--<h2><%= user.getName()%> 고객님 회원 정보 입니다.</h2>-->
-
         <table>
             <tr>
                 <th width="170" height = "35"><img src="image\casename2.jpg" width=170 height=40"></th>
@@ -111,7 +109,7 @@
             <input type="submit" value="수정하기">
         </form>  
         <form action="myPage" method="post">
-            <input type="hidden" name="userID" value="<%=user.getId()%>">
+            <input type="hidden" name="user" value="<%=user%>">
             <input type="submit" value ="MY PAGE">
         </form> 
     </center>

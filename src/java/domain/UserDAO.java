@@ -18,7 +18,7 @@ public class UserDAO {
 
     private DBConnectionPool connPool;
     private static final String CREATE_STMT = "INSERT INTO shoppingUser VALUES(?,?,?,?,?,?)";
-
+    private static final String SELECT_STMT = "SELECT * FROM shoppingUser WHERE UserID=?";
     private static final String RETRIEVE_STMT
             = "SELECT * FROM shoppingUser WHERE UserType=? AND UserID=? AND Password =?";
     private static final String GETID_STMT = "SELECT COUNT(UserID) FROM shoppinguser";
@@ -90,6 +90,64 @@ public class UserDAO {
             rset = stmt.executeQuery();
             
             //데이터 베이스에서 유저 데이터 가져오기
+            while (rset.next()) {
+                String UserID = rset.getString("UserID");
+                String UserType = rset.getString("UserType");
+                String UserName = rset.getString("UserName");
+                String Password = rset.getString("Password");
+                String PhoneNum = rset.getString("PhoneNum");
+                String Address = rset.getString("Address");
+                rows++;
+                if (rows > 1) {
+                    throw new SQLException("Too many rows were returned.");
+                }
+                user = new User(UserID, UserType, UserName, Password, PhoneNum, Address);
+            }
+            return user;
+            
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("Exception: " + e.getMessage());
+        } finally {
+            if (rset != null) {
+                try {
+                    rset.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
+    //유저의 데이터를 가져온다
+    User getUserInfo(String userID) throws SQLException {
+        User user = null;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        int rows = 0;
+        try {
+            conn = connPool.getPoolConnection();
+            //SELECT_STMT = "SELECT * FROM shoppingUser WHERE UserID=?";
+            stmt = conn.prepareStatement(SELECT_STMT);
+            stmt.setString(1, userID);
+            rset = stmt.executeQuery();
+            
             while (rset.next()) {
                 String UserID = rset.getString("UserID");
                 String UserType = rset.getString("UserType");
