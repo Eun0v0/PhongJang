@@ -2,6 +2,7 @@
     Document   : myPage
     Created on : 2017. 11. 14, 오후 8:46:50
     Author     : yukih
+    Insert But : ha0 >_<
 --%>
 
 <%@page import="domain.User"%>
@@ -30,7 +31,8 @@
             </td>
             
             <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                    <input type="submit" value ="MY PAGE"></a>
+                    &nbsp;
+                    <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE"></a>
             </td>
                 <% } else { session.setAttribute("user", user); %>
             <td><form action="logout" method="post">
@@ -49,7 +51,8 @@
             </td>
             <td><form action="myPage" method="post">
                     <input type="hidden" name="userID" value="<%=user.getId()%>">
-                    <input type="submit" value ="MY PAGE">
+                    &nbsp;
+                    <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE">
                 </form>    
             </td>
                 <%  }%>
@@ -80,22 +83,28 @@
                 
     <hr size="5" color="black">
     <center>
-        <h1>My Page</h1>
+        <br><br>
+        <img src="image\myPage.JPG" height="60" width="150">
+        <br><br><br><br><br>
         <table>
             <tr><td><form action="paymentlist" method="post">
-                    <input type="image" src="image\order.jpg" name="Submit" value ="주문 목록">
+                    <input type="image" src="image\orderBut.jpg" height="85" width="200" name="Submit" value ="주문 목록" >
+                    &nbsp;&nbsp;&nbsp;
                 </form>    
                 </td>
                 <td> <form action="cart" method="post">
                     <input type="hidden" name="userID" value="<%=user.getId()%>">
-                    <input type="image" src="image\cart.jpg" name="Submit" value ="장바구니">
+                    <input type="image" src="image\cartBut.jpg" height="85" width="200" name="Submit" value ="장바구니">
                 </form> </td>
             </tr>
             <tr><td> <form action="MyInfo" method="post">
                         <input type="hidden" name="userID" value="<%=user.getId()%>">
-                        <input type="submit" value ="MY INFO">
+                        <input type="image" src="image\myInfoBut.jpg" height="85" width="200" name="Submit" value ="MY INFO">
+                        &nbsp;&nbsp;&nbsp;
                     </form> </td>
-                <td> <input type="submit" value="MY BOARD"></td>
+                    <td>
+                    <input type="image" src="image\myBoardBut.jpg" height="85" width="200" name="Submit" value ="MY BOARD">
+                    </td>
             </tr>
         </table>  
     </center>

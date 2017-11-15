@@ -29,7 +29,8 @@
                     <img src="image\order.jpg"></a>
             </td>
             <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                    <input type="submit" value ="MY PAGE"></a>
+                    &nbsp;
+                    <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE"></a>
             </td>
             <td><a href="join.jsp"><img src="image\join.jpg"></a></td>
             <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>

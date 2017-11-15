@@ -155,7 +155,8 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <img src=\"image\\order.jpg\"></a>\r\n");
       out.write("            </td>\r\n");
       out.write("            <td><a OnClick=\"alert('로그인을 해주세요!')\" style=\"cursor:pointer\">\r\n");
-      out.write("                    <input type=\"submit\" value =\"MY PAGE\"></a>\r\n");
+      out.write("                    &nbsp;\r\n");
+      out.write("                    <input type=\"image\" src=\"image\\myPageUp_1.jpg\" name=\"Submit\" value =\"MY PAGE\"></a>\r\n");
       out.write("            </td>\r\n");
       out.write("                ");
  } else { session.setAttribute("user", user); 
@@ -180,7 +181,8 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <input type=\"hidden\" name=\"userID\" value=\"");
       out.print(user.getId());
       out.write("\">\r\n");
-      out.write("                    <input type=\"submit\" value =\"MY PAGE\">\r\n");
+      out.write("                    &nbsp;\r\n");
+      out.write("                    <input type=\"image\" src=\"image\\myPageUp_1.jpg\" name=\"Submit\" value =\"MY PAGE\">\r\n");
       out.write("                </form>    \r\n");
       out.write("            </td>\r\n");
       out.write("                ");
