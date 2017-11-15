@@ -282,7 +282,7 @@
 
 <div id="gotop">
     <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>
-    <img src="image\cursor.jpg" height="50" width="50"> <br>
+    <img src="image\cursor1.jpg" height="50" width="50"> <br>
     <a href="#bottom"> <img src="image\down.jpg" height="35" width="50"> </a> 
 </div>
 

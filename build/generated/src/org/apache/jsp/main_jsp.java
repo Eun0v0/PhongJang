@@ -353,7 +353,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("<div id=\"gotop\">\r\n");
       out.write("    <a href=\"#top\"><img src=\"image\\up.jpg\" height=\"35\" width=\"50\"></a><br>\r\n");
-      out.write("    <img src=\"image\\cursor.jpg\" height=\"50\" width=\"50\"> <br>\r\n");
+      out.write("    <img src=\"image\\cursor1.jpg\" height=\"50\" width=\"50\"> <br>\r\n");
       out.write("    <a href=\"#bottom\"> <img src=\"image\\down.jpg\" height=\"35\" width=\"50\"> </a> \r\n");
       out.write("</div>\r\n");
       out.write("\r\n");
