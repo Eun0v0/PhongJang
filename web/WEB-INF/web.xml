@@ -209,4 +209,13 @@
         <servlet-name>UpdatePaymentController</servlet-name>
         <url-pattern>/updatePayment</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ManagePhoneCaseController</servlet-name>
+        <servlet-class>web.ManagePhoneCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManagePhoneCaseController</servlet-name>
+        <url-pattern>/managePhoneCase</url-pattern>
+    </servlet-mapping>
 </web-app>
