@@ -22,13 +22,13 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
             throws IOException, ServletException {
         RequestDispatcher view = null;
         HttpSession HttpSession = request.getSession();
+        
+        request.setCharacterEncoding("EUC-KR");
         int caseID = Integer.parseInt(request.getParameter("caseID"));
         String caseName = request.getParameter("caseName");
         String caseType = request.getParameter("caseType");
         String explanation = request.getParameter("explanation");
         int price =  Integer.parseInt(request.getParameter("price"));
-        
-        request.setCharacterEncoding("EUC-KR");
         
         request.setAttribute("caseID", caseID);
         request.setAttribute("caseName", caseName);
