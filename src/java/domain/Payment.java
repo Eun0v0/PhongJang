@@ -1,4 +1,7 @@
 package domain;
+
+import java.util.Date;
+
 public class Payment {
     int paymentID;
     String userID;
@@ -11,8 +14,9 @@ public class Payment {
     String creditCardPassword;
     String status;
     String parcelNumber;
+    String orderDate;
 
-    public Payment(int paymentID, String userID, String caseName, int numbers, int price, String address, String phoneNumber, String creditCardNumber, String creditCardPassword, String status, String parcelNumber) {
+    public Payment(int paymentID, String userID, String caseName, int numbers, int price, String address, String phoneNumber, String creditCardNumber, String creditCardPassword, String status, String parcelNumber, String orderDate) {
         this.paymentID = paymentID;
         this.userID = userID;
         this.caseName = caseName;
@@ -24,6 +28,15 @@ public class Payment {
         this.creditCardPassword = creditCardPassword;
         this.status= status;
         this.parcelNumber=parcelNumber;
+        this.orderDate = orderDate;
+    }
+
+    public String getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
     }
 
     public String getStatus() {
