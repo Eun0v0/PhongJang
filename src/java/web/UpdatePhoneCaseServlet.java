@@ -28,6 +28,7 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
         String explanation = request.getParameter("explanation");
         int price =  Integer.parseInt(request.getParameter("price"));
         
+        request.setCharacterEncoding("EUC-KR");
         
         request.setAttribute("caseID", caseID);
         request.setAttribute("caseName", caseName);

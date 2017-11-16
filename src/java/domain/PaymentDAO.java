@@ -16,7 +16,8 @@ public class PaymentDAO {
     private static final String GETID_STMT = "SELECT COUNT(PaymentID) FROM shoppingPayment";
     private static final String ADD_STMT = "INSERT INTO shoppingPayment VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String DELETE_STMT = "DELETE FROM shoppingPayment WHERE PaymentID = ?";
-    
+    private static final String UPDATE_STMT = "UPDATE shoppingPayment SET ParcelNumber = ?, Status=? WHERE PaymentID = ?";
+   
     //관리자 모드- 모든 고객이 결제한 내역을 가져온다
     ArrayList<Payment> allpaymentRetrieve() throws SQLException {
         ArrayList<Payment> payments = new ArrayList<Payment>();
@@ -189,6 +190,41 @@ public class PaymentDAO {
             conn = connPool.getPoolConnection();
             stmt = conn.prepareStatement(DELETE_STMT);
             stmt.setInt(1, paymentID);
+            stmt.executeQuery();
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
+     
+     //상품 데이터를 수정한다.
+    void paymentUpdate(int paymentID, String parcelNumber) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        //UPDATE_STMT = "UPDATE shoppingPayment SET ParcelNumber = ? WHERE PaymentID = ?";
+        try {
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(UPDATE_STMT);
+            stmt.setString(1, parcelNumber);
+            stmt.setString(2, "배송중");
+            stmt.setInt(3, paymentID);
+            
             stmt.executeQuery();
         } catch (SQLException se) {
             throw new RuntimeException(

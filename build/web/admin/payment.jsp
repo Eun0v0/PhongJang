@@ -1,17 +1,17 @@
 <%-- 
     Document   : payment
-    Created on : 2017. 11. 12, Ïò§ÌõÑ 6:52:01
+    Created on : 2017. 11. 12, ø¿»ƒ 6:52:01
     Author     : yukih
 --%>
 <%@page import="domain.PhoneCase"%>
 <%@page import="domain.Payment"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.User"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Product List</title>
+        <title>∞Ì∞¥ ∞·¡¶ ≥ªø™</title>
         
         <% ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");%>       
         <% ArrayList<Payment> payments = (ArrayList<Payment>) request.getAttribute("payments");%>
@@ -21,16 +21,17 @@
         
     </head>
     <body>
-        <h2>Hello, <%= user.getName()%></h2>
+        <h2>∞Ì∞¥ ∞·¡¶ ∏Ò∑œ ¿‘¥œ¥Ÿ.</h2>
         <table border="2px">
             <tr>
-                <th width="100">Í≤∞Ï†ú Î≤àÌò∏</th>
-                <th width="100">Ï£ºÎ¨∏Ïûê ID</th>
-                <th width="100">Ï†úÌíàÎ™Ö</th>
-                <th width="100">ÏàòÎüâ</th>               
-                <th width="100">Í∞ÄÍ≤©</th>                                
-                <th width="200">Ï£ºÏÜå</th>
-                <th width="200">Ï†ÑÌôîÎ≤àÌò∏</th>
+                <th width="100">∞·¡¶ π¯»£</th>
+                <th width="100">∞·¡¶ ≥Ø¬•</th>
+                <th width="100">¡÷πÆ¿⁄ ID</th>
+                <th width="100">¡¶«∞∏Ì</th>
+                <th width="100">ºˆ∑Æ</th>               
+                <th width="100">∞°∞›</th>                                
+                <th width="200">πËº€ ªÛ≈¬</th>
+                <th width="200">º€¿Âπ¯»£</th>
             </tr>
             <%
                 for (int i = 0; i < payments.size(); i++) {
@@ -38,19 +39,28 @@
             %> 
             <tr>
                 <td align="center"><%=payment.getPaymentID()%></td>
+                <td align="center"><%=payment.getOrderDate()%></td>
                 <td align="center"><%=payment.getUserID()%></td>                
                 <td align="center"><%=payment.getCaseName()%></td>
                 <td align="center"><%=payment.getNumbers()%></td>
                 <td align="center"><%=payment.getPrice()%></td>
-                <td align="center"><%=payment.getAddress()%></td>
-                <td align="center"><%=payment.getPhoneNumber()%></td>                
+                <td align="center"><%=payment.getStatus()%></td>
+                <%if((payment.getParcelNumber()).equals("¡ÿ∫Ò¡ﬂ")) {%>
+                <td align="center"><form action = "updatePayment" method = "post">
+                    <% session.setAttribute("payment", payment);%>
+                    <input type="text" name="parcelNumber">
+                    <input type ="submit" value="º€¿Âπ¯»£ √ﬂ∞°">
+                    </form></td>
+                <td>
+                <% } else { %>
+                <td align="center"><%=payment.getParcelNumber()%></td>
+                <% } %>
             </tr>
             <% }%>
         </table>
-        
         <form action="main" method="post">
             <input type="hidden" name="userID" value="<%=user.getId()%>">
-            <input type="submit" value="Î©îÏù∏ÏúºÎ°ú">
-        </form> 
+            <input type="submit" value="∏ﬁ¿Œ¿∏∑Œ">
+        </form>
     </body>
-</html>‚Äã
+</html>?
