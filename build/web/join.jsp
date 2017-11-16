@@ -65,7 +65,8 @@
             Exception ex = (Exception) errors.next();%>
         <li><%= ex.getMessage()%><%}%></ul></font><%}%>
     <form name ="join" action="join" method="post">
-        <center> <br> <br>
+        <center> <br>
+            <img src="image\joinTitle.jpg" height="60" width="150"><br><br>
             <table>
                 <tr>
                     <td><img src="image\id.JPG" width=150 height=35"></td>

@@ -64,7 +64,8 @@
         <li><%= ex.getMessage()%><%}%></ul></font>    
         <%}%>
     <form action="login" method="post">
-        <center> <br> <br>
+        <center> <br><br>
+            <img src="image\loginTitle.jpg" height="60" width="150">
             <table>
                 <tr>
                     <td> <img src="image\usertype.jpg" width=150 height=35"></td>
