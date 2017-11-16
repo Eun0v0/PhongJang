@@ -106,13 +106,19 @@
             <td bgcolor="#dcdcdc"  align="center" height = "35"><%=payment.getPhoneNumber()%></td>    
             <td bgcolor="#dcdcdc"  align="center" height = "35"><%=payment.getStatus()%></td>    
             <td bgcolor="#dcdcdc"  align="center" height = "35"><%=payment.getParcelNumber()%></td>    
+            
+            <%if((payment.getStatus()).equals("배송중")) { %> 
+            <td><a OnClick="alert('배송중에는 취소가 불가능합니다.')" style="cursor:pointer">
+                   <input type="Submit" value ="결제 취소">
+            </td>
+            <% } else { %>
             <td> <form action="deletePayment" method="post">
                 <input type="hidden" name="paymentID" value="<%=payment.getPaymentID()%>">
                 <% session.setAttribute("paymentID", payment.getPaymentID());%>
                 &nbsp;
                 <input type="Submit" value ="결제 취소">
-                </form></td> 
-        </tr>
+                </form></td>
+            <% } %>
         <% }%>
     </table>
 </center>
