@@ -85,7 +85,7 @@
     <table>
         <tr>
             <th width="170" height = "35"><img src="image\paynum.jpg" width=170 height=40"></th>
-            <th width="170" height = "35"><img src="image\paynum.jpg" width=170 height=40"></th>
+            <th width="170" height = "35"><img src="image\orderDate1.jpg" width=170 height=40"></th>
             <th width="170" height = "35"><img src="image\casename2.jpg" width=170 height=40"></th>
             <th width="120" height = "35"><img src="image\amount2.jpg" width=120 height=40"></th>
             <th width="120" height = "35"><img src="image\price.jpg" width=120 height=40"></th>                          
@@ -108,14 +108,14 @@
             
             <%if((payment.getStatus()).equals("배송중")) { %> 
             <td><a OnClick="alert('배송중에는 취소가 불가능합니다.')" style="cursor:pointer">
-                   <input type="Submit" value ="결제 취소">
+                   <input type="image" src="image\orderCancle.JPG" width="75" height="40" name="Submit" value ="결제 취소" >
             </td>
             <% } else { %>
             <td> <form action="deletePayment" method="post">
                 <input type="hidden" name="paymentID" value="<%=payment.getPaymentID()%>">
                 <% session.setAttribute("paymentID", payment.getPaymentID());%>
                 &nbsp;
-                <input type="Submit" value ="결제 취소">
+                <input type="image" src="image\orderCancle.JPG" width="75" height="40" name="Submit" value ="결제 취소" >
                 </form></td>
             <% } %>
             <% }
