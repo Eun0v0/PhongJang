@@ -85,11 +85,10 @@
     <table>
         <tr>
             <th width="170" height = "35"><img src="image\paynum.jpg" width=170 height=40"></th>
+            <th width="170" height = "35"><img src="image\paynum.jpg" width=170 height=40"></th>
             <th width="170" height = "35"><img src="image\casename2.jpg" width=170 height=40"></th>
             <th width="120" height = "35"><img src="image\amount2.jpg" width=120 height=40"></th>
             <th width="120" height = "35"><img src="image\price.jpg" width=120 height=40"></th>                          
-            <th width="230" height = "35"><img src="image\address2.jpg" width=230 height=40"></th>
-            <th width="200" height = "35"><img src="image\phonenumber.jpg" width=200 height=40"></th>
             <th width="200" height = "35"><img src="image\deliverystate.jpg" width=200 height=40"></th>
             <th width="200" height = "35"><img src="image\deliverynumber.jpg" width=200 height=40"></th>
         </tr>
@@ -100,11 +99,10 @@
         %> 
         <tr>
             <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getPaymentID()%></td>
+            <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getOrderDate()%></td>
             <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getCaseName()%></td>
             <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getNumbers()%></td>
             <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getPrice()%></td>
-            <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getAddress()%></td>
-            <td bgcolor="#dcdcdc"  align="center" height = "35"><%=payment.getPhoneNumber()%></td>    
             <td bgcolor="#dcdcdc"  align="center" height = "35"><%=payment.getStatus()%></td>    
             <td bgcolor="#dcdcdc"  align="center" height = "35"><%=payment.getParcelNumber()%></td>    
             
