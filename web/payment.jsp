@@ -96,6 +96,7 @@
         <%
             for (int i = 0; i < payments.size(); i++) {
                 Payment payment = payments.get(i);
+        if(payments.size() != 0){
         %> 
         <tr>
             <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getPaymentID()%></td>
@@ -119,7 +120,8 @@
                 <input type="Submit" value ="결제 취소">
                 </form></td>
             <% } %>
-        <% }%>
+            <% }
+        }%>
     </table>
 </center>
 </br></br></br></br>
