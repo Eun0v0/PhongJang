@@ -200,4 +200,13 @@
         <servlet-name>DeletePaymentController</servlet-name>
         <url-pattern>/deletePayment</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>UpdatePaymentController</servlet-name>
+        <servlet-class>web.UpdatePaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdatePaymentController</servlet-name>
+        <url-pattern>/updatePayment</url-pattern>
+    </servlet-mapping>
 </web-app>

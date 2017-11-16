@@ -1,10 +1,10 @@
 <%-- 
     Document   : update
-    Created on : 2017. 11. 12, Л≤╓М⌡└ 8:13:24
+    Created on : 2017. 11. 12, ©юхд 8:13:24
     Author     : yukih
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <%@page import="domain.PhoneCase"%>
 <%@page import="domain.User"%>
 <%@page import="java.util.Iterator"%>
@@ -25,7 +25,7 @@
     
     </head>
     <body>
-        <h2>Hello, <%=user.getName()%><br/>Л═°М▓┬ Л┬≤Л═∙ М▌≤Л²╢Л╖─ Л·┘К▀┬К▀╓.</h2>
+        <h2>Hello, <%=user.getName()%><br/>а╕г╟ ╪Жа╓ фДюлаЖ ют╢о╢ы.</h2>
             <%if ((status != null) && !status.isSuccessful()) {%>
         <font color="red">There were problems processing your request:
         <ul><%Iterator errors = status.getExceptions();
@@ -35,18 +35,18 @@
         
         <form action="updateprocess" method="post">
             <table>
-                <tr><td>Л╪─Л²╢Л┼╓ К╡┬М≤╦:</td><td>
+                <tr><td>диюл╫╨ ╧Ьхё:</td><td>
                     <%=caseID%></tr>
-                <tr><td>Л╪─Л²╢Л┼╓ М┐─Л·┘:</td><td>
+                <tr><td>диюл╫╨ е╦ют:</td><td>
                         <textarea name="caseType" size="20"><%=request.getAttribute("caseType")%></textarea>
                         <%--<input type="text" name="caseType" size="20"></td></tr>--%>
-                <tr><td>Л╪─Л²╢Л┼╓ Л²╢К╕└:</td><td>
+                <tr><td>диюл╫╨ юл╦╖:</td><td>
                         <textarea name="caseName" size="20"><%=request.getAttribute("caseName")%></textarea>
                         <%--<input type="text" name="caseName" size="20"></td></tr>--%>
-                <tr><td>Л└╓К╙┘:</td><td>
+                <tr><td>╪Ё╦М:</td><td>
                         <textarea name = "explanation" size="50"><%= request.getAttribute("explanation")%></textarea>
                         <%--<input type="text" name="explanation" size="50"></td></tr>--%>
-                <tr><td>Й╟─Й╡╘:</td><td>
+                <tr><td>╟║╟щ:</td><td>
                         <textarea name="price" size="5"><%=request.getAttribute("price")%></textarea>
                         <%--<input type="text" name="price" size="5"></td></tr>--%>
             </table>
@@ -55,4 +55,4 @@
         </form>         
     </body>
 </html>
-Б─▀
+?
