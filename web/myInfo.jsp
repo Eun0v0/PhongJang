@@ -103,13 +103,13 @@
             </table>
             
             <table><tr>
-                    <td><input type="image" src="image\modify.jpg" width="170" height="70" name="Submit" value ="수정하기">&nbsp;</td>
+                    <td><input type="image" src="image\modify.jpg" width="170" height="50" name="Submit" value ="수정하기">&nbsp;</td>
         </form> 
             
         <form action="myPage" method="post">
             <input type="hidden" name="userID" value="<%=user.getId()%>">
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <td><input type="image" src="image\back.jpg" width="170" height="70" name="Submit" value ="MY PAGE"></td>
+            <td><input type="image" src="image\back.jpg" width="170" height="50" name="Submit" value ="MY PAGE"></td>
         </form> 
         </tr>
              </table>
