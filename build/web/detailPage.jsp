@@ -4,7 +4,17 @@
     Author     : Hayoung_2
 --%>
 <%--해야할 것 : 장바구니, 바로결제 버튼 바꾸기?--%>
-
+<script type ="text/javascript" src="smarteditor/js/HuskyEZCreator.js" charset="euc-kr"> </script>
+<script>
+    function submitContents(elClickedObj){
+        oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
+        try{
+            elClickedObj.form.submit();
+        } catch (e){
+        }
+    }
+</script>
+    
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.PhoneCase"%>
 <%@page import="domain.Payment"%>
@@ -194,20 +204,23 @@
         <hr size="1" width="1100">
     </center>
     <br><br>
-    <center><font size="4" face="10x10">
-        <font color="orange">*우 젤리젤리♪우 젤리젤리♪우 젤리젤리♪오 마이 럽~~!</font>
-        <br><br><b><u>-comment-</u></b><br><br>
-        내 맘을 내 맘을 들킬까봐<br>
-        또 조심조심 해 oh 보일랑 말랑<br>
-        like 젤리처럼 투명한 my heart<br>
-        어떻게 숨기질 못해<br>
-        <br><br>
-        <font size="5"><b>가능한 기종<br><br></b></font>
-        <font size="4" color="gray"><b>아이폰 6/6s (plus), 아이폰 7 (plus), 아이폰 8 (plus)</b></font><br><br>
-
-        <img src="image\BOTTOM1-1.jpg">
-
-    </center></font>
+    <center>
+        <textarea name="ir1" id="ir1"></textarea>
+        <div class="row text-right">
+            <br>
+            <input type="button" value="등록" onClick="submitContents(this)">
+        </div>
+        
+        <script type="text/javascript">
+            var oEditors = [];
+            nhn.husky.EZCreator.createInIFrame({
+                oAppRef : oEditors,
+                elPlaceHolder : "ir1",
+                sSkinURI : "smarteditor/SEditorSkin.html",
+                fCreator : "createSEditor"
+            });
+            </script>
+    </center>
 
     <%--리뷰 목록 넣기--%>
 
