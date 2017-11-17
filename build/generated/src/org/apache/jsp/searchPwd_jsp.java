@@ -10,7 +10,7 @@ import domain.User;
 import java.util.Iterator;
 import java.sql.*;
 
-public final class searchID_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class searchPwd_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -70,7 +70,7 @@ public final class searchID_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta charset=\"UTF-8\">\n");
-      out.write("        <title>ID 찾기</title>\n");
+      out.write("        <title>비밀번호 찾기</title>\n");
       out.write("        <script type=\"text/javascript\">\n");
       out.write("            //<![CDATA[\n");
       out.write("            function initMoving(target, position, topLimit, btmLimit) {\n");
@@ -238,20 +238,20 @@ public final class searchID_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <hr size=\"5\" color=\"black\">\n");
       out.write("    <center>   \n");
       out.write("    <br><br>\n");
-      out.write("    <img src=\"image\\searchID.jpg\" height=\"60\" width=\"150\"><br>\n");
+      out.write("    <img src=\"image\\searchPwd.jpg\" height=\"60\" width=\"180\"><br>\n");
       out.write("    <br>\n");
       out.write("    ");
       out.write("\n");
       out.write("    <table>\n");
-      out.write("    <tr><td><img src=\"image\\name.jpg\" width=120 height=35\">&nbsp;</td><td>\n");
-      out.write("                        <textarea name=\"userName\" size=\"20\"></textarea>\n");
+      out.write("    <tr><td><img src=\"image\\id.JPG\" width=120 height=35\">&nbsp;</td><td>\n");
+      out.write("                        <textarea name=\"userID\" size=\"20\"></textarea>\n");
       out.write("                <tr><td><img src=\"image\\phone.jpg\" width=120 height=35\">&nbsp;</td><td>\n");
       out.write("                        <textarea name=\"userPhone\" size=\"20\"></textarea>\n");
       out.write("    </table>\n");
       out.write("    ");
       out.write("\n");
       out.write("     <table><tr>\n");
-      out.write("        <td><input type=\"image\" src=\"image\\searchIDbt.jpg\" width=\"170\" height=\"50\" name=\"Submit\" value =\"아이디 찾기\">&nbsp;</td>\n");
+      out.write("        <td><input type=\"image\" src=\"image\\searchPwdBt.jpg\" width=\"170\" height=\"50\" name=\"Submit\" value =\"비밀번호 찾기\">&nbsp;</td>\n");
       out.write("        &nbsp;&nbsp;&nbsp;&nbsp;\n");
       out.write("        <td><input type=\"image\" src=\"image\\back.jpg\" width=\"170\" height=\"50\" name=\"Submit\" value =\"LogIn\"></td>\n");
       out.write("        </tr>\n");

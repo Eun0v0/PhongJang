@@ -1,6 +1,6 @@
 <%-- 
-    Document   : searchID
-    Created on : 2017. 11. 16, 오후 2:29:00
+    Document   : searchPwd
+    Created on : 2017. 11. 17, 오전 10:14:55
     Author     : Hayoung_2
 --%>
 
@@ -16,7 +16,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>ID 찾기</title>
+        <title>비밀번호 찾기</title>
         <script type="text/javascript">
             //<![CDATA[
             function initMoving(target, position, topLimit, btmLimit) {
@@ -166,18 +166,18 @@
     <hr size="5" color="black">
     <center>   
     <br><br>
-    <img src="image\searchID.jpg" height="60" width="150"><br>
+    <img src="image\searchPwd.jpg" height="60" width="180"><br>
     <br>
     <%--이름 , 핸드폰 번호--%>
     <table>
-    <tr><td><img src="image\name.jpg" width=120 height=35">&nbsp;</td><td>
-                        <textarea name="userName" size="20"></textarea>
+    <tr><td><img src="image\id.JPG" width=120 height=35">&nbsp;</td><td>
+                        <textarea name="userID" size="20"></textarea>
                 <tr><td><img src="image\phone.jpg" width=120 height=35">&nbsp;</td><td>
                         <textarea name="userPhone" size="20"></textarea>
     </table>
     <%--아이디 찾기 버튼, 취소 버튼--%>
      <table><tr>
-        <td><input type="image" src="image\searchIDbt.jpg" width="170" height="50" name="Submit" value ="아이디 찾기">&nbsp;</td>
+        <td><input type="image" src="image\searchPwdBt.jpg" width="170" height="50" name="Submit" value ="비밀번호 찾기">&nbsp;</td>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <td><input type="image" src="image\back.jpg" width="170" height="50" name="Submit" value ="LogIn"></td>
         </tr>

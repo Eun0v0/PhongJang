@@ -16,7 +16,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>퐁장-나만의 폰 공장</title>
+        <title>ID 찾기</title>
         <script type="text/javascript">
             //<![CDATA[
             function initMoving(target, position, topLimit, btmLimit) {
@@ -166,11 +166,22 @@
     <hr size="5" color="black">
     <center>   
     <br><br>
-    <img src="image\searchID.jpg" height="60" width="150">
+    <img src="image\searchID.jpg" height="60" width="150"><br>
     <br>
-    <%--
-    이름 , 핸드폰 번호
-    --%>
+    <%--이름 , 핸드폰 번호--%>
+    <table>
+    <tr><td><img src="image\name.jpg" width=120 height=35">&nbsp;</td><td>
+                        <textarea name="userName" size="20"></textarea>
+                <tr><td><img src="image\phone.jpg" width=120 height=35">&nbsp;</td><td>
+                        <textarea name="userPhone" size="20"></textarea>
+    </table>
+    <%--아이디 찾기 버튼, 취소 버튼--%>
+     <table><tr>
+        <td><input type="image" src="image\searchIDbt.jpg" width="170" height="50" name="Submit" value ="아이디 찾기">&nbsp;</td>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <td><input type="image" src="image\back.jpg" width="170" height="50" name="Submit" value ="LogIn"></td>
+        </tr>
+    </table>
     </center>
     <div id="gotop">
     <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>
