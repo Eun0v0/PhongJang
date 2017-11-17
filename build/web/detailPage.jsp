@@ -205,7 +205,7 @@
     </center>
     <br><br>
     <center>
-        <textarea name="ir1" id="ir1"></textarea>
+        <%--<textarea name="ir1" id="ir1"></textarea>
         <div class="row text-right">
             <br>
             <input type="button" value="등록" onClick="submitContents(this)">
@@ -219,7 +219,7 @@
                 sSkinURI : "smarteditor/SEditorSkin.html",
                 fCreator : "createSEditor"
             });
-            </script>
+            </script>--%>
     </center>
 
     <%--리뷰 목록 넣기--%>
