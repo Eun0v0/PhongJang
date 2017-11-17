@@ -1,10 +1,10 @@
 SMAP
-searchID_jsp.java
+searchPwd_jsp.java
 JSP
 *S JSP
 *F
-+ 0 searchID.jsp
-searchID.jsp
++ 0 searchPwd.jsp
+searchPwd.jsp
 *L
 5,8:50
 12:57,9
