@@ -4,6 +4,7 @@
     Author     : Hayoung_2
 --%>
 <%--해야할 것 : 장바구니, 바로결제 버튼 바꾸기?--%>
+<%-- test --%>
 <script type ="text/javascript" src="smarteditor/js/HuskyEZCreator.js" charset="euc-kr"> </script>
 <script>
     function submitContents(elClickedObj){

@@ -3,7 +3,7 @@
     Created on : 2017. 11. 12, ¿ÀÈÄ 7:53:47
     Author     : yukih
 --%>
-
+<%-- test --%>
 <%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <%@page import="domain.User"%>
 <jsp:useBean id="status" scope="request" class="util.Status"/>

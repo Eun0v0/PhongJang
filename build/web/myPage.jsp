@@ -4,7 +4,7 @@
     Author     : yukih
     Insert But : ha0 >_<
 --%>
-
+<%-- test --%>
 <%@page import="domain.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

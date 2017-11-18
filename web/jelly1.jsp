@@ -4,7 +4,7 @@
     Author     : Hayoung_2
 --%>
 <%--해야할 것 : 장바구니, 바로결제 버튼 바꾸기?--%>
-
+<%-- test --%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.PhoneCase"%>
 <%@page import="domain.Payment"%>
