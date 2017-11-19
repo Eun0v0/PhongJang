@@ -114,7 +114,7 @@
                 </tr>
             </tbody>
         </table></br></br>
-        <form action="boardWrite" method="post" action="qnawrite.jsp">
+        <form action="boardWrite" method="post" OnClick="window.location='qnawrite.jsp'">
             <input type="image" src="image\boardwrite.jpg" name="Submit" value ="±Û¾²±â" aline="absmiddle">
         </form>
     </center>
