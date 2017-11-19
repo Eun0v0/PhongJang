@@ -6,7 +6,6 @@
 package domain;
 
 public class Qna {
-
     int qnaNum;
     String userName;
     int passWord;
@@ -23,7 +22,6 @@ public class Qna {
         this.qnaContent = qnaContent;
         this.qnaTime = qnaTime;
         this.qnaHits = qnaHits;
-
     }
 
     public int getQnaNum() {
