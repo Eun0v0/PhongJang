@@ -111,6 +111,7 @@
                         <input type="hidden" name="caseName" value="<%=phoneCase.getCaseName()%>">
                         <input type="hidden" name="explanation" value="<%=phoneCase.getExplanation()%>">
                         <input type="hidden" name="price" value="<%=phoneCase.getPrice()%>">
+                        <input type="hidden" name="img" value="<%=phoneCase.getImg()%>">
                         <input type="submit" value="¼öÁ¤">
                     </form>
                 </td>

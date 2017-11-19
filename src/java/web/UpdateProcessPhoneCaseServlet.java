@@ -47,8 +47,7 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         request.setAttribute("phoneCases", phoneCases);
         request.setAttribute("user", user);
         request.setAttribute("caseID", caseID);
-        
-        
+
         try {
             if ((caseType == null) || (caseType.length() == 0)) {
                 status.addException(new Exception(
