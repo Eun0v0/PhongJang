@@ -12,13 +12,24 @@ public class PhoneCase {
     String caseType;
     String explanation;
     int price;
+    String img;
 
-    public PhoneCase(int caseID, String caseName, String caseType, String explanation, int price) {
+    public PhoneCase(int caseID, String caseName, String caseType, String explanation, int price, String img) {
+
         this.caseID = caseID;
         this.caseName = caseName;
         this.caseType = caseType;
         this.explanation = explanation;
         this.price = price;
+        this.img = img;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public int getCaseID() {

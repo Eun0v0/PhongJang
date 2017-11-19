@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package domain;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

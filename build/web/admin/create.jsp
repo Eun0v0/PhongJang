@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+<%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
+<html>
+    <head><title>파일 업로드 폼</title></head>
+    <body>
+
+        <center>
+        <h2>상품 등록</h2>
+
+        <hr>
+        <!-- action에는 jsp 나 servlet 둘중 하나가 올수 있음 -->
+        <form action="createprocess" method="post" enctype="multipart/form-data">  
+=======
 <%-- 
     Document   : create
     Created on : 2017. 11. 12, 오후 7:53:47
@@ -86,6 +99,7 @@
             <li><%= ex.getMessage()%><%}%></ul></font><%}%>
         <form action="createprocess" method="post">
             <center>
+>>>>>>> b1a42c8de5d04552ef6508021fa1a8c26be2d0df
             <table width="1100" height="300">
                 <tr>
                     <td width="900">
@@ -102,6 +116,11 @@
                         <div align="right"><input type="text" name="price" size="10" padding="10px">원</div>
                         <div align="left"><font size="2">설명</font></div>
                         <div align="right"><textarea name="explanation" cols="65" rows="4"></textarea></div>
+<<<<<<< HEAD
+                        <div align="left">상품이미지 : </div>
+                        <div align="right"><input type="file" name="img"><br> </div>
+                        <hr size="1">
+=======
 
                         <hr size="1">
 
@@ -115,10 +134,21 @@
                 <tr><td>가격:</td><td>
                         <input type="text" name="price" size="5"></td></tr>--%>
                 
+>>>>>>> b1a42c8de5d04552ef6508021fa1a8c26be2d0df
                     </td>
                 </tr>
             </table>
                 <table>
+<<<<<<< HEAD
+                    
+                    <td><tr><input type="submit" value="등록"> &nbsp;&nbsp; <input type="reset" value="다시쓰기"> </tr> </td>
+                </table>
+            <hr size="1" width="1100">
+        </form>
+        </center>
+    </body>
+</html>
+=======
                     <td>
                     <tr><input type="submit" value="Submit"><input type="reset" value="다시쓰기"> </tr>
                 </table>
@@ -127,3 +157,4 @@
         </form>         
     </body>
 </html>
+>>>>>>> b1a42c8de5d04552ef6508021fa1a8c26be2d0df
