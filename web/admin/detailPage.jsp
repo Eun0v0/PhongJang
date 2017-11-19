@@ -28,7 +28,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>우 젤리젤리♪ 케이스</title>
+        <title>상세 페이지 추가</title>
         <script type="text/javascript">
             //<![CDATA[
             function initMoving(target, position, topLimit, btmLimit) {
@@ -176,7 +176,7 @@
     <br><br>
     <center>
         <h1>케이스 상세 페이지 작성</h1>
-        <form name="myForm" method="post">
+        <form name="createprocess" method="post">
             <table width="1100" height="300">
                 <tr>
                     <td width="900">
@@ -190,22 +190,20 @@
                                 <option name="caseType" value="하드">하드
                                 <option name="caseType" value="범퍼">범퍼</select></div>
                         <div align="left"><font size="2">가격</font></div>
-                        <div align="right"><input type="text" name="casePrice" size="10" padding="10px">원</div>
+                        <div align="right"><input type="text" name="price" size="10" padding="10px">원</div>
+                        <div align="left"><font size="2">설명</font></div>
+                        <div align="right"><input type="text" name="explanation" size="100" padding="50px"></div>
 
                         <hr size="1">
-                <br><center>
-                    <input type="image" src="image\bt_cartin.jpg" onClick='mySubmit(1)'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="image" src="image\bt_buying.jpg" onClick='mySubmit(2)'>
-                </center>
+                <br>
                 </td>
                 </tr>
             </table>
+            <input type="submit" value="확인">
         </form>
         <hr size="1" width="1100">
     </center>
     <br><br>
-    <center>
         <%--<textarea name="ir1" id="ir1"></textarea>
         <div class="row text-right">
             <br>
@@ -221,10 +219,6 @@
                 fCreator : "createSEditor"
             });
             </script>--%>
-    </center>
-
-    <%--리뷰 목록 넣기--%>
-
     <hr size="2" color="black">
 
     <div id="gotop">

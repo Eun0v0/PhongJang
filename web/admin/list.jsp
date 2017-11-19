@@ -1,18 +1,23 @@
 <%-- 
-    Document   : create
-    Created on : 2017. 11. 12, 오후 7:53:47
+    Document   : login
+    Created on : 2017. 11. 3, ?? 4:28:19
     Author     : yukih
 --%>
 <%-- test --%>
-<%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <%@page import="domain.User"%>
-<jsp:useBean id="status" scope="request" class="util.Status"/>
+<%@page import="java.util.ArrayList"%>
+<%@page import="domain.PhoneCase"%>
+<%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>상품 추가</title>
-        <%  User user = (User) request.getAttribute("user");
-            session.setAttribute("user", user);%></head>
+        <title>Product List</title>
+        <% ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");%>
+        <% User user = (User) request.getAttribute("user");%>
+        <% session.setAttribute("user", user);%>
+        <% session.setAttribute("phoneCases", phoneCases);%>
+        
+    </head>
     <body>
                 <table border="0px">
         <tr>
@@ -75,55 +80,48 @@
         <a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a>
     </center>
     <hr size="5" color="black">
-    <%--여기서부터 코드내용--%>
-
-    <center> <h2>상품 추가 페이지 입니다.</h2> </center>
-        <%if ((status != null) && !status.isSuccessful()) {%>
-        <font color="red">There were problems processing your request:
-        <ul><%Iterator errors = status.getExceptions();
-            while (errors.hasNext()) {
-                Exception ex = (Exception) errors.next();%>
-            <li><%= ex.getMessage()%><%}%></ul></font><%}%>
-        <form action="createprocess" method="post">
-            <center>
-            <table width="1100" height="300">
-                <tr>
-                    <td width="900">
-                        <hr size="1"><br>
-                        <div align="left"><font size="2">케이스 이름</font></div>
-                        <div align="right"><input type="text" name="caseName" size="40" padding="10px"></div>
-                        <div align="left"><font size="2">케이스 타입</font></div>
-                        <div align="right"><select name="caseType" >
-                                <option name="caseType" value="unknown">-----
-                                <option name="caseType" value="젤리">젤리
-                                <option name="caseType" value="하드">하드
-                                <option name="caseType" value="범퍼">범퍼</select></div>
-                        <div align="left"><font size="2">가격</font></div>
-                        <div align="right"><input type="text" name="price" size="10" padding="10px">원</div>
-                        <div align="left"><font size="2">설명</font></div>
-                        <div align="right"><textarea name="explanation" cols="65" rows="4"></textarea></div>
-
-                        <hr size="1">
-
-                <%--<tr><td>케이스 타입:</td><td>
-                        <input type="text" name="caseType" size="20"></td></tr>
+        
+        <form action="paymentlist" method="post">
+            <input type="submit" value="모든 결제내역">
+        </form>        
+    <center> 
+    <table border="2px">
+            <tr>
+                <th width="100">케이스 이름</th>
                 
-                <tr><td>케이스 이름:</td><td>
-                        <input type="text" name="caseName" size="20"></td></tr>
-                <tr><td>설명:</td><td>
-                        <input type="text" name="explanation" size="50"></td></tr>
-                <tr><td>가격:</td><td>
-                        <input type="text" name="price" size="5"></td></tr>--%>
-                
-                    </td>
-                </tr>
-            </table>
-                <table>
-                    <td>
-                    <tr><input type="submit" value="Submit"><input type="reset" value="다시쓰기"> </tr>
-                </table>
-            <hr size="1" width="1100">
-            </center>
-        </form>         
+                <th width="150">삭제</th>
+            </tr>
+            <%
+                for (int i = 0; i < phoneCases.size(); i++) {
+                    PhoneCase phoneCase = phoneCases.get(i);
+            %> 
+            <tr>
+                <td align="center"><a href="update"><%=phoneCase.getCaseName()%>
+                        <input type="hidden" name="caseID" value="<%=phoneCase.getCaseID()%>">
+                        <input type="hidden" name="caseType" value="<%=phoneCase.getCaseType()%>">
+                        <input type="hidden" name="caseName" value="<%=phoneCase.getCaseName()%>">
+                        <input type="hidden" name="explanation" value="<%=phoneCase.getExplanation()%>">
+                        <input type="hidden" name="price" value="<%=phoneCase.getPrice()%>">
+                    </a></td>
+                <%--<td align="center">
+                    <form action="update" method="post">
+                        <input type="hidden" name="caseID" value="<%=phoneCase.getCaseID()%>">
+                        <input type="hidden" name="caseType" value="<%=phoneCase.getCaseType()%>">
+                        <input type="hidden" name="caseName" value="<%=phoneCase.getCaseName()%>">
+                        <input type="hidden" name="explanation" value="<%=phoneCase.getExplanation()%>">
+                        <input type="hidden" name="price" value="<%=phoneCase.getPrice()%>">
+                        <input type="submit" value="수정">
+                    </form>
+                </td>--%>
+                <td align="center">
+                    <form action="deleteCase" method="post">
+                        <input type="hidden" name="caseID" value="<%=phoneCase.getCaseID()%>">
+                        <input type="submit" value="삭제">
+                    </form>
+                </td>
+            </tr>
+            <% }%>
+        </table>    
+    </center>
     </body>
 </html>

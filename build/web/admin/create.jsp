@@ -75,8 +75,9 @@
         <a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a>
     </center>
     <hr size="5" color="black">
+    <%--여기서부터 코드내용--%>
 
-        <h2>Hello, <%=user.getName()%><br/>상품 추가 페이지 입니다.</h2>
+    <center> <h2>상품 추가 페이지 입니다.</h2> </center>
         <%if ((status != null) && !status.isSuccessful()) {%>
         <font color="red">There were problems processing your request:
         <ul><%Iterator errors = status.getExceptions();
@@ -84,18 +85,45 @@
                 Exception ex = (Exception) errors.next();%>
             <li><%= ex.getMessage()%><%}%></ul></font><%}%>
         <form action="createprocess" method="post">
-            <table>
-                <tr><td>케이스 타입:</td><td>
+            <center>
+            <table width="1100" height="300">
+                <tr>
+                    <td width="900">
+                        <hr size="1"><br>
+                        <div align="left"><font size="2">케이스 이름</font></div>
+                        <div align="right"><input type="text" name="caseName" size="40" padding="10px"></div>
+                        <div align="left"><font size="2">케이스 타입</font></div>
+                        <div align="right"><select name="caseType" >
+                                <option name="caseType" value="unknown">-----
+                                <option name="caseType" value="젤리">젤리
+                                <option name="caseType" value="하드">하드
+                                <option name="caseType" value="범퍼">범퍼</select></div>
+                        <div align="left"><font size="2">가격</font></div>
+                        <div align="right"><input type="text" name="price" size="10" padding="10px">원</div>
+                        <div align="left"><font size="2">설명</font></div>
+                        <div align="right"><textarea name="explanation" cols="65" rows="4"></textarea></div>
+
+                        <hr size="1">
+
+                <%--<tr><td>케이스 타입:</td><td>
                         <input type="text" name="caseType" size="20"></td></tr>
+                
                 <tr><td>케이스 이름:</td><td>
                         <input type="text" name="caseName" size="20"></td></tr>
                 <tr><td>설명:</td><td>
                         <input type="text" name="explanation" size="50"></td></tr>
                 <tr><td>가격:</td><td>
-                        <input type="text" name="price" size="5"></td></tr>
+                        <input type="text" name="price" size="5"></td></tr>--%>
                 
+                    </td>
+                </tr>
             </table>
-            <input type="submit" value="Submit">
+                <table>
+                    <td>
+                    <tr><input type="submit" value="Submit"><input type="reset" value="다시쓰기"> </tr>
+                </table>
+            <hr size="1" width="1100">
+            </center>
         </form>         
     </body>
 </html>
