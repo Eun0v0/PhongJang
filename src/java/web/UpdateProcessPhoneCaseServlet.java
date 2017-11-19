@@ -40,14 +40,23 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         String caseName = request.getParameter("caseName");
         String explanation = request.getParameter("explanation");
         int price = Integer.parseInt(request.getParameter("price"));
+<<<<<<< HEAD
         String img = request.getParameter("img");
+=======
+
+>>>>>>> b1a42c8de5d04552ef6508021fa1a8c26be2d0df
         
         ArrayList<PhoneCase> phoneCases = new ArrayList<PhoneCase>();
         phoneCases = PhoneCaseService.getAllPhoneCase();
         request.setAttribute("phoneCases", phoneCases);
         request.setAttribute("user", user);
         request.setAttribute("caseID", caseID);
+<<<<<<< HEAD
 
+=======
+        
+        
+>>>>>>> b1a42c8de5d04552ef6508021fa1a8c26be2d0df
         try {
             if ((caseType == null) || (caseType.length() == 0)) {
                 status.addException(new Exception(
@@ -68,7 +77,11 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
             
             try {
                 //(int caseID, String caseType, String caseName, String explanation, int price)
+<<<<<<< HEAD
                 PhoneCaseService.updatePhoneCase(caseID, caseType, caseName, explanation, price, img);
+=======
+                PhoneCaseService.updatePhoneCase(caseID, caseType, caseName, explanation, price);
+>>>>>>> b1a42c8de5d04552ef6508021fa1a8c26be2d0df
                 phoneCases = PhoneCaseService.getAllPhoneCase();
                 request.setAttribute("phoneCases", phoneCases);
                 if (!status.isSuccessful()) {

@@ -45,7 +45,11 @@ public class DeletePhoneCaseServlet extends HttpServlet {
         request.setAttribute("user", user);
         request.setAttribute("phoneCases", phoneCases);
         
+<<<<<<< HEAD
         view = request.getRequestDispatcher("admin/list.jsp");
+=======
+        view = request.getRequestDispatcher("admin/managePhoneCase.jsp");
+>>>>>>> b1a42c8de5d04552ef6508021fa1a8c26be2d0df
         view.forward(request, response);
     }
 }

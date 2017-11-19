@@ -36,6 +36,7 @@ public class PhoneCaseService {
         return phoneCases;
     }
     
+<<<<<<< HEAD
     public void insertPhoneCase(String caseType, String caseName, String explanation, int price, String img) {
         phoneCaseDataAccess.productInsert(caseType, caseName, explanation, price, img);
     }
@@ -43,6 +44,15 @@ public class PhoneCaseService {
     //(int caseID, String caseType, String caseName, String explanation, int price)
     public void updatePhoneCase(int caseID, String caseType, String caseName, String explanation, int price, String img) {
         phoneCaseDataAccess.productUpdate(caseID, caseType, caseName, explanation, price, img);
+=======
+    public void insertPhoneCase(String caseType, String caseName, String explanation, int price) {
+        phoneCaseDataAccess.productInsert(caseType, caseName, explanation, price);
+    }
+    
+    //(int caseID, String caseType, String caseName, String explanation, int price)
+    public void updatePhoneCase(int caseID, String caseType, String caseName, String explanation, int price) {
+        phoneCaseDataAccess.productUpdate(caseID, caseType, caseName, explanation, price);
+>>>>>>> b1a42c8de5d04552ef6508021fa1a8c26be2d0df
     }
     
     public void deletePhoneCase(int caseID) {
