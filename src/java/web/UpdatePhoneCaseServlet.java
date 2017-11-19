@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package web;
+import domain.PhoneCase;
+import domain.PhoneCaseService;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,10 +32,19 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
         
         request.setCharacterEncoding("EUC-KR");
         int caseID = Integer.parseInt(request.getParameter("caseID"));
-        String caseName = request.getParameter("caseName");
+        PhoneCaseService phoneCaseService = new PhoneCaseService();
+        PhoneCase phoneCase;
+        phoneCase = phoneCaseService.getPhoneCase(caseID);
+        
+        String caseName = phoneCase.getCaseName();
+        String caseType = phoneCase.getCaseType();
+        String explanation = phoneCase.getExplanation();
+        int price = phoneCase.getPrice();
+        /*String caseName = request.getParameter("caseName");
         String caseType = request.getParameter("caseType");
         String explanation = request.getParameter("explanation");
         int price =  Integer.parseInt(request.getParameter("price"));
+        */
         
         request.setAttribute("caseID", caseID);
         request.setAttribute("caseName", caseName);

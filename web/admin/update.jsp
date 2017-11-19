@@ -22,7 +22,75 @@
             session.setAttribute("user", user);
             session.setAttribute("phoneCases", phoneCases);
         %>
-    
+        <script type="text/javascript">
+            //<![CDATA[
+            function initMoving(target, position, topLimit, btmLimit) {
+                if (!target)
+                    return false;
+
+                var obj = target;
+                obj.initTop = position;
+                obj.topLimit = topLimit;
+                obj.bottomLimit = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight) - btmLimit - obj.offsetHeight;
+
+                obj.style.position = "absolute";
+                obj.top = obj.initTop;
+                obj.left = obj.initLeft;
+
+                if (typeof (window.pageYOffset) == "number") {	//WebKit
+                    obj.getTop = function () {
+                        return window.pageYOffset;
+                    }
+                } else if (typeof (document.documentElement.scrollTop) == "number") {
+                    obj.getTop = function () {
+                        return Math.max(document.documentElement.scrollTop, document.body.scrollTop);
+                    }
+                } else {
+                    obj.getTop = function () {
+                        return 0;
+                    }
+                }
+
+                if (self.innerHeight) {	//WebKit
+                    obj.getHeight = function () {
+                        return self.innerHeight;
+                    }
+                } else if (document.documentElement.clientHeight) {
+                    obj.getHeight = function () {
+                        return document.documentElement.clientHeight;
+                    }
+                } else {
+                    obj.getHeight = function () {
+                        return 500;
+                    }
+                }
+
+                obj.move = setInterval(function () {
+                    if (obj.initTop > 0) {
+                        pos = obj.getTop() + obj.initTop;
+                    } else {
+                        pos = obj.getTop() + obj.getHeight() + obj.initTop;
+                        //pos = obj.getTop() + obj.getHeight() / 2 - 15;
+                    }
+
+                    if (pos > obj.bottomLimit)
+                        pos = obj.bottomLimit;
+                    if (pos < obj.topLimit)
+                        pos = obj.topLimit;
+
+                    interval = obj.top - pos;
+                    obj.top = obj.top - interval / 3;
+                    obj.style.top = obj.top + 220 + "px";
+                }, 30)
+            }
+            //]]>
+        </script>
+
+        <style type="text/css">
+            #gotop {position: absolute; right: 0px; top: 50px; width: 100px; height: 100px;}
+            a{color:black; text-decoration:none;}
+        </style>
+
     </head>
     <body>
                 <table border="0px">
@@ -86,35 +154,56 @@
         <a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a>
     </center>
     <hr size="5" color="black">
-
-        <h2>Hello, <%=user.getName()%><br/>제품 수정 페이지 입니다.</h2>
+    <center>
+        <h2>제품 수정 페이지 입니다.</h2>
+    </center>
+    
             <%if ((status != null) && !status.isSuccessful()) {%>
         <font color="red">There were problems processing your request:
         <ul><%Iterator errors = status.getExceptions();
             while (errors.hasNext()) {
                 Exception ex = (Exception) errors.next();%>
             <li><%= ex.getMessage()%><%}%></ul></font><%}%>
+        <center>
+        <h1>케이스 상세 페이지 작성</h1>
         
         <form action="updateprocess" method="post">
-            <table>
-                <tr><td>케이스 번호:</td><td>
+            <table width="1100" height="300">
+                <hr size="1" width="1100">
+                <tr><td width="900"><br>
+                        케이스 번호:</td><td>
                     <%=caseID%></tr>
-                <tr><td>케이스 타입:</td><td>
-                        <textarea name="caseType" size="20"><%=request.getAttribute("caseType")%></textarea>
-                        <%--<input type="text" name="caseType" size="20"></td></tr>--%>
-                <tr><td>케이스 이름:</td><td>
+                <tr><td width="900">케이스 타입:</td><td>
+                        <select name="caseType" >
+                                <option name="caseType" value="<%=request.getAttribute("caseType")%>"><%=request.getAttribute("caseType")%>
+                                <option name="caseType" value="젤리">젤리
+                                <option name="caseType" value="하드">하드
+                                <option name="caseType" value="범퍼">범퍼</select>
+                        
+                <tr><td width="900">케이스 이름:</td><td>
                         <textarea name="caseName" size="20"><%=request.getAttribute("caseName")%></textarea>
-                        <%--<input type="text" name="caseName" size="20"></td></tr>--%>
-                <tr><td>설명:</td><td>
+                       
+                <tr><td width="900">설명:</td><td>
                         <textarea name = "explanation" size="50"><%= request.getAttribute("explanation")%></textarea>
-                        <%--<input type="text" name="explanation" size="50"></td></tr>--%>
-                <tr><td>가격:</td><td>
+                        
+                <tr><td width="900">가격:</td><td>
                         <textarea name="price" size="5"><%=request.getAttribute("price")%></textarea>
-                        <%--<input type="text" name="price" size="5"></td></tr>--%>
+                        <hr size="1">
             </table>
+            <hr size="1" width="1100">
             <input type="hidden" name="caseID" value="<%=caseID%>">
             <input type="submit" value="Submit">
-        </form>         
+        </form>
+        
+        
+         <div id="gotop">
+        <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>
+        <img src="image\cursor1.jpg" height="50" width="50"> <br>
+        <a href="#bottom"> <img src="image\down.jpg" height="35" width="50"> </a> 
+    </div>
+
+    <script type="text/javascript">initMoving(document.getElementById("gotop"), 50, 50, 50);</script> 
+
+    <a href="#top" name="bottom"><img src="image\totop.jpg" align="right"></a>
     </body>
 </html>
-?

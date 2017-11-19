@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class PhoneCaseService {
     
     private PhoneCaseDAO phoneCaseDataAccess;
+    private PhoneCase phoneCase;
     
     public PhoneCaseService() {
         phoneCaseDataAccess = new PhoneCaseDAO();
@@ -46,5 +47,10 @@ public class PhoneCaseService {
     
     public void deletePhoneCase(int caseID) {
         phoneCaseDataAccess.productDelete(caseID);
+    }
+    
+    public PhoneCase getPhoneCase(int caseID) {
+        phoneCase = phoneCaseDataAccess.productGet(caseID);
+        return phoneCase;
     }
 }

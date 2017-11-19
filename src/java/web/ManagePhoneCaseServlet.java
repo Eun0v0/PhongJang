@@ -37,8 +37,8 @@ public final class ManagePhoneCaseServlet extends HttpServlet {
         request.setAttribute("user", HttpSession.getAttribute("user"));
         request.setAttribute("phoneCases", phoneCases);
         
-        view = request.getRequestDispatcher("admin/managePhoneCase.jsp");
-        //view = request.getRequestDispatcher("admin/list.jsp");
+        //view = request.getRequestDispatcher("admin/managePhoneCase.jsp");
+        view = request.getRequestDispatcher("admin/list.jsp");
         
         view.forward(request, response);
     }
