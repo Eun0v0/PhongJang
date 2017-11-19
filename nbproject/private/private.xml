@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/phoneCaseList.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/src/java/util/Status.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/searchID.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/joinConfirm.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/src/java/domain/QnaService.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/src/java/domain/Qna.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/searchPwd.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/src/java/web/RetrieveCartServlet.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/admin/list.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/qna.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/join.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/paymentConfirm.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/qnawrite.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/myPage.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/admin/adminLoginConfirm.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/src/java/util/DBConnectionPool.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/src/java/web/CreatePhoneCaseServlet.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/myInfo.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/src/java/domain/QnaDAO.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/src/java/web/RetrievePaymentServlet.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/admin/managePhoneCase.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/admin/main.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/addPayment.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/src/java/web/UpdatePhoneCaseServlet.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/src/java/web/UpdatePaymentServlet.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/src/java/web/ManagePhoneCaseServlet.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/login.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/jelly1.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/main.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/payment.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/cart.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/phongJang/PhongJang/web/admin/payment.jsp</file>
+        </group>
+    </open-files>
+</project-private>

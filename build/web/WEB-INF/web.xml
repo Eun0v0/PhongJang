@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    
+    <resource-ref>
+        <res-ref-name>jdbc/oracleDS</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+    
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>web.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>web.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>IDCheckController</servlet-name>
+        <servlet-class>web.IDCheckServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IDCheckController</servlet-name>
+        <url-pattern>/IDCheck</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>JoinController</servlet-name>
+        <servlet-class>web.JoinServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JoinController</servlet-name>
+        <url-pattern>/join</url-pattern>
+    </servlet-mapping>
+        
+    <servlet>
+        <servlet-name>SearchController</servlet-name>
+        <servlet-class>web.SearchPhoneCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchController</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AddCartController</servlet-name>
+        <servlet-class>web.AddCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddCartController</servlet-name>
+        <url-pattern>/take</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>CartController</servlet-name>
+        <servlet-class>web.RetrieveCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartController</servlet-name>
+        <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeleteController</servlet-name>
+        <servlet-class>web.DeleteCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteController</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>MainController</servlet-name>
+        <servlet-class>web.MainServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainController</servlet-name>
+        <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AddPaymentController</servlet-name>
+        <servlet-class>web.AddPaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddPaymentController</servlet-name>
+        <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ProcessPaymentController</servlet-name>
+        <servlet-class>web.ProcessPaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProcessPaymentController</servlet-name>
+        <url-pattern>/pay</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>RetrievePaymentController</servlet-name>
+        <servlet-class>web.RetrievePaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RetrievePaymentController</servlet-name>
+        <url-pattern>/paymentlist</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>CreatePhoneCaseController</servlet-name>
+        <servlet-class>web.CreatePhoneCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreatePhoneCaseController</servlet-name>
+        <url-pattern>/create</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ProcessPhoneCaseController</servlet-name>
+        <servlet-class>web.ProcessPhoneCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProcessPhoneCaseController</servlet-name>
+        <url-pattern>/createprocess</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>UpdatePhoneCaseController</servlet-name>
+        <servlet-class>web.UpdatePhoneCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdatePhoneCaseController</servlet-name>
+        <url-pattern>/update</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>UpdateProcessPhoneCaseController</servlet-name>
+        <servlet-class>web.UpdateProcessPhoneCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateProcessPhoneCaseController</servlet-name>
+        <url-pattern>/updateprocess</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeletePhoneCaseController</servlet-name>
+        <servlet-class>web.DeletePhoneCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeletePhoneCaseController</servlet-name>
+        <url-pattern>/deleteCase</url-pattern>
+    </servlet-mapping>
+ 
+    <servlet>
+        <servlet-name>MyPageController</servlet-name>
+        <servlet-class>web.MyPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyPageController</servlet-name>
+        <url-pattern>/myPage</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>MyInfoController</servlet-name>
+        <servlet-class>web.MyInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyInfoController</servlet-name>
+        <url-pattern>/MyInfo</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>MyInfoUpdateController</servlet-name>
+        <servlet-class>web.MyInfoUpdateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyInfoUpdateController</servlet-name>
+        <url-pattern>/updateMyInfo</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeletePaymentController</servlet-name>
+        <servlet-class>web.DeletePaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeletePaymentController</servlet-name>
+        <url-pattern>/deletePayment</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>UpdatePaymentController</servlet-name>
+        <servlet-class>web.UpdatePaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdatePaymentController</servlet-name>
+        <url-pattern>/updatePayment</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ManagePhoneCaseController</servlet-name>
+        <servlet-class>web.ManagePhoneCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManagePhoneCaseController</servlet-name>
+        <url-pattern>/managePhoneCase</url-pattern>
+    </servlet-mapping>
+</web-app>
