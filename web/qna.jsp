@@ -6,14 +6,19 @@
 <%-- test --%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.User"%>
+<%@page import="java.net.URLEncoder"%>
+<%@page import="java.net.URLDecoder"%>
+<%@page import="domain.Qna"%>
 <%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
         <title>Q&A</title>
+        <% ArrayList<Qna> qnas = (ArrayList<Qna>) request.getAttribute("qnas");%>
         <%User user = (User) request.getAttribute("user");%>
         <%session.setAttribute("user", user);%>
+        <%session.setAttribute("qnas", qnas);%>
     </head>
     <body>
         <table border="0px">
@@ -104,19 +109,34 @@
                     <th width="60" height="35"><img src="image\view.jpg" width=60 height=40"></th>
                 </tr>
             </thead>
+            <%
+                for (int i = 0; i < qnas.size(); i++) {
+                    Qna qna = qnas.get(i);
+                    int qnaNum = qna.getQnaNum();
+                    String userName = qna.getUserName();
+                    int passWord = qna.getPassWord();
+                    String qnaTitle = qna.getQnaTitle();
+                    String qnaContent = qna.getQnaContent();
+                    String qnaTime = qna.getQnaTime();
+                    int qnaHits = qna.getQnaHits();
+                    
+                    String puserName = URLEncoder.encode(userName);
+                    String pqnaTitle = URLEncoder.encode(qnaTitle);
+                    String pqnaContent =URLEncoder.encode(qnaContent);
+            %>
             <tbody>
                 <tr>
-                    <td bgcolor="#dcdcdc" height="40" align="center">1</td>
-                    <td bgcolor="#dcdcdc" height="40">게시판 글입니다</td>
-                    <td bgcolor="#dcdcdc" height="40" align="center">ok</td>
-                    <td bgcolor="#dcdcdc" height="40" align="center">2017/11/17</td>
-                    <td bgcolor="#dcdcdc" height="40" align="center">1</td>
+                    <td bgcolor="#dcdcdc" height="40" align="center"><a href="update?qnaNum=<%=qnaNum%>"></td>
+                    <td bgcolor="#dcdcdc" height="40"><a href="update?userName=<%=userName%>"></td>
+                    <td bgcolor="#dcdcdc" height="40" align="center"><a href="update?qnaTitle=<%=qnaTitle%>"></td>
+                    <td bgcolor="#dcdcdc" height="40" align="center"><a href="update?qnaTime=<%=qnaTime%>"></td>
+                    <td bgcolor="#dcdcdc" height="40" align="center"><a href="update?qnaHits=<%=qnaHits%>"></td>
                 </tr>
             </tbody>
         </table></br></br>
-        <form action="boardWrite" method="post" OnClick="window.location='qnawrite.jsp'">
+        <!--<form action="boardWrite" method="post" OnClick="window.location = 'qnawrite.jsp'">
             <input type="image" src="image\boardwrite.jpg" name="Submit" value ="글쓰기" aline="absmiddle">
-        </form>
+        </form>-->
     </center>
 </body>
 </html>
