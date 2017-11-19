@@ -6,10 +6,6 @@
 package domain;
 
 public class Qna {
-<<<<<<< HEAD
-
-=======
->>>>>>> b1a42c8de5d04552ef6508021fa1a8c26be2d0df
     int qnaNum;
     String userName;
     int passWord;
@@ -26,10 +22,6 @@ public class Qna {
         this.qnaContent = qnaContent;
         this.qnaTime = qnaTime;
         this.qnaHits = qnaHits;
-<<<<<<< HEAD
-
-=======
->>>>>>> b1a42c8de5d04552ef6508021fa1a8c26be2d0df
     }
 
     public int getQnaNum() {
@@ -87,8 +79,4 @@ public class Qna {
     public void setQnaHits(int qnaHits) {
         this.qnaHits = qnaHits;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> b1a42c8de5d04552ef6508021fa1a8c26be2d0df

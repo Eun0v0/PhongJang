@@ -5,14 +5,6 @@
  */
 package domain;
 
-<<<<<<< HEAD
-/**
- *
- * @author user
- */
-public class QnaService {
-    
-=======
 import java.util.ArrayList;
 
 public class QnaService {
@@ -46,5 +38,4 @@ public class QnaService {
     public void insertPhoneCase(String userName, int passWord, String qnaTitle, String qnaContent, String qnaTime, int qnaHits) {
         qnaDataAccess.qnaInsert(userName, passWord, qnaTitle, qnaContent, qnaTime, qnaHits);
     }
->>>>>>> b1a42c8de5d04552ef6508021fa1a8c26be2d0df
 }

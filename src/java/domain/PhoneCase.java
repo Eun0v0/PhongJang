@@ -12,20 +12,15 @@ public class PhoneCase {
     String caseType;
     String explanation;
     int price;
-<<<<<<< HEAD
     String img;
 
     public PhoneCase(int caseID, String caseName, String caseType, String explanation, int price, String img) {
-=======
 
-    public PhoneCase(int caseID, String caseName, String caseType, String explanation, int price) {
->>>>>>> b1a42c8de5d04552ef6508021fa1a8c26be2d0df
         this.caseID = caseID;
         this.caseName = caseName;
         this.caseType = caseType;
         this.explanation = explanation;
         this.price = price;
-<<<<<<< HEAD
         this.img = img;
     }
 
@@ -35,8 +30,6 @@ public class PhoneCase {
 
     public void setImg(String img) {
         this.img = img;
-=======
->>>>>>> b1a42c8de5d04552ef6508021fa1a8c26be2d0df
     }
 
     public int getCaseID() {
