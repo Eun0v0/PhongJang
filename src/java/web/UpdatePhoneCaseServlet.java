@@ -17,6 +17,11 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
             throws IOException, ServletException {
         processRequest(request, response);
     }
+     public void doGet(HttpServletRequest request,
+            HttpServletResponse response)
+            throws IOException, ServletException {
+        processRequest(request, response);
+    }
     public void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {

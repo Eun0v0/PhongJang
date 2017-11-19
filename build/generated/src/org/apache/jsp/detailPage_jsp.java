@@ -48,6 +48,7 @@ public final class detailPage_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
       out.write('\n');
+      out.write('\n');
       out.write("\n");
       out.write("<script type =\"text/javascript\" src=\"smarteditor/js/HuskyEZCreator.js\" charset=\"euc-kr\"> </script>\n");
       out.write("<script>\n");
@@ -81,7 +82,7 @@ public final class detailPage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta charset=\"UTF-8\">\n");
-      out.write("        <title>우 젤리젤리♪ 케이스</title>\n");
+      out.write("        <title>상세 페이지 추가</title>\n");
       out.write("        <script type=\"text/javascript\">\n");
       out.write("            //<![CDATA[\n");
       out.write("            function initMoving(target, position, topLimit, btmLimit) {\n");
@@ -262,6 +263,8 @@ public final class detailPage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                <option name=\"caseType\" value=\"범퍼\">범퍼</select></div>\n");
       out.write("                        <div align=\"left\"><font size=\"2\">가격</font></div>\n");
       out.write("                        <div align=\"right\"><input type=\"text\" name=\"casePrice\" size=\"10\" padding=\"10px\">원</div>\n");
+      out.write("                        <div align=\"left\"><font size=\"2\">설명</font></div>\n");
+      out.write("                        <div align=\"right\"><input type=\"text\" name=\"explanation\" size=\"10\" padding=\"10px\"></div>\n");
       out.write("\n");
       out.write("                        <hr size=\"1\">\n");
       out.write("                <br><center>\n");
@@ -277,21 +280,8 @@ public final class detailPage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    </center>\n");
       out.write("    <br><br>\n");
       out.write("    <center>\n");
-      out.write("        <textarea name=\"ir1\" id=\"ir1\"></textarea>\n");
-      out.write("        <div class=\"row text-right\">\n");
-      out.write("            <br>\n");
-      out.write("            <input type=\"button\" value=\"등록\" onClick=\"submitContents(this)\">\n");
-      out.write("        </div>\n");
-      out.write("        \n");
-      out.write("        <script type=\"text/javascript\">\n");
-      out.write("            var oEditors = [];\n");
-      out.write("            nhn.husky.EZCreator.createInIFrame({\n");
-      out.write("                oAppRef : oEditors,\n");
-      out.write("                elPlaceHolder : \"ir1\",\n");
-      out.write("                sSkinURI : \"smarteditor/SEditorSkin.html\",\n");
-      out.write("                fCreator : \"createSEditor\"\n");
-      out.write("            });\n");
-      out.write("            </script>\n");
+      out.write("        ");
+      out.write("\n");
       out.write("    </center>\n");
       out.write("\n");
       out.write("    ");

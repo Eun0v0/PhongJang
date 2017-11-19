@@ -28,6 +28,8 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
             throws IOException, ServletException {
         RequestDispatcher view = null;
         Status status = new Status();
+        request.setCharacterEncoding("EUC-KR");
+        
         request.setAttribute("status", status);
         PhoneCaseService PhoneCaseService = new PhoneCaseService();
         HttpSession HttpSession = request.getSession();
@@ -39,13 +41,14 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         String explanation = request.getParameter("explanation");
         int price = Integer.parseInt(request.getParameter("price"));
 
+        
         ArrayList<PhoneCase> phoneCases = new ArrayList<PhoneCase>();
         phoneCases = PhoneCaseService.getAllPhoneCase();
         request.setAttribute("phoneCases", phoneCases);
         request.setAttribute("user", user);
         request.setAttribute("caseID", caseID);
         
-        request.setCharacterEncoding("EUC-KR");
+        
         try {
             if ((caseType == null) || (caseType.length() == 0)) {
                 status.addException(new Exception(

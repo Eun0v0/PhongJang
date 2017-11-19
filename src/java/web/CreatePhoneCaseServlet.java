@@ -17,6 +17,7 @@ public class CreatePhoneCaseServlet extends HttpServlet {
             throws IOException, ServletException {
         processRequest(request, response);
     }
+       
     public void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
@@ -26,6 +27,7 @@ public class CreatePhoneCaseServlet extends HttpServlet {
         request.setCharacterEncoding("EUC-KR");
         request.setAttribute("user", HttpSession.getAttribute("user"));
         view = request.getRequestDispatcher("admin/create.jsp");
+        //view = request.getRequestDispatcher("admin/detailPage.jsp");
         view.forward(request, response);
     }
 }
