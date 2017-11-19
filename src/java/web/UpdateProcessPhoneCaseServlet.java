@@ -40,11 +40,13 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         
         MultipartRequest multi = new MultipartRequest(request, path, 1024 * 1024 * 5, "euc-kr",
                     new DefaultFileRenamePolicy());
-
+        request.setCharacterEncoding("EUC-KR");
+        
+        request.setAttribute("status", status);
         PhoneCaseService PhoneCaseService = new PhoneCaseService();
         HttpSession HttpSession = request.getSession();
         User user = (User) HttpSession.getAttribute("user");
-        
+
         
         /*
         int caseID = Integer.parseInt(request.getParameter("caseID"));

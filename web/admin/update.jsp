@@ -166,7 +166,7 @@
             <li><%= ex.getMessage()%><%}%></ul></font><%}%>
         <center>
         <h1>케이스 상세 페이지 작성</h1>
-        
+
         <form action="updateprocess" method="post" enctype="multipart/form-data">
             <table width="1100" height="300">
                 <hr size="1" width="1100">

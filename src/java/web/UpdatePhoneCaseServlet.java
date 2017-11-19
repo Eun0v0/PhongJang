@@ -31,7 +31,6 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
         HttpSession HttpSession = request.getSession();
         
         response.setContentType("text/html; charset=euc-kr");
-        
         request.setCharacterEncoding("EUC-KR");
         int caseID = Integer.parseInt(request.getParameter("caseID"));
         PhoneCaseService phoneCaseService = new PhoneCaseService();

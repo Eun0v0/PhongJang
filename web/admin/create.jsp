@@ -1,13 +1,4 @@
-<<<<<<< HEAD
 
-=======
-
-<%-- 
-    Document   : create
-    Created on : 2017. 11. 12, 오후 7:53:47
-    Author     : yukih
---%>
-<%-- test --%>
 <%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <%@page import="domain.User"%>
 <jsp:useBean id="status" scope="request" class="util.Status"/>
@@ -110,9 +101,6 @@
                         <div align="left">상품이미지 : </div>
                         <div align="right"><input type="file" name="img"><br> </div>
                         <hr size="1">
-
-                        <hr size="1">
-
                 <%--<tr><td>케이스 타입:</td><td>
                         <input type="text" name="caseType" size="20"></td></tr>
                 
@@ -126,11 +114,13 @@
                     </td>
                 </tr>
             </table>
-                <table> 
+                <table>
+
                     <td><tr><input type="submit" value="등록"> &nbsp;&nbsp; <input type="reset" value="다시쓰기"> </tr> </td>
                 </table>
             <hr size="1" width="1100">
         </form>
         </center>
     </body>
+
 </html>

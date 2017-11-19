@@ -109,7 +109,8 @@
                     <th width="60" height="35"><img src="image\view.jpg" width=60 height=40"></th>
                 </tr>
             </thead>
-            <%    for (int i = 0; i < qnas.size(); i++) {
+            <%--
+                for (int i = 0; i < qnas.size(); i++) {
                     Qna qna = qnas.get(i);
                     int qnaNum = qna.getQnaNum();
                     String userName = qna.getUserName();
@@ -136,6 +137,6 @@
         <!--<form action="boardWrite" method="post" OnClick="window.location = 'qnawrite.jsp'">
             <input type="image" src="image\boardwrite.jpg" name="Submit" value ="±Û¾²±â" aline="absmiddle">
         </form>-->
-    </center> 
+    </center> --%>
 </body>
 </html>
