@@ -4,13 +4,16 @@
     Author     : yukih
 --%>
 <%-- test --%>
+
 <%@page import="domain.User"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.net.URLEncoder"%>
+<%@page import="java.net.URLDecoder"%>
 <%@page import="domain.PhoneCase"%>
 <%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
         <title>Product List</title>
         <% ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");%>
         <% User user = (User) request.getAttribute("user");%>
@@ -94,14 +97,23 @@
             <%
                 for (int i = 0; i < phoneCases.size(); i++) {
                     PhoneCase phoneCase = phoneCases.get(i);
-            %> 
+                    int caseID = phoneCase.getCaseID();
+                    String caseType = phoneCase.getCaseType();
+                    String caseName = phoneCase.getCaseName();
+                    String explanation = phoneCase.getExplanation();
+                    int price = phoneCase.getPrice();
+                    
+                    String pcaseType = URLEncoder.encode(caseType);
+                    String pcaseName = URLEncoder.encode(caseName);
+                    String pexplanation =URLEncoder.encode(explanation);
+            %>      
             <tr>
-                <td align="center"><a href="update"><%=phoneCase.getCaseName()%>
-                        <input type="hidden" name="caseID" value="<%=phoneCase.getCaseID()%>">
-                        <input type="hidden" name="caseType" value="<%=phoneCase.getCaseType()%>">
-                        <input type="hidden" name="caseName" value="<%=phoneCase.getCaseName()%>">
-                        <input type="hidden" name="explanation" value="<%=phoneCase.getExplanation()%>">
-                        <input type="hidden" name="price" value="<%=phoneCase.getPrice()%>">
+                <%--<td align="center"><a href="update?caseID=<%=caseID%>&caseType=<%=pcaseType%>
+                                      &caseName=<%=pcaseName%>&explanation=<%=pexplanation%>
+                                      &price=<%=price%>"><%=caseName%>
+                    </a></td>--%>
+                
+                <td align="center"><a href="update?caseID=<%=caseID%>"><%=caseName%>
                     </a></td>
                 <%--<td align="center">
                     <form action="update" method="post">
@@ -123,5 +135,8 @@
             <% }%>
         </table>    
     </center>
+        <form action="create" method="post">
+            <input type="submit" value="새 상품 추가">
+        </form>
     </body>
 </html>

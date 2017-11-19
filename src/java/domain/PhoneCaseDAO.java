@@ -22,6 +22,8 @@ public class PhoneCaseDAO {
     private static final String UPDATE_STMT = "UPDATE shoppingProduct SET CaseName = ?, CaseType = ?, Explanation = ?, Price = ? WHERE CaseID = ?";
     private static final String GETID_STMT = "SELECT COUNT(CaseID) FROM shoppingproduct";
     private static final String DELETE_STMT = "DELETE FROM shoppingProduct WHERE CaseID = ?";
+    private static final String SELECT_STMT
+            = "SELECT * FROM shoppingproduct WHERE CaseID=?";
     
     
     //모든 데이터를 가져온다
@@ -142,6 +144,49 @@ public class PhoneCaseDAO {
             stmt.setString(4, explanation);
             stmt.setInt(5, price);
             stmt.executeQuery();
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
+
+    //상품을 불러온다
+    PhoneCase productGet(int caseID) {
+        PhoneCase phoneCase = null;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        
+        try {
+            //String SELECT_STMT = "SELECT * FROM shoppingproduct WHERE CaseID=?";
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(SELECT_STMT);
+            stmt.setInt(1, caseID);
+            rset = stmt.executeQuery();
+            while (rset.next()) {
+                int CaseID = rset.getInt(1);
+                String CaseName = rset.getString(2);
+                String CaseType = rset.getString(3);
+                String Explanation = rset.getString(4);
+                int Price = rset.getInt(5);
+                phoneCase = new PhoneCase(CaseID, CaseName, CaseType, Explanation, Price);
+            }
+            return phoneCase;
         } catch (SQLException se) {
             throw new RuntimeException(
                     "A database error occurred. " + se.getMessage());
