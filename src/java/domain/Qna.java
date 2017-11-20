@@ -12,16 +12,14 @@ public class Qna {
     String qnaTitle;
     String qnaContent;
     String qnaTime;
-    int qnaHits;
 
-    public Qna(int qnaNum, String userName, int passWord, String qnaTitle, String qnaContent, String qnaTime, int qnaHits) {
+    public Qna(int qnaNum, String userName, int passWord, String qnaTitle, String qnaContent, String qnaTime) {
         this.qnaNum = qnaNum;
         this.userName = userName;
         this.passWord = passWord;
         this.qnaTitle = qnaTitle;
         this.qnaContent = qnaContent;
         this.qnaTime = qnaTime;
-        this.qnaHits = qnaHits;
     }
 
     public int getQnaNum() {
@@ -70,13 +68,5 @@ public class Qna {
 
     public void setQnaTime(String qnaTime) {
         this.qnaTime = qnaTime;
-    }
-
-    public int getQnaHits() {
-        return qnaHits;
-    }
-
-    public void setQnaHits(int qnaHits) {
-        this.qnaHits = qnaHits;
     }
 }

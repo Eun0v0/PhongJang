@@ -35,7 +35,7 @@ public class QnaService {
         return qnas;
     }*/
 
-    public void insertPhoneCase(String userName, int passWord, String qnaTitle, String qnaContent, String qnaTime, int qnaHits) {
-        qnaDataAccess.qnaInsert(userName, passWord, qnaTitle, qnaContent, qnaTime, qnaHits);
+    public void insertPhoneCase(String userName, int passWord, String qnaTitle, String qnaContent, String qnaTime) {
+        qnaDataAccess.qnaInsert(userName, passWord, qnaTitle, qnaContent, qnaTime);
     }
 }
