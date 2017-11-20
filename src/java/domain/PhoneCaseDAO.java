@@ -19,8 +19,8 @@ public class PhoneCaseDAO {
     private DBConnectionPool connPool;
     private static final String ALLRETRIEVE_STMT
             = "SELECT * FROM shoppingproduct";
-    private static final String INSERT_STMT = "INSERT INTO shoppingProduct VALUES(?,?,?,?,?,?)";
-    private static final String UPDATE_STMT = "UPDATE shoppingProduct SET CaseName = ?, CaseType = ?, Explanation = ?, Price = ?, Image = ? WHERE CaseID = ?";
+    private static final String INSERT_STMT = "INSERT INTO shoppingProduct VALUES(?,?,?,?,?,?,?)";
+    private static final String UPDATE_STMT = "UPDATE shoppingProduct SET CaseName = ?, CaseType = ?, Explanation = ?, Price = ?, Image = ?, DeatilImage = ? WHERE CaseID = ?";
     private static final String GETID_STMT = "SELECT COUNT(CaseID) FROM shoppingProduct";
     private static final String DELETE_STMT = "DELETE FROM shoppingProduct WHERE CaseID = ?";
     private static final String SELECT_STMT
@@ -43,7 +43,8 @@ public class PhoneCaseDAO {
                 String Explanation = rset.getString(4);
                 int Price = rset.getInt(5);
                 String img = rset.getString(6);
-                phoneCase.add(new PhoneCase(CaseID, CaseName, CaseType, Explanation, Price, img));
+                String detailImg = rset.getString(7);
+                phoneCase.add(new PhoneCase(CaseID, CaseName, CaseType, Explanation, Price, img, detailImg));
             }
             return phoneCase;
         } catch (SQLException se) {
@@ -93,7 +94,8 @@ public class PhoneCaseDAO {
                 String Explanation = rset.getString(4);
                 int Price = rset.getInt(5);
                 String img= rset.getString(6);
-                phoneCase.add(new PhoneCase(CaseID, CaseName, CaseType, Explanation, Price, img));
+                String detailImg = rset.getString(7);
+                phoneCase.add(new PhoneCase(CaseID, CaseName, CaseType, Explanation, Price, img, detailImg));
             }
             return phoneCase;
         } catch (SQLException se) {
@@ -127,7 +129,7 @@ public class PhoneCaseDAO {
     }
 
     //새로운 상품 데이터를 입력한다.
-    void productInsert(String caseType, String caseName, String explanation, int price, String img) {
+    void productInsert(String caseType, String caseName, String explanation, int price, String img, String detailImg) {
 
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -148,6 +150,7 @@ public class PhoneCaseDAO {
             stmt.setString(4, explanation);
             stmt.setInt(5, price);
             stmt.setString(6, img);
+            stmt.setString(7,detailImg);
 
             stmt.executeQuery();
         } catch (SQLException se) {
@@ -191,7 +194,8 @@ public class PhoneCaseDAO {
                 String Explanation = rset.getString(4);
                 int Price = rset.getInt(5);
                 String img = rset.getString(6);
-                phoneCase = new PhoneCase(CaseID, CaseName, CaseType, Explanation, Price, img);
+                String detailImg = rset.getString(7);
+                phoneCase = new PhoneCase(CaseID, CaseName, CaseType, Explanation, Price, img, detailImg);
             }
             return phoneCase;
         } catch (SQLException se) {
@@ -216,7 +220,7 @@ public class PhoneCaseDAO {
     }
 
     //상품 데이터를 수정한다.
-    void productUpdate(int caseID, String caseType, String caseName, String explanation, int price, String img) {
+    void productUpdate(int caseID, String caseType, String caseName, String explanation, int price, String img, String detailImg) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
@@ -230,7 +234,8 @@ public class PhoneCaseDAO {
             stmt.setString(3, explanation);
             stmt.setInt(4, price);
             stmt.setString(5, img);
-            stmt.setInt(6, caseID);
+            stmt.setString(6, detailImg);
+            stmt.setInt(7, caseID);
             stmt.executeQuery();
         } catch (SQLException se) {
             throw new RuntimeException(

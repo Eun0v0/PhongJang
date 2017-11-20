@@ -57,7 +57,7 @@ public class ProcessPhoneCaseServlet extends HttpServlet {
             String explanation = multi.getParameter("explanation");
             int price = Integer.parseInt(multi.getParameter("price"));
             String img = multi.getFilesystemName("img");
-            String imgPath = path +"\\"+ img;
+            String detailImg = multi.getFilesystemName("detailImg");
             
             if ((caseType == null) || (caseType.length() == 0)) {
                 status.addException(new Exception(
@@ -77,7 +77,7 @@ public class ProcessPhoneCaseServlet extends HttpServlet {
             }
           
             try {
-                PhoneCaseService.insertPhoneCase(caseType, caseName, explanation, price, img);
+                PhoneCaseService.insertPhoneCase(caseType, caseName, explanation, price, img, detailImg);
                 //PhoneCaseService.insertPhoneCase(caseType, caseName, explanation, price, imgPath);
 
                 phoneCases = PhoneCaseService.getAllPhoneCase();

@@ -42,6 +42,7 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
         String explanation = phoneCase.getExplanation();
         int price = phoneCase.getPrice();
         String img = phoneCase.getImg();
+        String detailImg = phoneCase.getDetailImg();
         
         request.setAttribute("caseID", caseID);
         request.setAttribute("caseName", caseName);
@@ -49,6 +50,7 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
         request.setAttribute("explanation", explanation);
         request.setAttribute("price", price);
         request.setAttribute("img", img);
+        request.setAttribute("detailImg", detailImg);
 
         request.setAttribute("user", HttpSession.getAttribute("user"));
         request.setAttribute("phoneCase", HttpSession.getAttribute("phoneCase"));

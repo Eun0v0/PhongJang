@@ -63,7 +63,7 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         String explanation = multi.getParameter("explanation");
         int price = Integer.parseInt(multi.getParameter("price"));
         String img = multi.getFilesystemName("img");
-        String imgPath = path +"\\"+ img;
+        String detailImg = multi.getFilesystemName("detailImg");
         
         ArrayList<PhoneCase> phoneCases = new ArrayList<PhoneCase>();
         phoneCases = PhoneCaseService.getAllPhoneCase();
@@ -92,7 +92,7 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
             try {
                 //(int caseID, String caseType, String caseName, String explanation, int price)
 
-                PhoneCaseService.updatePhoneCase(caseID, caseType, caseName, explanation, price, img);
+                PhoneCaseService.updatePhoneCase(caseID, caseType, caseName, explanation, price, img, detailImg);
                 //PhoneCaseService.updatePhoneCase(caseID, caseType, caseName, explanation, price, imgPath);
                 
                 phoneCases = PhoneCaseService.getAllPhoneCase();
@@ -102,7 +102,7 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
                     view.forward(request, response);
                     return;
                 }
-                view = request.getRequestDispatcher("admin/main.jsp");
+                view = request.getRequestDispatcher("admin/list.jsp");
                 view.forward(request, response);
             } catch (Exception e) {
                 status.addException(e);
