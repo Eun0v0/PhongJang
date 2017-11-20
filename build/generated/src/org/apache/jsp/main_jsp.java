@@ -244,6 +244,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <br><br>\r\n");
       out.write("    <font size=\"5\"><center><b>&nbsp;&nbsp;BEST ITEMS<sup><font size=\"1\" color=\"red\">HIT!</font></sup></b></font>\r\n");
       out.write("        <hr width=\"13%\" size=\"2\" color=\"gray\"></center><br>\r\n");
+      out.write("\r\n");
       out.write("    <table align=\"center\" width =\"1000\" height=\"600\" cellpadding=\"15\">\r\n");
       out.write("        <tr>\r\n");
       out.write("            ");
@@ -266,7 +267,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
             
       out.write("\r\n");
       out.write("            <td width=\"25%\">\r\n");
-      out.write("                <a href=\"update?caseID=");
+      out.write("                <a href=\"detailPage?caseID=");
       out.print(caseID);
       out.write("\"><img src = \"image/upload/");
       out.print(imgPath);
@@ -283,13 +284,14 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <img src = \"image\\ic_best.png\"><br>\r\n");
       out.write("                <font size=\"4\"><b>");
       out.print(price);
-      out.write("</b></font>\r\n");
+      out.write("원</b></font>\r\n");
       out.write("            </td>\r\n");
       out.write("            ");
  }
       out.write("\r\n");
       out.write("        </tr>\r\n");
       out.write("    </table>\r\n");
+      out.write("\r\n");
       out.write("    <br><br>\r\n");
       out.write("    <hr size=\"2\" color=\"gray\"><br><br>\r\n");
       out.write("    <font size=\"5\"><center><b>NEW GOODS</b></font>\r\n");

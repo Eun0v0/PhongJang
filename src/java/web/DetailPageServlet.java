@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-public class UpdatePhoneCaseServlet extends HttpServlet {
+public class DetailPageServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
@@ -56,7 +56,7 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
         request.setAttribute("user", HttpSession.getAttribute("user"));
         request.setAttribute("phoneCase", HttpSession.getAttribute("phoneCase"));
         
-        view = request.getRequestDispatcher("admin/update.jsp");
+        view = request.getRequestDispatcher("detailPage.jsp");
         view.forward(request, response);
     }
 }
