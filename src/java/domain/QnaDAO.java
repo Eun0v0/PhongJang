@@ -15,12 +15,11 @@ import util.DBConnectionPool;
 public class QnaDAO {
 
     private DBConnectionPool connPool;
-    private static final String ALLRETRIEVE_STMT
-            = "SELECT * FROM boardQna";
-    private static final String INSERT_STMT = "INSERT INTO boardQna VALUES(?,?,?,?,?,?,?)";
-    private static final String UPDATE_STMT = "UPDATE shoppingProduct SET CaseName = ?, CaseType = ?, Explanation = ?, Price = ? WHERE CaseID = ?";
+    private static final String ALLRETRIEVE_STMT = "SELECT * FROM boardQna";
+    private static final String INSERT_STMT = "INSERT INTO boardQna VALUES(?,?,?,?,?,?)";
+   // private static final String UPDATE_STMT = "UPDATE shoppingProduct SET CaseName = ?, CaseType = ?, Explanation = ?, Price = ? WHERE CaseID = ?";
     private static final String GETNUM_STMT = "SELECT COUNT(QnaNum) FROM boardQna";
-    private static final String DELETE_STMT = "DELETE FROM boardQna WHERE QnaNum = ?";
+   // private static final String DELETE_STMT = "DELETE FROM boardQna WHERE QnaNum = ?";
 
     //모든 데이터를 가져온다
     ArrayList<Qna> allQnaRetrieve() throws SQLException {
@@ -39,8 +38,7 @@ public class QnaDAO {
                 String QnaTitle = rset.getString(4);
                 String QnaContent = rset.getString(5);
                 String QnaTime = rset.getString(6);
-                int QnaHits = rset.getInt(7);
-                qna.add(new Qna(QnaNum, UserName, PassWord, QnaTitle, QnaContent, QnaTime, QnaHits));
+                qna.add(new Qna(QnaNum, UserName, PassWord, QnaTitle, QnaContent, QnaTime));
             }
             return qna;
         } catch (SQLException se) {
@@ -74,7 +72,7 @@ public class QnaDAO {
     }
 
     //새로운 상품 데이터를 입력한다.
-    void qnaInsert(String userName, int passWord, String qnaTitle, String qnaContent, String qnaTime, int qnaHits) {
+    void qnaInsert(String userName, int passWord, String qnaTitle, String qnaContent, String qnaTime) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
@@ -93,7 +91,6 @@ public class QnaDAO {
             stmt.setString(4, qnaTitle);
             stmt.setString(5, qnaContent);
             stmt.setString(6, qnaTime);
-            stmt.setInt(7, qnaHits);
             stmt.executeQuery();
         } catch (SQLException se) {
             throw new RuntimeException(
