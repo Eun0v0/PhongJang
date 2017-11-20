@@ -188,9 +188,12 @@
                         
                 <tr><td width="900">가격:</td><td>
                         <textarea name="price" size="5"><%=request.getAttribute("price")%></textarea>
-                <tr><td width="900">상품이미지 : </td><td>
+                <tr><td width="900">상품 메인 이미지 : </td><td>
                         <input type="file" name="img"> <%=request.getAttribute("img")%>
+                <tr><td width="900">상품 상세 이미지 : </td><td>
+                        <input type="file" name="detailImg"> <%=request.getAttribute("detailImg")%>        
                         <hr size="1">
+                        
             </table>
             <hr size="1" width="1100">
             <input type="hidden" name="caseID" value="<%=caseID%>">

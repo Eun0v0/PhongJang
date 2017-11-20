@@ -218,4 +218,13 @@
         <servlet-name>ManagePhoneCaseController</servlet-name>
         <url-pattern>/managePhoneCase</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DetailPageController</servlet-name>
+        <servlet-class>web.DetailPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DetailPageController</servlet-name>
+        <url-pattern>/detailPage</url-pattern>
+    </servlet-mapping>
 </web-app>
