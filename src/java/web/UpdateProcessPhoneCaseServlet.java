@@ -35,7 +35,7 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         request.setCharacterEncoding("EUC-KR");
         
         request.setAttribute("status", status);
-        String path = request.getRealPath("/upload");
+        String path = request.getRealPath("/image/upload");
         PrintWriter out = response.getWriter();
         
         MultipartRequest multi = new MultipartRequest(request, path, 1024 * 1024 * 5, "euc-kr",
@@ -63,6 +63,7 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         String explanation = multi.getParameter("explanation");
         int price = Integer.parseInt(multi.getParameter("price"));
         String img = multi.getFilesystemName("img");
+        String imgPath = path +"\\"+ img;
         
         ArrayList<PhoneCase> phoneCases = new ArrayList<PhoneCase>();
         phoneCases = PhoneCaseService.getAllPhoneCase();
@@ -92,6 +93,8 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
                 //(int caseID, String caseType, String caseName, String explanation, int price)
 
                 PhoneCaseService.updatePhoneCase(caseID, caseType, caseName, explanation, price, img);
+                //PhoneCaseService.updatePhoneCase(caseID, caseType, caseName, explanation, price, imgPath);
+                
                 phoneCases = PhoneCaseService.getAllPhoneCase();
                 request.setAttribute("phoneCases", phoneCases);
                 if (!status.isSuccessful()) {
