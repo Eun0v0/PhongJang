@@ -114,11 +114,6 @@
                     String pexplanation = URLEncoder.encode(explanation);
             %>      
             <tr>
-                <%--<td align="center"><a href="update?caseID=<%=caseID%>&caseType=<%=pcaseType%>
-                                      &caseName=<%=pcaseName%>&explanation=<%=pexplanation%>
-                                      &price=<%=price%>"><%=caseName%>
-                    </a></td>--%>
-
                 <td align="center"><a href="update?caseID=<%=caseID%>"><%=caseName%>
                     </a></td>
                 <td align="center">

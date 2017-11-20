@@ -64,7 +64,7 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         int price = Integer.parseInt(multi.getParameter("price"));
         String img = multi.getFilesystemName("img");
         String detailImg = multi.getFilesystemName("detailImg");
-        
+         
         ArrayList<PhoneCase> phoneCases = new ArrayList<PhoneCase>();
         phoneCases = PhoneCaseService.getAllPhoneCase();
         request.setAttribute("phoneCases", phoneCases);
