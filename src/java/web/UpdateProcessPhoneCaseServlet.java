@@ -102,7 +102,7 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
                     view.forward(request, response);
                     return;
                 }
-                view = request.getRequestDispatcher("admin/list.jsp");
+                view = request.getRequestDispatcher("admin/main.jsp");
                 view.forward(request, response);
             } catch (Exception e) {
                 status.addException(e);

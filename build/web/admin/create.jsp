@@ -14,7 +14,7 @@
                 <% if (user == null) { %>
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                        <input type="submit" value="상품 관리">
+                        <input type="submit" value="상품 추가">
                     </a></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\order.jpg"></a>
@@ -26,8 +26,8 @@
                         <input type="image" src="image\logout.jpg" name="Submit" value ="로그아웃">
                     </form> 
                 </td>
-                <td><form action="managePhoneCase" method="post">
-                        <input type="submit" value="상품 관리">
+                <td><form action="create" method="post">
+                        <input type="submit" value="상품 추가">
                     </form>
                 </td>
 
@@ -103,18 +103,8 @@
                         <div align="right"><input type="file" name="img"><br> </div>
                         <div align="left">상품 상세 이미지 : </div>
                         <div align="right"><input type="file" name="detailImg"><br> </div>
-                            <br> </div>
+                        <br> </div>
                         <hr size="1">
-                        <%--<tr><td>케이스 타입:</td><td>
-                                <input type="text" name="caseType" size="20"></td></tr>
-                        
-                        <tr><td>케이스 이름:</td><td>
-                                <input type="text" name="caseName" size="20"></td></tr>
-                        <tr><td>설명:</td><td>
-                                <input type="text" name="explanation" size="50"></td></tr>
-                        <tr><td>가격:</td><td>
-                                <input type="text" name="price" size="5"></td></tr>--%>
-
                     </td>
                 </tr>
             </table>
