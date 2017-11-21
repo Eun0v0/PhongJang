@@ -138,7 +138,7 @@
         <url-pattern>/createprocess</url-pattern>
     </servlet-mapping>
     
-     <servlet>
+    <servlet>
         <servlet-name>UpdatePhoneCaseController</servlet-name>
         <servlet-class>web.UpdatePhoneCaseServlet</servlet-class>
     </servlet>
@@ -226,5 +226,23 @@
     <servlet-mapping>
         <servlet-name>DetailPageController</servlet-name>
         <url-pattern>/detailPage</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>CreateQnaController</servlet-name>
+        <servlet-class>web.CreateQnaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateQnaController</servlet-name>
+        <url-pattern>/createQna</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>ShowQnaListController</servlet-name>
+        <servlet-class>web.ManageQnaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowQnaListController</servlet-name>
+        <url-pattern>/qnaList</url-pattern>
     </servlet-mapping>
 </web-app>

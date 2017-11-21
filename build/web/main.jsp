@@ -128,13 +128,17 @@
                         <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE">
                     </form>    
                 </td>
+
                 <%  }%>
                 <td><form action="IDCheck" method="post">
                         <input type="image" src="image\join.jpg" name="Submit" value ="회원가입">
                     </form>    
                 </td>
 
-                <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
+                <td><form action="qnaList" methoe="post">
+                        <input type="image" src="image\q&a.jpg" name="Submit" value="Q&A">
+                    </form>
+                </td>
             </tr>
         </table>
         <% if (user != null) {%>
