@@ -34,6 +34,9 @@
                         <input type="submit" value="상품 추가">
                     </a></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                        <input type="submit" value="재고 관리">
+                    </a></td>
+                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\order.jpg"></a>
                 </td>
 
@@ -47,7 +50,10 @@
                         <input type="submit" value="상품 추가">
                     </form>
                 </td>
-
+                <td><form action="manageStock" method="post">
+                        <input type="submit" value="재고 관리">
+                    </form>
+                </td>
                 <td><form action="paymentlist" method="post">
                         <input type="image" src="image\order.jpg" name="Submit" value="모든 결제내역">
                     </form> 
@@ -81,25 +87,25 @@
             <tr>
                 <td><a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\bumperCase2.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="범퍼">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\hardCase.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="하드">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\jellyCase.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="젤리">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a></td> 
             </tr>
         </table>
@@ -113,41 +119,36 @@
         <table border="2px">
             <tr>
                 <th width="100">케이스 이름</th>
-                <th width="100" height="100">케이스 사진</th>
-                <th width="150">삭제</th>
+                <th width="200">재고</th>
+                <th width="100">삭제</th>
             </tr>
             <%
                 for (int i = 0; i < phoneCases.size(); i++) {
                     PhoneCase phoneCase = phoneCases.get(i);
+                    int stock = phoneCase.getStock();
                     int caseID = phoneCase.getCaseID();
                     String caseType = phoneCase.getCaseType();
                     String caseName = phoneCase.getCaseName();
                     String explanation = phoneCase.getExplanation();
                     int price = phoneCase.getPrice();
                     String imgPath = phoneCase.getImg();
-
-                    String pcaseType = URLEncoder.encode(caseType);
-                    String pcaseName = URLEncoder.encode(caseName);
-                    String pexplanation = URLEncoder.encode(explanation);
             %>      
             <tr>
-                <td align="center"><a href="update?caseID=<%=caseID%>"><%=caseName%>
-                    </a></td>
-                <td align="center">
-                <img src="image/upload/<%=imgPath%>" height="240" width="280"/>    
-                </td>
+                <td align="center"><%=caseName%></td>
+                <td align="center"><form action = "stockChange" method = "post">
+                        <textarea name="stock" cols="10" rows="2"><%=stock%></textarea>
+                        <input type="hidden" name="caseID" value="<%=caseID%>"> <input type ="submit" value="재고 수정">
+                    </form></td>
                 <td align="center">
                     <form action="deleteCase" method="post">
-                        <input type="hidden" name="caseID" value="<%=phoneCase.getCaseID()%>">
+                        <input type="hidden" name="caseID" value="<%=caseID%>">
                         <input type="submit" value="삭제">
                     </form>
                 </td>
             </tr>
             <% }%>
-        </table>    
+        </table>
+        <br><br><br>
     </center>
-    <form action="create" method="post">
-        <input type="submit" value="새 상품 추가">
-    </form>
 </body>
 </html>

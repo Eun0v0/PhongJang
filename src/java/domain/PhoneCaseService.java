@@ -62,4 +62,7 @@ public class PhoneCaseService {
         }
         return phoneCases;
     }
+    public void stockChange(int caseID, int stock){
+        phoneCaseDataAccess.stockChange(caseID, stock);
+    }
 }

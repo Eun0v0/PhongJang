@@ -210,13 +210,23 @@
         <servlet-name>CreateQnaController</servlet-name>
         <url-pattern>/createQna</url-pattern>
     </servlet-mapping>
-    <servlet>
+    
+     <servlet>
         <servlet-name>ShowQnaListController</servlet-name>
         <servlet-class>web.ManageQnaServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ShowQnaListController</servlet-name>
         <url-pattern>/qnaList</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>ProcessQnaController</servlet-name>
+        <servlet-class>web.ProcessQnaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProcessQnaController</servlet-name>
+        <url-pattern>/writeQna</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>CaseTypeController</servlet-name>
@@ -225,5 +235,23 @@
     <servlet-mapping>
         <servlet-name>CaseTypeController</servlet-name>
         <url-pattern>/caseTypePage</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ManageStockController</servlet-name>
+        <servlet-class>web.ManageStockServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManageStockController</servlet-name>
+        <url-pattern>/manageStock</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>StockChangeController</servlet-name>
+        <servlet-class>web.StockChangeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StockChangeController</servlet-name>
+        <url-pattern>/stockChange</url-pattern>
     </servlet-mapping>
 </web-app>

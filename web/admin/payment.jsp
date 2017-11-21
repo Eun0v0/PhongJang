@@ -30,6 +30,9 @@
                         <input type="submit" value="상품 추가">
                     </a></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                        <input type="submit" value="재고 관리">
+                    </a></td>
+                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\order.jpg"></a>
                 </td>
 
@@ -43,7 +46,10 @@
                         <input type="submit" value="상품 추가">
                     </form>
                 </td>
-
+                <td><form action="manageStock" method="post">
+                        <input type="submit" value="재고 관리">
+                    </form>
+                </td>
                 <td><form action="paymentlist" method="post">
                         <input type="image" src="image\order.jpg" name="Submit" value="모든 결제내역">
                     </form> 
@@ -77,25 +83,25 @@
             <tr>
                 <td><a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\bumperCase2.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="범퍼">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\hardCase.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="하드">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\jellyCase.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="젤리">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a></td> 
             </tr>
         </table>

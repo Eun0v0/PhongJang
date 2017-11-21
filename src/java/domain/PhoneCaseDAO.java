@@ -28,7 +28,7 @@ public class PhoneCaseDAO {
     private static final String TYPESELECT_STMT
             = "SELECT * FROM shoppingProduct WHERE CaseType=?";
     private static final String STOCK_STMT
-            = "UPDATE shoppingProduct SET Stock = ? WHERE caseID=?";
+            = "UPDATE shoppingProduct SET Stock = ? WHERE CaseID=?";
     
 
     //모든 데이터를 가져온다
@@ -350,7 +350,7 @@ public class PhoneCaseDAO {
             }
         }
     }
-    //상품 데이터를 삭제한다.
+    //상품 데이터를 재고를 수정한다.
     void stockChange(int stock, int caseID) {
         Connection conn = null;
         PreparedStatement stmt = null;

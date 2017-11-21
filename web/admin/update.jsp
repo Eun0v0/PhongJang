@@ -101,6 +101,9 @@
                         <input type="submit" value="상품 추가">
                     </a></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                        <input type="submit" value="재고 관리">
+                    </a></td>
+                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\order.jpg"></a>
                 </td>
 
@@ -114,7 +117,10 @@
                         <input type="submit" value="상품 추가">
                     </form>
                 </td>
-
+                <td><form action="manageStock" method="post">
+                        <input type="submit" value="재고 관리">
+                    </form>
+                </td>
                 <td><form action="paymentlist" method="post">
                         <input type="image" src="image\order.jpg" name="Submit" value="모든 결제내역">
                     </form> 
