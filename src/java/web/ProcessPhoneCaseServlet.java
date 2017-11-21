@@ -58,6 +58,7 @@ public class ProcessPhoneCaseServlet extends HttpServlet {
             int price = Integer.parseInt(multi.getParameter("price"));
             String img = multi.getFilesystemName("img");
             String detailImg = multi.getFilesystemName("detailImg");
+            int stock = 10; //기본 수량은 10개로 지정
             
             if ((caseType == null) || (caseType.length() == 0)) {
                 status.addException(new Exception(
@@ -77,7 +78,7 @@ public class ProcessPhoneCaseServlet extends HttpServlet {
             }
           
             try {
-                PhoneCaseService.insertPhoneCase(caseType, caseName, explanation, price, img, detailImg);
+                PhoneCaseService.insertPhoneCase(caseType, caseName, explanation, price, img, detailImg, stock);
                 //PhoneCaseService.insertPhoneCase(caseType, caseName, explanation, price, imgPath);
 
                 phoneCases = PhoneCaseService.getAllPhoneCase();

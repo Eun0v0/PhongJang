@@ -222,9 +222,6 @@
                 <img src = "image\ic_best.png"><br>
                 <font size="4"><b><%=price%>¿ø</b></font>
             </td>
-            <% if (phoneCases.size() % 4 == 0) { %>
-                    <br><br>
-                <% }
             }%>
     </table>
 

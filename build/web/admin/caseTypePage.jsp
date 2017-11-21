@@ -94,7 +94,7 @@
         <table border="0px">
             <tr>
                 <%  User user = (User) request.getAttribute("user");
-                if (user == null) { %>
+                    if (user == null) { %>
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <input type="submit" value="상품 추가">
@@ -144,32 +144,34 @@
 
     <hr size="5" color="black">
     <center>
-        <table>
-            <tr>
-                <td><a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a></td>
-                <td><img src="image\space.jpg" height="35" width="80"></td>
-                
-                <td><form action ="caseTypePage" method="post">
-                        <input type="image" src="image\bumperCase2.jpg" name="Submit" height="35" width="140">
-                        <input type="hidden" name="caseType" value="범퍼">
-                    </form></td>
-                <td><img src="image\space.jpg" height="35" width="80"></td>
-                
-                <td><form action ="caseTypePage" method="post">
-                        <input type="image" src="image\hardCase.jpg" name="Submit" height="35" width="140">
-                        <input type="hidden" name="caseType" value="하드">
-                    </form></td>
-                <td><img src="image\space.jpg" height="35" width="80"></td>
-                
-                <td><form action ="caseTypePage" method="post">
-                        <input type="image" src="image\jellyCase.jpg" name="Submit" height="35" width="140">
-                        <input type="hidden" name="caseType" value="젤리">
-                    </form></td>
-                <td><img src="image\space.jpg" height="35" width="80"></td>
-                
-                <td><a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a></td> 
-            </tr>
-        </table>
+        <center>
+            <table>
+                <tr>
+                    <td><a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a></td>
+                    <td><img src="image\space.jpg" height="35" width="80"></td>
+
+                    <td><form action ="caseTypePage" method="post">
+                            <input type="image" src="image\bumperCase2.jpg" name="Submit" height="35" width="140">
+                            <input type="hidden" name="caseType" value="범퍼">
+                        </form></td>
+                    <td><img src="image\space.jpg" height="35" width="80"></td>
+
+                    <td><form action ="caseTypePage" method="post">
+                            <input type="image" src="image\hardCase.jpg" name="Submit" height="35" width="140">
+                            <input type="hidden" name="caseType" value="하드">
+                        </form></td>
+                    <td><img src="image\space.jpg" height="35" width="80"></td>
+
+                    <td><form action ="caseTypePage" method="post">
+                            <input type="image" src="image\jellyCase.jpg" name="Submit" height="35" width="140">
+                            <input type="hidden" name="caseType" value="젤리">
+                        </form></td>
+                    <td><img src="image\space.jpg" height="35" width="80"></td>
+
+                    <td><a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a></td> 
+                </tr>
+            </table>
+        </center>
     </center>
     <hr size="5" color="black">
 
@@ -178,31 +180,27 @@
     <font size="5"><center><b>&nbsp;&nbsp;<%=m_caseType%> 케이스<sup><font size="1" color="red">HIT!</font></sup></b></font>
         <hr width="13%" size="2" color="gray"></center><br>
 
- <table align="center" width ="1000" height="400" cellpadding="15">
+    <table align="center" width ="1000" height="400" cellpadding="15">
         <tr>
             <%
-                PhoneCaseService phoneCaseService = new PhoneCaseService();
-                ArrayList<PhoneCase> phoneCases = phoneCaseService.getAllPhoneCase();;
+                ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
                 session.setAttribute("phoneCases", phoneCases);
-                if (phoneCases.size() != 0) {
-                    for (int i = 0; i < 4; i++) {
-                        PhoneCase phoneCase = phoneCases.get(i);
-                        int caseID = phoneCase.getCaseID();
-                        String caseType = phoneCase.getCaseType();
-                        String caseName = phoneCase.getCaseName();
-                        String explanation = phoneCase.getExplanation();
-                        int price = phoneCase.getPrice();
-                        String imgPath = phoneCase.getImg();
+                for (int i = 0; i < phoneCases.size(); i++) {
+                    PhoneCase phoneCase = phoneCases.get(i);
+                    int caseID = phoneCase.getCaseID();
+                    String caseType = phoneCase.getCaseType();
+                    String caseName = phoneCase.getCaseName();
+                    String explanation = phoneCase.getExplanation();
+                    int price = phoneCase.getPrice();
+                    String imgPath = phoneCase.getImg();
             %>
             <td width="25%">
-                <a href="update?caseID=<%=caseID%>"><img src = "image/upload/<%=imgPath%>" height="240" width="280" alt="<%=caseName%>" title="<%=caseName%>"/><br><br><%=caseName%>(<%=caseType%>)</a>
+                <a href="detailPage?caseID=<%=caseID%>"><img src = "image/upload/<%=imgPath%>" height="240" width="280" alt="<%=caseName%>" title="<%=caseName%>"/><br><br><%=caseName%>(<%=caseType%>)</a>
                 <br><hr size="1" color="black">
                 <img src = "image\ic_best.png"><br>
-                <font size="4"><b><%=price%></b></font>
+                <font size="4"><b><%=price%>원</b></font>
             </td>
-            <% }
-                }%>
-        </tr>
+            }%>
     </table>
     <div id="gotop">
         <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>

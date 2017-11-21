@@ -36,8 +36,8 @@ public class PhoneCaseService {
         return phoneCases;
     }
 
-    public void insertPhoneCase(String caseType, String caseName, String explanation, int price, String img, String detailImg) {
-        phoneCaseDataAccess.productInsert(caseType, caseName, explanation, price, img, detailImg);
+    public void insertPhoneCase(String caseType, String caseName, String explanation, int price, String img, String detailImg, int stock) {
+        phoneCaseDataAccess.productInsert(caseType, caseName, explanation, price, img, detailImg, stock);
     }
     
     //(int caseID, String caseType, String caseName, String explanation, int price)
