@@ -100,14 +100,13 @@
 
     <center></br></br><img src="image\qnalist.jpg"><br><br></center>
     <center><table>
-                <tr>
-                    <th width="60" height="35"><img src="image\boardnum.jpg" width=60 height=40"></th>
-                    <th width="250" height="35"><img src="image\boardtitle.jpg" width=250 height=40"></th>
-                    <th width="120" height="35"><img src="image\writer.jpg" width=120 height=40"></th>
-                    <th width="140" height="35"><img src="image\writedate.jpg" width=140 height=40"></th>
-                    <th width="60" height="35"><img src="image\view.jpg" width=60 height=40"></th>
-                    <th width="30" height="35">삭제</th>
-                </tr>
+            <tr>
+                <th width="60" height="35"><img src="image\boardnum.jpg" width=60 height=40"></th>
+                <th width="250" height="35"><img src="image\boardtitle.jpg" width=250 height=40"></th>
+                <th width="120" height="35"><img src="image\writer.jpg" width=120 height=40"></th>
+                <th width="140" height="35"><img src="image\writedate.jpg" width=140 height=40"></th>
+                <th width="30" height="35">삭제</th>
+            </tr>
             <%
                 for (int i = 0; i < qnas.size(); i++) {
                     Qna qna = qnas.get(i);
@@ -122,20 +121,19 @@
                     String pqnaTitle = URLEncoder.encode(qnaTitle);
                     String pqnaContent =URLEncoder.encode(qnaContent);
             %>
-            <tbody>
-                <tr>
-                    <td bgcolor="#dcdcdc" height="40" align="center"><a href="update?qnaNum=<%=qnaNum%>"></a></td>
-                    <td bgcolor="#dcdcdc" height="40"><a href="update?userName=<%=userName%>"></a></td>
-                    <td bgcolor="#dcdcdc" height="40" align="center"><a href="update?qnaTitle=<%=qnaTitle%>"></a></td>
-                    <td bgcolor="#dcdcdc" height="40" align="center"><a href="update?qnaTime=<%=qnaTime%>"></a></td>
-                    <td bgcolor="#dcdcdc" height="40" align="center"><a href="update?qnaHits=<%=qnaHits%>"><a/></td>
-                    <td bgcolor="#dcdcdc" height="40" align="center">삭제</td>   
+            <tr>
+                <td bgcolor="#dcdcdc" height="40" align="center"><%=qnaNum%></td>
+                <td bgcolor="#dcdcdc" height="40" align="center"><a href="updateQna?qnaNum=<%=qnaNum%>"><%=qnaTitle%></a></td>
+                <td bgcolor="#dcdcdc" height="40"><%=userName%></td>
+                <td bgcolor="#dcdcdc" height="40" align="center"><%=qnaTime%></td>
+                <td bgcolor="#dcdcdc" height="40" align="center">삭제</td>   
             </tr>
-            </tbody>
+            <% }%>
         </table></br></br>
-        <form action="boardWrite" method="post" OnClick="window.location = 'qnawrite.jsp'">
-            <input type="image" src="image\boardwrite.jpg" name="Submit" value ="글쓰기" aline="absmiddle">
+        <form action="createQna" method="post">
+            <!-- <input type="image" src="image\boardwrite.jpg" value ="글쓰기" aline="absmiddle">-->
+            <input type="submit" value="글쓰기">
         </form>
-    </center> --%>
+    </center>
 </body>
 </html>

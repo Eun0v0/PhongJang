@@ -28,7 +28,7 @@ public class CreateQnaServlet extends HttpServlet {
         
         request.setCharacterEncoding("EUC-KR");
         request.setAttribute("user", HttpSession.getAttribute("user"));
-        view = request.getRequestDispatcher("admin/create.jsp");
+        view = request.getRequestDispatcher("qnaCreate.jsp");
         //view = request.getRequestDispatcher("admin/detailPage.jsp");
         view.forward(request, response);
     }
