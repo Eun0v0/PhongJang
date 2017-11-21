@@ -164,25 +164,25 @@
             <tr>
                 <td><a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\bumperCase2.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="범퍼">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\hardCase.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="하드">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\jellyCase.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="젤리">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a></td> 
             </tr>
         </table>
@@ -190,14 +190,17 @@
     <hr size="5" color="black">
 
     <br><br>
-    <%String m_caseType = (String) request.getAttribute("caseType");%>
+    <%String m_caseType = (String) request.getAttribute("caseType");
+    if(m_caseType == null) { %>
+    <font size="5"><center><b>&nbsp;&nbsp; 검색 케이스 목록</b></font>
+        <% } else { %>
     <font size="5"><center><b>&nbsp;&nbsp;<%=m_caseType%> 케이스<sup><font size="1" color="red">HIT!</font></sup></b></font>
+        <% } %>
         <hr width="13%" size="2" color="gray"></center><br>
 
     <table align="center" width ="1000" height="400" cellpadding="15">
         <tr>
             <%
-                PhoneCaseService phoneCaseService = new PhoneCaseService();
                 ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
                 session.setAttribute("phoneCases", phoneCases);
                 for (int i = 0; i < phoneCases.size(); i++) {
@@ -219,8 +222,10 @@
                 <img src = "image\ic_best.png"><br>
                 <font size="4"><b><%=price%>원</b></font>
             </td>
-            <% }%>
-        </tr>
+            <% if (phoneCases.size() % 4 == 0) { %>
+                    <br><br>
+                <% }
+            }%>
     </table>
 
 

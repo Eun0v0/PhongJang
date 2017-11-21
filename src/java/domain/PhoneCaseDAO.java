@@ -18,7 +18,7 @@ public class PhoneCaseDAO {
 
     private DBConnectionPool connPool;
     private static final String ALLRETRIEVE_STMT
-            = "SELECT * FROM shoppingproduct";
+            = "SELECT * FROM shoppingproduct ORDER BY CaseID";
     private static final String INSERT_STMT = "INSERT INTO shoppingProduct VALUES(?,?,?,?,?,?,?)";
     private static final String UPDATE_STMT = "UPDATE shoppingProduct SET CaseName = ?, CaseType = ?, Explanation = ?, Price = ?, Image = ?, DetailImage = ? WHERE CaseID = ?";
     private static final String GETID_STMT = "SELECT COUNT(CaseID) FROM shoppingProduct";

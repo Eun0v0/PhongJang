@@ -178,24 +178,21 @@
     <font size="5"><center><b>&nbsp;&nbsp;<%=m_caseType%> ƒ…¿ÃΩ∫<sup><font size="1" color="red">HIT!</font></sup></b></font>
         <hr width="13%" size="2" color="gray"></center><br>
 
-    <table align="center" width ="1000" height="400" cellpadding="15">
+ <table align="center" width ="1000" height="400" cellpadding="15">
         <tr>
             <%
                 PhoneCaseService phoneCaseService = new PhoneCaseService();
-                ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
+                ArrayList<PhoneCase> phoneCases = phoneCaseService.getAllPhoneCase();;
                 session.setAttribute("phoneCases", phoneCases);
-                for (int i = 0; i < phoneCases.size(); i++) {
-                    PhoneCase phoneCase = phoneCases.get(i);
-                    int caseID = phoneCase.getCaseID();
-                    String caseType = phoneCase.getCaseType();
-                    String caseName = phoneCase.getCaseName();
-                    String explanation = phoneCase.getExplanation();
-                    int price = phoneCase.getPrice();
-                    String imgPath = phoneCase.getImg();
-
-                    String pcaseType = URLEncoder.encode(caseType);
-                    String pcaseName = URLEncoder.encode(caseName);
-                    String pexplanation = URLEncoder.encode(explanation);
+                if (phoneCases.size() != 0) {
+                    for (int i = 0; i < 4; i++) {
+                        PhoneCase phoneCase = phoneCases.get(i);
+                        int caseID = phoneCase.getCaseID();
+                        String caseType = phoneCase.getCaseType();
+                        String caseName = phoneCase.getCaseName();
+                        String explanation = phoneCase.getExplanation();
+                        int price = phoneCase.getPrice();
+                        String imgPath = phoneCase.getImg();
             %>
             <td width="25%">
                 <a href="update?caseID=<%=caseID%>"><img src = "image/upload/<%=imgPath%>" height="240" width="280" alt="<%=caseName%>" title="<%=caseName%>"/><br><br><%=caseName%>(<%=caseType%>)</a>
@@ -203,11 +200,10 @@
                 <img src = "image\ic_best.png"><br>
                 <font size="4"><b><%=price%></b></font>
             </td>
-            <% }%>
+            <% }
+                }%>
         </tr>
     </table>
-
-
     <div id="gotop">
         <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>
         <img src="image\cursor1.jpg" height="50" width="50"> <br>

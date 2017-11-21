@@ -150,7 +150,8 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <tr>\r\n");
       out.write("                ");
   User user = (User) request.getAttribute("user");
-                    if (user == null) { session.setAttribute("user", user); 
+                    if (user == null) {
+                        session.setAttribute("user", user); 
       out.write("\r\n");
       out.write("                <td><img src=\"image\\login.jpg\" onClick=\"location.assign('login.jsp')\"></td>\r\n");
       out.write("                <td><a OnClick=\"alert('로그인을 해주세요!')\" style=\"cursor:pointer\">\r\n");
@@ -237,25 +238,25 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <tr>\r\n");
       out.write("                <td><a href=\"Top-main.jsp\"><img src=\"image\\customCase3.jpg\" height=\"35\" width=\"140\"></a></td>\r\n");
       out.write("                <td><img src=\"image\\space.jpg\" height=\"35\" width=\"80\"></td>\r\n");
-      out.write("                \r\n");
+      out.write("\r\n");
       out.write("                <td><form action =\"caseTypePage\" method=\"post\">\r\n");
       out.write("                        <input type=\"image\" src=\"image\\bumperCase2.jpg\" name=\"Submit\" height=\"35\" width=\"140\">\r\n");
       out.write("                        <input type=\"hidden\" name=\"caseType\" value=\"범퍼\">\r\n");
       out.write("                    </form></td>\r\n");
       out.write("                <td><img src=\"image\\space.jpg\" height=\"35\" width=\"80\"></td>\r\n");
-      out.write("                \r\n");
+      out.write("\r\n");
       out.write("                <td><form action =\"caseTypePage\" method=\"post\">\r\n");
       out.write("                        <input type=\"image\" src=\"image\\hardCase.jpg\" name=\"Submit\" height=\"35\" width=\"140\">\r\n");
       out.write("                        <input type=\"hidden\" name=\"caseType\" value=\"하드\">\r\n");
       out.write("                    </form></td>\r\n");
       out.write("                <td><img src=\"image\\space.jpg\" height=\"35\" width=\"80\"></td>\r\n");
-      out.write("                \r\n");
+      out.write("\r\n");
       out.write("                <td><form action =\"caseTypePage\" method=\"post\">\r\n");
       out.write("                        <input type=\"image\" src=\"image\\jellyCase.jpg\" name=\"Submit\" height=\"35\" width=\"140\">\r\n");
       out.write("                        <input type=\"hidden\" name=\"caseType\" value=\"젤리\">\r\n");
       out.write("                    </form></td>\r\n");
       out.write("                <td><img src=\"image\\space.jpg\" height=\"35\" width=\"80\"></td>\r\n");
-      out.write("                \r\n");
+      out.write("\r\n");
       out.write("                <td><a href=\"event.jsp\"><img src=\"image\\event_.jpg\" height=\"35\" width=\"140\"></a></td> \r\n");
       out.write("            </tr>\r\n");
       out.write("        </table>\r\n");
@@ -273,18 +274,15 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
                 PhoneCaseService phoneCaseService = new PhoneCaseService();
                 ArrayList<PhoneCase> phoneCases = phoneCaseService.getAllPhoneCase();;
                 session.setAttribute("phoneCases", phoneCases);
-                for (int i = 0; i < phoneCases.size(); i++) {
-                    PhoneCase phoneCase = phoneCases.get(i);
-                    int caseID = phoneCase.getCaseID();
-                    String caseType = phoneCase.getCaseType();
-                    String caseName = phoneCase.getCaseName();
-                    String explanation = phoneCase.getExplanation();
-                    int price = phoneCase.getPrice();
-                    String imgPath = phoneCase.getImg();
-
-                    String pcaseType = URLEncoder.encode(caseType);
-                    String pcaseName = URLEncoder.encode(caseName);
-                    String pexplanation = URLEncoder.encode(explanation);
+                if (phoneCases.size() != 0) {
+                    for (int i = 0; i < 4; i++) {
+                        PhoneCase phoneCase = phoneCases.get(i);
+                        int caseID = phoneCase.getCaseID();
+                        String caseType = phoneCase.getCaseType();
+                        String caseName = phoneCase.getCaseName();
+                        String explanation = phoneCase.getExplanation();
+                        int price = phoneCase.getPrice();
+                        String imgPath = phoneCase.getImg();
             
       out.write("\r\n");
       out.write("            <td width=\"25%\">\r\n");
@@ -309,6 +307,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </td>\r\n");
       out.write("            ");
  }
+                }
       out.write("\r\n");
       out.write("        </tr>\r\n");
       out.write("    </table>\r\n");
@@ -318,61 +317,86 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <font size=\"5\"><center><b>NEW GOODS</b></font>\r\n");
       out.write("        <hr width=\"13%\" size=\"2\" color=\"gray\"></center><br>\r\n");
       out.write("\r\n");
-      out.write("    <table align=\"center\" width =\"1000\" height=\"600\" cellpadding=\"15\">\r\n");
+      out.write("    <table align=\"center\" width =\"1000\" height=\"400\" cellpadding=\"15\">\r\n");
       out.write("        <tr>\r\n");
+      out.write("            ");
+  if (phoneCases.size() != 0) {
+                    for (int j = phoneCases.size() - 1; j >= phoneCases.size() - 4; j--) {
+                        PhoneCase phoneCase = phoneCases.get(j);
+                        int caseID = phoneCase.getCaseID();
+                        String caseType = phoneCase.getCaseType();
+                        String caseName = phoneCase.getCaseName();
+                        String explanation = phoneCase.getExplanation();
+                        int price = phoneCase.getPrice();
+                        String imgPath = phoneCase.getImg();
+            
+      out.write("\r\n");
       out.write("            <td width=\"25%\">\r\n");
-      out.write("                <a href=\"Top-2.jsp\"><img src = \"image\\TOP2.gif\"  alt=\"프리즈 체크셔츠\" title=\"프리즈 체크셔츠\"><br><br>프리즈 체크셔츠 | 기모 피치면</a>\r\n");
+      out.write("                <a href=\"detailPage?caseID=");
+      out.print(caseID);
+      out.write("\"><img src = \"image/upload/");
+      out.print(imgPath);
+      out.write("\" height=\"240\" width=\"280\" alt=\"");
+      out.print(caseName);
+      out.write("\" title=\"");
+      out.print(caseName);
+      out.write("\"/><br><br>");
+      out.print(caseName);
+      out.write('(');
+      out.print(caseType);
+      out.write(")</a>\r\n");
       out.write("                <br><hr size=\"1\" color=\"black\">\r\n");
-      out.write("                <img src = \"image\\ic_best.png\"> <img src = \"image\\ic_new.gif\"> <img src = \"image\\ic_sale.gif\"><br>\r\n");
-      out.write("                <font size=\"4\"><b><s>16,000원</s>  → 12,000원</b></font>\r\n");
+      out.write("                <img src = \"image\\ic_best.png\"><br>\r\n");
+      out.write("                <font size=\"4\"><b>");
+      out.print(price);
+      out.write("원</b></font>\r\n");
       out.write("            </td>\r\n");
-      out.write("            <td width=\"25%\">\r\n");
-      out.write("                <a href=\"Top-3.jsp\"><img src = \"image\\TOP3.gif\"  alt=\"오레오 폴라티\" title=\"오레오 폴라티\"><br><br>오레오 폴라티 | 목폴라 루즈핏</a>\r\n");
-      out.write("                <br><hr size=\"1\" color=\"black\">\r\n");
-      out.write("                <img src = \"image\\ic_best.png\"> <img src = \"image\\ic_new.gif\">  <img src = \"image\\ic_66size.gif\"><br>\r\n");
-      out.write("                <font size=\"4\"><b>17,000원</b></font>\r\n");
-      out.write("            </td>\r\n");
-      out.write("            <td width=\"25%\">\r\n");
-      out.write("                <a href=\"Top-4.jsp\"><img src = \"image\\TOP4.gif\"  alt=\"폴인러브 후드\" title=\"폴인러브 후드\"><br><br>폴인러브 후드(기모)</a>\r\n");
-      out.write("                <br><hr size=\"1\" color=\"black\">\r\n");
-      out.write("                <img src = \"image\\ic_new.gif\"> <img src = \"image\\ic_today1.gif\"> <img src = \"image\\ic_66size.gif\"><br>\r\n");
-      out.write("                <font size=\"4\"><b>12,500원</b></font>\r\n");
-      out.write("            </td>\r\n");
-      out.write("            <td width=\"25%\">\r\n");
-      out.write("                <a href=\"Bottom-2.jsp\"><img src = \"image\\BOTTOM2.gif\"  alt=\"겨울 트레이닝팬츠\" title=\"겨울 트레이닝팬츠\"><br><br>(양기모)겨울 트레이닝팬츠 | 반바지 롤업 팬츠 츄리닝</a>\r\n");
-      out.write("                <br><hr size=\"1\" color=\"black\">\r\n");
-      out.write("                <img src = \"image\\ic_new.gif\"> <img src = \"image\\ic_66size.gif\"> <img src = \"image\\ic_sale.gif\"><br>\r\n");
-      out.write("                <font size=\"4\"><b><s>7,000원</s> -> 5,000원</b></font>\r\n");
-      out.write("            </td>\r\n");
-      out.write("        </tr>\r\n");
-      out.write("        <tr>\r\n");
-      out.write("            <td width=\"25%\">\r\n");
-      out.write("                <a href=\"Bottom-3.jsp\"><img src = \"image\\BOTTOM3.gif\"  alt=\"디오 데님스커트\" title=\"디오 데님스커트\"><br><br>디오 데님스커트 | 치마 청스커트</a>\r\n");
-      out.write("                <br><hr size=\"1\" color=\"black\">\r\n");
-      out.write("                <img src = \"image\\ic_new.gif\"><br>\r\n");
-      out.write("                <font size=\"4\"><b>11,900원</b></font>\r\n");
-      out.write("            </td>\r\n");
-      out.write("            <td width=\"25%\">\r\n");
-      out.write("                <a href=\"Bottom-6.jsp\"><img src = \"image\\BOTTOM6.gif\"  alt=\"굿모닝 트레이닝팬츠\" title=\"굿모닝 트레이닝팬츠\"><br><br>(기모)굿모닝 트레이닝팬츠 | 츄리닝 조거팬츠 홈웨어\r\n");
-      out.write("                    <br><hr size=\"1\" color=\"black\">\r\n");
-      out.write("                    <img src=\"image\\ic_new.gif\"> <img src=\"image\\ic_66size.gif\"> <img src=\"image\\ic_sale.gif\"><br>\r\n");
-      out.write("                    <font size=\"4\"><b>10,500원</b></font>\r\n");
-      out.write("            </td>\r\n");
-      out.write("            <td width=\"25%\">\r\n");
-      out.write("                <a href=\"Top-7.jsp\"><img src = \"image\\OUT7.gif\"  alt=\"오토 코트\" title=\"오토 코트\"><br><br>(누빔)오토 코트 | 지퍼점퍼 양털코트 아우터\r\n");
-      out.write("                    <br><hr size=\"1\" color=\"black\">\r\n");
-      out.write("                    <img src = \"image\\ic_new.gif\"> <img src = \"image\\ic_66size.gif\"><br>\r\n");
-      out.write("                    <font size=\"4\"><b>42,900원</b></font>\r\n");
-      out.write("            </td>\r\n");
-      out.write("            <td width=\"25%\">\r\n");
-      out.write("                <a href=\"Top-1.html\"><img src = \"image\\SHO1.jpg\"  alt=\"아이러너 슈즈\" title=\"아이러너 슈즈\"><br><br>아이러너 슈즈 | 스트랩힐</a>\r\n");
-      out.write("                <br><hr size=\"1\" color=\"black\">\r\n");
-      out.write("                <img src = \"image\\ic_new.gif\"><br>\r\n");
-      out.write("                <font size=\"4\"><b>19,500원</b></font>\r\n");
-      out.write("            </td>\r\n");
+      out.write("            ");
+ }
+                }
+      out.write("\r\n");
       out.write("        </tr>\r\n");
       out.write("    </table>\r\n");
+      out.write("    <table align=\"center\" width =\"1000\" height=\"400\" cellpadding=\"15\">\r\n");
+      out.write("        <tr>\r\n");
+      out.write("            ");
+  if (phoneCases.size() >=4) {
+                    for (int j = phoneCases.size() - 5; j >= phoneCases.size() - 8; j--) {
+                        PhoneCase phoneCase = phoneCases.get(j);
+                        int caseID = phoneCase.getCaseID();
+                        String caseType = phoneCase.getCaseType();
+                        String caseName = phoneCase.getCaseName();
+                        String explanation = phoneCase.getExplanation();
+                        int price = phoneCase.getPrice();
+                        String imgPath = phoneCase.getImg();
+            
       out.write("\r\n");
+      out.write("            <td width=\"25%\">\r\n");
+      out.write("                <a href=\"detailPage?caseID=");
+      out.print(caseID);
+      out.write("\"><img src = \"image/upload/");
+      out.print(imgPath);
+      out.write("\" height=\"240\" width=\"280\" alt=\"");
+      out.print(caseName);
+      out.write("\" title=\"");
+      out.print(caseName);
+      out.write("\"/><br><br>");
+      out.print(caseName);
+      out.write('(');
+      out.print(caseType);
+      out.write(")</a>\r\n");
+      out.write("                <br><hr size=\"1\" color=\"black\">\r\n");
+      out.write("                <img src = \"image\\ic_best.png\"><br>\r\n");
+      out.write("                <font size=\"4\"><b>");
+      out.print(price);
+      out.write("원</b></font>\r\n");
+      out.write("            </td>\r\n");
+      out.write("            ");
+ }
+                }
+      out.write("\r\n");
+      out.write("        </tr>\r\n");
+      out.write("    </table>    \r\n");
       out.write("    <div id=\"gotop\">\r\n");
       out.write("        <a href=\"#top\"><img src=\"image\\up.jpg\" height=\"35\" width=\"50\"></a><br>\r\n");
       out.write("        <img src=\"image\\cursor1.jpg\" height=\"50\" width=\"50\"> <br>\r\n");
