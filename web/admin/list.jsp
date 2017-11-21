@@ -31,7 +31,7 @@
                 <% if (user == null) { %>
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                        <input type="submit" value="상품 관리">
+                        <input type="submit" value="상품 추가">
                     </a></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\order.jpg"></a>
@@ -43,8 +43,8 @@
                         <input type="image" src="image\logout.jpg" name="Submit" value ="로그아웃">
                     </form> 
                 </td>
-                <td><form action="managePhoneCase" method="post">
-                        <input type="submit" value="상품 관리">
+                <td><form action="create" method="post">
+                        <input type="submit" value="상품 추가">
                     </form>
                 </td>
 

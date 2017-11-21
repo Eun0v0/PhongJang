@@ -20,7 +20,7 @@ public class PhoneCaseDAO {
     private static final String ALLRETRIEVE_STMT
             = "SELECT * FROM shoppingproduct";
     private static final String INSERT_STMT = "INSERT INTO shoppingProduct VALUES(?,?,?,?,?,?,?)";
-    private static final String UPDATE_STMT = "UPDATE shoppingProduct SET CaseName = ?, CaseType = ?, Explanation = ?, Price = ?, Image = ?, DeatilImage = ? WHERE CaseID = ?";
+    private static final String UPDATE_STMT = "UPDATE shoppingProduct SET CaseName = ?, CaseType = ?, Explanation = ?, Price = ?, Image = ?, DetailImage = ? WHERE CaseID = ?";
     private static final String GETID_STMT = "SELECT COUNT(CaseID) FROM shoppingProduct";
     private static final String DELETE_STMT = "DELETE FROM shoppingProduct WHERE CaseID = ?";
     private static final String SELECT_STMT

@@ -12,13 +12,13 @@
 <jsp:useBean id="status" scope="request" class="util.Status"/>
 <html>
     <head>
-        
-        <title>Update Form</title>
+
+        <title><%=request.getAttribute("caseName")%> 수정 페이지</title>
         <%  ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
-  
-            User user = (User)request.getAttribute("user");
-            int caseID = (int)request.getAttribute("caseID");
-           
+
+            User user = (User) request.getAttribute("user");
+            int caseID = (int) request.getAttribute("caseID");
+
             session.setAttribute("user", user);
             session.setAttribute("phoneCases", phoneCases);
         %>
@@ -93,54 +93,55 @@
 
     </head>
     <body>
-                <table border="0px">
-        <tr>
-            <% if (user == null) { %>
-            <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
-            <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                <input type="submit" value="상품 관리">
-                </a></td>
-            <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                    <img src="image\order.jpg"></a>
-            </td>
-            
-                <% } else { session.setAttribute("user", user); %>
-            <td><form action="logout" method="post">
-                    <input type="image" src="image\logout.jpg" name="Submit" value ="로그아웃">
-                </form> 
-            </td>
-            <td><form action="managePhoneCase" method="post">
-                    <input type="submit" value="상품 관리">
-                </form>
-            </td>
-            
-            <td><form action="paymentlist" method="post">
-                    <input type="image" src="image\order.jpg" name="Submit" value="모든 결제내역">
-                </form> 
-            </td>
-            
+        <table border="0px">
+            <tr>
+                <% if (user == null) { %>
+                <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
+                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                        <input type="submit" value="상품 추가">
+                    </a></td>
+                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                        <img src="image\order.jpg"></a>
+                </td>
+
+                <% } else {
+                    session.setAttribute("user", user); %>
+                <td><form action="logout" method="post">
+                        <input type="image" src="image\logout.jpg" name="Submit" value ="로그아웃">
+                    </form> 
+                </td>
+                <td><form action="create" method="post">
+                        <input type="submit" value="상품 추가">
+                    </form>
+                </td>
+
+                <td><form action="paymentlist" method="post">
+                        <input type="image" src="image\order.jpg" name="Submit" value="모든 결제내역">
+                    </form> 
+                </td>
+
                 <%  }%>
-           
-            <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
-        </tr>
-    </table>
-            <% if (user != null) { %>
-            <center> <div align="middle">
-                <form action="main" method="post">
-                    <input type="hidden" name="userID" value="<%=user.getId()%>">
-                    <input type="image" src="image\banner.jpg" name="Submit">
-                </form>
-            </div> </center>
-            <% } else {%>
-            <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('admin/main.jsp')"> </div> </center>
-            <% } %>
-            
-            <form action ="search" method="post">
-                <img src="image\search.png" height="17" width="17">
-                <input type="text" size="16" name="caseName">
-                <input type="submit" value="검색">
+
+                <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
+            </tr>
+        </table>
+        <% if (user != null) {%>
+    <center> <div align="middle">
+            <form action="main" method="post">
+                <input type="hidden" name="userID" value="<%=user.getId()%>">
+                <input type="image" src="image\banner.jpg" name="Submit">
             </form>
-                
+        </div> </center>
+        <% } else {%>
+    <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('admin/main.jsp')"> </div> </center>
+            <% }%>
+
+    <form action ="search" method="post">
+        <img src="image\search.png" height="17" width="17">
+        <input type="text" size="16" name="caseName">
+        <input type="submit" value="검색">
+    </form>
+
     <hr size="5" color="black">
     <center>
         <a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a>
@@ -155,53 +156,71 @@
     </center>
     <hr size="5" color="black">
     <center>
-        <h2>제품 수정 페이지 입니다.</h2>
+        <table width="1100" height="100">
+            <tr>
+                <td width="900"><div align="center"><h2><%=request.getAttribute("caseName")%></h2></div> 
+                    <div align="right"><form action="deleteCase" method="post">
+                        <input type="hidden" name="caseID" value="<%=caseID%>">
+                        <input type="submit" value="삭제">
+                        </form></div>
+                </td>
+            </tr>
+        </table>
     </center>
-    
-            <%if ((status != null) && !status.isSuccessful()) {%>
-        <font color="red">There were problems processing your request:
-        <ul><%Iterator errors = status.getExceptions();
-            while (errors.hasNext()) {
-                Exception ex = (Exception) errors.next();%>
-            <li><%= ex.getMessage()%><%}%></ul></font><%}%>
-        <center>
-        <h1>케이스 상세 페이지 작성</h1>
 
+    <%if ((status != null) && !status.isSuccessful()) {%>
+    <font color="red">There were problems processing your request:
+    <ul><%Iterator errors = status.getExceptions();
+        while (errors.hasNext()) {
+            Exception ex = (Exception) errors.next();%>
+        <li><%= ex.getMessage()%><%}%></ul></font><%}%>
+    <center>
         <form action="updateprocess" method="post" enctype="multipart/form-data">
-            <table width="1100" height="300">
-                <hr size="1" width="1100">
-                <tr><td width="900"><br>
-                        케이스 번호:</td><td>
-                    <%=caseID%></tr>
-                <tr><td width="900">케이스 타입:</td><td>
-                        <select name="caseType" >
+            <table width="1100" height="200">
+                <tr>
+                    <td><img src="image/upload/<%=request.getAttribute("img")%>" width="400" height="360"></td>
+                    <td width="900">
+                        <div align="left"><font size="2">케이스 번호:</font></div>
+                        <div align="right"><input type="hidden" name="caseID" value="<%=caseID%>"><%=caseID%></div>
+                        <div align="left"><font size="2">케이스 타입:</font></div>
+                        <div align="right"><select name="caseType" >
                                 <option name="caseType" value="<%=request.getAttribute("caseType")%>"><%=request.getAttribute("caseType")%>
                                 <option name="caseType" value="젤리">젤리
                                 <option name="caseType" value="하드">하드
-                                <option name="caseType" value="범퍼">범퍼</select>
-                        
-                <tr><td width="900">케이스 이름:</td><td>
-                        <textarea name="caseName" size="20"><%=request.getAttribute("caseName")%></textarea>
-                       
-                <tr><td width="900">설명:</td><td>
-                        <textarea name = "explanation" size="50"><%= request.getAttribute("explanation")%></textarea>
-                        
-                <tr><td width="900">가격:</td><td>
-                        <textarea name="price" size="5"><%=request.getAttribute("price")%></textarea>
-                <tr><td width="900">상품 메인 이미지 : </td><td>
-                        <input type="file" name="img"> <%=request.getAttribute("img")%>
-                <tr><td width="900">상품 상세 이미지 : </td><td>
-                        <input type="file" name="detailImg"> <%=request.getAttribute("detailImg")%>        
+                                <option name="caseType" value="범퍼">범퍼</select></div>
+
+                        <div align="left"><font size="2">케이스 이름:</font></div>
+                        <div align="right"><textarea name="caseName" cols="20" rows="3"><%=request.getAttribute("caseName")%></textarea></div>
+
+                        <div align="left"><font size="2">설명:</font></div>
+                        <div align="right"><textarea name = "explanation" cols="20" rows="5"><%= request.getAttribute("explanation")%></textarea></div>
+
+                        <div align="left"><font size="2">가격:</font></div>
+                        <div align="right"><textarea name="price" cols="20" rows="3"><%=request.getAttribute("price")%></textarea></div>
+                        <div align="left"><font size="2">상품 메인 이미지:</font></div>
+                        <div align="right"><input type="file" name="img"> <%=request.getAttribute("img")%></div>
+                        <div align="left"><font size="2">상품 상세 이미지:</font></div>
+                        <div align="right"><input type="file" name="detailImg"> <%=request.getAttribute("detailImg")%></div>        
                         <hr size="1">
-                        
+                <br><center>
+                    <input type="hidden" name="caseID" value="<%=caseID%>">
+                    <input type="submit" value="수정하기">
+                </center>
+                </td>
+                </tr>
             </table>
-            <hr size="1" width="1100">
-            <input type="hidden" name="caseID" value="<%=caseID%>">
-            <input type="submit" value="Submit">
         </form>
-        
-        
-         <div id="gotop">
+        <hr size="1" width="1100">
+    </center>
+    <br><br>
+    <hr size="2" color="black">
+    <center>
+
+        <td><img src="image/upload/<%=request.getAttribute("detailImg")%>"></td>
+
+    </center>
+
+    <div id="gotop">
         <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>
         <img src="image\cursor1.jpg" height="50" width="50"> <br>
         <a href="#bottom"> <img src="image\down.jpg" height="35" width="50"> </a> 
@@ -210,5 +229,5 @@
     <script type="text/javascript">initMoving(document.getElementById("gotop"), 50, 50, 50);</script> 
 
     <a href="#top" name="bottom"><img src="image\totop.jpg" align="right"></a>
-    </body>
+</body>
 </html>

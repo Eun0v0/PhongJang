@@ -5,17 +5,17 @@
 --%>
 <%--해야할 것 : 장바구니, 바로결제 버튼 바꾸기?--%>
 <%-- test --%>
-<script type ="text/javascript" src="smarteditor/js/HuskyEZCreator.js" charset="euc-kr"> </script>
+<script type ="text/javascript" src="smarteditor/js/HuskyEZCreator.js" charset="euc-kr"></script>
 <script>
-    function submitContents(elClickedObj){
+    function submitContents(elClickedObj) {
         oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
-        try{
+        try {
             elClickedObj.form.submit();
-        } catch (e){
+        } catch (e) {
         }
     }
 </script>
-    
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.PhoneCase"%>
 <%@page import="domain.Payment"%>
@@ -23,15 +23,15 @@
 <%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <jsp:useBean id="status" scope="request" class="util.Status"/>
 <%@ page import="java.sql.*" %>
-<% request.setCharacterEncoding("UTF-8"); %>
+<% request.setCharacterEncoding("UTF-8");%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>상세 페이지 추가</title>
+        <title><%=request.getAttribute("caseName")%>★</title>
         <%  ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
-            User user = (User)request.getAttribute("user");
-            
+            User user = (User) request.getAttribute("user");
+
             session.setAttribute("user", user);
             session.setAttribute("phoneCases", phoneCases);
         %>
@@ -116,7 +116,8 @@
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\order.jpg"></a>
                 </td>
-                <% } else { session.setAttribute("user", user);%>
+                <% } else {
+                    session.setAttribute("user", user);%>
                 <td><form action="logout" method="post">
                         <input type="image" src="image\logout.jpg" name="Submit" value ="로그아웃">
                     </form> 
@@ -179,10 +180,12 @@
 
     <br><br>
     <center>
-        <h1>케이스 상세 페이지 작성</h1>
+        <h1><%=request.getAttribute("caseName")%></h1>
         <form name="take" method="post">
             <table width="1100" height="300">
                 <tr>
+                    <td><img src="image/upload/<%=request.getAttribute("img")%>" width="400" height="360"></td>
+
                     <td width="900">
                         <hr size="1"><br>
                         <div align="left"><font size="2">케이스 이름:</font></div>
@@ -191,6 +194,15 @@
                         <div align="right"><input type="hidden" name="caseName" value="<%=request.getAttribute("caseType")%>"><%=request.getAttribute("caseType")%></div>
                         <div align="left"><font size="2">가격:</font></div>
                         <div align="right"><input type="hidden" name="caseName" value="<%=request.getAttribute("price")%>"><%=request.getAttribute("price")%></div>
+                        <div align="left"><font size="2">핸드폰 기종:</font></div>
+                        <div align="right"><select name="phoneType" >
+                                <option name="caseType" value="unknown">-----
+                                <option name="caseType" value="아이폰 6/6s">아이폰 6/6s
+                                <option name="caseType" value="아이폰 6+/6s+">아이폰 6+/6s+
+                                <option name="caseType" value="아이폰 7">아이폰 7
+                                <option name="caseType" value="아이폰 7+">아이폰 7+
+                                <option name="caseType" value="아이폰 8">아이폰 8
+                            </select></div>
                         <div align="left"><font size="2">색상 선택:</font></div>
                         <div align="right"><select name="caseType" >
                                 <option name="caseType" value="unknown">-----
@@ -198,16 +210,24 @@
                                 <option name="caseType" value="하드">하양
                                 <option name="caseType" value="범퍼">핑크</select></div>
                         <hr size="1">
-                <br>
+                <br><center>
+                    <input type="image" src="image\bt_cartin.jpg" onClick='mySubmit(1)'>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="image" src="image\bt_buying.jpg" onClick='mySubmit(2)'>
+                </center>
                 </td>
                 </tr>
             </table>
-            <input type="submit" value="확인">
         </form>
         <hr size="1" width="1100">
     </center>
     <br><br>
     <hr size="2" color="black">
+    <center>
+
+        <td><img src="image/upload/<%=request.getAttribute("detailImg")%>"></td>
+
+    </center>
 
     <div id="gotop">
         <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>

@@ -176,7 +176,7 @@
     <font size="5"><center><b>&nbsp;&nbsp;BEST ITEMS<sup><font size="1" color="red">HIT!</font></sup></b></font>
         <hr width="13%" size="2" color="gray"></center><br>
 
-    <table align="center" width ="1000" height="600" cellpadding="15">
+    <table align="center" width ="1000" height="400" cellpadding="15">
         <tr>
             <%
                 PhoneCaseService phoneCaseService = new PhoneCaseService();
