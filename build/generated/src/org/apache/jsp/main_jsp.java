@@ -245,7 +245,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <font size=\"5\"><center><b>&nbsp;&nbsp;BEST ITEMS<sup><font size=\"1\" color=\"red\">HIT!</font></sup></b></font>\r\n");
       out.write("        <hr width=\"13%\" size=\"2\" color=\"gray\"></center><br>\r\n");
       out.write("\r\n");
-      out.write("    <table align=\"center\" width =\"1000\" height=\"600\" cellpadding=\"15\">\r\n");
+      out.write("    <table align=\"center\" width =\"1000\" height=\"400\" cellpadding=\"15\">\r\n");
       out.write("        <tr>\r\n");
       out.write("            ");
 
