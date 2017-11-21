@@ -25,6 +25,9 @@ public class PhoneCaseDAO {
     private static final String DELETE_STMT = "DELETE FROM shoppingProduct WHERE CaseID = ?";
     private static final String SELECT_STMT
             = "SELECT * FROM shoppingproduct WHERE CaseID=?";
+    private static final String TYPESELECT_STMT
+            = "SELECT * FROM shoppingProduct WHERE CaseType=?";
+    
 
     //모든 데이터를 가져온다
     ArrayList<PhoneCase> allPhoneCaseRetrieve() throws SQLException {
@@ -127,7 +130,58 @@ public class PhoneCaseDAO {
             }
         }
     }
-
+     //타입별로 케이스를 가져온다
+    ArrayList<PhoneCase> phoneCaseTypeRetrieve(String caseType) throws SQLException {
+        ArrayList<PhoneCase> phoneCase = new ArrayList<PhoneCase>();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        try {
+            //String TYPESELECT_STMT="SELECT * FROM shoppingProduct WHERE CaseType=?";
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(TYPESELECT_STMT);
+            stmt.setString(1, caseType);
+            rset = stmt.executeQuery();
+            while (rset.next()) {
+                int CaseID = rset.getInt(1);
+                String CaseName = rset.getString(2);
+                String CaseType = rset.getString(3);
+                String Explanation = rset.getString(4);
+                int Price = rset.getInt(5);
+                String img= rset.getString(6);
+                String detailImg = rset.getString(7);
+                phoneCase.add(new PhoneCase(CaseID, CaseName, CaseType, Explanation, Price, img, detailImg));
+            }
+            return phoneCase;
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("Exception: " + e.getMessage());
+        } finally {
+            if (rset != null) {
+                try {
+                    rset.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
     //새로운 상품 데이터를 입력한다.
     void productInsert(String caseType, String caseName, String explanation, int price, String img, String detailImg) {
 

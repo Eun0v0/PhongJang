@@ -53,4 +53,13 @@ public class PhoneCaseService {
         phoneCase = phoneCaseDataAccess.productGet(caseID);
         return phoneCase;
     }
+    public ArrayList<PhoneCase> getPhoneCaseType(String caseType) {
+        ArrayList<PhoneCase> phoneCases = null;
+        try {
+            phoneCases = phoneCaseDataAccess.phoneCaseTypeRetrieve(caseType);
+        } catch (Exception e) {
+            phoneCases = null;
+        }
+        return phoneCases;
+    }
 }

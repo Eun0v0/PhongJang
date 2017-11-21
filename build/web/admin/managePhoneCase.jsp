@@ -70,15 +70,32 @@
 
     <hr size="5" color="black">
     <center>
-        <a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a>
-        <img src="image\space.jpg" height="35" width="80">
-        <a href="Bottom-main.jsp"><img src="image\bumperCase2.jpg" height="35" width="140"></a>
-        <img src="image\space.jpg" height="35" width="80">
-        <a href="Outer-main.jsp"><img src="image\hardCase.jpg" height="35" width="140"></a>
-        <img src="image\space.jpg" height="35" width="80">
-        <a href="Sho-main.jsp"><img src="image\jellyCase.jpg" height="35" width="140"></a>
-        <img src="image\space.jpg" height="35" width="80">
-        <a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a>
+        <table>
+            <tr>
+                <td><a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a></td>
+                <td><img src="image\space.jpg" height="35" width="80"></td>
+                
+                <td><form action ="caseTypePage" method="post">
+                        <input type="image" src="image\bumperCase2.jpg" name="Submit" height="35" width="140">
+                        <input type="hidden" name="caseType" value="범퍼">
+                    </form></td>
+                <td><img src="image\space.jpg" height="35" width="80"></td>
+                
+                <td><form action ="caseTypePage" method="post">
+                        <input type="image" src="image\hardCase.jpg" name="Submit" height="35" width="140">
+                        <input type="hidden" name="caseType" value="하드">
+                    </form></td>
+                <td><img src="image\space.jpg" height="35" width="80"></td>
+                
+                <td><form action ="caseTypePage" method="post">
+                        <input type="image" src="image\jellyCase.jpg" name="Submit" height="35" width="140">
+                        <input type="hidden" name="caseType" value="젤리">
+                    </form></td>
+                <td><img src="image\space.jpg" height="35" width="80"></td>
+                
+                <td><a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a></td> 
+            </tr>
+        </table>
     </center>
     <hr size="5" color="black">
 
@@ -112,10 +129,7 @@
                     <input type="hidden" name="caseName" value="<%=phoneCase.getCaseName()%>">
                     <input type="hidden" name="explanation" value="<%=phoneCase.getExplanation()%>">
                     <input type="hidden" name="price" value="<%=phoneCase.getPrice()%>">
-                    <<<<<<< HEAD
                     <input type="hidden" name="img" value="<%=phoneCase.getImg()%>">
-                    =======
-                    >>>>>>> b1a42c8de5d04552ef6508021fa1a8c26be2d0df
                     <input type="submit" value="수정">
                 </form>
             </td>

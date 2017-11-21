@@ -1,21 +1,12 @@
 <%-- 
-    Document   : jelly1
-    Created on : 2017. 11. 14, 오전 1:00:58
-    Author     : Hayoung_2
+    Document   : main
+    Created on : 2017. 11. 3, ?? 12:35:30
+    Author     : yukih
+    modify     : ha0
 --%>
-<%--해야할 것 : 장바구니, 바로결제 버튼 바꾸기?--%>
+<%@page import="domain.PhoneCaseService"%>
+<%@page import="java.net.URLEncoder"%>
 <%-- test --%>
-<script type ="text/javascript" src="smarteditor/js/HuskyEZCreator.js" charset="euc-kr"></script>
-<script>
-    function submitContents(elClickedObj) {
-        oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
-        try {
-            elClickedObj.form.submit();
-        } catch (e) {
-        }
-    }
-</script>
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.PhoneCase"%>
 <%@page import="domain.Payment"%>
@@ -23,18 +14,12 @@
 <%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <jsp:useBean id="status" scope="request" class="util.Status"/>
 <%@ page import="java.sql.*" %>
-<% request.setCharacterEncoding("UTF-8");%>
+<% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title><%=request.getAttribute("caseName")%>★</title>
-        <%  ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
-            User user = (User) request.getAttribute("user");
-
-            session.setAttribute("user", user);
-            session.setAttribute("phoneCases", phoneCases);
-        %>
+        <title>퐁장-나만의 폰 공장</title>
         <script type="text/javascript">
             //<![CDATA[
             function initMoving(target, position, topLimit, btmLimit) {
@@ -107,41 +92,35 @@
     </head>
     <body>
         <table border="0px">
-            <tr><%
+            <tr>
+                <%  User user = (User) request.getAttribute("user");
                 if (user == null) { %>
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                        <img src="image\cart.jpg"></a>
-                </td>
+                        <input type="submit" value="상품 추가">
+                    </a></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\order.jpg"></a>
                 </td>
+
                 <% } else {
-                    session.setAttribute("user", user);%>
+                    session.setAttribute("user", user); %>
                 <td><form action="logout" method="post">
                         <input type="image" src="image\logout.jpg" name="Submit" value ="로그아웃">
                     </form> 
                 </td>
-                <td><form action="cart" method="post">
-                        <input type="hidden" name="userID" value="<%=user.getId()%>">
-                        <input type="image" src="image\cart.jpg" name="Submit" value ="장바구니">
+                <td><form action="create" method="post">
+                        <input type="submit" value="상품 추가">
+                    </form>
+                </td>
+
+                <td><form action="paymentlist" method="post">
+                        <input type="image" src="image\order.jpg" name="Submit" value="모든 결제내역">
                     </form> 
                 </td>
-                <td><form action="paymentlist" method="post">
-                        <input type="image" src="image\order.jpg" name="Submit" value ="주문 목록">
-                    </form>    
-                </td>
+
                 <%  }%>
 
-                <td><form action="myPage" method="post">
-                        <%--
-                            <input type="hidden" name="userID" value="<%=user.getId()%>">
-                        --%>
-                        &nbsp;
-                        <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE">
-                    </form>    
-                </td>
-                <td><a href="join.jsp"><img src="image\join.jpg"></a></td>
                 <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
             </tr>
         </table>
@@ -153,13 +132,14 @@
             </form>
         </div> </center>
         <% } else {%>
-    <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('main.jsp')"> </div> </center>
-            <% }%>
+    <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('admin/main.jsp')"> </div> </center>
+            <% } %>
 
-    <form action ="search.action" name="search" method="search">
+
+    <form action ="search" method="post">
         <img src="image\search.png" height="17" width="17">
-        <input type="text" size="16" name="keyword" value="${keyword}">
-        <input type="button" value="검색" onClick="check()">
+        <input type="text" size="16" name="caseName">
+        <input type="submit" value="검색">
     </form>
 
     <hr size="5" color="black">
@@ -193,58 +173,40 @@
     </center>
     <hr size="5" color="black">
 
-    <%--여기서부터 코드내용--%>
-
     <br><br>
-    <center>
-        <h1><%=request.getAttribute("caseName")%></h1>
-        <form name="take" method="post">
-            <table width="1100" height="300">
-                <tr>
-                    <td><img src="image/upload/<%=request.getAttribute("img")%>" width="400" height="360"></td>
+    <%String m_caseType = (String) request.getAttribute("caseType");%>
+    <font size="5"><center><b>&nbsp;&nbsp;<%=m_caseType%> 케이스<sup><font size="1" color="red">HIT!</font></sup></b></font>
+        <hr width="13%" size="2" color="gray"></center><br>
 
-                    <td width="900">
-                        <hr size="1"><br>
-                        <div align="left"><font size="2">케이스 이름:</font></div>
-                        <div align="right"><input type="hidden" name="caseName" value="<%=request.getAttribute("caseName")%>"><%=request.getAttribute("caseName")%></div>
-                        <div align="left"><font size="2">케이스 타입:</font></div>
-                        <div align="right"><input type="hidden" name="caseName" value="<%=request.getAttribute("caseType")%>"><%=request.getAttribute("caseType")%></div>
-                        <div align="left"><font size="2">가격:</font></div>
-                        <div align="right"><input type="hidden" name="caseName" value="<%=request.getAttribute("price")%>"><%=request.getAttribute("price")%></div>
-                        <div align="left"><font size="2">핸드폰 기종:</font></div>
-                        <div align="right"><select name="phoneType" >
-                                <option name="caseType" value="unknown">-----
-                                <option name="caseType" value="아이폰 6/6s">아이폰 6/6s
-                                <option name="caseType" value="아이폰 6+/6s+">아이폰 6+/6s+
-                                <option name="caseType" value="아이폰 7">아이폰 7
-                                <option name="caseType" value="아이폰 7+">아이폰 7+
-                                <option name="caseType" value="아이폰 8">아이폰 8
-                            </select></div>
-                        <div align="left"><font size="2">색상 선택:</font></div>
-                        <div align="right"><select name="caseType" >
-                                <option name="caseType" value="unknown">-----
-                                <option name="caseType" value="젤리">검정
-                                <option name="caseType" value="하드">하양
-                                <option name="caseType" value="범퍼">핑크</select></div>
-                        <hr size="1">
-                <br><center>
-                    <input type="image" src="image\bt_cartin.jpg" onClick='mySubmit(1)'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="image" src="image\bt_buying.jpg" onClick='mySubmit(2)'>
-                </center>
-                </td>
-                </tr>
-            </table>
-        </form>
-        <hr size="1" width="1100">
-    </center>
-    <br><br>
-    <hr size="2" color="black">
-    <center>
+    <table align="center" width ="1000" height="400" cellpadding="15">
+        <tr>
+            <%
+                PhoneCaseService phoneCaseService = new PhoneCaseService();
+                ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
+                session.setAttribute("phoneCases", phoneCases);
+                for (int i = 0; i < phoneCases.size(); i++) {
+                    PhoneCase phoneCase = phoneCases.get(i);
+                    int caseID = phoneCase.getCaseID();
+                    String caseType = phoneCase.getCaseType();
+                    String caseName = phoneCase.getCaseName();
+                    String explanation = phoneCase.getExplanation();
+                    int price = phoneCase.getPrice();
+                    String imgPath = phoneCase.getImg();
 
-        <td><img src="image/upload/<%=request.getAttribute("detailImg")%>"></td>
+                    String pcaseType = URLEncoder.encode(caseType);
+                    String pcaseName = URLEncoder.encode(caseName);
+                    String pexplanation = URLEncoder.encode(explanation);
+            %>
+            <td width="25%">
+                <a href="update?caseID=<%=caseID%>"><img src = "image/upload/<%=imgPath%>" height="240" width="280" alt="<%=caseName%>" title="<%=caseName%>"/><br><br><%=caseName%>(<%=caseType%>)</a>
+                <br><hr size="1" color="black">
+                <img src = "image\ic_best.png"><br>
+                <font size="4"><b><%=price%></b></font>
+            </td>
+            <% }%>
+        </tr>
+    </table>
 
-    </center>
 
     <div id="gotop">
         <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>
