@@ -191,50 +191,50 @@
 
     <br><br>
     <%String m_caseType = (String) request.getAttribute("caseType");
-    if(m_caseType == null) { %>
+        if (m_caseType == null) { %>
     <font size="5"><center><b>&nbsp;&nbsp; 검색 케이스 목록</b></font>
-        <% } else { %>
-    <font size="5"><center><b>&nbsp;&nbsp;<%=m_caseType%> 케이스<sup><font size="1" color="red">HIT!</font></sup></b></font>
+        <% } else {%>
+        <font size="5"><center><b>&nbsp;&nbsp;<%=m_caseType%> 케이스<sup><font size="1" color="red">HIT!</font></sup></b></font>
         <% } %>
-        <hr width="13%" size="2" color="gray"></center><br>
+            <hr width="13%" size="2" color="gray"></center><br>
 
-    <table align="center" width ="1000" height="400" cellpadding="15">
-        <tr>
-            <%
-                ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
-                session.setAttribute("phoneCases", phoneCases);
-                for (int i = 0; i < phoneCases.size(); i++) {
-                    PhoneCase phoneCase = phoneCases.get(i);
-                    int caseID = phoneCase.getCaseID();
-                    String caseType = phoneCase.getCaseType();
-                    String caseName = phoneCase.getCaseName();
-                    String explanation = phoneCase.getExplanation();
-                    int price = phoneCase.getPrice();
-                    String imgPath = phoneCase.getImg();
+        <table align="center" width ="1000" height="400" cellpadding="15">
+            <tr>
+                <%
+                    ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
+                    session.setAttribute("phoneCases", phoneCases);
+                    for (int i = 0; i < phoneCases.size(); i++) {
+                        PhoneCase phoneCase = phoneCases.get(i);
+                        int caseID = phoneCase.getCaseID();
+                        String caseType = phoneCase.getCaseType();
+                        String caseName = phoneCase.getCaseName();
+                        String explanation = phoneCase.getExplanation();
+                        int price = phoneCase.getPrice();
+                        String imgPath = phoneCase.getImg();
 
-                    String pcaseType = URLEncoder.encode(caseType);
-                    String pcaseName = URLEncoder.encode(caseName);
-                    String pexplanation = URLEncoder.encode(explanation);
-            %>
-            <td width="25%">
-                <a href="detailPage?caseID=<%=caseID%>"><img src = "image/upload/<%=imgPath%>" height="240" width="280" alt="<%=caseName%>" title="<%=caseName%>"/><br><br><%=caseName%>(<%=caseType%>)</a>
-                <br><hr size="1" color="black">
-                <img src = "image\ic_best.png"><br>
-                <font size="4"><b><%=price%>원</b></font>
-            </td>
-            }%>
-    </table>
+                        String pcaseType = URLEncoder.encode(caseType);
+                        String pcaseName = URLEncoder.encode(caseName);
+                        String pexplanation = URLEncoder.encode(explanation);
+                %>
+                <td width="25%">
+                    <a href="detailPage?caseID=<%=caseID%>"><img src = "image/upload/<%=imgPath%>" height="240" width="280" alt="<%=caseName%>" title="<%=caseName%>"/><br><br><%=caseName%>(<%=caseType%>)</a>
+                    <br><hr size="1" color="black">
+                    <img src = "image\ic_best.png"><br>
+                    <font size="4"><b><%=price%>원</b></font>
+                </td>
+                <%}%>
+        </table>
 
 
-    <div id="gotop">
-        <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>
-        <img src="image\cursor1.jpg" height="50" width="50"> <br>
-        <a href="#bottom"> <img src="image\down.jpg" height="35" width="50"> </a> 
-    </div>
+        <div id="gotop">
+            <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>
+            <img src="image\cursor1.jpg" height="50" width="50"> <br>
+            <a href="#bottom"> <img src="image\down.jpg" height="35" width="50"> </a> 
+        </div>
 
-    <script type="text/javascript">initMoving(document.getElementById("gotop"), 50, 50, 50);</script> 
+        <script type="text/javascript">initMoving(document.getElementById("gotop"), 50, 50, 50);</script> 
 
-    <a href="#top" name="bottom"><img src="image\totop.jpg" align="right"></a>
+        <a href="#top" name="bottom"><img src="image\totop.jpg" align="right"></a>
 
-</body>
+    </body>
 </html>

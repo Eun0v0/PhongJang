@@ -206,7 +206,7 @@
                 <img src = "image\ic_best.png"><br>
                 <font size="4"><b><%=price%>¿ø</b></font>
             </td>
-            }%>
+            <% }%>
     </table>
     <div id="gotop">
         <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>

@@ -34,16 +34,14 @@ public class StockChangeServlet extends HttpServlet {
             throws IOException, ServletException {
         RequestDispatcher view = null;
         Status status = new Status();
+        HttpSession HttpSession = request.getSession();
         response.setContentType("text/html; charset=euc-kr");
         request.setCharacterEncoding("EUC-KR");
 
-        request.setAttribute("status", status);
-
         request.setCharacterEncoding("EUC-KR");
-
         request.setAttribute("status", status);
+        
         PhoneCaseService phoneCaseService = new PhoneCaseService();
-        HttpSession HttpSession = request.getSession();
         User user = (User) HttpSession.getAttribute("user");
 
         int caseID = Integer.parseInt(request.getParameter("caseID"));
