@@ -5,6 +5,7 @@
         <group>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/paymentConfirm.jsp</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/phoneCaseList.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/ProcessPhoneCaseServlet.java</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/JoinServlet.java</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/ManageQnaServlet.java</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/addPayment.jsp</file>
@@ -21,7 +22,9 @@
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/searchID.jsp</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/MyInfoUpdateServlet.java</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/PaymentDAO.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/ProcessPaymentServlet.java</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/DeleteCartServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/PaymentService.java</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/image/banner.jpg</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/Cart.java</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/RetrievePaymentServlet.java</file>
@@ -45,6 +48,7 @@
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/User.java</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/qna.jsp</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/admin/managePhoneCase.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/ProcessQnaServlet.java</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/CreateQnaServlet.java</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/myInfo.jsp</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/admin/list.jsp</file>

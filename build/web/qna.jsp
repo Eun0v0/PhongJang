@@ -105,8 +105,7 @@
                 <th width="250" height="35"><img src="image\boardtitle.jpg" width=250 height=40"></th>
                 <th width="120" height="35"><img src="image\writer.jpg" width=120 height=40"></th>
                 <th width="140" height="35"><img src="image\writedate.jpg" width=140 height=40"></th>
-                <th width="60" height="35"><img src="image\view.jpg" width=60 height=40"></th>
-                <th width="30" height="35">삭제</th>
+                <th width="50" height="35">삭제</th>
             </tr>
             <%
                 for (int i = 0; i < qnas.size(); i++) {
@@ -123,17 +122,16 @@
                     String pqnaContent =URLEncoder.encode(qnaContent);
             %>
             <tr>
-                <td bgcolor="#dcdcdc" height="40" align="center"><a href="update?qnaNum=<%=qnaNum%>"></a></td>
-                <td bgcolor="#dcdcdc" height="40"><a href="update?userName=<%=userName%>"></a></td>
-                <td bgcolor="#dcdcdc" height="40" align="center"><a href="update?qnaTitle=<%=qnaTitle%>"></a></td>
-                <td bgcolor="#dcdcdc" height="40" align="center"><a href="update?qnaTime=<%=qnaTime%>"></a></td>
+                <td bgcolor="#dcdcdc" height="40" align="center"><%=qnaNum%></td>
+                <td bgcolor="#dcdcdc" height="40" align="center"><a href="updateQna?qnaNum=<%=qnaNum%>"><%=qnaTitle%></a></td>
+                <td bgcolor="#dcdcdc" height="40" align="center"><%=userName%></td>
+                <td bgcolor="#dcdcdc" height="40" align="center"><%=qnaTime%></td>
                 <td bgcolor="#dcdcdc" height="40" align="center">삭제</td>   
             </tr>
             <% }%>
         </table></br></br>
         <form action="createQna" method="post">
-            <!-- <input type="image" src="image\boardwrite.jpg" value ="글쓰기" aline="absmiddle">-->
-            <input type="submit" value="글쓰기">
+            <input type="image" src="image\boardwrite.jpg" value ="글쓰기" aline="absmiddle">
         </form>
     </center>
 </body>

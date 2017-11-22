@@ -228,7 +228,7 @@
         <url-pattern>/detailPage</url-pattern>
     </servlet-mapping>
     
-    <servlet>
+   <servlet>
         <servlet-name>CreateQnaController</servlet-name>
         <servlet-class>web.CreateQnaServlet</servlet-class>
     </servlet>
@@ -244,5 +244,14 @@
     <servlet-mapping>
         <servlet-name>ShowQnaListController</servlet-name>
         <url-pattern>/qnaList</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>ProcessQnaController</servlet-name>
+        <servlet-class>web.ProcessQnaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProcessQnaController</servlet-name>
+        <url-pattern>/writeQna</url-pattern>
     </servlet-mapping>
 </web-app>
