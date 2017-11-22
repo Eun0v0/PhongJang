@@ -94,7 +94,8 @@
         <table border="0px">
             <tr>
                 <%  User user = (User) request.getAttribute("user");
-                    if (user == null) { %>
+                    if (user == null) {
+                        session.setAttribute("user", user); %>
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\cart.jpg"></a>
@@ -160,15 +161,32 @@
 
     <hr size="5" color="black">
     <center>
-        <a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a>
-        <img src="image\space.jpg" height="35" width="80">
-        <a href="Bottom-main.jsp"><img src="image\bumperCase2.jpg" height="35" width="140"></a>
-        <img src="image\space.jpg" height="35" width="80">
-        <a href="Outer-main.jsp"><img src="image\hardCase.jpg" height="35" width="140"></a>
-        <img src="image\space.jpg" height="35" width="80">
-        <a href="Sho-main.jsp"><img src="image\jellyCase.jpg" height="35" width="140"></a>
-        <img src="image\space.jpg" height="35" width="80">
-        <a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a>
+        <table>
+            <tr>
+                <td><a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a></td>
+                <td><img src="image\space.jpg" height="35" width="80"></td>
+
+                <td><form action ="caseTypePage" method="post">
+                        <input type="image" src="image\bumperCase2.jpg" name="Submit" height="35" width="140">
+                        <input type="hidden" name="caseType" value="범퍼">
+                    </form></td>
+                <td><img src="image\space.jpg" height="35" width="80"></td>
+
+                <td><form action ="caseTypePage" method="post">
+                        <input type="image" src="image\hardCase.jpg" name="Submit" height="35" width="140">
+                        <input type="hidden" name="caseType" value="하드">
+                    </form></td>
+                <td><img src="image\space.jpg" height="35" width="80"></td>
+
+                <td><form action ="caseTypePage" method="post">
+                        <input type="image" src="image\jellyCase.jpg" name="Submit" height="35" width="140">
+                        <input type="hidden" name="caseType" value="젤리">
+                    </form></td>
+                <td><img src="image\space.jpg" height="35" width="80"></td>
+
+                <td><a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a></td> 
+            </tr>
+        </table>
     </center>
     <hr size="5" color="black">
 
@@ -182,18 +200,15 @@
                 PhoneCaseService phoneCaseService = new PhoneCaseService();
                 ArrayList<PhoneCase> phoneCases = phoneCaseService.getAllPhoneCase();;
                 session.setAttribute("phoneCases", phoneCases);
-                for (int i = 0; i < phoneCases.size(); i++) {
-                    PhoneCase phoneCase = phoneCases.get(i);
-                    int caseID = phoneCase.getCaseID();
-                    String caseType = phoneCase.getCaseType();
-                    String caseName = phoneCase.getCaseName();
-                    String explanation = phoneCase.getExplanation();
-                    int price = phoneCase.getPrice();
-                    String imgPath = phoneCase.getImg();
-
-                    String pcaseType = URLEncoder.encode(caseType);
-                    String pcaseName = URLEncoder.encode(caseName);
-                    String pexplanation = URLEncoder.encode(explanation);
+                if (phoneCases.size() != 0) {
+                    for (int i = 0; i < 4; i++) {
+                        PhoneCase phoneCase = phoneCases.get(i);
+                        int caseID = phoneCase.getCaseID();
+                        String caseType = phoneCase.getCaseType();
+                        String caseName = phoneCase.getCaseName();
+                        String explanation = phoneCase.getExplanation();
+                        int price = phoneCase.getPrice();
+                        String imgPath = phoneCase.getImg();
             %>
             <td width="25%">
                 <a href="detailPage?caseID=<%=caseID%>"><img src = "image/upload/<%=imgPath%>" height="240" width="280" alt="<%=caseName%>" title="<%=caseName%>"/><br><br><%=caseName%>(<%=caseType%>)</a>
@@ -201,7 +216,8 @@
                 <img src = "image\ic_best.png"><br>
                 <font size="4"><b><%=price%>원</b></font>
             </td>
-            <% }%>
+            <% }
+                }%>
         </tr>
     </table>
 
@@ -210,61 +226,50 @@
     <font size="5"><center><b>NEW GOODS</b></font>
         <hr width="13%" size="2" color="gray"></center><br>
 
-    <table align="center" width ="1000" height="600" cellpadding="15">
+    <table align="center" width ="1000" height="400" cellpadding="15">
         <tr>
+            <%  if (phoneCases.size() != 0) {
+                    for (int j = phoneCases.size() - 1; j >= phoneCases.size() - 4; j--) {
+                        PhoneCase phoneCase = phoneCases.get(j);
+                        int caseID = phoneCase.getCaseID();
+                        String caseType = phoneCase.getCaseType();
+                        String caseName = phoneCase.getCaseName();
+                        String explanation = phoneCase.getExplanation();
+                        int price = phoneCase.getPrice();
+                        String imgPath = phoneCase.getImg();
+            %>
             <td width="25%">
-                <a href="Top-2.jsp"><img src = "image\TOP2.gif"  alt="프리즈 체크셔츠" title="프리즈 체크셔츠"><br><br>프리즈 체크셔츠 | 기모 피치면</a>
+                <a href="detailPage?caseID=<%=caseID%>"><img src = "image/upload/<%=imgPath%>" height="240" width="280" alt="<%=caseName%>" title="<%=caseName%>"/><br><br><%=caseName%>(<%=caseType%>)</a>
                 <br><hr size="1" color="black">
-                <img src = "image\ic_best.png"> <img src = "image\ic_new.gif"> <img src = "image\ic_sale.gif"><br>
-                <font size="4"><b><s>16,000원</s>  → 12,000원</b></font>
+                <img src = "image\ic_best.png"><br>
+                <font size="4"><b><%=price%>원</b></font>
             </td>
-            <td width="25%">
-                <a href="Top-3.jsp"><img src = "image\TOP3.gif"  alt="오레오 폴라티" title="오레오 폴라티"><br><br>오레오 폴라티 | 목폴라 루즈핏</a>
-                <br><hr size="1" color="black">
-                <img src = "image\ic_best.png"> <img src = "image\ic_new.gif">  <img src = "image\ic_66size.gif"><br>
-                <font size="4"><b>17,000원</b></font>
-            </td>
-            <td width="25%">
-                <a href="Top-4.jsp"><img src = "image\TOP4.gif"  alt="폴인러브 후드" title="폴인러브 후드"><br><br>폴인러브 후드(기모)</a>
-                <br><hr size="1" color="black">
-                <img src = "image\ic_new.gif"> <img src = "image\ic_today1.gif"> <img src = "image\ic_66size.gif"><br>
-                <font size="4"><b>12,500원</b></font>
-            </td>
-            <td width="25%">
-                <a href="Bottom-2.jsp"><img src = "image\BOTTOM2.gif"  alt="겨울 트레이닝팬츠" title="겨울 트레이닝팬츠"><br><br>(양기모)겨울 트레이닝팬츠 | 반바지 롤업 팬츠 츄리닝</a>
-                <br><hr size="1" color="black">
-                <img src = "image\ic_new.gif"> <img src = "image\ic_66size.gif"> <img src = "image\ic_sale.gif"><br>
-                <font size="4"><b><s>7,000원</s> -> 5,000원</b></font>
-            </td>
-        </tr>
-        <tr>
-            <td width="25%">
-                <a href="Bottom-3.jsp"><img src = "image\BOTTOM3.gif"  alt="디오 데님스커트" title="디오 데님스커트"><br><br>디오 데님스커트 | 치마 청스커트</a>
-                <br><hr size="1" color="black">
-                <img src = "image\ic_new.gif"><br>
-                <font size="4"><b>11,900원</b></font>
-            </td>
-            <td width="25%">
-                <a href="Bottom-6.jsp"><img src = "image\BOTTOM6.gif"  alt="굿모닝 트레이닝팬츠" title="굿모닝 트레이닝팬츠"><br><br>(기모)굿모닝 트레이닝팬츠 | 츄리닝 조거팬츠 홈웨어
-                    <br><hr size="1" color="black">
-                    <img src="image\ic_new.gif"> <img src="image\ic_66size.gif"> <img src="image\ic_sale.gif"><br>
-                    <font size="4"><b>10,500원</b></font>
-            </td>
-            <td width="25%">
-                <a href="Top-7.jsp"><img src = "image\OUT7.gif"  alt="오토 코트" title="오토 코트"><br><br>(누빔)오토 코트 | 지퍼점퍼 양털코트 아우터
-                    <br><hr size="1" color="black">
-                    <img src = "image\ic_new.gif"> <img src = "image\ic_66size.gif"><br>
-                    <font size="4"><b>42,900원</b></font>
-            </td>
-            <td width="25%">
-                <a href="Top-1.html"><img src = "image\SHO1.jpg"  alt="아이러너 슈즈" title="아이러너 슈즈"><br><br>아이러너 슈즈 | 스트랩힐</a>
-                <br><hr size="1" color="black">
-                <img src = "image\ic_new.gif"><br>
-                <font size="4"><b>19,500원</b></font>
-            </td>
+            <% }
+                }%>
         </tr>
     </table>
-
+    <table align="center" width ="1000" height="400" cellpadding="15">
+        <tr>
+            <%  if (phoneCases.size() >=4) {
+                    for (int j = phoneCases.size() - 5; j >= phoneCases.size() - 8; j--) {
+                        PhoneCase phoneCase = phoneCases.get(j);
+                        int caseID = phoneCase.getCaseID();
+                        String caseType = phoneCase.getCaseType();
+                        String caseName = phoneCase.getCaseName();
+                        String explanation = phoneCase.getExplanation();
+                        int price = phoneCase.getPrice();
+                        String imgPath = phoneCase.getImg();
+            %>
+            <td width="25%">
+                <a href="detailPage?caseID=<%=caseID%>"><img src = "image/upload/<%=imgPath%>" height="240" width="280" alt="<%=caseName%>" title="<%=caseName%>"/><br><br><%=caseName%>(<%=caseType%>)</a>
+                <br><hr size="1" color="black">
+                <img src = "image\ic_best.png"><br>
+                <font size="4"><b><%=price%>원</b></font>
+            </td>
+            <% }
+                }%>
+        </tr>
+    </table>    
     <div id="gotop">
         <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>
         <img src="image\cursor1.jpg" height="50" width="50"> <br>

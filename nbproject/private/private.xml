@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/paymentConfirm.jsp</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/phoneCaseList.jsp</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/ProcessPhoneCaseServlet.java</file>
@@ -65,6 +66,16 @@
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/UserDAO.java</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/join.jsp</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/UpdatePaymentServlet.java</file>
+=======
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/src/java/web/SearchIDServlet.java</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/src/java/domain/UserDAO.java</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/src/java/domain/UserService.java</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/searchID.jsp</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/src/java/domain/User.java</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/main.jsp</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/searchIDList.jsp</file>
+>>>>>>> 0c8499b9673e52c8a1e981baeb9dd2290e343ef3
         </group>
     </open-files>
 </project-private>

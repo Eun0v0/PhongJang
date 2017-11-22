@@ -5,13 +5,11 @@
             30
         </session-timeout>
     </session-config>
-    
     <resource-ref>
         <res-ref-name>jdbc/oracleDS</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>
         <res-auth>Container</res-auth>
     </resource-ref>
-    
     <servlet>
         <servlet-name>LoginController</servlet-name>
         <servlet-class>web.LoginServlet</servlet-class>
@@ -20,7 +18,6 @@
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>LogoutController</servlet-name>
         <servlet-class>web.LogoutServlet</servlet-class>
@@ -29,7 +26,6 @@
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>IDCheckController</servlet-name>
         <servlet-class>web.IDCheckServlet</servlet-class>
@@ -38,7 +34,6 @@
         <servlet-name>IDCheckController</servlet-name>
         <url-pattern>/IDCheck</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>JoinController</servlet-name>
         <servlet-class>web.JoinServlet</servlet-class>
@@ -47,7 +42,6 @@
         <servlet-name>JoinController</servlet-name>
         <url-pattern>/join</url-pattern>
     </servlet-mapping>
-        
     <servlet>
         <servlet-name>SearchController</servlet-name>
         <servlet-class>web.SearchPhoneCaseServlet</servlet-class>
@@ -56,7 +50,19 @@
         <servlet-name>SearchController</servlet-name>
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
-    
+<<<<<<< HEAD
+
+        <servlet>
+        <servlet-name>SearchIDController</servlet-name>
+        <servlet-class>web.SearchIDServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchIDController</servlet-name>
+        <url-pattern>/searchID</url-pattern>
+    </servlet-mapping>
+        
+=======
+>>>>>>> 1e231bc155362d5da7ee88fe578872137181b6f9
     <servlet>
         <servlet-name>AddCartController</servlet-name>
         <servlet-class>web.AddCartServlet</servlet-class>
@@ -65,7 +71,6 @@
         <servlet-name>AddCartController</servlet-name>
         <url-pattern>/take</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>CartController</servlet-name>
         <servlet-class>web.RetrieveCartServlet</servlet-class>
@@ -74,7 +79,6 @@
         <servlet-name>CartController</servlet-name>
         <url-pattern>/cart</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>DeleteController</servlet-name>
         <servlet-class>web.DeleteCartServlet</servlet-class>
@@ -83,7 +87,6 @@
         <servlet-name>DeleteController</servlet-name>
         <url-pattern>/delete</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>MainController</servlet-name>
         <servlet-class>web.MainServlet</servlet-class>
@@ -92,7 +95,6 @@
         <servlet-name>MainController</servlet-name>
         <url-pattern>/main</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>AddPaymentController</servlet-name>
         <servlet-class>web.AddPaymentServlet</servlet-class>
@@ -101,7 +103,6 @@
         <servlet-name>AddPaymentController</servlet-name>
         <url-pattern>/payment</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>ProcessPaymentController</servlet-name>
         <servlet-class>web.ProcessPaymentServlet</servlet-class>
@@ -110,7 +111,6 @@
         <servlet-name>ProcessPaymentController</servlet-name>
         <url-pattern>/pay</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>RetrievePaymentController</servlet-name>
         <servlet-class>web.RetrievePaymentServlet</servlet-class>
@@ -119,7 +119,6 @@
         <servlet-name>RetrievePaymentController</servlet-name>
         <url-pattern>/paymentlist</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>CreatePhoneCaseController</servlet-name>
         <servlet-class>web.CreatePhoneCaseServlet</servlet-class>
@@ -128,7 +127,6 @@
         <servlet-name>CreatePhoneCaseController</servlet-name>
         <url-pattern>/create</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>ProcessPhoneCaseController</servlet-name>
         <servlet-class>web.ProcessPhoneCaseServlet</servlet-class>
@@ -137,7 +135,6 @@
         <servlet-name>ProcessPhoneCaseController</servlet-name>
         <url-pattern>/createprocess</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>UpdatePhoneCaseController</servlet-name>
         <servlet-class>web.UpdatePhoneCaseServlet</servlet-class>
@@ -146,7 +143,6 @@
         <servlet-name>UpdatePhoneCaseController</servlet-name>
         <url-pattern>/update</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>UpdateProcessPhoneCaseController</servlet-name>
         <servlet-class>web.UpdateProcessPhoneCaseServlet</servlet-class>
@@ -155,7 +151,6 @@
         <servlet-name>UpdateProcessPhoneCaseController</servlet-name>
         <url-pattern>/updateprocess</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>DeletePhoneCaseController</servlet-name>
         <servlet-class>web.DeletePhoneCaseServlet</servlet-class>
@@ -164,7 +159,6 @@
         <servlet-name>DeletePhoneCaseController</servlet-name>
         <url-pattern>/deleteCase</url-pattern>
     </servlet-mapping>
- 
     <servlet>
         <servlet-name>MyPageController</servlet-name>
         <servlet-class>web.MyPageServlet</servlet-class>
@@ -173,7 +167,6 @@
         <servlet-name>MyPageController</servlet-name>
         <url-pattern>/myPage</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>MyInfoController</servlet-name>
         <servlet-class>web.MyInfoServlet</servlet-class>
@@ -182,7 +175,6 @@
         <servlet-name>MyInfoController</servlet-name>
         <url-pattern>/MyInfo</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>MyInfoUpdateController</servlet-name>
         <servlet-class>web.MyInfoUpdateServlet</servlet-class>
@@ -191,7 +183,6 @@
         <servlet-name>MyInfoUpdateController</servlet-name>
         <url-pattern>/updateMyInfo</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>DeletePaymentController</servlet-name>
         <servlet-class>web.DeletePaymentServlet</servlet-class>
@@ -200,7 +191,6 @@
         <servlet-name>DeletePaymentController</servlet-name>
         <url-pattern>/deletePayment</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>UpdatePaymentController</servlet-name>
         <servlet-class>web.UpdatePaymentServlet</servlet-class>
@@ -209,7 +199,6 @@
         <servlet-name>UpdatePaymentController</servlet-name>
         <url-pattern>/updatePayment</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>ManagePhoneCaseController</servlet-name>
         <servlet-class>web.ManagePhoneCaseServlet</servlet-class>
@@ -218,7 +207,6 @@
         <servlet-name>ManagePhoneCaseController</servlet-name>
         <url-pattern>/managePhoneCase</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>DetailPageController</servlet-name>
         <servlet-class>web.DetailPageServlet</servlet-class>
@@ -227,8 +215,12 @@
         <servlet-name>DetailPageController</servlet-name>
         <url-pattern>/detailPage</url-pattern>
     </servlet-mapping>
+<<<<<<< HEAD
     
    <servlet>
+=======
+    <servlet>
+>>>>>>> 0c8499b9673e52c8a1e981baeb9dd2290e343ef3
         <servlet-name>CreateQnaController</servlet-name>
         <servlet-class>web.CreateQnaServlet</servlet-class>
     </servlet>
@@ -254,4 +246,33 @@
         <servlet-name>ProcessQnaController</servlet-name>
         <url-pattern>/writeQna</url-pattern>
     </servlet-mapping>
+<<<<<<< HEAD
+=======
+    <servlet>
+        <servlet-name>CaseTypeController</servlet-name>
+        <servlet-class>web.CaseTypePageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CaseTypeController</servlet-name>
+        <url-pattern>/caseTypePage</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ManageStockController</servlet-name>
+        <servlet-class>web.ManageStockServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManageStockController</servlet-name>
+        <url-pattern>/manageStock</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>StockChangeController</servlet-name>
+        <servlet-class>web.StockChangeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StockChangeController</servlet-name>
+        <url-pattern>/stockChange</url-pattern>
+    </servlet-mapping>
+>>>>>>> 0c8499b9673e52c8a1e981baeb9dd2290e343ef3
 </web-app>

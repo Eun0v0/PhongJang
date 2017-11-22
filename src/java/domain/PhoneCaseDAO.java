@@ -18,13 +18,18 @@ public class PhoneCaseDAO {
 
     private DBConnectionPool connPool;
     private static final String ALLRETRIEVE_STMT
-            = "SELECT * FROM shoppingproduct";
-    private static final String INSERT_STMT = "INSERT INTO shoppingProduct VALUES(?,?,?,?,?,?,?)";
+            = "SELECT * FROM shoppingproduct ORDER BY CaseID";
+    private static final String INSERT_STMT = "INSERT INTO shoppingProduct VALUES(?,?,?,?,?,?,?,?)";
     private static final String UPDATE_STMT = "UPDATE shoppingProduct SET CaseName = ?, CaseType = ?, Explanation = ?, Price = ?, Image = ?, DetailImage = ? WHERE CaseID = ?";
     private static final String GETID_STMT = "SELECT COUNT(CaseID) FROM shoppingProduct";
     private static final String DELETE_STMT = "DELETE FROM shoppingProduct WHERE CaseID = ?";
     private static final String SELECT_STMT
             = "SELECT * FROM shoppingproduct WHERE CaseID=?";
+    private static final String TYPESELECT_STMT
+            = "SELECT * FROM shoppingProduct WHERE CaseType=?";
+    private static final String STOCK_STMT
+            = "UPDATE shoppingProduct SET Stock = ? WHERE CaseID=?";
+    
 
     //모든 데이터를 가져온다
     ArrayList<PhoneCase> allPhoneCaseRetrieve() throws SQLException {
@@ -44,7 +49,8 @@ public class PhoneCaseDAO {
                 int Price = rset.getInt(5);
                 String img = rset.getString(6);
                 String detailImg = rset.getString(7);
-                phoneCase.add(new PhoneCase(CaseID, CaseName, CaseType, Explanation, Price, img, detailImg));
+                int stock = rset.getInt(8);
+                phoneCase.add(new PhoneCase(CaseID, CaseName, CaseType, Explanation, Price, img, detailImg, stock));
             }
             return phoneCase;
         } catch (SQLException se) {
@@ -95,7 +101,8 @@ public class PhoneCaseDAO {
                 int Price = rset.getInt(5);
                 String img= rset.getString(6);
                 String detailImg = rset.getString(7);
-                phoneCase.add(new PhoneCase(CaseID, CaseName, CaseType, Explanation, Price, img, detailImg));
+                int stock = rset.getInt(8);
+                phoneCase.add(new PhoneCase(CaseID, CaseName, CaseType, Explanation, Price, img, detailImg, stock));
             }
             return phoneCase;
         } catch (SQLException se) {
@@ -127,9 +134,61 @@ public class PhoneCaseDAO {
             }
         }
     }
-
+     //타입별로 케이스를 가져온다
+    ArrayList<PhoneCase> phoneCaseTypeRetrieve(String caseType) throws SQLException {
+        ArrayList<PhoneCase> phoneCase = new ArrayList<PhoneCase>();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        try {
+            //String TYPESELECT_STMT="SELECT * FROM shoppingProduct WHERE CaseType=?";
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(TYPESELECT_STMT);
+            stmt.setString(1, caseType);
+            rset = stmt.executeQuery();
+            while (rset.next()) {
+                int CaseID = rset.getInt(1);
+                String CaseName = rset.getString(2);
+                String CaseType = rset.getString(3);
+                String Explanation = rset.getString(4);
+                int Price = rset.getInt(5);
+                String img= rset.getString(6);
+                String detailImg = rset.getString(7);
+                int stock = rset.getInt(8);
+                phoneCase.add(new PhoneCase(CaseID, CaseName, CaseType, Explanation, Price, img, detailImg, stock));
+            }
+            return phoneCase;
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("Exception: " + e.getMessage());
+        } finally {
+            if (rset != null) {
+                try {
+                    rset.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
     //새로운 상품 데이터를 입력한다.
-    void productInsert(String caseType, String caseName, String explanation, int price, String img, String detailImg) {
+    void productInsert(String caseType, String caseName, String explanation, int price, String img, String detailImg, int stock) {
 
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -151,6 +210,7 @@ public class PhoneCaseDAO {
             stmt.setInt(5, price);
             stmt.setString(6, img);
             stmt.setString(7,detailImg);
+            stmt.setInt(8, stock);
 
             stmt.executeQuery();
         } catch (SQLException se) {
@@ -195,7 +255,8 @@ public class PhoneCaseDAO {
                 int Price = rset.getInt(5);
                 String img = rset.getString(6);
                 String detailImg = rset.getString(7);
-                phoneCase = new PhoneCase(CaseID, CaseName, CaseType, Explanation, Price, img, detailImg);
+                int stock = rset.getInt(8);
+                phoneCase = new PhoneCase(CaseID, CaseName, CaseType, Explanation, Price, img, detailImg, stock);
             }
             return phoneCase;
         } catch (SQLException se) {
@@ -257,7 +318,6 @@ public class PhoneCaseDAO {
             }
         }
     }
-
     //상품 데이터를 삭제한다.
     void productDelete(int caseID) {
         Connection conn = null;
@@ -269,6 +329,39 @@ public class PhoneCaseDAO {
             conn = connPool.getPoolConnection();
             stmt = conn.prepareStatement(DELETE_STMT);
             stmt.setInt(1, caseID);
+            stmt.executeQuery();
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
+    //상품 데이터를 재고를 수정한다.
+    void stockChange(int stock, int caseID) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        //STOCK_STMT = "UPDATE shoppingProduct SET Stock = ? WHERE caseID=?";
+
+        try {
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(STOCK_STMT);
+            stmt.setInt(1, stock);
+            stmt.setInt(2, caseID);
             stmt.executeQuery();
         } catch (SQLException se) {
             throw new RuntimeException(

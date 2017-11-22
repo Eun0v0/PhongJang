@@ -75,4 +75,12 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
+    
+    public String searchID() {
+        return id;
+    }
+
+    public void searchID(String name, String phone) {
+        this.id = id;
+    }
 }

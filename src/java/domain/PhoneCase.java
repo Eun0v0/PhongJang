@@ -14,9 +14,10 @@ public class PhoneCase {
     int price;
     String img;
     String detailImg;
+    int stock;
     
 
-    public PhoneCase(int caseID, String caseName, String caseType, String explanation, int price, String img, String detailImg) {
+    public PhoneCase(int caseID, String caseName, String caseType, String explanation, int price, String img, String detailImg, int stock) {
 
         this.caseID = caseID;
         this.caseName = caseName;
@@ -25,9 +26,19 @@ public class PhoneCase {
         this.price = price;
         this.img = img;
         this.detailImg = detailImg;
+        this.stock = stock;
         
     }
 
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+    
+    
     public String getDetailImg() {
         return detailImg;
     }

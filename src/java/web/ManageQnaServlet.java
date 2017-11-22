@@ -29,6 +29,10 @@ public class ManageQnaServlet extends HttpServlet {
             throws IOException, ServletException {
         processRequest(request, response);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0c8499b9673e52c8a1e981baeb9dd2290e343ef3
 
     public void processRequest(HttpServletRequest request,
             HttpServletResponse response)
