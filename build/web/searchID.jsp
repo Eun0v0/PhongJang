@@ -85,71 +85,72 @@
             #gotop {position: absolute; right: 0px; top: 50px; width: 100px; height: 100px;}
             a{color:black; text-decoration:none;}
         </style>
-     
+
     </head>
     <body>
         <table border="0px">
-        <tr>
-            <%  User user = (User) request.getAttribute("user");
-            if (user == null) { %>
-            <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
-            <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                   <img src="image\cart.jpg"></a>
-            </td>
-            <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                    <img src="image\order.jpg"></a>
-            </td>
-            <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                    &nbsp;
-                    <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE"></a>
-            </td>
-                <% } else { session.setAttribute("user", user); %>
-            <td><form action="logout" method="post">
-                    <input type="image" src="image\logout.jpg" name="Submit" value ="로그아웃">
-                </form> 
-            </td>
-            <td><form action="cart" method="post">
-                    <input type="hidden" name="userID" value="<%=user.getId()%>">
-                    <input type="image" src="image\cart.jpg" name="Submit" value ="장바구니">
-                </form> 
-            </td>
-            
-            <td><form action="paymentlist" method="post">
-                    <input type="image" src="image\order.jpg" name="Submit" value ="주문 목록">
-                </form>    
-            </td>
-            <td><form action="myPage" method="post">
-                    <input type="hidden" name="userID" value="<%=user.getId()%>">
-                    &nbsp;
-                    <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE">
-                </form>    
-            </td>
+            <tr>
+                <%  User user = (User) request.getAttribute("user");
+                    if (user == null) { %>
+                <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
+                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                        <img src="image\cart.jpg"></a>
+                </td>
+                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                        <img src="image\order.jpg"></a>
+                </td>
+                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                        &nbsp;
+                        <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE"></a>
+                </td>
+                <% } else {
+                    session.setAttribute("user", user);%>
+                <td><form action="logout" method="post">
+                        <input type="image" src="image\logout.jpg" name="Submit" value ="로그아웃">
+                    </form> 
+                </td>
+                <td><form action="cart" method="post">
+                        <input type="hidden" name="userID" value="<%=user.getId()%>">
+                        <input type="image" src="image\cart.jpg" name="Submit" value ="장바구니">
+                    </form> 
+                </td>
+
+                <td><form action="paymentlist" method="post">
+                        <input type="image" src="image\order.jpg" name="Submit" value ="주문 목록">
+                    </form>    
+                </td>
+                <td><form action="myPage" method="post">
+                        <input type="hidden" name="userID" value="<%=user.getId()%>">
+                        &nbsp;
+                        <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE">
+                    </form>    
+                </td>
                 <%  }%>
-            <td><form action="IDCheck" method="post">
-                    <input type="image" src="image\join.jpg" name="Submit" value ="회원가입">
-                </form>    
-            </td>
-            
-            <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
-        </tr>
-    </table>
-            <% if (user != null) { %>
-            <center> <div align="middle">
-                <form action="main" method="post">
-                    <input type="hidden" name="userID" value="<%=user.getId()%>">
-                    <input type="image" src="image\banner.jpg" name="Submit">
-                </form>
-            </div> </center>
-            <% } else {%>
-            <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('main.jsp')"> </div> </center>
-            <% } %>
-            
-            <form action ="search" method="post">
-                <img src="image\search.png" height="17" width="17">
-                <input type="text" size="16" name="caseName">
-                <input type="submit" value="검색">
+                <td><form action="IDCheck" method="post">
+                        <input type="image" src="image\join.jpg" name="Submit" value ="회원가입">
+                    </form>    
+                </td>
+
+                <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
+            </tr>
+        </table>
+        <% if (user != null) {%>
+    <center> <div align="middle">
+            <form action="main" method="post">
+                <input type="hidden" name="userID" value="<%=user.getId()%>">
+                <input type="image" src="image\banner.jpg" name="Submit">
             </form>
-                
+        </div> </center>
+        <% } else {%>
+    <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('main.jsp')"> </div> </center>
+            <% }%>
+
+    <form action ="search" method="post">
+        <img src="image\search.png" height="17" width="17">
+        <input type="text" size="16" name="caseName">
+        <input type="submit" value="검색">
+    </form>
+
     <hr size="5" color="black">
     <center>
         <a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a>
@@ -162,35 +163,38 @@
         <img src="image\space.jpg" height="35" width="80">
         <a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a>
     </center>
-    
+
     <hr size="5" color="black">
     <center>   
-    <br><br>
-    <img src="image\searchID.jpg" height="60" width="150"><br>
-    <br>
-    <%--이름 , 핸드폰 번호--%>
-    <table>
-    <tr><td><img src="image\name.jpg" width=120 height=35">&nbsp;</td><td>
-                        <textarea name="userName" size="20"></textarea>
+        <br><br>
+        <img src="image\searchID.jpg" height="60" width="150"><br>
+        <br>
+        <%--이름 , 핸드폰 번호--%>
+        <form action ="searchID" method="post">
+            <table>
+                <tr><td><img src="image\name.jpg" width=120 height=35">&nbsp;</td><td>
+                        <input type="text" name="userName" size="20">
                 <tr><td><img src="image\phone.jpg" width=120 height=35">&nbsp;</td><td>
-                        <textarea name="userPhone" size="20"></textarea>
-    </table>
-    <%--아이디 찾기 버튼, 취소 버튼--%>
-     <table><tr>
-        <td><input type="image" src="image\searchIDbt.jpg" width="170" height="50" name="Submit" value ="아이디 찾기">&nbsp;</td>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <td><input type="image" src="image\back.jpg" width="170" height="50" name="Submit" value ="LogIn"></td>
-        </tr>
-    </table>
+                        <input type="text" name="PhoneNum" size="20">
+            </table>
+            <table><tr>
+                    <td><input type="image" src="image\searchIDbt.jpg" width="170" height="50" name="Submit" value ="searchID">&nbsp;</td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <td><input type="image" src="image\back.jpg" width="170" height="50" onClick="location.assign('login.jsp')"></td>
+                </tr>
+            </table>
+        </form>
+        <%--아이디 찾기 버튼, 취소 버튼--%>
+
     </center>
     <div id="gotop">
-    <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>
-    <img src="image\cursor1.jpg" height="50" width="50"> <br>
-    <a href="#bottom"> <img src="image\down.jpg" height="35" width="50"> </a> 
-</div>
+        <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>
+        <img src="image\cursor1.jpg" height="50" width="50"> <br>
+        <a href="#bottom"> <img src="image\down.jpg" height="35" width="50"> </a> 
+    </div>
 
-<script type="text/javascript">initMoving(document.getElementById("gotop"), 50, 50, 50);</script> 
+    <script type="text/javascript">initMoving(document.getElementById("gotop"), 50, 50, 50);</script> 
 
-<a href="#top" name="bottom"><img src="image\totop.jpg" align="right"></a>
+    <a href="#top" name="bottom"><img src="image\totop.jpg" align="right"></a>
 </body>
 </html>

@@ -50,6 +50,19 @@
         <servlet-name>SearchController</servlet-name>
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
+<<<<<<< HEAD
+
+        <servlet>
+        <servlet-name>SearchIDController</servlet-name>
+        <servlet-class>web.SearchIDServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchIDController</servlet-name>
+        <url-pattern>/searchID</url-pattern>
+    </servlet-mapping>
+        
+=======
+>>>>>>> 1e231bc155362d5da7ee88fe578872137181b6f9
     <servlet>
         <servlet-name>AddCartController</servlet-name>
         <servlet-class>web.AddCartServlet</servlet-class>

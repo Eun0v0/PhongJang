@@ -100,10 +100,21 @@
             </table>
         </center>
         <center>
-            
-            <input type="image" src="image\loginbutton.jpg" name="Submit" value ="Submit" aline="absmiddle">
-            <input type="image" src="image\clearbutton.jpg" name="Reset" value ="Retry" aline="absmiddle">
+            <table>
+            <tr>
+                <td><input type="image" src="image\loginbutton.jpg" name="Submit" value ="Submit" aline="absmiddle"></td>
+                <td><input type="image" src="image\clearbutton.jpg" name="Reset" value ="Retry" aline="absmiddle"></td>
+            </tr>
+            </table>
         </center>
     </form>
+    <center>
+        <table>
+                <tr>
+            <td><input type="image" src="image\searchIDbt2.jpg" width="100" height="30" onClick="location.assign('searchID.jsp')"></td>
+            <td><input type="image" src="image\searchPwdBt2.jpg" width="100" height="30" onClick="location.assign('searchPwd.jsp')"></td>
+                </tr>
+            </table>
+    </center>
 </body>
 </html>
