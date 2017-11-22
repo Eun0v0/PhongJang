@@ -35,7 +35,7 @@ public class QnaService {
         return qnas;
     }*/
 
-    public void insertQna(String userName, int passWord, String qnaTitle, String qnaContent, String qnaTime) {
-        qnaDataAccess.qnaInsert(userName, passWord, qnaTitle, qnaContent, qnaTime);
+    public void insertQna(String userName, int passWord, String qnaTitle, String qnaContent, String s_date) {
+        qnaDataAccess.qnaInsert(userName, passWord, qnaTitle, qnaContent, s_date);
     }
 }

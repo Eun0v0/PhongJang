@@ -5,6 +5,12 @@
  */
 package web;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+
 import domain.Qna;
 import domain.QnaService;
 import domain.User;
@@ -16,6 +22,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import util.Status;
 
 public class ProcessQnaServlet extends HttpServlet {
@@ -25,6 +32,7 @@ public class ProcessQnaServlet extends HttpServlet {
             throws IOException, ServletException {
         processRequest(request, response);
     }
+
     public void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
@@ -40,6 +48,13 @@ public class ProcessQnaServlet extends HttpServlet {
         request.setCharacterEncoding("EUC-KR");
         request.setAttribute("status", status);
 
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+
+        String year = String.valueOf(cal.get(cal.YEAR));
+        String month = String.valueOf(cal.get(cal.MONTH) + 1);
+        String date = String.valueOf(cal.get(cal.DATE));
+        String s_date = year + "-" + month + "-" + date;	//date which user did slot machine
+
         QnaService qnaService = new QnaService();
         HttpSession HttpSession = request.getSession();
         //User user = (User) HttpSession.getAttribute("user");
@@ -50,10 +65,10 @@ public class ProcessQnaServlet extends HttpServlet {
 
         try {
             String userName = request.getParameter("userName");
-            int passWord = Integer.parseInt("passWord");
+            int passWord = Integer.parseInt(request.getParameter("passWord"));
             String qnaTitle = request.getParameter("qnaTitle");
             String qnaContent = request.getParameter("qnaContent");
-            String qnaTime = request.getParameter("qnaTime");
+            //String qnaTime = request.getParameter("qnaTime");
 
             if ((userName == null) || (userName.length() == 0)) {
                 status.addException(new Exception(
@@ -72,13 +87,13 @@ public class ProcessQnaServlet extends HttpServlet {
                         "Please enter your qnaContent"));
             }
 
-            if ((qnaTime == null) || (qnaTime.length() == 0)) {
+            /*if ((qnaTime == null) || (qnaTime.length() == 0)) {
                 status.addException(new Exception(
                         "Please enter your qnaTime"));
-            }
-            
+            }*/
+
             try {
-                qnaService.insertQna(userName, passWord, qnaTitle, qnaContent, qnaTime);
+                qnaService.insertQna(userName, passWord, qnaTitle, qnaContent, s_date);
                 //PhoneCaseService.insertPhoneCase(caseType, caseName, explanation, price, imgPath);
 
                 qnas = qnaService.getAllQna();
@@ -88,7 +103,7 @@ public class ProcessQnaServlet extends HttpServlet {
                     view.forward(request, response);
                     return;
                 }
-                view = request.getRequestDispatcher("main.jsp");
+                view = request.getRequestDispatcher("qna.jsp");
                 view.forward(request, response);
             } catch (Exception e) {
                 status.addException(e);

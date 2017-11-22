@@ -1,9 +1,8 @@
 <%-- 
     Document   : qnaCreate
-    Created on : 2017. 11. 21, 오전 1:08:11
+    Created on : 2017. 11. 22, 오후 8:24:14
     Author     : user
 --%>
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.User"%>
 <%@page import="java.net.URLEncoder"%>
@@ -13,8 +12,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Q&A 작성</title>
+        <%--<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">--%>
+        <title>Q&A 작성하기</title>
         <% ArrayList<Qna> qnas = (ArrayList<Qna>) request.getAttribute("qnas");%>
         <%User user = (User) request.getAttribute("user");%>
         <%session.setAttribute("user", user);%>
@@ -89,7 +88,7 @@
         <a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a>
         <img src="image\space.jpg" height="35" width="80">
         <a href="Bottom-main.jsp"><img src="image\bumperCase2.jpg" height="35" width="140"></a>
-        <img src="image\space.jpg" height="5" width="80">
+        <img src="image\space.jpg" height="35" width="80">
         <a href="Outer-main.jsp"><img src="image\hardCase.jpg" height="35" width="140"></a>
         <img src="image\space.jpg" height="35" width="80">
         <a href="Sho-main.jsp"><img src="image\jellyCase.jpg" height="35" width="140"></a>
@@ -100,52 +99,51 @@
 
     <center></br></br><img src="image\qnawrite.jpg"><br></center>
     <center>
-        <table>
-            <tr>
-                <td><center><table>
-                    <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
-                    <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <th width="120" height="35">제목</th>
-                        <td><input name="title" size="48" maxlength="100"></td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <th width="120" height="35">작성자</th>
-                        <td><input name="name" size="48" maxlength="50"></td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <th width="60" height="35">비밀번호</th>
-                        <td><input name="password" size="48" maxlength="50"></td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <th width="60" height="35">내용</th>
-                        <td><textarea name="memo" cols="50" rows="13"></textarea></td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-                    <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
-                    <tr align="center">
-                        <td>&nbsp;</td><br>
+        <form action="writeQna" methor="post">
+            <table>
+                <tr>
+                    <td><center>
+                        <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
+                        <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <th width="120" height="35">제목</th>
+                            <td><input name="qnaTitle" size="48" maxlength="100"></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <th width="120" height="35">작성자</th>
+                            <td><input name="userName" size="48" maxlength="50"></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <th width="60" height="35">비밀번호</th>
+                            <td><input name="passWord" size="48" maxlength="50"></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <th width="60" height="35">내용</th>
+                            <td><textarea name="qnaContent" cols="50" rows="13"></textarea></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+                        <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
+                        <tr align="center">
+                            <td>&nbsp;</td><br>
                         <td colspan="2">
-                            <form action="writeQna" methor="post">
-                                <input type="submit" value="등록">
-                            </form>
-                            <input type=button value="취소">
+
+                            <input type="submit" value="등록">
                         <td>&nbsp;</td>
-                    </tr>
-                </table>
-            </center></td></tr>
-        </table>
+                        </tr>      
+                </center></td></tr>
+            </table>
+            </form>
     </center>
 </body>
 </html>

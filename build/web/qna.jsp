@@ -105,11 +105,7 @@
                 <th width="250" height="35"><img src="image\boardtitle.jpg" width=250 height=40"></th>
                 <th width="120" height="35"><img src="image\writer.jpg" width=120 height=40"></th>
                 <th width="140" height="35"><img src="image\writedate.jpg" width=140 height=40"></th>
-<<<<<<< HEAD
-                <th width="50" height="35">삭제</th>
-=======
                 <th width="30" height="35">삭제</th>
->>>>>>> 0c8499b9673e52c8a1e981baeb9dd2290e343ef3
             </tr>
             <%
                 for (int i = 0; i < qnas.size(); i++) {
@@ -128,11 +124,7 @@
             <tr>
                 <td bgcolor="#dcdcdc" height="40" align="center"><%=qnaNum%></td>
                 <td bgcolor="#dcdcdc" height="40" align="center"><a href="updateQna?qnaNum=<%=qnaNum%>"><%=qnaTitle%></a></td>
-<<<<<<< HEAD
                 <td bgcolor="#dcdcdc" height="40" align="center"><%=userName%></td>
-=======
-                <td bgcolor="#dcdcdc" height="40"><%=userName%></td>
->>>>>>> 0c8499b9673e52c8a1e981baeb9dd2290e343ef3
                 <td bgcolor="#dcdcdc" height="40" align="center"><%=qnaTime%></td>
                 <td bgcolor="#dcdcdc" height="40" align="center">삭제</td>   
             </tr>

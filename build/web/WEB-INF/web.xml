@@ -50,9 +50,8 @@
         <servlet-name>SearchController</servlet-name>
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
 
-        <servlet>
+    <servlet>
         <servlet-name>SearchIDController</servlet-name>
         <servlet-class>web.SearchIDServlet</servlet-class>
     </servlet>
@@ -61,8 +60,6 @@
         <url-pattern>/searchID</url-pattern>
     </servlet-mapping>
         
-=======
->>>>>>> 1e231bc155362d5da7ee88fe578872137181b6f9
     <servlet>
         <servlet-name>AddCartController</servlet-name>
         <servlet-class>web.AddCartServlet</servlet-class>
@@ -215,12 +212,8 @@
         <servlet-name>DetailPageController</servlet-name>
         <url-pattern>/detailPage</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
     
-   <servlet>
-=======
     <servlet>
->>>>>>> 0c8499b9673e52c8a1e981baeb9dd2290e343ef3
         <servlet-name>CreateQnaController</servlet-name>
         <servlet-class>web.CreateQnaServlet</servlet-class>
     </servlet>
@@ -229,7 +222,7 @@
         <url-pattern>/createQna</url-pattern>
     </servlet-mapping>
     
-     <servlet>
+    <servlet>
         <servlet-name>ShowQnaListController</servlet-name>
         <servlet-class>web.ManageQnaServlet</servlet-class>
     </servlet>
@@ -238,7 +231,7 @@
         <url-pattern>/qnaList</url-pattern>
     </servlet-mapping>
     
-     <servlet>
+    <servlet>
         <servlet-name>ProcessQnaController</servlet-name>
         <servlet-class>web.ProcessQnaServlet</servlet-class>
     </servlet>
@@ -246,8 +239,7 @@
         <servlet-name>ProcessQnaController</servlet-name>
         <url-pattern>/writeQna</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
-=======
+
     <servlet>
         <servlet-name>CaseTypeController</servlet-name>
         <servlet-class>web.CaseTypePageServlet</servlet-class>
@@ -274,5 +266,4 @@
         <servlet-name>StockChangeController</servlet-name>
         <url-pattern>/stockChange</url-pattern>
     </servlet-mapping>
->>>>>>> 0c8499b9673e52c8a1e981baeb9dd2290e343ef3
 </web-app>
