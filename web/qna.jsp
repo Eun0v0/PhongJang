@@ -6,14 +6,19 @@
 <%-- test --%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.User"%>
+<%@page import="java.net.URLEncoder"%>
+<%@page import="java.net.URLDecoder"%>
+<%@page import="domain.Qna"%>
 <%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
         <title>Q&A</title>
+        <% ArrayList<Qna> qnas = (ArrayList<Qna>) request.getAttribute("qnas");%>
         <%User user = (User) request.getAttribute("user");%>
         <%session.setAttribute("user", user);%>
+        <%session.setAttribute("qnas", qnas);%>
     </head>
     <body>
         <table border="0px">
@@ -95,27 +100,39 @@
 
     <center></br></br><img src="image\qnalist.jpg"><br><br></center>
     <center><table>
-            <thead>
-                <tr>
-                    <th width="60" height="35"><img src="image\boardnum.jpg" width=60 height=40"></th>
-                    <th width="250" height="35"><img src="image\boardtitle.jpg" width=250 height=40"></th>
-                    <th width="120" height="35"><img src="image\writer.jpg" width=120 height=40"></th>
-                    <th width="140" height="35"><img src="image\writedate.jpg" width=140 height=40"></th>
-                    <th width="60" height="35"><img src="image\view.jpg" width=60 height=40"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td bgcolor="#dcdcdc" height="40" align="center">1</td>
-                    <td bgcolor="#dcdcdc" height="40">게시판 글입니다</td>
-                    <td bgcolor="#dcdcdc" height="40" align="center">ok</td>
-                    <td bgcolor="#dcdcdc" height="40" align="center">2017/11/17</td>
-                    <td bgcolor="#dcdcdc" height="40" align="center">1</td>
-                </tr>
-            </tbody>
+            <tr>
+                <th width="60" height="35"><img src="image\boardnum.jpg" width=60 height=40"></th>
+                <th width="250" height="35"><img src="image\boardtitle.jpg" width=250 height=40"></th>
+                <th width="120" height="35"><img src="image\writer.jpg" width=120 height=40"></th>
+                <th width="140" height="35"><img src="image\writedate.jpg" width=140 height=40"></th>
+                <th width="30" height="35">삭제</th>
+            </tr>
+            <%
+                for (int i = 0; i < qnas.size(); i++) {
+                    Qna qna = qnas.get(i);
+                    int qnaNum = qna.getQnaNum();
+                    String userName = qna.getUserName();
+                    int passWord = qna.getPassWord();
+                    String qnaTitle = qna.getQnaTitle();
+                    String qnaContent = qna.getQnaContent();
+                    String qnaTime = qna.getQnaTime();
+                    
+                    String puserName = URLEncoder.encode(userName);
+                    String pqnaTitle = URLEncoder.encode(qnaTitle);
+                    String pqnaContent =URLEncoder.encode(qnaContent);
+            %>
+            <tr>
+                <td bgcolor="#dcdcdc" height="40" align="center"><%=qnaNum%></td>
+                <td bgcolor="#dcdcdc" height="40" align="center"><a href="updateQna?qnaNum=<%=qnaNum%>"><%=qnaTitle%></a></td>
+                <td bgcolor="#dcdcdc" height="40"><%=userName%></td>
+                <td bgcolor="#dcdcdc" height="40" align="center"><%=qnaTime%></td>
+                <td bgcolor="#dcdcdc" height="40" align="center">삭제</td>   
+            </tr>
+            <% }%>
         </table></br></br>
-        <form action="boardWrite" method="post" action="qnawrite.jsp">
-            <input type="image" src="image\boardwrite.jpg" name="Submit" value ="글쓰기" aline="absmiddle">
+        <form action="createQna" method="post">
+            <!-- <input type="image" src="image\boardwrite.jpg" value ="글쓰기" aline="absmiddle">-->
+            <input type="submit" value="글쓰기">
         </form>
     </center>
 </body>

@@ -5,17 +5,17 @@
 --%>
 <%--해야할 것 : 장바구니, 바로결제 버튼 바꾸기?--%>
 <%-- test --%>
-<script type ="text/javascript" src="smarteditor/js/HuskyEZCreator.js" charset="euc-kr"> </script>
+<script type ="text/javascript" src="smarteditor/js/HuskyEZCreator.js" charset="euc-kr"></script>
 <script>
-    function submitContents(elClickedObj){
+    function submitContents(elClickedObj) {
         oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
-        try{
+        try {
             elClickedObj.form.submit();
-        } catch (e){
+        } catch (e) {
         }
     }
 </script>
-    
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.PhoneCase"%>
 <%@page import="domain.Payment"%>
@@ -23,12 +23,18 @@
 <%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <jsp:useBean id="status" scope="request" class="util.Status"/>
 <%@ page import="java.sql.*" %>
-<% request.setCharacterEncoding("UTF-8"); %>
+<% request.setCharacterEncoding("UTF-8");%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>우 젤리젤리♪ 케이스</title>
+        <title><%=request.getAttribute("caseName")%>★</title>
+        <%  ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
+            User user = (User) request.getAttribute("user");
+
+            session.setAttribute("user", user);
+            session.setAttribute("phoneCases", phoneCases);
+        %>
         <script type="text/javascript">
             //<![CDATA[
             function initMoving(target, position, topLimit, btmLimit) {
@@ -101,9 +107,8 @@
     </head>
     <body>
         <table border="0px">
-            <tr>
-                <%  User user = (User) request.getAttribute("user");
-                    if (user == null) { %>
+            <tr><%
+                if (user == null) { %>
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\cart.jpg"></a>
@@ -159,15 +164,32 @@
 
     <hr size="5" color="black">
     <center>
-        <a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a>
-        <img src="image\space.jpg" height="35" width="80">
-        <a href="Bottom-main.jsp"><img src="image\bumperCase2.jpg" height="35" width="140"></a>
-        <img src="image\space.jpg" height="35" width="80">
-        <a href="Outer-main.jsp"><img src="image\hardCase.jpg" height="35" width="140"></a>
-        <img src="image\space.jpg" height="35" width="80">
-        <a href="Sho-main.jsp"><img src="image\jellyCase.jpg" height="35" width="140"></a>
-        <img src="image\space.jpg" height="35" width="80">
-        <a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a>
+        <table>
+            <tr>
+                <td><a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a></td>
+                <td><img src="image\space.jpg" height="35" width="80"></td>
+                
+                <td><form action ="caseTypePage" method="post">
+                        <input type="image" src="image\bumperCase2.jpg" name="Submit" height="35" width="140">
+                        <input type="hidden" name="caseType" value="범퍼">
+                    </form></td>
+                <td><img src="image\space.jpg" height="35" width="80"></td>
+                
+                <td><form action ="caseTypePage" method="post">
+                        <input type="image" src="image\hardCase.jpg" name="Submit" height="35" width="140">
+                        <input type="hidden" name="caseType" value="하드">
+                    </form></td>
+                <td><img src="image\space.jpg" height="35" width="80"></td>
+                
+                <td><form action ="caseTypePage" method="post">
+                        <input type="image" src="image\jellyCase.jpg" name="Submit" height="35" width="140">
+                        <input type="hidden" name="caseType" value="젤리">
+                    </form></td>
+                <td><img src="image\space.jpg" height="35" width="80"></td>
+                
+                <td><a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a></td> 
+            </tr>
+        </table>
     </center>
     <hr size="5" color="black">
 
@@ -175,23 +197,35 @@
 
     <br><br>
     <center>
-        <h1>케이스 상세 페이지 작성</h1>
-        <form name="myForm" method="post">
+        <h1><%=request.getAttribute("caseName")%></h1>
+        <form name="take" method="post">
             <table width="1100" height="300">
                 <tr>
+                    <td><img src="image/upload/<%=request.getAttribute("img")%>" width="400" height="360"></td>
+
                     <td width="900">
                         <hr size="1"><br>
-                        <div align="left"><font size="2">케이스 이름</font></div>
-                        <div align="right"><input type="text" name="caseName" size="40" padding="10px"></div>
-                        <div align="left"><font size="2">케이스 타입</font></div>
+                        <div align="left"><font size="2">케이스 이름:</font></div>
+                        <div align="right"><input type="hidden" name="caseName" value="<%=request.getAttribute("caseName")%>"><%=request.getAttribute("caseName")%></div>
+                        <div align="left"><font size="2">케이스 타입:</font></div>
+                        <div align="right"><input type="hidden" name="caseName" value="<%=request.getAttribute("caseType")%>"><%=request.getAttribute("caseType")%></div>
+                        <div align="left"><font size="2">가격:</font></div>
+                        <div align="right"><input type="hidden" name="caseName" value="<%=request.getAttribute("price")%>"><%=request.getAttribute("price")%></div>
+                        <div align="left"><font size="2">핸드폰 기종:</font></div>
+                        <div align="right"><select name="phoneType" >
+                                <option name="caseType" value="unknown">-----
+                                <option name="caseType" value="아이폰 6/6s">아이폰 6/6s
+                                <option name="caseType" value="아이폰 6+/6s+">아이폰 6+/6s+
+                                <option name="caseType" value="아이폰 7">아이폰 7
+                                <option name="caseType" value="아이폰 7+">아이폰 7+
+                                <option name="caseType" value="아이폰 8">아이폰 8
+                            </select></div>
+                        <div align="left"><font size="2">색상 선택:</font></div>
                         <div align="right"><select name="caseType" >
                                 <option name="caseType" value="unknown">-----
-                                <option name="caseType" value="젤리">젤리
-                                <option name="caseType" value="하드">하드
-                                <option name="caseType" value="범퍼">범퍼</select></div>
-                        <div align="left"><font size="2">가격</font></div>
-                        <div align="right"><input type="text" name="casePrice" size="10" padding="10px">원</div>
-
+                                <option name="caseType" value="젤리">검정
+                                <option name="caseType" value="하드">하양
+                                <option name="caseType" value="범퍼">핑크</select></div>
                         <hr size="1">
                 <br><center>
                     <input type="image" src="image\bt_cartin.jpg" onClick='mySubmit(1)'>
@@ -205,27 +239,12 @@
         <hr size="1" width="1100">
     </center>
     <br><br>
-    <center>
-        <%--<textarea name="ir1" id="ir1"></textarea>
-        <div class="row text-right">
-            <br>
-            <input type="button" value="등록" onClick="submitContents(this)">
-        </div>
-        
-        <script type="text/javascript">
-            var oEditors = [];
-            nhn.husky.EZCreator.createInIFrame({
-                oAppRef : oEditors,
-                elPlaceHolder : "ir1",
-                sSkinURI : "smarteditor/SEditorSkin.html",
-                fCreator : "createSEditor"
-            });
-            </script>--%>
-    </center>
-
-    <%--리뷰 목록 넣기--%>
-
     <hr size="2" color="black">
+    <center>
+
+        <td><img src="image/upload/<%=request.getAttribute("detailImg")%>"></td>
+
+    </center>
 
     <div id="gotop">
         <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>

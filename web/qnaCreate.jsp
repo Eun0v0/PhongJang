@@ -1,9 +1,9 @@
 <%-- 
-    Document   : qnawrite
-    Created on : 2017. 11. 18, 오전 1:01:50
+    Document   : qnaCreate
+    Created on : 2017. 11. 21, 오전 1:08:11
     Author     : user
 --%>
-<%-- test --%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

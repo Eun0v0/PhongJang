@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package web;
+import domain.PhoneCase;
+import domain.PhoneCaseService;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,25 +19,40 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
             throws IOException, ServletException {
         processRequest(request, response);
     }
+     public void doGet(HttpServletRequest request,
+            HttpServletResponse response)
+            throws IOException, ServletException {
+        processRequest(request, response);
+    }
     public void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
         RequestDispatcher view = null;
         HttpSession HttpSession = request.getSession();
         
+        response.setContentType("text/html; charset=euc-kr");
         request.setCharacterEncoding("EUC-KR");
+        request.setAttribute("user", HttpSession.getAttribute("user"));
         int caseID = Integer.parseInt(request.getParameter("caseID"));
-        String caseName = request.getParameter("caseName");
-        String caseType = request.getParameter("caseType");
-        String explanation = request.getParameter("explanation");
-        int price =  Integer.parseInt(request.getParameter("price"));
+        PhoneCaseService phoneCaseService = new PhoneCaseService();
+        PhoneCase phoneCase;
+        phoneCase = phoneCaseService.getPhoneCase(caseID);
+        
+        String caseName = phoneCase.getCaseName();
+        String caseType = phoneCase.getCaseType();
+        String explanation = phoneCase.getExplanation();
+        int price = phoneCase.getPrice();
+        String img = phoneCase.getImg();
+        String detailImg = phoneCase.getDetailImg();
         
         request.setAttribute("caseID", caseID);
         request.setAttribute("caseName", caseName);
         request.setAttribute("caseType", caseType);
         request.setAttribute("explanation", explanation);
         request.setAttribute("price", price);
-        
+        request.setAttribute("img", img);
+        request.setAttribute("detailImg", detailImg);
+
         request.setAttribute("user", HttpSession.getAttribute("user"));
         request.setAttribute("phoneCase", HttpSession.getAttribute("phoneCase"));
         

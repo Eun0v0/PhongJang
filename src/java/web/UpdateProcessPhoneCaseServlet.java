@@ -4,10 +4,13 @@
  * and open the template in the editor.
  */
 package web;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import domain.PhoneCase;
 import domain.PhoneCaseService;
 import domain.User;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,27 +31,46 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
             throws IOException, ServletException {
         RequestDispatcher view = null;
         Status status = new Status();
+        response.setContentType("text/html; charset=euc-kr");
+        request.setCharacterEncoding("EUC-KR");
+        
+        request.setAttribute("status", status);
+        String path = request.getRealPath("/image/upload");
+        PrintWriter out = response.getWriter();
+        
+        MultipartRequest multi = new MultipartRequest(request, path, 1024 * 1024 * 5, "euc-kr",
+                    new DefaultFileRenamePolicy());
         request.setCharacterEncoding("EUC-KR");
         
         request.setAttribute("status", status);
         PhoneCaseService PhoneCaseService = new PhoneCaseService();
         HttpSession HttpSession = request.getSession();
         User user = (User) HttpSession.getAttribute("user");
+
         
+        /*
         int caseID = Integer.parseInt(request.getParameter("caseID"));
+        
         String caseType = request.getParameter("caseType");
         String caseName = request.getParameter("caseName");
         String explanation = request.getParameter("explanation");
-        int price = Integer.parseInt(request.getParameter("price"));
-
+        int price = Integer.parseInt(request.getParameter("price"));*/
         
+        int caseID = Integer.parseInt(multi.getParameter("caseID"));
+        
+        String caseName = multi.getParameter("caseName");
+        String caseType = multi.getParameter("caseType");
+        String explanation = multi.getParameter("explanation");
+        int price = Integer.parseInt(multi.getParameter("price"));
+        String img = multi.getFilesystemName("img");
+        String detailImg = multi.getFilesystemName("detailImg");
+         
         ArrayList<PhoneCase> phoneCases = new ArrayList<PhoneCase>();
         phoneCases = PhoneCaseService.getAllPhoneCase();
         request.setAttribute("phoneCases", phoneCases);
         request.setAttribute("user", user);
         request.setAttribute("caseID", caseID);
-        
-        
+
         try {
             if ((caseType == null) || (caseType.length() == 0)) {
                 status.addException(new Exception(
@@ -69,7 +91,10 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
             
             try {
                 //(int caseID, String caseType, String caseName, String explanation, int price)
-                PhoneCaseService.updatePhoneCase(caseID, caseType, caseName, explanation, price);
+
+                PhoneCaseService.updatePhoneCase(caseID, caseType, caseName, explanation, price, img, detailImg);
+                //PhoneCaseService.updatePhoneCase(caseID, caseType, caseName, explanation, price, imgPath);
+                
                 phoneCases = PhoneCaseService.getAllPhoneCase();
                 request.setAttribute("phoneCases", phoneCases);
                 if (!status.isSuccessful()) {

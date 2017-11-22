@@ -3,19 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/src/java/web/SearchPhoneCaseServlet.java</file>
             <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/src/java/web/SearchIDServlet.java</file>
             <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/src/java/domain/UserDAO.java</file>
-            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/searchPwd.jsp</file>
-            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/main.jsp</file>
-            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/src/java/domain/PhoneCaseDAO.java</file>
-            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/login.jsp</file>
             <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/src/java/domain/UserService.java</file>
             <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/searchID.jsp</file>
-            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/phoneCaseList.jsp</file>
             <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/src/java/domain/User.java</file>
+            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/main.jsp</file>
             <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/src/java/domain/PhoneCase.java</file>
             <file>file:/C:/Users/Hayoung_2/Documents/PhongJang/web/searchIDList.jsp</file>
         </group>
     </open-files>

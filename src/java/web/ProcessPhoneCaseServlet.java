@@ -1,13 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+
 import domain.PhoneCase;
 import domain.PhoneCaseService;
 import domain.User;
-import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +17,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import com.oreilly.servlet.MultipartRequest;
+import java.io.File;
 import util.Status;
+
+
 public class ProcessPhoneCaseServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
@@ -27,8 +33,16 @@ public class ProcessPhoneCaseServlet extends HttpServlet {
             throws IOException, ServletException {
         RequestDispatcher view = null;
         Status status = new Status();
+        response.setContentType("text/html; charset=euc-kr");
         request.setCharacterEncoding("EUC-KR");
         request.setAttribute("status", status);
+        
+        String path = request.getRealPath("/image/upload");
+        PrintWriter out = response.getWriter();
+        
+        MultipartRequest multi = new MultipartRequest(request, path, 1024 * 1024 * 5, "euc-kr",
+                    new DefaultFileRenamePolicy());
+
         PhoneCaseService PhoneCaseService = new PhoneCaseService();
         HttpSession HttpSession = request.getSession();
         User user = (User) HttpSession.getAttribute("user");
@@ -38,10 +52,13 @@ public class ProcessPhoneCaseServlet extends HttpServlet {
         request.setAttribute("user", user);
         
         try {
-            String caseType = request.getParameter("caseType");
-            String caseName = request.getParameter("caseName");
-            String explanation = request.getParameter("explanation");
-            int price = Integer.parseInt(request.getParameter("price"));
+            String caseName = multi.getParameter("caseName");
+            String caseType = multi.getParameter("caseType");
+            String explanation = multi.getParameter("explanation");
+            int price = Integer.parseInt(multi.getParameter("price"));
+            String img = multi.getFilesystemName("img");
+            String detailImg = multi.getFilesystemName("detailImg");
+            int stock = 10; //기본 수량은 10개로 지정
             
             if ((caseType == null) || (caseType.length() == 0)) {
                 status.addException(new Exception(
@@ -61,7 +78,9 @@ public class ProcessPhoneCaseServlet extends HttpServlet {
             }
           
             try {
-                PhoneCaseService.insertPhoneCase(caseType, caseName, explanation, price);
+                PhoneCaseService.insertPhoneCase(caseType, caseName, explanation, price, img, detailImg, stock);
+                //PhoneCaseService.insertPhoneCase(caseType, caseName, explanation, price, imgPath);
+
                 phoneCases = PhoneCaseService.getAllPhoneCase();
                 request.setAttribute("phoneCases", phoneCases);
                 if (!status.isSuccessful()) {
