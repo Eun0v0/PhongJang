@@ -201,7 +201,7 @@
                     String imgPath = phoneCase.getImg();
             %>
             <td width="25%">
-                <a href="detailPage?caseID=<%=caseID%>"><img src = "image/upload/<%=imgPath%>" height="240" width="280" alt="<%=caseName%>" title="<%=caseName%>"/><br><br><%=caseName%>(<%=caseType%>)</a>
+                <a href="update?caseID=<%=caseID%>"><img src = "image/upload/<%=imgPath%>" height="240" width="280" alt="<%=caseName%>" title="<%=caseName%>"/><br><br><%=caseName%>(<%=caseType%>)</a>
                 <br><hr size="1" color="black">
                 <img src = "image\ic_best.png"><br>
                 <font size="4"><b><%=price%>¿ø</b></font>

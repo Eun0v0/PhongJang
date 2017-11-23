@@ -6,7 +6,10 @@
 package web;
 import domain.PhoneCase;
 import domain.PhoneCaseService;
+import domain.PhoneType;
+import domain.PhoneTypeService;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,6 +40,9 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
         PhoneCaseService phoneCaseService = new PhoneCaseService();
         PhoneCase phoneCase;
         phoneCase = phoneCaseService.getPhoneCase(caseID);
+        ArrayList<PhoneType> phoneTypes = new ArrayList<PhoneType>();
+        PhoneTypeService phoneTypeService = new PhoneTypeService();
+        
         
         String caseName = phoneCase.getCaseName();
         String caseType = phoneCase.getCaseType();
@@ -44,6 +50,9 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
         int price = phoneCase.getPrice();
         String img = phoneCase.getImg();
         String detailImg = phoneCase.getDetailImg();
+        
+        phoneTypes = phoneTypeService.getPhoneType(caseName);
+        
         
         request.setAttribute("caseID", caseID);
         request.setAttribute("caseName", caseName);
@@ -55,6 +64,7 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
 
         request.setAttribute("user", HttpSession.getAttribute("user"));
         request.setAttribute("phoneCase", HttpSession.getAttribute("phoneCase"));
+        request.setAttribute("phoneTypes", phoneTypes);
         
         view = request.getRequestDispatcher("admin/update.jsp");
         view.forward(request, response);
