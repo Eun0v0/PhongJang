@@ -250,7 +250,7 @@
     </table>
     <table align="center" width ="1000" height="400" cellpadding="15">
         <tr>
-            <%  if (phoneCases.size() >=4) {
+            <%  if (phoneCases.size() >=8) {
                     for (int j = phoneCases.size() - 5; j >= phoneCases.size() - 8; j--) {
                         PhoneCase phoneCase = phoneCases.get(j);
                         int caseID = phoneCase.getCaseID();

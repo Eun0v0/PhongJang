@@ -33,14 +33,13 @@ public class StockChangeServlet extends HttpServlet {
             HttpServletResponse response)
             throws IOException, ServletException {
         RequestDispatcher view = null;
-        Status status = new Status();
         HttpSession HttpSession = request.getSession();
+        Status status = new Status();
+
         response.setContentType("text/html; charset=euc-kr");
         request.setCharacterEncoding("EUC-KR");
-
-        request.setCharacterEncoding("EUC-KR");
         request.setAttribute("status", status);
-        
+
         PhoneCaseService phoneCaseService = new PhoneCaseService();
         User user = (User) HttpSession.getAttribute("user");
 
@@ -48,34 +47,37 @@ public class StockChangeServlet extends HttpServlet {
         int stock = Integer.parseInt(request.getParameter("stock"));
 
         ArrayList<PhoneCase> phoneCases = new ArrayList<PhoneCase>();
+        phoneCaseService.stockChange(caseID, stock);
+        phoneCases = phoneCaseService.getAllPhoneCase();
+        request.setAttribute("phoneCases", phoneCases);
+        request.setAttribute("user", user);
+        request.setAttribute("caseID", caseID);
 
-        try {
-            if (stock == 0) {
-                status.addException(new Exception(
-                        "Please enter your producttype"));
-            }
-            try {
-                phoneCaseService.stockChange(caseID, stock);
-                phoneCases = phoneCaseService.getAllPhoneCase();
-                request.setAttribute("phoneCases", phoneCases);
-                request.setAttribute("user", user);
-                request.setAttribute("caseID", caseID);
-                if (!status.isSuccessful()) {
-                    view = request.getRequestDispatcher("admin/manageStock.jsp");
-                    view.forward(request, response);
-                    return;
-                }
-                view = request.getRequestDispatcher("admin/main.jsp");
-                view.forward(request, response);
-            } catch (Exception e) {
-                status.addException(e);
+        if (!status.isSuccessful()) {
+            view = request.getRequestDispatcher("admin/manageStock.jsp");
+            view.forward(request, response);
+            return;
+        }
+        view = request.getRequestDispatcher("admin/main.jsp");
+        view.forward(request, response);
+        /*try {
+            phoneCaseService.stockChange(caseID, stock);
+            phoneCases = phoneCaseService.getAllPhoneCase();
+            request.setAttribute("phoneCases", phoneCases);
+            request.setAttribute("user", user);
+            request.setAttribute("caseID", caseID);
+
+            if (!status.isSuccessful()) {
                 view = request.getRequestDispatcher("admin/manageStock.jsp");
                 view.forward(request, response);
+                return;
             }
-        } catch (IllegalArgumentException e) {
+            view = request.getRequestDispatcher("admin/main.jsp");
+            view.forward(request, response);
+        } catch (Exception e) {
             status.addException(e);
             view = request.getRequestDispatcher("admin/manageStock.jsp");
             view.forward(request, response);
-        }
+        }*/
     }
 }

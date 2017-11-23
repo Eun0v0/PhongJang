@@ -266,4 +266,13 @@
         <servlet-name>StockChangeController</servlet-name>
         <url-pattern>/stockChange</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ManageSearchController</servlet-name>
+        <servlet-class>web.ManageSearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManageSearchController</servlet-name>
+        <url-pattern>/manageSearch</url-pattern>
+    </servlet-mapping>
 </web-app>

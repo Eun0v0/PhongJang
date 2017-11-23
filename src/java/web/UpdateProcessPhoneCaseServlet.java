@@ -43,7 +43,7 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         request.setCharacterEncoding("EUC-KR");
         
         request.setAttribute("status", status);
-        PhoneCaseService PhoneCaseService = new PhoneCaseService();
+        PhoneCaseService phoneCaseService = new PhoneCaseService();
         HttpSession HttpSession = request.getSession();
         User user = (User) HttpSession.getAttribute("user");
 
@@ -66,8 +66,6 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         String detailImg = multi.getFilesystemName("detailImg");
          
         ArrayList<PhoneCase> phoneCases = new ArrayList<PhoneCase>();
-        phoneCases = PhoneCaseService.getAllPhoneCase();
-        request.setAttribute("phoneCases", phoneCases);
         request.setAttribute("user", user);
         request.setAttribute("caseID", caseID);
 
@@ -84,18 +82,13 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
                 status.addException(new Exception(
                         "Please enter your explanation"));
             }
-            if ((price == 0)) {
-                status.addException(new Exception(
-                        "Please enter your price"));
-            }
             
             try {
                 //(int caseID, String caseType, String caseName, String explanation, int price)
-
-                PhoneCaseService.updatePhoneCase(caseID, caseType, caseName, explanation, price, img, detailImg);
+                phoneCaseService.updatePhoneCase(caseID, caseType, caseName, explanation, price, img, detailImg);
                 //PhoneCaseService.updatePhoneCase(caseID, caseType, caseName, explanation, price, imgPath);
                 
-                phoneCases = PhoneCaseService.getAllPhoneCase();
+                phoneCases = phoneCaseService.getAllPhoneCase();
                 request.setAttribute("phoneCases", phoneCases);
                 if (!status.isSuccessful()) {
                     view = request.getRequestDispatcher("admin/update.jsp");

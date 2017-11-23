@@ -351,7 +351,7 @@ public class PhoneCaseDAO {
         }
     }
     //상품 데이터를 재고를 수정한다.
-    void stockChange(int stock, int caseID) {
+    void stockChange(int caseID, int stock) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
