@@ -123,7 +123,6 @@
                         <div align="right"><textarea name="explanation" cols="65" rows="4"></textarea></div>
                         <div align="left"><font size="2">핸드폰 기종</font></div>
                         <div align="right">
-                        <input type="checkbox" name="phoneType" value="iphone6">iphone6
                         <input type="checkbox" name="phoneType" value="iphone 6/6s">iphone 6/6s
                         <input type="checkbox" name="phoneType" value="iphone 6+/6s+">iphone 6+/6s+
                         <input type="checkbox" name="phoneType" value="iphone7">iphone7
@@ -145,12 +144,15 @@
                         <input type="checkbox" name="phoneType" value="LG G5">LG G5
                         <input type="checkbox" name="phoneType" value="LG G6">LG G6
                         </div>
-                        
+                        <div align="left"><font size="2">색상(케이스 종류)</font></div>
+                        <% for(int i=0; i<10; i++) { %>
+                            <div align="right"><%=i+1%>: <input type="text" name="color" size="10" padding="10px"></div>                        
+                        <% } %>
                         <div align="left">상품 메인 이미지 : </div>
                         <div align="right"><input type="file" name="img"><br> </div>
                         <div align="left">상품 상세 이미지 : </div>
                         <div align="right"><input type="file" name="detailImg"><br> </div>
-                        <br> </div>
+                        <br>
                         <hr size="1">
                     </td>
                 </tr>

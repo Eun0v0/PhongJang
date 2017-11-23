@@ -27,7 +27,7 @@ public class PhoneTypeService {
         }
         return phoneTypes;
     }
-    public void caseTypeInsert(String CaseName, String phoneType) {
-        phoneTypeDataAccess.caseTypeInsert(CaseName, phoneType);
+    public void phoneTypeInsert(String CaseName, String phoneType) {
+        phoneTypeDataAccess.phoneTypeInsert(CaseName, phoneType);
     }
 }

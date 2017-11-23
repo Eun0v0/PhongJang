@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package web;
+import domain.CaseColor;
+import domain.CaseColorService;
 import domain.PhoneCase;
 import domain.PhoneCaseService;
 import domain.PhoneType;
@@ -41,8 +43,10 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
         PhoneCase phoneCase;
         phoneCase = phoneCaseService.getPhoneCase(caseID);
         ArrayList<PhoneType> phoneTypes = new ArrayList<PhoneType>();
-        PhoneTypeService phoneTypeService = new PhoneTypeService();
+        ArrayList<CaseColor> caseColors = new ArrayList<CaseColor>();
         
+        PhoneTypeService phoneTypeService = new PhoneTypeService();
+        CaseColorService caseColorService = new CaseColorService();
         
         String caseName = phoneCase.getCaseName();
         String caseType = phoneCase.getCaseType();
@@ -52,7 +56,7 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
         String detailImg = phoneCase.getDetailImg();
         
         phoneTypes = phoneTypeService.getPhoneType(caseName);
-        
+        caseColors = caseColorService.getCaseColor(caseName);
         
         request.setAttribute("caseID", caseID);
         request.setAttribute("caseName", caseName);
@@ -65,6 +69,7 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
         request.setAttribute("user", HttpSession.getAttribute("user"));
         request.setAttribute("phoneCase", HttpSession.getAttribute("phoneCase"));
         request.setAttribute("phoneTypes", phoneTypes);
+        request.setAttribute("caseColors", caseColors);
         
         view = request.getRequestDispatcher("admin/update.jsp");
         view.forward(request, response);

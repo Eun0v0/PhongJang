@@ -3,6 +3,7 @@
     Created on : 2017. 11. 14, 오전 1:00:58
     Author     : Hayoung_2
 --%>
+<%@page import="domain.CaseColor"%>
 <%@page import="domain.PhoneType"%>
 <%--해야할 것 : 장바구니, 바로결제 버튼 바꾸기?--%>
 <%-- test --%>
@@ -34,10 +35,14 @@
             User user = (User) request.getAttribute("user");
             ArrayList<PhoneType> phoneTypes = (ArrayList<PhoneType>) request.getAttribute("phoneTypes");
             PhoneType v_phoneType;
+            ArrayList<CaseColor> caseColors = (ArrayList<CaseColor>) request.getAttribute("caseColors");
+            CaseColor v_caseColor;
+            
             
             session.setAttribute("user", user);
             session.setAttribute("phoneCases", phoneCases);
             session.setAttribute("phoneTypes", phoneTypes);
+            request.setAttribute("caseColors", caseColors);
         %>
         <script type="text/javascript">
             //<![CDATA[
@@ -227,9 +232,12 @@
                         <div align="left"><font size="2">색상 선택:</font></div>
                         <div align="right"><select name="caseType" >
                                 <option name="caseType" value="unknown">-----
-                                <option name="caseType" value="젤리">검정
-                                <option name="caseType" value="하드">하양
-                                <option name="caseType" value="범퍼">핑크</select></div>
+                                <%for(int i=0; i<caseColors.size(); i++){ 
+                                    v_caseColor = caseColors.get(i);
+                                    String caseColor = v_caseColor.getCaseColor(); %>
+                                <option name="caseColor" value="<%=caseColor%>"><%=caseColor%>
+                                <% }%>
+                            </select></div>
                         <hr size="1">
                 <br><center>
                     <input type="image" src="image\bt_cartin.jpg" onClick='mySubmit(1)'>

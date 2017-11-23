@@ -16,15 +16,15 @@ import util.DBConnectionPool;
  *
  * @author yukih
  */
-public class PhoneTypeDAO {
+public class CaseColorDAO {
     private DBConnectionPool connPool;
     private static final String SELECT_STMT
-            = "SELECT * FROM PhoneType WHERE CaseName=?";
-    private static final String INSERT_STMT = "INSERT INTO PhoneType VALUES(?,?)";
+            = "SELECT * FROM CaseColor WHERE CaseName=?";
+    private static final String INSERT_STMT = "INSERT INTO CaseColor VALUES(?,?)";
     
      //검색된 단어를 포함하는 데이터를 가져온다.
-    ArrayList<PhoneType> phoneTypeRetrieve(String caseName) throws SQLException {
-        ArrayList<PhoneType> phoneTypes = new ArrayList<PhoneType>();
+    ArrayList<CaseColor> caseColorRetrieve(String caseName) throws SQLException {
+        ArrayList<CaseColor> caseColors = new ArrayList<CaseColor>();
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
@@ -35,10 +35,10 @@ public class PhoneTypeDAO {
             rset = stmt.executeQuery();
             while (rset.next()) {
                 String CaseName = rset.getString(1);
-                String phoneType = rset.getString(2);
-                phoneTypes.add(new PhoneType(CaseName, phoneType));
+                String caseColor = rset.getString(2);
+                caseColors.add(new CaseColor(CaseName, caseColor));
             }
-            return phoneTypes;
+            return caseColors;
         } catch (SQLException se) {
             throw new RuntimeException(
                     "A database error occurred. " + se.getMessage());
@@ -70,7 +70,7 @@ public class PhoneTypeDAO {
     }
     
     //새로운 상품 데이터를 입력한다.
-    void phoneTypeInsert(String caseName, String phoneType) {
+    void caseColorInsert(String caseName, String caseColor) {
 
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -80,7 +80,7 @@ public class PhoneTypeDAO {
             conn = connPool.getPoolConnection();
             stmt = conn.prepareStatement(INSERT_STMT);
             stmt.setString(1, caseName);
-            stmt.setString(2, phoneType);
+            stmt.setString(2, caseColor);
             stmt.executeQuery();
         } catch (SQLException se) {
             throw new RuntimeException(

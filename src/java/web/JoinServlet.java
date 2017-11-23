@@ -21,11 +21,13 @@ import javax.servlet.http.HttpServletResponse;
 import util.Status;
 
 public class JoinServlet extends HttpServlet {
+
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
         processRequest(request, response);
     }
+
     public void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
@@ -34,10 +36,10 @@ public class JoinServlet extends HttpServlet {
         UserService UserService = null;
         Status status = new Status();
         User user = null;
-        
+
         request.setAttribute("status", status);
         request.setAttribute("user", user);
-        
+
         request.setCharacterEncoding("EUC-KR");
         try {
             String userID = request.getParameter("userID");
@@ -66,12 +68,11 @@ public class JoinServlet extends HttpServlet {
                 status.addException(new Exception(
                         "Please enter your address"));
             }
-
             try {
-
-                UserService = new UserService();
-                UserService.userCreate(userID,"C", userName, password, phoneNumber, address);
-
+                if (!userID.isEmpty() && !password.isEmpty() && !phoneNumber.isEmpty() && !address.isEmpty()) {
+                    UserService = new UserService();
+                    UserService.userCreate(userID, "C", userName, password, phoneNumber, address);
+                }
                 if (!status.isSuccessful()) {
                     view = request.getRequestDispatcher("join.jsp");
                     view.forward(request, response);
