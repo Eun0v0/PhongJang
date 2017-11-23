@@ -3,6 +3,7 @@
     Created on : 2017. 11. 12, 오후 8:13:24
     Author     : yukih
 --%>
+<%@page import="domain.PhoneType"%>
 <%-- test --%>
 <%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <%@page import="domain.PhoneCase"%>
@@ -18,9 +19,12 @@
 
             User user = (User) request.getAttribute("user");
             int caseID = (int) request.getAttribute("caseID");
-
+            ArrayList<PhoneType> phoneTypes = (ArrayList<PhoneType>) request.getAttribute("phoneTypes");
+            PhoneType v_phoneType;
+            
             session.setAttribute("user", user);
             session.setAttribute("phoneCases", phoneCases);
+            session.setAttribute("phoneTypes", phoneTypes);
         %>
         <script type="text/javascript">
             //<![CDATA[
@@ -220,6 +224,14 @@
 
                         <div align="left"><font size="2">가격:</font></div>
                         <div align="right"><textarea name="price" cols="20" rows="3"><%=request.getAttribute("price")%></textarea></div>
+                        <div align="right"><select name="phoneType" >
+                                <option name="caseType" value="unknown">-----
+                                <%for(int i=0; i<phoneTypes.size(); i++){ 
+                                    v_phoneType = phoneTypes.get(i);
+                                    String phoneType = v_phoneType.getPhoneType(); %>
+                                <option name="caseType" value="<%=phoneType%>"><%=phoneType%>
+                                <% }%>
+                            </select></div>
                         <div align="left"><font size="2">상품 메인 이미지:</font></div>
                         <div align="right"><input type="file" name="img"> <%=request.getAttribute("img")%></div>
                         <div align="left"><font size="2">상품 상세 이미지:</font></div>

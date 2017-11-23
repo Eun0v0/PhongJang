@@ -3,6 +3,7 @@
     Created on : 2017. 11. 14, 오전 1:00:58
     Author     : Hayoung_2
 --%>
+<%@page import="domain.PhoneType"%>
 <%--해야할 것 : 장바구니, 바로결제 버튼 바꾸기?--%>
 <%-- test --%>
 <script type ="text/javascript" src="smarteditor/js/HuskyEZCreator.js" charset="euc-kr"></script>
@@ -31,9 +32,12 @@
         <title><%=request.getAttribute("caseName")%>★</title>
         <%  ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
             User user = (User) request.getAttribute("user");
-
+            ArrayList<PhoneType> phoneTypes = (ArrayList<PhoneType>) request.getAttribute("phoneTypes");
+            PhoneType v_phoneType;
+            
             session.setAttribute("user", user);
             session.setAttribute("phoneCases", phoneCases);
+            session.setAttribute("phoneTypes", phoneTypes);
         %>
         <script type="text/javascript">
             //<![CDATA[
@@ -214,11 +218,11 @@
                         <div align="left"><font size="2">핸드폰 기종:</font></div>
                         <div align="right"><select name="phoneType" >
                                 <option name="caseType" value="unknown">-----
-                                <option name="caseType" value="아이폰 6/6s">아이폰 6/6s
-                                <option name="caseType" value="아이폰 6+/6s+">아이폰 6+/6s+
-                                <option name="caseType" value="아이폰 7">아이폰 7
-                                <option name="caseType" value="아이폰 7+">아이폰 7+
-                                <option name="caseType" value="아이폰 8">아이폰 8
+                                <%for(int i=0; i<phoneTypes.size(); i++){ 
+                                    v_phoneType = phoneTypes.get(i);
+                                    String phoneType = v_phoneType.getPhoneType(); %>
+                                <option name="caseType" value="<%=phoneType%>"><%=phoneType%>
+                                <% }%>
                             </select></div>
                         <div align="left"><font size="2">색상 선택:</font></div>
                         <div align="right"><select name="caseType" >

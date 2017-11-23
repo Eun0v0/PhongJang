@@ -183,7 +183,7 @@
         <tr>
             <%
                 PhoneCaseService phoneCaseService = new PhoneCaseService();
-                ArrayList<PhoneCase> phoneCases = phoneCaseService.getAllPhoneCase();;
+                ArrayList<PhoneCase> phoneCases = phoneCaseService.getAllPhoneCase();
                 session.setAttribute("phoneCases", phoneCases);
                 if (phoneCases.size() != 0) {
                     for (int i = 0; i < 4; i++) {

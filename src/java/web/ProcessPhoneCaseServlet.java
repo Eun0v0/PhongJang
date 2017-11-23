@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
+import domain.PhoneType;
+import domain.PhoneTypeService;
 import java.io.File;
 import util.Status;
 
@@ -44,9 +46,11 @@ public class ProcessPhoneCaseServlet extends HttpServlet {
                     new DefaultFileRenamePolicy());
 
         PhoneCaseService PhoneCaseService = new PhoneCaseService();
+        PhoneTypeService phoneTypeService = new PhoneTypeService();
         HttpSession HttpSession = request.getSession();
         User user = (User) HttpSession.getAttribute("user");
         ArrayList<PhoneCase> phoneCases = new ArrayList<PhoneCase>();
+        
         phoneCases = PhoneCaseService.getAllPhoneCase();
         request.setAttribute("phoneCases", phoneCases);
         request.setAttribute("user", user);
@@ -59,6 +63,7 @@ public class ProcessPhoneCaseServlet extends HttpServlet {
             String img = multi.getFilesystemName("img");
             String detailImg = multi.getFilesystemName("detailImg");
             int stock = 10; //기본 수량은 10개로 지정
+            String [] select_phoneTypes = multi.getParameterValues("phoneType"); //핸드폰 기종 체크박스에서 받아오기
             
             if ((caseType == null) || (caseType.length() == 0)) {
                 status.addException(new Exception(
@@ -79,8 +84,11 @@ public class ProcessPhoneCaseServlet extends HttpServlet {
           
             try {
                 PhoneCaseService.insertPhoneCase(caseType, caseName, explanation, price, img, detailImg, stock);
-                //PhoneCaseService.insertPhoneCase(caseType, caseName, explanation, price, imgPath);
-
+                
+                for(int i=0; i<select_phoneTypes.length; i++){
+                    phoneTypeService.caseTypeInsert(caseName,select_phoneTypes[i]);
+                }
+                
                 phoneCases = PhoneCaseService.getAllPhoneCase();
                 request.setAttribute("phoneCases", phoneCases);
                 if (!status.isSuccessful()) {

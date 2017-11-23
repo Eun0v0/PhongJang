@@ -37,6 +37,7 @@ public final class MainServlet extends HttpServlet {
         request.setAttribute("user", HttpSession.getAttribute("user"));
         request.setAttribute("phoneCases", phoneCases);
         
+        
         String userType = ((User) HttpSession.getAttribute("user")).getUsertype();    
         
         if(userType.equals("C")){

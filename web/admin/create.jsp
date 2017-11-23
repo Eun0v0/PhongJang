@@ -121,7 +121,31 @@
                         <div align="right"><input type="text" name="price" size="10" padding="10px">원</div>
                         <div align="left"><font size="2">설명</font></div>
                         <div align="right"><textarea name="explanation" cols="65" rows="4"></textarea></div>
-
+                        <div align="left"><font size="2">핸드폰 기종</font></div>
+                        <div align="right">
+                        <input type="checkbox" name="phoneType" value="iphone6">iphone6
+                        <input type="checkbox" name="phoneType" value="iphone 6/6s">iphone 6/6s
+                        <input type="checkbox" name="phoneType" value="iphone 6+/6s+">iphone 6+/6s+
+                        <input type="checkbox" name="phoneType" value="iphone7">iphone7
+                        <input type="checkbox" name="phoneType" value="iphone7+">iphone7+
+                        <input type="checkbox" name="phoneType" value="iphone8">iphone8
+                        <input type="checkbox" name="phoneType" value="iphone8+">iphone8+
+                        </div>
+                        <div align="right">
+                        <input type="checkbox" name="phoneType" value="GalaxyS7">GalaxyS7
+                        <input type="checkbox" name="phoneType" value="GalaxyS7 Edge">GalaxyS7 Edge
+                        <input type="checkbox" name="phoneType" value="GalaxyS8">GalaxyS8
+                        <input type="checkbox" name="phoneType" value="Galaxy Note8">Galaxy Note8
+                        <input type="checkbox" name="phoneType" value="GalaxyA7">GalaxyA7
+                        <input type="checkbox" name="phoneType" value="GalaxyA8">GalaxyA8
+                        </div>
+                        <div align="right">
+                        <input type="checkbox" name="phoneType" value="LG V20">LG V20
+                        <input type="checkbox" name="phoneType" value="LG V30">LG V30
+                        <input type="checkbox" name="phoneType" value="LG G5">LG G5
+                        <input type="checkbox" name="phoneType" value="LG G6">LG G6
+                        </div>
+                        
                         <div align="left">상품 메인 이미지 : </div>
                         <div align="right"><input type="file" name="img"><br> </div>
                         <div align="left">상품 상세 이미지 : </div>
