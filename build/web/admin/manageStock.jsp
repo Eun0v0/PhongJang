@@ -116,6 +116,12 @@
         <input type="submit" value="모든 결제내역">
     </form>        
     <center> 
+    <center> 
+        <form action ="manageSearch" method="post">
+            <img src="image\search.png" height="17" width="17">
+            <input type="text" size="16" name="caseName">
+            <input type="submit" value="검색">
+        </form>
         <table border="2px">
             <tr>
                 <th width="100">케이스 이름</th>

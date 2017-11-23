@@ -33,13 +33,13 @@ public class StockChangeServlet extends HttpServlet {
             HttpServletResponse response)
             throws IOException, ServletException {
         RequestDispatcher view = null;
-        Status status = new Status();
         HttpSession HttpSession = request.getSession();
-        response.setContentType("text/html; charset=euc-kr");
+        Status status = new Status();
 
+        response.setContentType("text/html; charset=euc-kr");
         request.setCharacterEncoding("EUC-KR");
         request.setAttribute("status", status);
-        
+
         PhoneCaseService phoneCaseService = new PhoneCaseService();
         User user = (User) HttpSession.getAttribute("user");
 
@@ -47,7 +47,6 @@ public class StockChangeServlet extends HttpServlet {
         int stock = Integer.parseInt(request.getParameter("stock"));
 
         ArrayList<PhoneCase> phoneCases = new ArrayList<PhoneCase>();
-
         try {
             if (stock == 0) {
                 status.addException(new Exception(

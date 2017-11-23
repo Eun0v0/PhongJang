@@ -34,7 +34,7 @@ public class QnaDAO {
             while (rset.next()) {
                 int QnaNum = rset.getInt(1);
                 String UserName = rset.getString(2);
-                int PassWord = rset.getInt(3);
+                String PassWord = rset.getString(3);
                 String QnaTitle = rset.getString(4);
                 String QnaContent = rset.getString(5);
                 String QnaTime = rset.getString(6);
@@ -72,7 +72,7 @@ public class QnaDAO {
     }
 
     //새로운 상품 데이터를 입력한다.
-    void qnaInsert(String userName, int passWord, String qnaTitle, String qnaContent, String s_date) {
+    void qnaInsert(String userName, String passWord, String qnaTitle, String qnaContent, String s_date) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
@@ -87,7 +87,7 @@ public class QnaDAO {
             stmt = conn.prepareStatement(INSERT_STMT);
             stmt.setInt(1, Num);
             stmt.setString(2, userName);
-            stmt.setInt(3, passWord);
+            stmt.setString(3, passWord);
             stmt.setString(4, qnaTitle);
             stmt.setString(5, qnaContent);
             stmt.setString(6, s_date);

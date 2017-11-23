@@ -65,16 +65,16 @@ public class ProcessQnaServlet extends HttpServlet {
 
         try {
             String userName = request.getParameter("userName");
-            int passWord = Integer.parseInt(request.getParameter("passWord"));
+            String passWord = request.getParameter("passWord");
             String qnaTitle = request.getParameter("qnaTitle");
             String qnaContent = request.getParameter("qnaContent");
             //String qnaTime = request.getParameter("qnaTime");
 
             if ((userName == null) || (userName.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your userNamte"));
+                        "Please enter your passWord"));
             }
-            if ((passWord == 0)) {
+            if ((passWord == null) || (passWord.length() == 0)) {
                 status.addException(new Exception(
                         "Please enter your passWord"));
             }
@@ -87,13 +87,10 @@ public class ProcessQnaServlet extends HttpServlet {
                         "Please enter your qnaContent"));
             }
 
-            /*if ((qnaTime == null) || (qnaTime.length() == 0)) {
-                status.addException(new Exception(
-                        "Please enter your qnaTime"));
-            }*/
-
             try {
-                qnaService.insertQna(userName, passWord, qnaTitle, qnaContent, s_date);
+                if((userName !=null) && (passWord != null) && (qnaTitle != null) && (qnaContent != null)){
+                    qnaService.insertQna(userName, passWord, qnaTitle, qnaContent, s_date);
+                }
                 //PhoneCaseService.insertPhoneCase(caseType, caseName, explanation, price, imgPath);
 
                 qnas = qnaService.getAllQna();
@@ -112,8 +109,8 @@ public class ProcessQnaServlet extends HttpServlet {
             }
         } catch (IllegalArgumentException e) {
             status.addException(e);
-            view = request.getRequestDispatcher("qnaCreate.jsp");
+            view = request.getRequestDispatcher("admin/create.jsp");
             view.forward(request, response);
-        }
+        }    
     }
 }

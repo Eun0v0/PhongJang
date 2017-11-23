@@ -116,6 +116,7 @@
         <servlet-name>RetrievePaymentController</servlet-name>
         <url-pattern>/paymentlist</url-pattern>
     </servlet-mapping>
+    
     <servlet>
         <servlet-name>CreatePhoneCaseController</servlet-name>
         <servlet-class>web.CreatePhoneCaseServlet</servlet-class>
@@ -265,5 +266,14 @@
     <servlet-mapping>
         <servlet-name>StockChangeController</servlet-name>
         <url-pattern>/stockChange</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ManageSearchController</servlet-name>
+        <servlet-class>web.ManageSearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManageSearchController</servlet-name>
+        <url-pattern>/manageSearch</url-pattern>
     </servlet-mapping>
 </web-app>

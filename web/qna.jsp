@@ -113,14 +113,11 @@
                     Qna qna = qnas.get(i);
                     int qnaNum = qna.getQnaNum();
                     String userName = qna.getUserName();
-                    int passWord = qna.getPassWord();
+
+                    String passWord = qna.getPassWord();
                     String qnaTitle = qna.getQnaTitle();
                     String qnaContent = qna.getQnaContent();
                     String qnaTime = qna.getQnaTime();
-                    
-                    String puserName = URLEncoder.encode(userName);
-                    String pqnaTitle = URLEncoder.encode(qnaTitle);
-                    String pqnaContent =URLEncoder.encode(qnaContent);
             %>
             <tr>
                 <td bgcolor="#dcdcdc" height="40" align="center"><%=qnaNum%></td>

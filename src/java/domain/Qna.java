@@ -8,12 +8,12 @@ package domain;
 public class Qna {
     int qnaNum;
     String userName;
-    int passWord;
+    String passWord;
     String qnaTitle;
     String qnaContent;
     String qnaTime;
 
-    public Qna(int qnaNum, String userName, int passWord, String qnaTitle, String qnaContent, String qnaTime) {
+    public Qna(int qnaNum, String userName, String passWord, String qnaTitle, String qnaContent, String qnaTime) {
         this.qnaNum = qnaNum;
         this.userName = userName;
         this.passWord = passWord;
@@ -38,11 +38,11 @@ public class Qna {
         this.userName = userName;
     }
 
-    public int getPassWord() {
+    public String getPassWord() {
         return passWord;
     }
 
-    public void setPassWord(int passWord) {
+    public void setPassWord(String passWord) {
         this.passWord = passWord;
     }
 
