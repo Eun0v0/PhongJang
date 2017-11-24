@@ -30,4 +30,7 @@ public class CaseColorService {
     public void caseColorInsert(String CaseName, String caseColor) {
         caseColorDataAccess.caseColorInsert(CaseName, caseColor);
     }
+    public void caseColorDelete(String CaseName) {
+        caseColorDataAccess.caseColorDelete(CaseName);
+    }
 }

@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package web;
+import domain.CaseColorService;
 import domain.PhoneCase;
 import domain.PhoneCaseService;
+import domain.PhoneTypeService;
 import domain.User;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,16 +32,22 @@ public class DeletePhoneCaseServlet extends HttpServlet {
             throws IOException, ServletException {
         RequestDispatcher view = null;
         Status status = new Status();
+        request.setCharacterEncoding("EUC-KR");
         request.setAttribute("status", status);
-        PhoneCaseService PhoneCaseService = new PhoneCaseService();
+        PhoneCaseService phoneCaseService = new PhoneCaseService();
+        PhoneTypeService phoneTypeService = new PhoneTypeService();
+        CaseColorService caseColorService = new CaseColorService();
         HttpSession HttpSession = request.getSession();
         User user = (User) HttpSession.getAttribute("user");
         
         int caseID = Integer.parseInt(request.getParameter("caseID"));
+        String caseName = request.getParameter("caseName");
         ArrayList<PhoneCase> phoneCases = null;
-        PhoneCaseService.deletePhoneCase(caseID);
+        phoneCaseService.deletePhoneCase(caseID);
+        phoneTypeService.phoneTypeDelete(caseName);
+        caseColorService.caseColorDelete(caseName);
         
-        phoneCases = PhoneCaseService.getAllPhoneCase();
+        phoneCases = phoneCaseService.getAllPhoneCase();
 
         request.setCharacterEncoding("EUC-KR");
         request.setAttribute("user", user);

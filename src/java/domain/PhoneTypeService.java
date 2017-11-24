@@ -30,4 +30,7 @@ public class PhoneTypeService {
     public void phoneTypeInsert(String CaseName, String phoneType) {
         phoneTypeDataAccess.phoneTypeInsert(CaseName, phoneType);
     }
+    public void phoneTypeDelete(String caseName){
+         phoneTypeDataAccess.phoneTypeDelete(caseName);
+    }
 }

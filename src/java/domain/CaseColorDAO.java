@@ -21,6 +21,7 @@ public class CaseColorDAO {
     private static final String SELECT_STMT
             = "SELECT * FROM CaseColor WHERE CaseName=?";
     private static final String INSERT_STMT = "INSERT INTO CaseColor VALUES(?,?)";
+    private static final String DELETE_STMT = "DELETE FROM CaseColor WHERE CaseName = ?";
     
      //검색된 단어를 포함하는 데이터를 가져온다.
     ArrayList<CaseColor> caseColorRetrieve(String caseName) throws SQLException {
@@ -81,6 +82,36 @@ public class CaseColorDAO {
             stmt = conn.prepareStatement(INSERT_STMT);
             stmt.setString(1, caseName);
             stmt.setString(2, caseColor);
+            stmt.executeQuery();
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }//상품 데이터를 삭제한다.
+    void caseColorDelete(String caseName) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        //DELETE_STMT = "DELETE FROM PhoneType WHERE CaseName = ?";
+        try {
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(DELETE_STMT);
+            stmt.setString(1, caseName);
             stmt.executeQuery();
         } catch (SQLException se) {
             throw new RuntimeException(

@@ -24,7 +24,7 @@
             PhoneType v_phoneType;
             ArrayList<CaseColor> caseColors = (ArrayList<CaseColor>) request.getAttribute("caseColors");
             CaseColor v_caseColor;
-            
+            String caseName = (String) request.getAttribute("caseName");
             session.setAttribute("user", user);
             session.setAttribute("phoneCases", phoneCases);
             session.setAttribute("phoneTypes", phoneTypes);
@@ -189,9 +189,11 @@
     <center>
         <table width="1100" height="100">
             <tr>
-                <td width="900"><div align="center"><h2><%=request.getAttribute("caseName")%></h2></div> 
+                <td width="900"><div align="center"><h2>caseName</h2></div> 
                     <div align="right"><form action="deleteCase" method="post">
                         <input type="hidden" name="caseID" value="<%=caseID%>">
+                        <input type="hidden" name="caseName" value="<%=caseName%>">
+                       
                         <input type="submit" value="»èÁ¦">
                         </form></div>
                 </td>
