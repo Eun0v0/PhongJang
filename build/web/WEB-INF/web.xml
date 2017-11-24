@@ -66,7 +66,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>AddCartController</servlet-name>
-        <url-pattern>/take</url-pattern>
+        <url-pattern>/addToCart</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>CartController</servlet-name>

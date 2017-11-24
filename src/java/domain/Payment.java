@@ -15,8 +15,13 @@ public class Payment {
     String status;
     String parcelNumber;
     String orderDate;
-
-    public Payment(int paymentID, String userID, String caseName, int numbers, int price, String address, String phoneNumber, String creditCardNumber, String creditCardPassword, String status, String parcelNumber, String orderDate) {
+    String phoneType;
+    String caseType;
+    String color;
+    
+    public Payment(int paymentID, String userID, String caseName, int numbers, int price, String address,
+                   String phoneNumber, String creditCardNumber, String creditCardPassword, String status, 
+                   String parcelNumber, String orderDate, String phoneType, String caseType, String color) {
         this.paymentID = paymentID;
         this.userID = userID;
         this.caseName = caseName;
@@ -29,8 +34,36 @@ public class Payment {
         this.status= status;
         this.parcelNumber=parcelNumber;
         this.orderDate = orderDate;
+        this.phoneType = phoneType;
+        this.caseType = caseType;
+        this.color = color;
     }
 
+    public String getPhoneType() {
+        return phoneType;
+    }
+
+    public void setPhoneType(String phoneType) {
+        this.phoneType = phoneType;
+    }
+
+    public String getCaseType() {
+        return caseType;
+    }
+
+    public void setCaseType(String caseType) {
+        this.caseType = caseType;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+    
+    
     public String getOrderDate() {
         return orderDate;
     }

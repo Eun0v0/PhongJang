@@ -8,7 +8,7 @@
 <%--해야할 것 : 장바구니, 바로결제 버튼 바꾸기?--%>
 <%-- test --%>
 <script type ="text/javascript" src="smarteditor/js/HuskyEZCreator.js" charset="euc-kr"></script>
-<script>
+<%--<script>
     function submitContents(elClickedObj) {
         oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
         try {
@@ -16,7 +16,7 @@
         } catch (e) {
         }
     }
-</script>
+</script>--%>
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.PhoneCase"%>
@@ -37,8 +37,7 @@
             PhoneType v_phoneType;
             ArrayList<CaseColor> caseColors = (ArrayList<CaseColor>) request.getAttribute("caseColors");
             CaseColor v_caseColor;
-            
-            
+
             session.setAttribute("user", user);
             session.setAttribute("phoneCases", phoneCases);
             session.setAttribute("phoneTypes", phoneTypes);
@@ -177,25 +176,25 @@
             <tr>
                 <td><a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\bumperCase2.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="범퍼">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\hardCase.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="하드">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\jellyCase.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="젤리">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a></td> 
             </tr>
         </table>
@@ -205,9 +204,9 @@
     <%--여기서부터 코드내용--%>
 
     <br><br>
-    <center>
-        <h1><%=request.getAttribute("caseName")%></h1>
-        <form name="take" method="post">
+    <form action="addToCart" method="post">
+        <center>
+            <h1><%=request.getAttribute("caseName")%></h1>
             <table width="1100" height="300">
                 <tr>
                     <td><img src="image/upload/<%=request.getAttribute("img")%>" width="400" height="360"></td>
@@ -217,45 +216,43 @@
                         <div align="left"><font size="2">케이스 이름:</font></div>
                         <div align="right"><input type="hidden" name="caseName" value="<%=request.getAttribute("caseName")%>"><%=request.getAttribute("caseName")%></div>
                         <div align="left"><font size="2">케이스 타입:</font></div>
-                        <div align="right"><input type="hidden" name="caseName" value="<%=request.getAttribute("caseType")%>"><%=request.getAttribute("caseType")%></div>
+                        <div align="right"><input type="hidden" name="caseType" value="<%=request.getAttribute("caseType")%>"><%=request.getAttribute("caseType")%></div>
                         <div align="left"><font size="2">가격:</font></div>
-                        <div align="right"><input type="hidden" name="caseName" value="<%=request.getAttribute("price")%>"><%=request.getAttribute("price")%></div>
+                        <div align="right"><input type="hidden" name="price" value="<%=request.getAttribute("price")%>"><%=request.getAttribute("price")%></div>
                         <div align="left"><font size="2">핸드폰 기종:</font></div>
                         <div align="right"><select name="phoneType" >
-                                <option name="caseType" value="unknown">-----
-                                <%for(int i=0; i<phoneTypes.size(); i++){ 
-                                    v_phoneType = phoneTypes.get(i);
-                                    String phoneType = v_phoneType.getPhoneType(); %>
-                                <option name="caseType" value="<%=phoneType%>"><%=phoneType%>
-                                <% }%>
+                                <option name="phoneType" value="unknown">-----
+                                    <%for (int i = 0; i < phoneTypes.size(); i++) {
+                                            v_phoneType = phoneTypes.get(i);
+                                            String phoneType = v_phoneType.getPhoneType();%>
+                                <option name="phoneType" value="<%=phoneType%>"><%=phoneType%>
+                                    <% }%>
                             </select></div>
-                        <div align="left"><font size="2">색상 선택:</font></div>
-                        <div align="right"><select name="caseType" >
-                                <option name="caseType" value="unknown">-----
-                                <%for(int i=0; i<caseColors.size(); i++){ 
-                                    v_caseColor = caseColors.get(i);
-                                    String caseColor = v_caseColor.getCaseColor(); %>
+                        <div align="left"><font size="2">색상(종류) 선택:</font></div>
+                        <div align="right"><select name="caseColor" >
+                                <option name="caseColor" value="unknown">-----
+                                    <%for (int i = 0; i < caseColors.size(); i++) {
+                                            v_caseColor = caseColors.get(i);
+                                            String caseColor = v_caseColor.getCaseColor();%>
                                 <option name="caseColor" value="<%=caseColor%>"><%=caseColor%>
-                                <% }%>
+                                    <% }%>
                             </select></div>
-                        <hr size="1">
-                <br><center>
-                    <input type="image" src="image\bt_cartin.jpg" onClick='mySubmit(1)'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="image" src="image\bt_buying.jpg" onClick='mySubmit(2)'>
-                </center>
-                </td>
+                        <div align="left">수량:</div>
+                        <div align="right"><input type="hidden" name="userID" value="<%=user.getId()%>">
+                            <input type="text" name ="numbers" size="5">개</div>
+                        <hr size="1" width="900">
+                        <br>
+                    </td>
+                <br>
                 </tr>
             </table>
-        </form>
-        <hr size="1" width="1100">
-    </center>
+            <input type="submit" value="장바구니">         
+        </center>
+    </form>
     <br><br>
     <hr size="2" color="black">
     <center>
-
         <td><img src="image/upload/<%=request.getAttribute("detailImg")%>"></td>
-
     </center>
 
     <div id="gotop">

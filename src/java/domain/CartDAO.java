@@ -20,7 +20,7 @@ public class CartDAO {
     private DBConnectionPool connPool;
     private static final String RETRIEVE_STMT = "SELECT * FROM shoppingCart2 where UserID = ?";
     private static final String GETID_STMT = "SELECT COUNT(CartID) FROM shoppingCart2";
-    private static final String ADD_STMT = "INSERT INTO shoppingCart2 VALUES(?,?,?,?,?,?)";
+    private static final String ADD_STMT = "INSERT INTO shoppingCart2 VALUES(?,?,?,?,?,?,?,?)";
     private static final String DELETE_STMT = "DELETE FROM shoppingCart2 WHERE userID = ? AND CartID = ?";
     private static final String CLEAN_STMT = "DELETE FROM shoppingCart2 WHERE userID = ? AND CartID = ?";
     
@@ -43,7 +43,10 @@ public class CartDAO {
                 String color = rset.getString(4);
                 int numbers = rset.getInt(5);
                 int price = rset.getInt(6);
-                carts.add(new Cart(cartID, UserID, caseName, color, numbers, price));
+                String phoneType = rset.getString(7);
+                String caseType = rset.getString(8);
+                
+                carts.add(new Cart(cartID, UserID, caseName, color, numbers, price, phoneType, caseType));
             }
             return carts;
         }catch(SQLException se){
@@ -75,7 +78,7 @@ public class CartDAO {
         }
     }
     //장바구니에 상품을 추가한다
-    void addToCart(String userID, String caseName, String color, int numbers, int price){
+    void addToCart(String userID, String caseName, String color, int numbers, int price, String phoneType, String caseType){
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
@@ -96,6 +99,8 @@ public class CartDAO {
             stmt.setString(4, color);
             stmt.setInt(5, numbers);
             stmt.setInt(6, price);
+            stmt.setString(7, phoneType);
+            stmt.setString(8, caseType);
             
             stmt.executeQuery();
         } catch(SQLException se){

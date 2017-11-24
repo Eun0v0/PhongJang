@@ -102,7 +102,7 @@
     <table>
         <tr>
             <th width="170" height = "35"><img src="image\paynum.jpg" width=170 height=40"></th>
-            <th width="170" height = "35"><img src="image\orderDate1.jpg" width=170 height=40"></th>
+            <%--<th width="170" height = "35"><img src="image\orderDate1.jpg" width=170 height=40"></th>--%>
             <th width="170" height = "35"><img src="image\casename2.jpg" width=170 height=40"></th>
             <th width="120" height = "35"><img src="image\amount2.jpg" width=120 height=40"></th>
             <th width="120" height = "35"><img src="image\price.jpg" width=120 height=40"></th>                          
@@ -115,9 +115,11 @@
         if(payments.size() != 0){
         %> 
         <tr>
-            <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getPaymentID()%></td>
-            <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getOrderDate()%></td>
-            <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getCaseName()%></td>
+            <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getPaymentID()%>
+                <br> <%=payment.getOrderDate()%> </td>
+            <%--<td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getOrderDate()%></td>--%>
+            <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getCaseName()%>
+                <br><font size="2"><%=payment.getCaseType()%> | <%=payment.getColor()%> | <%=payment.getPhoneType()%></font></td>
             <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getNumbers()%></td>
             <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getPrice()%></td>
             <td bgcolor="#dcdcdc"  align="center" height = "35"><%=payment.getStatus()%></td>    

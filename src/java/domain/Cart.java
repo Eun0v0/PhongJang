@@ -16,15 +16,36 @@ public class Cart {
     String color;
     int numbers;
     int price;
-
-    public Cart(int cartID, String userID, String caseName, String color, int numbers, int price) {
+    String phoneType;
+    String caseType;
+    
+    public Cart(int cartID, String userID, String caseName, String color, int numbers, int price, String phoneType, String caseType) {
         this.cartID = cartID;
         this.userID = userID;
         this.caseName = caseName;
         this.color = color;
         this.numbers = numbers;
         this.price = price;
+        this.phoneType=phoneType;
+        this.caseType=caseType;
     }
+
+    public String getCaseType() {
+        return caseType;
+    }
+
+    public void setCaseType(String caseType) {
+        this.caseType = caseType;
+    }
+    
+    public String getPhoneType() {
+        return phoneType;
+    }
+
+    public void setPhoneType(String phoneType) {
+        this.phoneType = phoneType;
+    }
+    
     public int getCartID() {
         return cartID;
     }

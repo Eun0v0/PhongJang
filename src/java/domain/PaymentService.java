@@ -30,8 +30,12 @@ public class PaymentService {
         return payments;
     }
     
-    public void paymentAdd(String userid, String caseName, int numbers, int price, String address, String phoneNumber, String creditcardNumber, String creditcardPassword, String status, String parcelNumber, String s_date) {
-        paymentDataAccess.paymentAdd(userid, caseName, numbers, price, address, phoneNumber, creditcardNumber, creditcardPassword, status, parcelNumber, s_date);
+    public void paymentAdd(String userid, String caseName, int numbers, int price, String address, String phoneNumber, 
+            String creditcardNumber, String creditcardPassword, String status, String parcelNumber, String s_date,
+            String phoneType, String caseType, String color) {
+        paymentDataAccess.paymentAdd(userid, caseName, numbers, price, address, phoneNumber, 
+                creditcardNumber, creditcardPassword, status, parcelNumber, s_date,
+                phoneType, caseType, color);
     }
     
     public void paymentDelete(int paymentID) {
