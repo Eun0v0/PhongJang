@@ -46,6 +46,16 @@ public class UserService {
         return user;
     }
 
+    public User getSearchPwd(String userID, String PhoneNum) {
+        User user = null;
+        try {
+            user = userDataAccess.searchUserPwd(userID,PhoneNum);
+        } catch (Exception e) {
+            user = null;
+        }
+        return user;
+    }
+    
     public void userCreate(String userID, String usertype, String username, String password, String phoneNum, String address) {
         userDataAccess.userCreate(userID, usertype, username, password, phoneNum, address);
     }

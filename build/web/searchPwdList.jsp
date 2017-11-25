@@ -1,7 +1,7 @@
 <%-- 
-    Document   : searchPwd
-    Created on : 2017. 11. 17, 오전 10:14:55
-    Author     : Hayoung_2
+    Document   : searchPwdList
+    Created on : 2017. 11. 25, 오후 4:53:11
+    Author     : yhsyj
 --%>
 <%-- test --%>
 <%@page import="java.util.ArrayList"%>
@@ -16,7 +16,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>비밀번호 찾기</title>
+        <title>ID 찾기</title>
+        <% User user = (User) request.getAttribute("user"); %>
+        <% String userPwd = (String) request.getAttribute("userPwd"); %>
+        
         <script type="text/javascript">
             //<![CDATA[
             function initMoving(target, position, topLimit, btmLimit) {
@@ -90,8 +93,7 @@
     <body>
         <table border="0px">
             <tr>
-                <%  User user = (User) request.getAttribute("user");
-                    if (user == null) { %>
+                <%if (user == null) { %>
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\cart.jpg"></a>
@@ -169,23 +171,9 @@
         <br><br>
         <img src="image\searchPwd.jpg" height="60" width="150"><br>
         <br>
-        <%--이름 , 핸드폰 번호--%>
-        <form action ="searchPwd" method="post">
-            <table>
-                <tr><td><img src="image\id.JPG" width=120 height=35">&nbsp;</td><td>
-                        <input type="text" name="userID" size="20">
-                <tr><td><img src="image\phone.jpg" width=120 height=35">&nbsp;</td><td>
-                        <input type="text" name="PhoneNum" size="20">
-            </table>
-            <table><tr>
-                    <td><input type="image" src="image\searchPwdBt.jpg" width="170" height="50" name="Submit" value ="searchPwd">&nbsp;</td>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <td><input type="image" src="image\back.jpg" width="170" height="50" onClick="location.assign('login.jsp')"></td>
-                </tr>
-            </table>
-        </form>
-        <%--아이디 찾기 버튼, 취소 버튼--%>
-
+            회원님의 비밀번호는
+            <%= userPwd %>
+            입니다.
     </center>
     <div id="gotop">
         <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>

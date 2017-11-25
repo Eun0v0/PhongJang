@@ -83,4 +83,12 @@ public class User {
     public void searchID(String name, String phone) {
         this.id = id;
     }
+    
+    public String searchPwd() {
+        return pw;
+    }
+
+    public void searchPwd(String name, String phone) {
+        this.pw = pw;
+    }
 }
