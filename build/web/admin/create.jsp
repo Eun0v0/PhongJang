@@ -162,8 +162,8 @@
                 <td><tr><input type="submit" value="등록"> &nbsp;&nbsp; <input type="reset" value="다시쓰기"> </tr> </td>
             </table>
             <hr size="1" width="1100">
-            </form>
         </center>
+        </form>
     </body>
 
 </html>

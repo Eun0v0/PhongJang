@@ -70,7 +70,14 @@
 <center>
     <table>
             <tr>
-                <td><a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a></td>
+                <% if (user != null) {%>
+                <td><form action="myCase" method="post">
+                        <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
+                    </form></td>
+                <% } else {%>
+                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                        <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
+                <% } %>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
                 
                 <td><form action ="caseTypePage" method="post">
@@ -102,7 +109,7 @@
     <table>
         <tr>
             <th width="170" height = "35"><img src="image\paynum.jpg" width=170 height=40"></th>
-            <th width="170" height = "35"><img src="image\orderDate1.jpg" width=170 height=40"></th>
+            <%--<th width="170" height = "35"><img src="image\orderDate1.jpg" width=170 height=40"></th>--%>
             <th width="170" height = "35"><img src="image\casename2.jpg" width=170 height=40"></th>
             <th width="120" height = "35"><img src="image\amount2.jpg" width=120 height=40"></th>
             <th width="120" height = "35"><img src="image\price.jpg" width=120 height=40"></th>                          
@@ -115,9 +122,11 @@
         if(payments.size() != 0){
         %> 
         <tr>
-            <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getPaymentID()%></td>
-            <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getOrderDate()%></td>
-            <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getCaseName()%></td>
+            <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getPaymentID()%>
+                <br> <%=payment.getOrderDate()%> </td>
+            <%--<td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getOrderDate()%></td>--%>
+            <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getCaseName()%>
+                <br><font size="2"><%=payment.getCaseType()%> | <%=payment.getColor()%> | <%=payment.getPhoneType()%></font></td>
             <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getNumbers()%></td>
             <td bgcolor="#dcdcdc" align="center" height = "35"><%=payment.getPrice()%></td>
             <td bgcolor="#dcdcdc"  align="center" height = "35"><%=payment.getStatus()%></td>    

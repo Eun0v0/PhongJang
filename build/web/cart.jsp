@@ -75,7 +75,14 @@
     <center>
         <table>
             <tr>
-                <td><a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a></td>
+                <% if (user != null) {%>
+                <td><form action="myCase" method="post">
+                        <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
+                    </form></td>
+                <% } else {%>
+                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                        <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
+                <% } %>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
                 
                 <td><form action ="caseTypePage" method="post">
@@ -111,6 +118,8 @@
             <tr>
                 <th width="170" height = "35"><img src="image\casename2.jpg" width=170 height=40"></th>
                 <th width="120" height = "35"><img src="image\color.jpg" width=120 height=40"></th>
+                <th width="120" height = "35"><img src="image\color.jpg" width=120 height=40"></th>
+                <th width="120" height = "35"><img src="image\color.jpg" width=120 height=40"></th>
                 <th width="120" height = "35"><img src="image\amount2.jpg" width=120 height=40"></th>
                 <th width="120" height = "35"><img src="image\price.jpg" width=120 height=40"></th>
                 <th width="40" height = "35"><img src="image\blank2.jpg" width=50 height=40"></th>
@@ -124,6 +133,8 @@
             <tr>
                 <td bgcolor="#dcdcdc" align="center"><%=cart.getCaseName()%></td>
                 <td bgcolor="#dcdcdc" align="center"><%=cart.getColor()%></td>
+                <td bgcolor="#dcdcdc" align="center"><%=cart.getCaseType()%></td>
+                <td bgcolor="#dcdcdc" align="center"><%=cart.getPhoneType()%></td>
                 <td bgcolor="#dcdcdc" align="center"><%=cart.getNumbers()%></td>
                 <td bgcolor="#dcdcdc" align="center"><%=cart.getPrice()%></td>
                 <td bgcolor="#dcdcdc" align ="center">

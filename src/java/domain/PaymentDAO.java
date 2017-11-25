@@ -14,7 +14,7 @@ public class PaymentDAO {
     private static final String RETRIEVE_STMT
             = "SELECT * FROM shoppingPayment WHERE UserID = ?";
     private static final String GETID_STMT = "SELECT COUNT(PaymentID) FROM shoppingPayment";
-    private static final String ADD_STMT = "INSERT INTO shoppingPayment VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String ADD_STMT = "INSERT INTO shoppingPayment VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String DELETE_STMT = "DELETE FROM shoppingPayment WHERE PaymentID = ?";
     private static final String UPDATE_STMT = "UPDATE shoppingPayment SET ParcelNumber = ?, Status=? WHERE PaymentID = ?";
    
@@ -41,7 +41,12 @@ public class PaymentDAO {
                 String status = rset.getString(10);
                 String parcelNumber= rset.getString(11);
                 String orderDate = rset.getString(12);
-                payments.add(new Payment(PaymentID, UserID, CaseName, Numbers, Price, Address, PhoneNumber, CreditCardNumber, CreditCardPassword, status, parcelNumber, orderDate));
+                String phoneType = rset.getString(13);
+                String caseType = rset.getString(14);
+                String color = rset.getString(15);
+                payments.add(new Payment(PaymentID, UserID, CaseName, Numbers, Price, Address, 
+                             PhoneNumber, CreditCardNumber, CreditCardPassword, status, parcelNumber, orderDate,
+                             phoneType, caseType, color));
             }
             return payments;
         } catch (SQLException se) {
@@ -93,13 +98,18 @@ public class PaymentDAO {
                 int Numbers = rset.getInt(4);
                 int Price = rset.getInt(5);
                 String Address = rset.getString(6);
-                String Contact = rset.getString(7);
+                String PhoneNumber = rset.getString(7);
                 String CreditCardNumber = rset.getString(8);
                 String CreditCardPassword = rset.getString(9);
                 String status = rset.getString(10);
                 String parcelNumber = rset.getString(11);
                 String orderDate = rset.getString(12);
-                payments.add(new Payment(PaymentID, UserID, CaseName, Numbers, Price, Address, Contact, CreditCardNumber, CreditCardPassword, status, parcelNumber, orderDate));
+                String phoneType = rset.getString(13);
+                String caseType = rset.getString(14);
+                String color = rset.getString(15);
+                payments.add(new Payment(PaymentID, UserID, CaseName, Numbers, Price, Address, 
+                             PhoneNumber, CreditCardNumber, CreditCardPassword, status, parcelNumber, orderDate,
+                             phoneType, caseType, color));
             }
             return payments;
         } catch (SQLException se) {
@@ -133,7 +143,9 @@ public class PaymentDAO {
     }
     
     //고객이 결제한 내용을 데이터베이스에 저장한다.
-    void paymentAdd(String userID, String caseName, int numbers, int price, String address, String phoneNumber, String creditCardNumber, String creditcardPassword, String status, String parcelNumber, String s_date) {
+    void paymentAdd(String userID, String caseName, int numbers, int price, String address, String phoneNumber, 
+                    String creditCardNumber, String creditcardPassword, String status, String parcelNumber, String s_date,
+                    String phoneType, String caseType, String color) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
@@ -161,6 +173,10 @@ public class PaymentDAO {
             stmt.setString(10,status);
             stmt.setString(11,parcelNumber);
             stmt.setString(12,s_date);
+            stmt.setString(13, phoneType);
+            stmt.setString(14, caseType);
+            stmt.setString(15, color);
+            
             stmt.executeQuery();
         } catch (SQLException se) {
             throw new RuntimeException(

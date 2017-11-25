@@ -16,17 +16,16 @@ import util.DBConnectionPool;
  *
  * @author yukih
  */
-public class CartDAO {
+public class MyCaseDAO {
     private DBConnectionPool connPool;
-    private static final String RETRIEVE_STMT = "SELECT * FROM shoppingCart2 where UserID = ?";
-    private static final String GETID_STMT = "SELECT COUNT(CartID) FROM shoppingCart2";
-    private static final String ADD_STMT = "INSERT INTO shoppingCart2 VALUES(?,?,?,?,?,?,?,?)";
-    private static final String DELETE_STMT = "DELETE FROM shoppingCart2 WHERE userID = ? AND CartID = ?";
-    private static final String CLEAN_STMT = "DELETE FROM shoppingCart2 WHERE userID = ? AND CartID = ?";
+    private static final String RETRIEVE_STMT = "SELECT * FROM MyCase where UserID = ?";
+    private static final String GETID_STMT = "SELECT COUNT(MyCaseNum) FROM MyCase";
+    private static final String ADD_STMT = "INSERT INTO MyCase VALUES(?,?,?,?,?,?,?,?,?)";
+    private static final String DELETE_STMT = "DELETE FROM MyCase WHERE userID = ? AND MyCaseNum = ?";
     
-    //장바구니의 모든 정보를 가져온다
-    ArrayList<Cart> cartRetrieve(String userID) throws SQLException{
-        ArrayList<Cart> carts = new ArrayList<Cart>();
+    //내가 작성한 마이케이스 문의 내역을 가져온다
+    ArrayList<MyCase> myCaseRetrieve(String userID) throws SQLException{
+        ArrayList<MyCase> myCases = new ArrayList<MyCase>();
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
@@ -37,18 +36,19 @@ public class CartDAO {
             stmt.setString(1,userID);
             rset = stmt.executeQuery();
             while(rset.next()){
-                int cartID = rset.getInt(1);
+                int myCaseNum = rset.getInt(1);
                 String UserID = rset.getString(2);
-                String caseName = rset.getString(3);
-                String color = rset.getString(4);
-                int numbers = rset.getInt(5);
-                int price = rset.getInt(6);
-                String phoneType = rset.getString(7);
-                String caseType = rset.getString(8);
-                
-                carts.add(new Cart(cartID, UserID, caseName, color, numbers, price, phoneType, caseType));
+                String title = rset.getString(3);
+                String caseType = rset.getString(4);
+                String phoneType = rset.getString(5);
+                String color = rset.getString(6);
+                String content = rset.getString(7);
+                String image = rset.getString(8);
+                String writeDate = rset.getString(9);
+                myCases.add(new MyCase(myCaseNum, UserID, title, caseType, phoneType,
+                        color, content, image, writeDate));
             }
-            return carts;
+            return myCases;
         }catch(SQLException se){
             throw new RuntimeException("A database error occured"+se.getMessage());
         } catch(Exception e) {
@@ -77,8 +77,9 @@ public class CartDAO {
             }
         }
     }
-    //장바구니에 상품을 추가한다
-    void addToCart(String userID, String caseName, String color, int numbers, int price, String phoneType, String caseType){
+    // 마이 케이스 문의 글을 추가한다
+    void addMyCase(String userID, String title, String caseType, String phoneType,
+            String color, String content, String image, String writeDate){
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
@@ -88,20 +89,19 @@ public class CartDAO {
             rset = stmt.executeQuery();
             int ID = -1;
             rset.next();
-            ID = rset.getInt("COUNT(CartID)");
+            ID = rset.getInt("COUNT(MyCaseNum)");
             ID++;
-            //ADD_STMT = "INSERT INTO shoppingCart VALUES(?,?,?,?,?,?)";
-    
+            
             stmt = conn.prepareStatement(ADD_STMT);
             stmt.setInt(1, ID);
             stmt.setString(2, userID);
-            stmt.setString(3, caseName);
-            stmt.setString(4, color);
-            stmt.setInt(5, numbers);
-            stmt.setInt(6, price);
-            stmt.setString(7, phoneType);
-            stmt.setString(8, caseType);
-            
+            stmt.setString(3, title);
+            stmt.setString(4, caseType);
+            stmt.setString(5, phoneType);
+            stmt.setString(6, color);
+            stmt.setString(7, content);
+            stmt.setString(8, image);
+            stmt.setString(9, writeDate);
             stmt.executeQuery();
         } catch(SQLException se){
             throw new RuntimeException("A database eroor occured." + se.getMessage());
@@ -124,7 +124,7 @@ public class CartDAO {
     }
     
     //장바구니에서 상품을 삭제한다
-    void deleteFromCart(String userID, int cartID){
+    void deleteFromCart(String userID, int myCaseNum){
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
@@ -134,37 +134,7 @@ public class CartDAO {
             conn = connPool.getPoolConnection();
             stmt = conn.prepareStatement(DELETE_STMT);
             stmt.setString(1, userID);
-            stmt.setInt(2, cartID);
-            stmt.executeQuery();
-        } catch(SQLException se){
-            throw new RuntimeException("A database eroor occured." + se.getMessage());
-        }finally {
-            if(stmt != null){
-                try{
-                    stmt.close();
-                } catch (SQLException se){
-                    se.printStackTrace(System.err);
-                }
-            }
-            if(conn != null){
-                try{
-                    conn.close();
-                } catch(Exception e){
-                    e.printStackTrace(System.err);
-                }
-            }
-        }
-    }
-    //장바구니에서 모든 상품을 지운다
-    void cleanCart(String userID, int cartID){
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rset = null;
-        try{
-            conn = connPool.getPoolConnection();
-            stmt = conn.prepareStatement(CLEAN_STMT);
-            stmt.setString(1, userID);
-            stmt.setInt(2, cartID);
+            stmt.setInt(2, myCaseNum);
             stmt.executeQuery();
         } catch(SQLException se){
             throw new RuntimeException("A database eroor occured." + se.getMessage());
