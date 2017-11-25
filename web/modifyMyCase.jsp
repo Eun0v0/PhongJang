@@ -11,15 +11,19 @@
 <%@page import="java.net.URLDecoder"%>
 <%@page import="domain.Qna"%>
 <%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
+<jsp:useBean id="status" scope="request" class="util.Status"/>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
         <title>Q&A</title>
-        <% ArrayList<MyCase> myCases = (ArrayList<MyCase>) request.getAttribute("myCases");%>
-        <%User user = (User) request.getAttribute("user");%>
-        <%session.setAttribute("user", user);%>
-        <%session.setAttribute("myCases", myCases);%>
+        <% ArrayList<MyCase> myCases = (ArrayList<MyCase>) request.getAttribute("myCases");
+            User user = (User) request.getAttribute("user");
+            MyCase myCase = (MyCase) request.getAttribute("myCase");
+            session.setAttribute("user", user);
+            session.setAttribute("myCases", myCases);
+            session.setAttribute("myCase", myCase);
+        %>
     </head>
     <body>
         <table border="0px">
@@ -99,38 +103,89 @@
     </center>
     <hr size="5" color="black">
 
+    <%if ((status != null) && !status.isSuccessful()) {%>
+    <font color="red">There were problems processing your request:
+    <ul><%Iterator errors = status.getExceptions();
+        while (errors.hasNext()) {
+            Exception ex = (Exception) errors.next();%>
+        <li><%= ex.getMessage()%><%}%></ul></font>    
+        <%}%>
     <center></br></br><img src="image\qnalist.jpg"><br><br></center>
-    <center><table>
-            <tr>
-                <th width="60" height="35"><img src="image\boardnum.jpg" width=60 height=40"></th>
-                <th width="250" height="35"><img src="image\boardtitle.jpg" width=250 height=40"></th>
-                <th width="140" height="35"><img src="image\writedate.jpg" width=140 height=40"></th>
-                <th width="50" height="35">삭제</th>
+    <center>
+        <%  int myCaseNum = myCase.getMyCaseNum();
+            String title = myCase.getTitle();
 
-            </tr>
-            <%
-                for (int i = 0; i < myCases.size(); i++) {
-                    MyCase myCase = myCases.get(i);
-                    int myCaseNum = myCase.getMyCaseNum();
-                    String title = myCase.getTitle();
-
-                    String caseType = myCase.getCaseType();
-                    String phoneType = myCase.getPhoneType();
-                    String color = myCase.getColor();
-                    String content = myCase.getContent();
-                    String image = myCase.getImage();
-                    String writeDate = myCase.getWriteDate();
-                    
-            %>
-            <tr>
-                <td bgcolor="#dcdcdc" height="40" align="center"><%=myCaseNum%></td>
-                <td bgcolor="#dcdcdc" height="40" align="center"><a href="modifyMyCase?myCaseNum=<%=myCaseNum%>"><%=title%></a></td>
-                <td bgcolor="#dcdcdc" height="40" align="center"><%=writeDate%></td>
-                <td bgcolor="#dcdcdc" height="40" align="center">
-                    <input type="submit" value="삭제"></td>   
-            </tr>
-            <% }%>
-        </table>
+            String caseType = myCase.getCaseType();
+            String phoneType = myCase.getPhoneType();
+            String color = myCase.getColor();
+            String content = myCase.getContent();
+            String image = myCase.getImage();
+            String writeDate = myCase.getWriteDate();%>
+        <center><img src="image/upload/<%=image%>" width="400" height="360"></center>
+        <form action="modifyMyCaseProcess" method="post">
+            <table>
+                <tr>
+                    <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
+                    <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <th width="120" height="35">제목</th>
+                        <td><textarea name="title" size="20"><%=title%></textarea></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <th width="60" height="35">케이스 타입</th>
+                        <td><select name="caseType" >
+                                <option name="caseType" value="<%=caseType%>"><%=caseType%>
+                                <option name="caseType" value="젤리">젤리
+                                <option name="caseType" value="하드">하드
+                                <option name="caseType" value="범퍼">범퍼</select></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <th width="60" height="35">핸드폰 기종</th>
+                        <td><textarea name="phoneType" size="20"><%=phoneType%></textarea></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <th width="60" height="35">색상</th>
+                        <td><textarea name="color" size="20"><%=color%></textarea></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <th width="60" height="35">케이스 이미지</th>
+                        <td><input type="file" name="caseImage" size="48" maxlength="50"><%=image%></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <th width="60" height="35">부가 설명</th>
+                        <td><textarea name="content" cols="50" rows="13"><%=content%></textarea></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+                    <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
+                    <tr align="center">
+                        <td>&nbsp;</td><br>
+                    <td colspan="2">
+                        <input type="hidden" name="userID" value="<%=user.getId()%>">
+                        <input type="hidden" name="myCaseNum" value="<%=myCaseNum%>">
+                        
+                        <input type="submit" value="등록">
+                    <td>&nbsp;</td>
+                    </tr>      
+                </center></td></tr>
+            </table>
+        </form>
     </center>
 </body>
 </html>

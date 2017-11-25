@@ -33,4 +33,23 @@ public class MyCaseService {
             String color, String content, String image, String writeDate) {
         myCaseDataAccess.addMyCase(userID, title, caseType, phoneType, color, content, image, writeDate);
     }
+    
+    public void myCaseUpdate(int myCaseNum, String title, String caseType, String phoneType,
+            String color, String content, String image){
+        myCaseDataAccess.myCaseUpdate(myCaseNum, title, caseType, phoneType, color, content, image);
+    }
+    
+    public MyCase getMyCase(int myCaseNum){
+        MyCase myCase = null;
+        try {
+            myCase = myCaseDataAccess.getMyCase(myCaseNum);
+        } catch (Exception e) {
+            myCase = null;
+        }
+        return myCase;
+    }
+    public void deleteMyCase(String userID, int myCaseNum){
+         myCaseDataAccess.deleteMyCase(userID, myCaseNum);
+    }
+            
 }

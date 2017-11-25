@@ -29,14 +29,9 @@ import util.Status;
  *
  * @author yukih
  */
-public class ModifyMyCaseServlet extends HttpServlet {
+public class DeleteMyCaseServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
-            HttpServletResponse response)
-            throws IOException, ServletException {
-        processRequest(request, response);
-    }
-     public void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
         processRequest(request, response);
@@ -54,23 +49,17 @@ public class ModifyMyCaseServlet extends HttpServlet {
 
         HttpSession HttpSession = request.getSession();
         User user = (User) HttpSession.getAttribute("user");
-        MyCase myCase = null;
-
-        String userID = user.getId();
-        int myCaseNum = Integer.parseInt(request.getParameter("myCaseNum"));
-        myCase = myCaseService.getMyCase(myCaseNum);
-
-        /*String title = myCase.getTitle();
-        String caseType = myCase.getCaseType();
-        String phoneType = myCase.getPhoneType();
-        String color = myCase.getColor();
-        String content = myCase.getContent();
-        String image = myCase.getImage();*/
-
-        request.setAttribute("myCase", myCase);
+        ArrayList<MyCase> myCases = new ArrayList<MyCase>();
+        String userID = request.getParameter("userID");
+        int myCaseNum  = Integer.parseInt(request.getParameter("myCaseNum"));
+        
+        myCaseService.deleteMyCase(userID, myCaseNum);
+        
+        myCases = myCaseService.getAllMyCases(userID);
+        request.setAttribute("myCases", myCases);
         request.setAttribute("user", user);
 
-        view = request.getRequestDispatcher("modifyMyCase.jsp");
+        view = request.getRequestDispatcher("myCaseList.jsp");
         view.forward(request, response);
     }
 }

@@ -313,4 +313,21 @@
         <url-pattern>/modifyMyCase</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>ModifyMyCaseProcessController</servlet-name>
+        <servlet-class>web.ModifyMyCaseProcessServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModifyMyCaseProcessController</servlet-name>
+        <url-pattern>/modifyMyCaseProcess</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeleteMyCasetroller</servlet-name>
+        <servlet-class>web.DeleteMyCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteMyCasetroller</servlet-name>
+        <url-pattern>/deleteMyCase</url-pattern>
+    </servlet-mapping>
 </web-app>

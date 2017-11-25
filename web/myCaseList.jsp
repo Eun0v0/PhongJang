@@ -127,7 +127,10 @@
                 <td bgcolor="#dcdcdc" height="40" align="center"><a href="modifyMyCase?myCaseNum=<%=myCaseNum%>"><%=title%></a></td>
                 <td bgcolor="#dcdcdc" height="40" align="center"><%=writeDate%></td>
                 <td bgcolor="#dcdcdc" height="40" align="center">
-                    <input type="submit" value="삭제"></td>   
+                    <form action="deleteMyCase" method="post">   
+                        <input type="hidden" name="userID" value="<%=user.getId()%>">
+                        <input type="hidden" name="myCaseNum" value="<%=myCaseNum%>">
+                        <input type="submit" value="삭제"></form></td> 
             </tr>
             <% }%>
         </table>
