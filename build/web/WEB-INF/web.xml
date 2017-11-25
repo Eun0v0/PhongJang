@@ -276,4 +276,41 @@
         <servlet-name>ManageSearchController</servlet-name>
         <url-pattern>/manageSearch</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>MyCaseController</servlet-name>
+        <servlet-class>web.MyCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyCaseController</servlet-name>
+        <url-pattern>/myCase</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ProcessMyCaseController</servlet-name>
+        <servlet-class>web.ProcessMyCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProcessMyCaseController</servlet-name>
+        <url-pattern>/myCaseCreate</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>MyCaseListController</servlet-name>
+        <servlet-class>web.MyCaseListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyCaseListController</servlet-name>
+        <url-pattern>/myCaseList</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ModifyMyCaseController</servlet-name>
+        <servlet-class>web.ModifyMyCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModifyMyCaseController</servlet-name>
+        <url-pattern>/modifyMyCase</url-pattern>
+    </servlet-mapping>
+    
 </web-app>

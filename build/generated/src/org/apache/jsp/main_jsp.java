@@ -236,7 +236,20 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <center>\r\n");
       out.write("        <table>\r\n");
       out.write("            <tr>\r\n");
-      out.write("                <td><a href=\"Top-main.jsp\"><img src=\"image\\customCase3.jpg\" height=\"35\" width=\"140\"></a></td>\r\n");
+      out.write("                ");
+ if (user != null) {
+      out.write("\r\n");
+      out.write("                <td><form action=\"myCase\" method=\"post\">\r\n");
+      out.write("                        <input type=\"image\" src=\"image\\customCase3.jpg\" name=\"Submit\" height=\"35\" width=\"140\">\r\n");
+      out.write("                    </form></td>\r\n");
+      out.write("                ");
+ } else {
+      out.write("\r\n");
+      out.write("                <td><a OnClick=\"alert('로그인을 해주세요!')\" style=\"cursor:pointer\">\r\n");
+      out.write("                        <input type=\"image\" src=\"image\\customCase3.jpg\" name=\"Submit\" height=\"35\" width=\"140\"></a></td>\r\n");
+      out.write("                ");
+ } 
+      out.write("        \r\n");
       out.write("                <td><img src=\"image\\space.jpg\" height=\"35\" width=\"80\"></td>\r\n");
       out.write("\r\n");
       out.write("                <td><form action =\"caseTypePage\" method=\"post\">\r\n");
