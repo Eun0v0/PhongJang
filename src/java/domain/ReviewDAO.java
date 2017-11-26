@@ -78,8 +78,8 @@ public class ReviewDAO {
         }
     }
     
-    // 마이 케이스 문의 글을 추가한다
-    void addMyCase(int caseID, String userID, String content, String grade, String writeDate){
+    // 리뷰를 추가한다
+    void addReview(int caseID, String userID, String content, String grade, String writeDate){
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
@@ -120,8 +120,8 @@ public class ReviewDAO {
         }
     }
     
-    //장바구니에서 상품을 삭제한다
-    void deleteMyCase(String userID, int replyNum, int caseID){
+    //리뷰를 삭제한다
+    void deleteReview(String userID, int replyNum, int caseID){
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;

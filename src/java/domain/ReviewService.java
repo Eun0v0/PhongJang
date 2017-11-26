@@ -29,11 +29,11 @@ public class ReviewService {
         return reviews;
     }
     
-    public void addMyCase(int caseID, String userID, String content, String grade, String writeDate){
-        reviewDataAccess.addMyCase(caseID, userID, content, grade, writeDate);
+    public void addReview(int caseID, String userID, String content, String grade, String writeDate){
+        reviewDataAccess.addReview(caseID, userID, content, grade, writeDate);
     }
     
-    public void deleteMyCase(String userID, int replyNum, int caseID){
-        reviewDataAccess.deleteMyCase(userID, replyNum, caseID);
+    public void deleteReview(String userID, int replyNum, int caseID){
+        reviewDataAccess.deleteReview(userID, replyNum, caseID);
     }
 }

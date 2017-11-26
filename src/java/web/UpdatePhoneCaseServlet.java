@@ -10,6 +10,8 @@ import domain.PhoneCase;
 import domain.PhoneCaseService;
 import domain.PhoneType;
 import domain.PhoneTypeService;
+import domain.Review;
+import domain.ReviewService;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -42,11 +44,15 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
         PhoneCaseService phoneCaseService = new PhoneCaseService();
         PhoneCase phoneCase;
         phoneCase = phoneCaseService.getPhoneCase(caseID);
+        
+        
         ArrayList<PhoneType> phoneTypes = new ArrayList<PhoneType>();
         ArrayList<CaseColor> caseColors = new ArrayList<CaseColor>();
+        ArrayList<Review> reviews = new ArrayList<Review>();
         
         PhoneTypeService phoneTypeService = new PhoneTypeService();
         CaseColorService caseColorService = new CaseColorService();
+        ReviewService reviewService = new ReviewService();
         
         String caseName = phoneCase.getCaseName();
         String caseType = phoneCase.getCaseType();
@@ -57,6 +63,7 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
         
         phoneTypes = phoneTypeService.getPhoneType(caseName);
         caseColors = caseColorService.getCaseColor(caseName);
+        reviews = reviewService.reviewRetrieve(caseID);
         
         request.setAttribute("caseID", caseID);
         request.setAttribute("caseName", caseName);
@@ -70,6 +77,8 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
         request.setAttribute("phoneCase", HttpSession.getAttribute("phoneCase"));
         request.setAttribute("phoneTypes", phoneTypes);
         request.setAttribute("caseColors", caseColors);
+        request.setAttribute("reviews", reviews);
+        
         
         view = request.getRequestDispatcher("admin/update.jsp");
         view.forward(request, response);

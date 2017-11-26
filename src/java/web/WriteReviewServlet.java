@@ -67,7 +67,7 @@ public class WriteReviewServlet extends HttpServlet {
         }
 
         if(!content.isEmpty() && !grade.isEmpty()){
-            reviewService.addMyCase(caseID, userID, content, grade, writeDate);
+            reviewService.addReview(caseID, userID, content, grade, writeDate);
         }
         
         ArrayList<Review> reviews = null;
@@ -109,8 +109,15 @@ public class WriteReviewServlet extends HttpServlet {
         request.setAttribute("phoneTypes", phoneTypes);
         request.setAttribute("caseColors", caseColors);
         
-        view = request.getRequestDispatcher("detailPage.jsp"); //c7stomer 전용
-        view.forward(request, response);
+        String userType = ((User) HttpSession.getAttribute("user")).getUsertype();    
+        
+        if(userType.equals("C")){
+            view = request.getRequestDispatcher("detailPage.jsp"); //c7stomer 전용
+            view.forward(request, response);
+        } else {
+            view = request.getRequestDispatcher("admin/update.jsp");
+            view.forward(request, response);
+        }
         
     }
 }

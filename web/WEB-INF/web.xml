@@ -348,4 +348,13 @@
         <servlet-name>WriteReviewController</servlet-name>
         <url-pattern>/wrtieReview</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeleteReviewController</servlet-name>
+        <servlet-class>web.DeleteReviewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteReviewController</servlet-name>
+        <url-pattern>/deleteReview</url-pattern>
+    </servlet-mapping>
 </web-app>

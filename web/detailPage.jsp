@@ -32,19 +32,23 @@
     <head>
         <meta charset="UTF-8">
         <title><%=request.getAttribute("caseName")%>★</title>
+        
         <%  ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
             User user = (User) request.getAttribute("user");
             ArrayList<PhoneType> phoneTypes = (ArrayList<PhoneType>) request.getAttribute("phoneTypes");
             PhoneType v_phoneType;
             ArrayList<CaseColor> caseColors = (ArrayList<CaseColor>) request.getAttribute("caseColors");
             CaseColor v_caseColor;
-            ArrayList<Review> reviews = (ArrayList<Review>)request.getAttribute("reviews");
-            Review v_review;
+            ArrayList<Review> reviews = (ArrayList<Review>) request.getAttribute("reviews");
+            String userID = null;
+            if(user != null){
+                userID = user.getId();
+            }
             
-            session.setAttribute("user", user);
             session.setAttribute("phoneCases", phoneCases);
             session.setAttribute("phoneTypes", phoneTypes);
-            request.setAttribute("caseColors", caseColors);
+            session.setAttribute("caseColors", caseColors);
+            session.setAttribute("reviews", reviews);
         %>
         <script type="text/javascript">
             //<![CDATA[
@@ -134,7 +138,7 @@
                     </form> 
                 </td>
                 <td><form action="cart" method="post">
-                        <input type="hidden" name="userID" value="<%=user.getId()%>">
+                        <input type="hidden" name="userID" value="<%=userID%>">
                         <input type="image" src="image\cart.jpg" name="Submit" value ="장바구니">
                     </form> 
                 </td>
@@ -159,7 +163,7 @@
         <% if (user != null) {%>
     <center> <div align="middle">
             <form action="main" method="post">
-                <input type="hidden" name="userID" value="<%=user.getId()%>">
+                <input type="hidden" name="userID" value="<%=userID%>">
                 <input type="image" src="image\banner.jpg" name="Submit">
             </form>
         </div> </center>
@@ -254,7 +258,7 @@
                                     <% }%>
                             </select></div>
                         <div align="left">수량:</div>
-                        <div align="right"><input type="hidden" name="userID" value="<%=user.getId()%>">
+                        <div align="right"><input type="hidden" name="userID" value="<%=userID%>">
                             <input type="text" name ="numbers" size="5">개</div>
                         <hr size="1" width="900">
                         <br>
@@ -268,58 +272,101 @@
     <br><br>
     <hr size="2" color="black">
     <center>
-        <td><img src="image/upload/<%=request.getAttribute("detailImg")%>"></td>
-    </center>
-
-    <br><br><br>
-    <%--<center>
         <table>
-            <tr><td>별점</td>
-            <td>리뷰</td>
-            <td>아이디</td></tr>
-            
+        <td><img src="image/upload/<%=request.getAttribute("detailImg")%>"></td>
+        </table>
+    </center>
+        <br><br><br>
+        <hr size="2" color="black">
+        <br><br>
+        
+    <% if(user == null) { %>   
+    <center>
+        <table>
+            <tr><h2>한줄 리뷰★</h2><tr>
+            <tr>
+                <th width="170" height = "35">별점</th>
+                <th width="120" height = "35">리뷰</th>
+                <th width="120" height = "35">ID</th>
+            </tr>
             <% for(int i=0; i<reviews.size(); i++) {
-                v_review = reviews.get(i);
+                Review v_review = reviews.get(i);
                 String grade = v_review.getGrade();
                 String content = v_review.getContent();
                 String writeDate = v_review.getWriteDate();
+                String w_userID=v_review.getUserID();
             %>
             <tr>
-                <td><%=grade%> <br>
-                    <font size = 2><%=writeDate%></font></td>
-                <td><%=content%></td>
-                <td><%=request.getAttribute("userID")%></td>
-                
+                <td bgcolor="#dcdcdc" align="center"><%=grade%> <br> <%=writeDate%></td>
+                <td bgcolor="#dcdcdc" align="center"><%=content%></td>
+                <td bgcolor="#dcdcdc" align="center"><%=w_userID%></td>
             </tr>
             <% } %>
         </table>
-    </center>--%>
+    </center> 
+    <% } else { %>
+    <center>
+        <table>
+            <tr><h2>한줄 리뷰★</h2><tr>
+            <tr>
+                <th width="170" height = "35">별점</th>
+                <th width="120" height = "35">리뷰</th>
+                <th width="120" height = "35">ID</th>
+            </tr>
+            <%for(int i=0; i<reviews.size(); i++) {
+                Review v_review = reviews.get(i);
+                String grade = v_review.getGrade();
+                String content = v_review.getContent();
+                String writeDate = v_review.getWriteDate();
+                String w_userID=v_review.getUserID();
+            %>
+            <tr>
+                <td bgcolor="#dcdcdc" align="center"><%=grade%> <br> <%=writeDate%></td>
+                <td bgcolor="#dcdcdc" align="center"><%=content%></td>
+                <td bgcolor="#dcdcdc" align="center"><%=w_userID%></td>
+                <td bgcolor="#dcdcdc" align ="center">
+                    
+                    <% if(w_userID.equals(user.getId())) { %>
+                    <form action="deleteReview" method="post">
+                        <input type="hidden" name="replyNum" value="<%=v_review.getReplyNum()%>">
+                        <input type="hidden" name="userID" value="<%=user.getId()%>">
+                        <input type="hidden" name="caseID" value="<%=request.getAttribute("caseID")%>">
+                        <input type="image" src="image\delete.jpg" name="Submit" value ="삭제" aline="absmiddle">
+                    </form></td>
+                    <% } %> 
+            </tr>
+            <% } %>
+        </table>
+    </center> 
+    <% } %> 
     
     <br><br><br>
     
-    <center>
-        <hr size="2" color="black">
-        <form action="wrtieReview" method="post">
-        <table>
-            <tr><h2>한줄 리뷰★</h2><tr>
-            <tr><td><textarea name="content" cols="100" rows="5"></textarea><td>
-                <td><select name="grade" >
-                        <option name="grade" value="unknown">-----
-                        <option name="grade" value="★">★
-                        <option name="grade" value="★★">★★
-                        <option name="grade" value="★★★">★★★
-                        <option name="grade" value="★★★★">★★★★
-                        <option name="grade" value="★★★★★">★★★★★
-                    </select></td>
+    <% if(user != null) { %>
+        <center>
+            <hr size="2" color="black">
+            <form action="wrtieReview" method="post">
+                <table>
+                    <tr><h2>리뷰 작성★</h2><tr>
+                    <tr><td><textarea name="content" cols="100" rows="5"></textarea><td>
+                        <td><select name="grade" >
+                                <option name="grade" value="unknown">-----
+                                <option name="grade" value="★">★
+                                <option name="grade" value="★★">★★
+                                <option name="grade" value="★★★">★★★
+                                <option name="grade" value="★★★★">★★★★
+                                <option name="grade" value="★★★★★">★★★★★
+                            </select></td>
                     <input type="hidden" name="userID" value="<%=user.getId()%>">
                     <input type="hidden" name="caseID" value="<%=request.getAttribute("caseID")%>">
                     <td><input type="submit" value="등록"></td>    
-            </tr>
-        </table>
-        </form>
-    </center>
-    <br><br><br>
-
+                    </tr>
+                </table>
+            </form>
+        </center>
+        <br><br><br>
+    <% } %>
+    
     <div id="gotop">
         <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>
         <img src="image\cursor1.jpg" height="50" width="50"> <br>
