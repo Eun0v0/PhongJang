@@ -276,4 +276,31 @@
         <servlet-name>ManageSearchController</servlet-name>
         <url-pattern>/manageSearch</url-pattern>
     </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>DeleteQnaController</servlet-name>
+        <servlet-class>web.DeleteQnaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteQnaController</servlet-name>
+        <url-pattern>/deleteQna</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>RetrieveQnaController</servlet-name>
+        <servlet-class>web.RetrieveQnaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RetrieveQnaController</servlet-name>
+        <url-pattern>/showQna</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>UpdateQnaController</servlet-name>
+        <servlet-class>web.UpdateQnaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateQnaController</servlet-name>
+        <url-pattern>/updateQna</url-pattern>
+    </servlet-mapping>
 </web-app>

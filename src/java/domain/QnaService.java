@@ -25,17 +25,25 @@ public class QnaService {
         return qnas;
     }
 
-   /* public ArrayList<Qna> getQna(String caseName) {
+    public ArrayList<Qna> getQna(int qnaNum) {
         ArrayList<Qna> qnas = null;
         try {
-            qnas = qnaDataAccess.phoneCaseRetrieve(caseName);
+            qnas = qnaDataAccess.qnaRetrieve(qnaNum);
         } catch (Exception e) {
             qnas = null;
         }
         return qnas;
-    }*/
+    }
 
     public void insertQna(String userName, String passWord, String qnaTitle, String qnaContent, String s_date) {
         qnaDataAccess.qnaInsert(userName, passWord, qnaTitle, qnaContent, s_date);
+    }
+
+    public void deleteQna(int qnaNum) {
+        qnaDataAccess.qnaDelete(qnaNum);
+    }
+    
+    public void updateQna(String userName, String passWord, String qnaTitle, String qnaContent, String s_date) {
+        qnaDataAccess.qnaUpdate(userName, passWord, qnaTitle, qnaContent, s_date);
     }
 }

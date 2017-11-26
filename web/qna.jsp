@@ -121,10 +121,16 @@
             %>
             <tr>
                 <td bgcolor="#dcdcdc" height="40" align="center"><%=qnaNum%></td>
-                <td bgcolor="#dcdcdc" height="40" align="center"><a href="updateQna?qnaNum=<%=qnaNum%>"><%=qnaTitle%></a></td>
+                <td bgcolor="#dcdcdc" height="40" align="center">
+                    <a href="showQna?qnaNum=<%=qnaNum%>"><%=qnaTitle%></a></td>
                 <td bgcolor="#dcdcdc" height="40" align="center"><%=userName%></td>
                 <td bgcolor="#dcdcdc" height="40" align="center"><%=qnaTime%></td>
-                <td bgcolor="#dcdcdc" height="40" align="center">삭제</td>   
+                <td bgcolor="#dcdcdc" height="40" align="center">
+                    <form action="deleteQna" methor="post">
+                        <input type="hidden" name="qnaNum" value="<%=qnaNum%>">
+                        <input type="image" src="image\delete.jpg" value ="삭제" aline="absmiddle">
+                    </form>
+                </td>   
             </tr>
             <% }%>
         </table></br></br>
