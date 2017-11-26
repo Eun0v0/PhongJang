@@ -26,6 +26,7 @@ public class UserDAO {
     private static final String UPDATE_STMT = "UPDATE shoppingUser SET UserName = ?, PhoneNum = ?, Address = ? WHERE UserID = ?";
     private static final String SELECT_STMT = "SELECT * FROM shoppingUser WHERE UserID=?";
     private static final String SEARCHID_STMT =  "SELECT * FROM shoppingUser WHERE UserName=? AND PhoneNum=?";
+    private static final String SEARCHPWD_STMT =  "SELECT * FROM shoppingUser WHERE UserID=? AND PhoneNum=?";
     
     //모든 데이터를 가져온다
     ArrayList<User> allUserRetrieve() throws SQLException {
@@ -267,7 +268,7 @@ public class UserDAO {
             }
         }
     }
-    //검색된 단어를 포함하는 데이터를 가져온다.
+    //ID검색
     User searchUserID(String userName, String PhoneNum) throws SQLException {
         User user=null;
         Connection conn = null;
@@ -279,6 +280,67 @@ public class UserDAO {
             conn = connPool.getPoolConnection();
             stmt = conn.prepareStatement(SEARCHID_STMT);
             stmt.setString(1, userName);
+            stmt.setString(2, PhoneNum);
+            rset = stmt.executeQuery();
+            while (rset.next()) {
+                String UserID = rset.getString("UserID");
+                String UserType = rset.getString("UserType");
+                String UserName = rset.getString("UserName");
+                String Password = rset.getString("Password");
+                String UserPhoneNum = rset.getString("PhoneNum");
+                String Address = rset.getString("Address");
+                
+                /*String UserID = rset.getString(1);
+                String UserType= rset.getString(2);
+                String UserName = rset.getString(3);
+                String Password = rset.getString(4);
+                String UserPhoneNum = rset.getString(5);
+                String Address = rset.getString(6);*/
+                user=new User(UserID,UserType,UserName,Password,UserPhoneNum,Address);
+            }
+            return user;
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("Exception: " + e.getMessage());
+        } finally {
+            if (rset != null) {
+                try {
+                    rset.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
+    
+    //비밀번호 검색
+    User searchUserPwd(String userID, String PhoneNum) throws SQLException {
+        User user=null;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        try {
+            //String SEARCHID_STMT =  "SELECT UserID FROM shoppingUser WHERE UserName=? AND PhoneNum=?";
+    
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(SEARCHPWD_STMT);
+            stmt.setString(1, userID);
             stmt.setString(2, PhoneNum);
             rset = stmt.executeQuery();
             while (rset.next()) {

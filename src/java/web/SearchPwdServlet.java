@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Hayoung_2
  */
-public final class SearchIDServlet extends HttpServlet {
+public final class SearchPwdServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
@@ -37,14 +37,14 @@ public final class SearchIDServlet extends HttpServlet {
         HttpSession HttpSession=request.getSession();
         User user = (User) HttpSession.getAttribute("user");
         
-        String userName = request.getParameter("userName");
+        String userID = request.getParameter("userID");
         String PhoneNum = request.getParameter("PhoneNum");
         
-        user = userService.getSearchID(userName,PhoneNum);
-        String userID = user.getId();
+        user = userService.getSearchPwd(userID,PhoneNum);
+        String userPwd = user.getPw();
         //request.setAttribute("user", user);
-        request.setAttribute("userID", userID);
-        view = request.getRequestDispatcher("searchIDList.jsp");
+        request.setAttribute("userPwd", userPwd);
+        view = request.getRequestDispatcher("searchPwdList.jsp");
         view.forward(request, response);
     }
 }
