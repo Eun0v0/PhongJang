@@ -3,6 +3,7 @@
     Created on : 2017. 11. 14, 오전 1:00:58
     Author     : Hayoung_2
 --%>
+<%@page import="domain.Review"%>
 <%@page import="domain.CaseColor"%>
 <%@page import="domain.PhoneType"%>
 <%--해야할 것 : 장바구니, 바로결제 버튼 바꾸기?--%>
@@ -37,7 +38,9 @@
             PhoneType v_phoneType;
             ArrayList<CaseColor> caseColors = (ArrayList<CaseColor>) request.getAttribute("caseColors");
             CaseColor v_caseColor;
-
+            ArrayList<Review> reviews = (ArrayList<Review>)request.getAttribute("reviews");
+            Review v_review;
+            
             session.setAttribute("user", user);
             session.setAttribute("phoneCases", phoneCases);
             session.setAttribute("phoneTypes", phoneTypes);
@@ -178,10 +181,10 @@
                 <td><form action="myCase" method="post">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
                     </form></td>
-                <% } else {%>
+                    <% } else {%>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
-                <% } %>        
+                        <% }%>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
 
                 <td><form action ="caseTypePage" method="post">
@@ -209,7 +212,13 @@
     <hr size="5" color="black">
 
     <%--여기서부터 코드내용--%>
-
+    <%if ((status != null) && !status.isSuccessful()) {%>
+    <font color="red">There were problems processing your request:
+    <ul><%Iterator errors = status.getExceptions();
+        while (errors.hasNext()) {
+            Exception ex = (Exception) errors.next();%>
+        <li><%= ex.getMessage()%><%}%></ul></font>    
+        <%}%>
     <br><br>
     <form action="addToCart" method="post">
         <center>
@@ -261,6 +270,55 @@
     <center>
         <td><img src="image/upload/<%=request.getAttribute("detailImg")%>"></td>
     </center>
+
+    <br><br><br>
+    <%--<center>
+        <table>
+            <tr><td>별점</td>
+            <td>리뷰</td>
+            <td>아이디</td></tr>
+            
+            <% for(int i=0; i<reviews.size(); i++) {
+                v_review = reviews.get(i);
+                String grade = v_review.getGrade();
+                String content = v_review.getContent();
+                String writeDate = v_review.getWriteDate();
+            %>
+            <tr>
+                <td><%=grade%> <br>
+                    <font size = 2><%=writeDate%></font></td>
+                <td><%=content%></td>
+                <td><%=request.getAttribute("userID")%></td>
+                
+            </tr>
+            <% } %>
+        </table>
+    </center>--%>
+    
+    <br><br><br>
+    
+    <center>
+        <hr size="2" color="black">
+        <form action="wrtieReview" method="post">
+        <table>
+            <tr><h2>한줄 리뷰★</h2><tr>
+            <tr><td><textarea name="content" cols="100" rows="5"></textarea><td>
+                <td><select name="grade" >
+                        <option name="grade" value="unknown">-----
+                        <option name="grade" value="★">★
+                        <option name="grade" value="★★">★★
+                        <option name="grade" value="★★★">★★★
+                        <option name="grade" value="★★★★">★★★★
+                        <option name="grade" value="★★★★★">★★★★★
+                    </select></td>
+                    <input type="hidden" name="userID" value="<%=user.getId()%>">
+                    <input type="hidden" name="caseID" value="<%=request.getAttribute("caseID")%>">
+                    <td><input type="submit" value="등록"></td>    
+            </tr>
+        </table>
+        </form>
+    </center>
+    <br><br><br>
 
     <div id="gotop">
         <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>

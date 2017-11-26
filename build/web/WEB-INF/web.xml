@@ -332,11 +332,20 @@
     </servlet-mapping>
     
     <servlet>
-        <servlet-name>DeleteMyCasetroller</servlet-name>
+        <servlet-name>DeleteMyCaseController</servlet-name>
         <servlet-class>web.DeleteMyCaseServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>DeleteMyCasetroller</servlet-name>
+        <servlet-name>DeleteMyCaseController</servlet-name>
         <url-pattern>/deleteMyCase</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>WriteReviewController</servlet-name>
+        <servlet-class>web.WriteReviewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WriteReviewController</servlet-name>
+        <url-pattern>/wrtieReview</url-pattern>
     </servlet-mapping>
 </web-app>
