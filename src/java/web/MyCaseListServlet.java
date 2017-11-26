@@ -52,11 +52,21 @@ public class MyCaseListServlet extends HttpServlet {
         ArrayList<MyCase> myCases = new ArrayList<MyCase>();
 
         String userID = user.getId();
-        myCases = myCaseService.getAllMyCases(userID);
-        request.setAttribute("myCases", myCases);
-        request.setAttribute("user", user);
 
-        view = request.getRequestDispatcher("myCaseList.jsp");
-        view.forward(request, response);
+        String userType = ((User) HttpSession.getAttribute("user")).getUsertype();
+
+        if (userType.equals("C")) {
+            myCases = myCaseService.getAllMyCases(userID);
+            request.setAttribute("myCases", myCases);
+            request.setAttribute("user", user);
+            view = request.getRequestDispatcher("myCaseList.jsp"); //c7stomer 전용
+            view.forward(request, response);
+        } else {
+            myCases = myCaseService.getAllMyCases();
+            request.setAttribute("myCases", myCases);
+            request.setAttribute("user", user);
+            view = request.getRequestDispatcher("admin/myCaseList.jsp");
+            view.forward(request, response);
+        }
     }
 }

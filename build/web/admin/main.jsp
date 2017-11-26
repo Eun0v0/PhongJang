@@ -148,7 +148,12 @@
     <center>
         <table>
             <tr>
-                <td><a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a></td>
+                
+                <td><form action="myCaseList" method="post">
+                        <input type="hidden" name="userID" value="<%=user.getId()%>">
+                        <input type="image" src="image\customCase3.jpg" height="35" width="140">
+                        &nbsp;&nbsp;&nbsp;
+                    </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
 
                 <td><form action ="caseTypePage" method="post">

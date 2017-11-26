@@ -20,12 +20,66 @@ public class MyCaseDAO {
     private DBConnectionPool connPool;
     private static final String RETRIEVE_STMT = "SELECT * FROM MyCase where UserID = ?";
     private static final String GET_STMT = "SELECT * FROM MyCase where MyCaseNum = ?";
+    private static final String GETALL_STMT = "SELECT * FROM MyCase";
     
     private static final String GETID_STMT = "SELECT COUNT(MyCaseNum) FROM MyCase";
     private static final String UPDATE_STMT = "UPDATE MyCase SET Title = ?, CaseType = ?, PhoneType = ?, Color = ? ,Content = ?, Image = ? WHERE MyCaseNum = ?";
     private static final String ADD_STMT = "INSERT INTO MyCase VALUES(?,?,?,?,?,?,?,?,?)";
     private static final String DELETE_STMT = "DELETE FROM MyCase WHERE userID = ? AND MyCaseNum = ?";
     
+    //전체 마이케이스 문의 내역을 가져온다
+    ArrayList<MyCase> myCaseRetrieve() throws SQLException{
+        ArrayList<MyCase> myCases = new ArrayList<MyCase>();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        
+        try{
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(GETALL_STMT);
+            rset = stmt.executeQuery();
+            while(rset.next()){
+                int myCaseNum = rset.getInt(1);
+                String UserID = rset.getString(2);
+                String title = rset.getString(3);
+                String caseType = rset.getString(4);
+                String phoneType = rset.getString(5);
+                String color = rset.getString(6);
+                String content = rset.getString(7);
+                String image = rset.getString(8);
+                String writeDate = rset.getString(9);
+                myCases.add(new MyCase(myCaseNum, UserID, title, caseType, phoneType,
+                        color, content, image, writeDate));
+            }
+            return myCases;
+        }catch(SQLException se){
+            throw new RuntimeException("A database error occured"+se.getMessage());
+        } catch(Exception e) {
+            throw new RuntimeException("Exception: "+ e.getMessage());
+        } finally {
+            if(rset != null){
+                try{
+                    rset.close();
+                } catch (SQLException se){
+                    se.printStackTrace(System.err);
+                }
+            }
+            if(stmt != null){
+                try{
+                    stmt.close();
+                } catch (SQLException se){
+                    se.printStackTrace(System.err);
+                }
+            }
+            if(conn != null){
+                try{
+                    conn.close();
+                } catch(Exception e){
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
     //내가 작성한 마이케이스 문의 내역을 가져온다
     ArrayList<MyCase> myCaseRetrieve(String userID) throws SQLException{
         ArrayList<MyCase> myCases = new ArrayList<MyCase>();

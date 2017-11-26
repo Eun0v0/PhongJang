@@ -15,7 +15,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
-        <title>Q&A</title>
+        <title>나만의 케이스 문의 목록</title>
         <% ArrayList<MyCase> myCases = (ArrayList<MyCase>) request.getAttribute("myCases");%>
         <%User user = (User) request.getAttribute("user");%>
         <%session.setAttribute("user", user);%>

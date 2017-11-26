@@ -1,10 +1,13 @@
 package web;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import domain.MyCase;
 import domain.MyCaseService;
 import domain.UserService;
 import domain.User;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,7 +32,14 @@ public final class ModifyMyCaseProcessServlet extends HttpServlet {
         HttpSession HttpSession = request.getSession();
         Status status = new Status();
         request.setAttribute("status", status);
-
+        
+        response.setContentType("text/html; charset=euc-kr");
+        String path = request.getRealPath("/image/upload");
+        PrintWriter out = response.getWriter();
+        
+        MultipartRequest multi = new MultipartRequest(request, path, 1024 * 1024 * 5, "euc-kr",
+                    new DefaultFileRenamePolicy());
+       
         User user = (User) HttpSession.getAttribute("user");
         MyCase myCase = (MyCase) HttpSession.getAttribute("myCase");
         MyCase s_myCase = null;
@@ -38,13 +48,13 @@ public final class ModifyMyCaseProcessServlet extends HttpServlet {
         String userID = user.getId();
         request.setCharacterEncoding("EUC-KR");
 
-        int myCaseNum = Integer.parseInt(request.getParameter("myCaseNum"));
-        String title = request.getParameter("title");
-        String caseType = request.getParameter("caseType");
-        String phoneType = request.getParameter("phoneType");
-        String color = request.getParameter("color");
-        String content = request.getParameter("content");
-        String image = request.getParameter("caseImage");
+        int myCaseNum = Integer.parseInt(multi.getParameter("myCaseNum"));
+        String title = multi.getParameter("title");
+        String caseType = multi.getParameter("caseType");
+        String phoneType = multi.getParameter("phoneType");
+        String color = multi.getParameter("color");
+        String content = multi.getParameter("content");
+        String image = multi.getFilesystemName("caseImage");
 
         try {
 

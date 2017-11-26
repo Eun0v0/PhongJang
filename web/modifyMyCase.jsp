@@ -122,7 +122,7 @@
             String image = myCase.getImage();
             String writeDate = myCase.getWriteDate();%>
         <center><img src="image/upload/<%=image%>" width="400" height="360"></center>
-        <form action="modifyMyCaseProcess" method="post">
+        <form action="modifyMyCaseProcess" method="post" enctype="multipart/form-data">
             <table>
                 <tr>
                     <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>

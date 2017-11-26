@@ -19,6 +19,15 @@ public class MyCaseService {
         myCaseDataAccess = new MyCaseDAO();
     }
     
+    public ArrayList<MyCase> getAllMyCases() {
+        ArrayList<MyCase> myCases = null;
+        try {
+            myCases = myCaseDataAccess.myCaseRetrieve();
+        } catch (Exception e) {
+            myCases = null;
+        }
+        return myCases;
+    }
     public ArrayList<MyCase> getAllMyCases(String userID) {
         ArrayList<MyCase> myCases = null;
         try {
