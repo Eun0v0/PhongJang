@@ -14,13 +14,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Q&A 수정하기</title>
-        <%User user = (User) request.getAttribute("user");%>
-        <%session.setAttribute("user", user);%>
+        <%User user = (User) request.getAttribute("user");
+            Qna qna = (Qna) request.getAttribute("qna");
+            session.setAttribute("user", user);%>
     </head>
     <table border="0px">
         <tr>
             <%
-                    if (user == null) { %>
+                if (user == null) { %>
             <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
             <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                     <img src="image\cart.jpg"></a>
@@ -33,7 +34,7 @@
                     <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE"></a>
             </td>
             <% } else {
-                    session.setAttribute("user", user);%>
+                session.setAttribute("user", user);%>
             <td><form action="logout" method="post">
                     <input type="image" src="image\logout.jpg" name="Submit" value ="로그아웃">
                 </form> 
@@ -103,42 +104,37 @@
         <%}%>
     <center></br></br><img src="image\qnawrite.jpg"><br></center>
     <center>
-        <form action="updateQna" methor="post">
+        <form action="updateQnaProcess" methor="post">
             <table>
                 <tr>
-                    <td><center>
+                    <td>
                     <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
                     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
                     <tr>
                         <td>&nbsp;</td>
                         <th width="120" height="35">제목</th>
-                        <td><!--<input type=text name="qnaTitle" size=48  maxlength=100 value="<%=qnaTitle%>">
-                            <%=request.getAttribute("qnaTitle")%>-->
-                            <textarea name ="qnaTitle" size="48" maxlength="100">
-                                <%=request.getAttribute("qnaTitle")%>
-                            </textarea></td>
+                        <td><textarea name ="qnaTitle" size="48" maxlength="100"><%=qna.getQnaTitle()%></textarea></td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
                     <tr>
                         <td>&nbsp;</td>
                         <th width="120" height="35">작성자</th>
-                        <td><%=request.getAttribute("userName")%></td>
+                        <td><%=qna.getUserName()%></td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
                     <tr>
                         <td>&nbsp;</td>
                         <th width="60" height="35">비밀번호</th>
-                        <td><input type=password name="passWord" size="48"  maxlength="50"></td>
+                        <td><input type=password name="passWord" size="48" maxlength="50"></td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
                     <tr>
                         <td>&nbsp;</td>
                         <th width="60" height="35">내용</th>
-                        <td><textarea name="qnaContent" cols="50" rows="13">
-                                <%=request.getAttribute("qnaContent")%></textarea></td>
+                        <td><textarea name="qnaContent" cols="50" rows="13"><%=qna.getQnaContent()%></textarea></td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
@@ -148,10 +144,9 @@
                     <td colspan="2">
                         <input type="submit" value="수정">
                     <td>&nbsp;</td>
-                    </tr>      
-                </center></td></tr>
+                    </tr> 
+            </table>
         </form>
-    </table>
-</center>
+    </center>
 </body>
 </html>

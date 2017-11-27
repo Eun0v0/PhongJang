@@ -15,15 +15,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Qna</title>
-        <% ArrayList<Qna> qnas = (ArrayList<Qna>) request.getAttribute("qnas");%>
+        <% Qna qna = (Qna) request.getAttribute("qna");%>
         <%User user = (User) request.getAttribute("user");%>
         <%session.setAttribute("user", user);%>
-        <%session.setAttribute("qnas", qnas);%>
+        <%session.setAttribute("qna", qna);%>
     </head>
     <table border="0px">
         <tr>
             <%
-                    if (user == null) { %>
+                if (user == null) { %>
             <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
             <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                     <img src="image\cart.jpg"></a>
@@ -36,7 +36,7 @@
                     <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE"></a>
             </td>
             <% } else {
-                    session.setAttribute("user", user);%>
+                session.setAttribute("user", user);%>
             <td><form action="logout" method="post">
                     <input type="image" src="image\logout.jpg" name="Submit" value ="로그아웃">
                 </form> 
@@ -108,52 +108,52 @@
     <center>
         <table>
             <tr>
-                <td><center>
-                <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
-                <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-                    <%
-                    for (int i = 0; i < qnas.size(); i++) {
-                        Qna qna = qnas.get(i);
-                    %> 
-                <tr>
-                    <td>&nbsp;</td>
-                    <th width="120" height="35">제목</th>
-                    <td align="center"><%=qna.getQnaNum()%></td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <th width="120" height="35">작성자</th>
-                    <td align="center"><%=qna.getUserName()%></td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <th width="60" height="35">비밀번호</th>
-                    <td align="center"><%=qna.getPassWord()%></td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <th width="60" height="35">내용</th>
-                    <td align="center"><%=qna.getQnaContent()%></td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-                <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
-                <tr align="center">
-                    <td>&nbsp;</td><br>
+                <td>
+            <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
+            <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+            <tr>
                 <td>&nbsp;</td>
-                </tr>      
-            </center></td></tr>
-            <% }%>
-        </table>
-        <form action="updateQna"  method="post">
-            <input type="submit" value="수정하기">
-        </form>
+                <th width="120" height="35">제목</th>
+                <td align="center"><%=qna.getQnaTitle()%></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
+            <tr>
+                <td>&nbsp;</td>
+                <th width="120" height="35">작성자</th>
+                <td align="center"><%=qna.getUserName()%></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
+            <tr>
+                <td>&nbsp;</td>
+                <th width="60" height="35">비밀번호</th>
+                <td align="center"><%=qna.getPassWord()%></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
+            <tr>
+                <td>&nbsp;</td>
+                <th width="60" height="35">내용</th>
+                <td align="center"><%=qna.getQnaContent()%></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+            <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
+            <tr align="center">
+                <td>&nbsp;</td><br>
+            <td>&nbsp;</td>
+            </tr>      
     </center>
+</table>
+<form action="updateQna"  method="post">
+    <input type="hidden" name ="qnaNum" value="<%=qna.getQnaNum()%>">
+    <input type="hidden" name ="qnaTitle" value="<%=qna.getQnaTitle()%>">
+    <input type="hidden" name ="userName" value="<%=qna.getUserName()%>">
+    <input type="hidden" name ="password" value="<%=qna.getPassWord()%>">
+    <input type="hidden" name ="qnaContent" value="<%=qna.getQnaContent()%>">
+    <input type="submit" value="수정하기">
+</form>
+</center>
 </body>
 </html>

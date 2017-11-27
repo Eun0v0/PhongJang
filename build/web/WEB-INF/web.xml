@@ -50,7 +50,6 @@
         <servlet-name>SearchController</servlet-name>
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>SearchIDController</servlet-name>
         <servlet-class>web.SearchIDServlet</servlet-class>
@@ -59,8 +58,7 @@
         <servlet-name>SearchIDController</servlet-name>
         <url-pattern>/searchID</url-pattern>
     </servlet-mapping>
-
-<servlet>
+    <servlet>
         <servlet-name>SearchPwdController</servlet-name>
         <servlet-class>web.SearchPwdServlet</servlet-class>
     </servlet>
@@ -68,7 +66,6 @@
         <servlet-name>SearchPwdController</servlet-name>
         <url-pattern>/searchPwd</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>AddCartController</servlet-name>
         <servlet-class>web.AddCartServlet</servlet-class>
@@ -125,7 +122,6 @@
         <servlet-name>RetrievePaymentController</servlet-name>
         <url-pattern>/paymentlist</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>CreatePhoneCaseController</servlet-name>
         <servlet-class>web.CreatePhoneCaseServlet</servlet-class>
@@ -222,7 +218,6 @@
         <servlet-name>DetailPageController</servlet-name>
         <url-pattern>/detailPage</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>CreateQnaController</servlet-name>
         <servlet-class>web.CreateQnaServlet</servlet-class>
@@ -231,7 +226,6 @@
         <servlet-name>CreateQnaController</servlet-name>
         <url-pattern>/createQna</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>ShowQnaListController</servlet-name>
         <servlet-class>web.ManageQnaServlet</servlet-class>
@@ -240,7 +234,6 @@
         <servlet-name>ShowQnaListController</servlet-name>
         <url-pattern>/qnaList</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>ProcessQnaController</servlet-name>
         <servlet-class>web.ProcessQnaServlet</servlet-class>
@@ -249,7 +242,6 @@
         <servlet-name>ProcessQnaController</servlet-name>
         <url-pattern>/writeQna</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>CaseTypeController</servlet-name>
         <servlet-class>web.CaseTypePageServlet</servlet-class>
@@ -276,7 +268,7 @@
         <servlet-name>StockChangeController</servlet-name>
         <url-pattern>/stockChange</url-pattern>
     </servlet-mapping>
-
+    
     <servlet>
         <servlet-name>ManageSearchController</servlet-name>
         <servlet-class>web.ManageSearchServlet</servlet-class>
@@ -286,7 +278,7 @@
         <url-pattern>/manageSearch</url-pattern>
     </servlet-mapping>
     
-     <servlet>
+    <servlet>
         <servlet-name>DeleteQnaController</servlet-name>
         <servlet-class>web.DeleteQnaServlet</servlet-class>
     </servlet>
@@ -304,7 +296,7 @@
         <url-pattern>/showQna</url-pattern>
     </servlet-mapping>
     
-     <servlet>
+    <servlet>
         <servlet-name>UpdateQnaController</servlet-name>
         <servlet-class>web.UpdateQnaServlet</servlet-class>
     </servlet>
@@ -312,7 +304,16 @@
         <servlet-name>UpdateQnaController</servlet-name>
         <url-pattern>/updateQna</url-pattern>
     </servlet-mapping>
-
+    
+    <servlet>
+        <servlet-name>UpdateQnaProcessController</servlet-name>
+        <servlet-class>web.UpdateQnaProcessServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateQnaProcessController</servlet-name>
+        <url-pattern>/updateQnaProcess</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <servlet-name>MyCaseController</servlet-name>
         <servlet-class>web.MyCaseServlet</servlet-class>
@@ -321,7 +322,6 @@
         <servlet-name>MyCaseController</servlet-name>
         <url-pattern>/myCase</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>ProcessMyCaseController</servlet-name>
         <servlet-class>web.ProcessMyCaseServlet</servlet-class>
@@ -330,7 +330,6 @@
         <servlet-name>ProcessMyCaseController</servlet-name>
         <url-pattern>/myCaseCreate</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>MyCaseListController</servlet-name>
         <servlet-class>web.MyCaseListServlet</servlet-class>
@@ -339,7 +338,6 @@
         <servlet-name>MyCaseListController</servlet-name>
         <url-pattern>/myCaseList</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>ModifyMyCaseController</servlet-name>
         <servlet-class>web.ModifyMyCaseServlet</servlet-class>
@@ -348,7 +346,6 @@
         <servlet-name>ModifyMyCaseController</servlet-name>
         <url-pattern>/modifyMyCase</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>ModifyMyCaseProcessController</servlet-name>
         <servlet-class>web.ModifyMyCaseProcessServlet</servlet-class>
@@ -357,7 +354,6 @@
         <servlet-name>ModifyMyCaseProcessController</servlet-name>
         <url-pattern>/modifyMyCaseProcess</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>DeleteMyCaseController</servlet-name>
         <servlet-class>web.DeleteMyCaseServlet</servlet-class>
@@ -366,7 +362,6 @@
         <servlet-name>DeleteMyCaseController</servlet-name>
         <url-pattern>/deleteMyCase</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>WriteReviewController</servlet-name>
         <servlet-class>web.WriteReviewServlet</servlet-class>
@@ -375,7 +370,6 @@
         <servlet-name>WriteReviewController</servlet-name>
         <url-pattern>/wrtieReview</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>DeleteReviewController</servlet-name>
         <servlet-class>web.DeleteReviewServlet</servlet-class>
@@ -384,7 +378,6 @@
         <servlet-name>DeleteReviewController</servlet-name>
         <url-pattern>/deleteReview</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>ReplyMyCaseController</servlet-name>
         <servlet-class>web.ReplyMyCaseServlet</servlet-class>
@@ -393,7 +386,6 @@
         <servlet-name>ReplyMyCaseController</servlet-name>
         <url-pattern>/replyMyCase</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>IDOverlapCheckController</servlet-name>
         <servlet-class>web.IDOverlapCheckServlet</servlet-class>
@@ -402,5 +394,4 @@
         <servlet-name>IDOverlapCheckController</servlet-name>
         <url-pattern>/idOverlapCheck</url-pattern>
     </servlet-mapping>
-    
 </web-app>

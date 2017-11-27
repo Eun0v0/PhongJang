@@ -200,11 +200,11 @@ public class QnaDAO {
         }
     }
 
-    void qnaUpdate(String userName, String passWord, String qnaTitle, String qnaContent) {
+    void qnaUpdate(int qnaNum, String userName, String passWord, String qnaTitle, String qnaContent) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
-
+        //UPDATE boardQna SET QnaTitle = ?, UserName = ?, PassWord = ?, QnaContent = ? WHERE QnaNum = ?
         try {
             conn = connPool.getPoolConnection();
             stmt = conn.prepareStatement(UPDATE_STMT);
@@ -212,6 +212,7 @@ public class QnaDAO {
             stmt.setString(2, userName);
             stmt.setString(3, passWord);
             stmt.setString(4, qnaContent);
+            stmt.setInt(5, qnaNum);
             stmt.executeQuery();
         } catch (SQLException se) {
             throw new RuntimeException(

@@ -34,11 +34,11 @@ public class RetrieveQnaServlet extends HttpServlet {
         QnaService qnaService = null;
         HttpSession HttpSession=request.getSession();
         int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
-        ArrayList<Qna> qnas = null;
+        Qna qna = null;
         qnaService = new QnaService();
-        qnas = qnaService.getQna(qnaNum);
+        qna = qnaService.getQnaInfo(qnaNum);
         request.setAttribute("user", HttpSession.getAttribute("user"));
-        request.setAttribute("qnas", qnas);
+        request.setAttribute("qna", qna);
         view = request.getRequestDispatcher("qnaView.jsp"); //c7stomer 전용
         view.forward(request, response);
     }
