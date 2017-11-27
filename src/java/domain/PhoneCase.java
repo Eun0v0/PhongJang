@@ -15,7 +15,6 @@ public class PhoneCase {
     String img;
     String detailImg;
     int stock;
-    
 
     public PhoneCase(int caseID, String caseName, String caseType, String explanation, int price, String img, String detailImg, int stock) {
 

@@ -23,8 +23,8 @@ public class CartService {
         }
         return carts;
     }
-    public void addToCart(String userID, String caseName, String color, int numbers, int price){
-        cartDataAccess.addToCart(userID, caseName, color, numbers, price);
+    public void addToCart(String userID, String caseName, String color, int numbers, int price, String phoneType, String caseType){
+        cartDataAccess.addToCart(userID, caseName, color, numbers, price, phoneType, caseType);
     }
     public void deleteFromCart(String userID, int caseID){
         cartDataAccess.deleteFromCart(userID, caseID);

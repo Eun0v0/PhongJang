@@ -1,20 +1,4 @@
-<%-- 
-    Document   : qnaCreate
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    Created on : 2017. 11. 21, ???? 1:08:11
-=======
-    Created on : 2017. 11. 22, 오후 8:24:14
->>>>>>> 60686308e1d6f2449b4a273da030dbb69f1cb072
-=======
-    Created on : 2017. 11. 22, 오후 8:24:14
->>>>>>> 60686308e1d6f2449b4a273da030dbb69f1cb072
-=======
-    Created on : 2017. 11. 22, 오후 8:24:14
->>>>>>> 4d66c32f8041698e6c3f0a1e3eabda29173218c3
-    Author     : user
---%>
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.User"%>
 <%@page import="java.net.URLEncoder"%>

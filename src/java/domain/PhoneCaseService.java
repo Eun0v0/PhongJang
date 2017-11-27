@@ -65,4 +65,14 @@ public class PhoneCaseService {
     public void stockChange(int caseID, int stock){
         phoneCaseDataAccess.stockChange(caseID, stock);
     }
+    
+    public int getCaseID(String caseName) {
+        int caseID = 0;
+        try {
+            caseID = phoneCaseDataAccess.getCaseID(caseName);
+        } catch (Exception e) {
+            caseID = 0;
+        }
+        return caseID;
+    }
 }

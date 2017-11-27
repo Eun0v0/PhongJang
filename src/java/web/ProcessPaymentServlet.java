@@ -49,19 +49,26 @@ public class ProcessPaymentServlet extends HttpServlet {
         String status = "배송 준비중";
         String parcelNumber = "준비중";
         ArrayList<PhoneCase> phonecases = null;
-        PhoneCaseService PhoneCaseService = new PhoneCaseService();
-        phonecases = PhoneCaseService.getAllPhoneCase();
-        request.setAttribute("phoncases", phonecases);
-        request.setAttribute("user", HttpSession.getAttribute("user"));
+        PhoneCaseService phoneCaseService = new PhoneCaseService();
+        
         PaymentService PaymentService = new PaymentService();
         for (int i = 0; i < carts.size(); i++) {
-            PaymentService.paymentAdd(userID, carts.get(i).getCaseName(), carts.get(i).getNumbers(),carts.get(i).getPrice(), address, phoneNumber, creditcardNumber, creditcardPassword, status, parcelNumber, s_date);
+            PaymentService.paymentAdd(userID, carts.get(i).getCaseName(), carts.get(i).getNumbers(),carts.get(i).getPrice()*carts.get(i).getNumbers(),
+                    address, phoneNumber, creditcardNumber, creditcardPassword, status, parcelNumber, s_date,
+                    carts.get(i).getPhoneType(),carts.get(i).getCaseType(),carts.get(i).getColor());
             int cartID = carts.get(i).getCartID();
             CartService CartService = new CartService();
             CartService.cleanCart(userID, cartID);
+            String caseName = carts.get(i).getCaseName();
+            int caseID = phoneCaseService.getCaseID(caseName);
+            PhoneCase phoneCase = phoneCaseService.getPhoneCase(caseID);
+            int newStock = phoneCase.getStock() - carts.get(i).getNumbers();
+            phoneCaseService.stockChange(caseID, newStock);
         }
         
-        
+        phonecases = phoneCaseService.getAllPhoneCase();
+        request.setAttribute("phoncases", phonecases);
+        request.setAttribute("user", HttpSession.getAttribute("user"));
         view = request.getRequestDispatcher("paymentConfirm.jsp");
         view.forward(request, response);
     }

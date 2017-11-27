@@ -88,7 +88,7 @@ public class ProcessQnaServlet extends HttpServlet {
             }
 
             try {
-                if((userName !=null) && (passWord != null) && (qnaTitle != null) && (qnaContent != null)){
+                if(!userName.isEmpty() && !passWord.isEmpty() && !qnaTitle.isEmpty() && !qnaContent.isEmpty()){
                     qnaService.insertQna(userName, passWord, qnaTitle, qnaContent, s_date);
                 }
                 //PhoneCaseService.insertPhoneCase(caseType, caseName, explanation, price, imgPath);

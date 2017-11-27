@@ -3,10 +3,13 @@
     Created on : 2017. 11. 14, 오전 1:00:58
     Author     : Hayoung_2
 --%>
+<%@page import="domain.Review"%>
+<%@page import="domain.CaseColor"%>
+<%@page import="domain.PhoneType"%>
 <%--해야할 것 : 장바구니, 바로결제 버튼 바꾸기?--%>
 <%-- test --%>
 <script type ="text/javascript" src="smarteditor/js/HuskyEZCreator.js" charset="euc-kr"></script>
-<script>
+<%--<script>
     function submitContents(elClickedObj) {
         oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
         try {
@@ -14,7 +17,7 @@
         } catch (e) {
         }
     }
-</script>
+</script>--%>
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.PhoneCase"%>
@@ -29,11 +32,23 @@
     <head>
         <meta charset="UTF-8">
         <title><%=request.getAttribute("caseName")%>★</title>
+        
         <%  ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
             User user = (User) request.getAttribute("user");
-
-            session.setAttribute("user", user);
+            ArrayList<PhoneType> phoneTypes = (ArrayList<PhoneType>) request.getAttribute("phoneTypes");
+            PhoneType v_phoneType;
+            ArrayList<CaseColor> caseColors = (ArrayList<CaseColor>) request.getAttribute("caseColors");
+            CaseColor v_caseColor;
+            ArrayList<Review> reviews = (ArrayList<Review>) request.getAttribute("reviews");
+            String userID = null;
+            if(user != null){
+                userID = user.getId();
+            }
+            
             session.setAttribute("phoneCases", phoneCases);
+            session.setAttribute("phoneTypes", phoneTypes);
+            session.setAttribute("caseColors", caseColors);
+            session.setAttribute("reviews", reviews);
         %>
         <script type="text/javascript">
             //<![CDATA[
@@ -123,7 +138,7 @@
                     </form> 
                 </td>
                 <td><form action="cart" method="post">
-                        <input type="hidden" name="userID" value="<%=user.getId()%>">
+                        <input type="hidden" name="userID" value="<%=userID%>">
                         <input type="image" src="image\cart.jpg" name="Submit" value ="장바구니">
                     </form> 
                 </td>
@@ -148,7 +163,7 @@
         <% if (user != null) {%>
     <center> <div align="middle">
             <form action="main" method="post">
-                <input type="hidden" name="userID" value="<%=user.getId()%>">
+                <input type="hidden" name="userID" value="<%=userID%>">
                 <input type="image" src="image\banner.jpg" name="Submit">
             </form>
         </div> </center>
@@ -166,27 +181,34 @@
     <center>
         <table>
             <tr>
-                <td><a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a></td>
+                <% if (user != null) {%>
+                <td><form action="myCase" method="post">
+                        <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
+                    </form></td>
+                    <% } else {%>
+                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                        <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
+                        <% }%>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\bumperCase2.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="범퍼">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\hardCase.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="하드">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\jellyCase.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="젤리">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a></td> 
             </tr>
         </table>
@@ -194,11 +216,17 @@
     <hr size="5" color="black">
 
     <%--여기서부터 코드내용--%>
-
+    <%if ((status != null) && !status.isSuccessful()) {%>
+    <font color="red">There were problems processing your request:
+    <ul><%Iterator errors = status.getExceptions();
+        while (errors.hasNext()) {
+            Exception ex = (Exception) errors.next();%>
+        <li><%= ex.getMessage()%><%}%></ul></font>    
+        <%}%>
     <br><br>
-    <center>
-        <h1><%=request.getAttribute("caseName")%></h1>
-        <form name="take" method="post">
+    <form action="addToCart" method="post">
+        <center>
+            <h1><%=request.getAttribute("caseName")%></h1>
             <table width="1100" height="300">
                 <tr>
                     <td><img src="image/upload/<%=request.getAttribute("img")%>" width="400" height="360"></td>
@@ -208,44 +236,137 @@
                         <div align="left"><font size="2">케이스 이름:</font></div>
                         <div align="right"><input type="hidden" name="caseName" value="<%=request.getAttribute("caseName")%>"><%=request.getAttribute("caseName")%></div>
                         <div align="left"><font size="2">케이스 타입:</font></div>
-                        <div align="right"><input type="hidden" name="caseName" value="<%=request.getAttribute("caseType")%>"><%=request.getAttribute("caseType")%></div>
+                        <div align="right"><input type="hidden" name="caseType" value="<%=request.getAttribute("caseType")%>"><%=request.getAttribute("caseType")%></div>
                         <div align="left"><font size="2">가격:</font></div>
-                        <div align="right"><input type="hidden" name="caseName" value="<%=request.getAttribute("price")%>"><%=request.getAttribute("price")%></div>
+                        <div align="right"><input type="hidden" name="price" value="<%=request.getAttribute("price")%>"><%=request.getAttribute("price")%></div>
                         <div align="left"><font size="2">핸드폰 기종:</font></div>
                         <div align="right"><select name="phoneType" >
-                                <option name="caseType" value="unknown">-----
-                                <option name="caseType" value="아이폰 6/6s">아이폰 6/6s
-                                <option name="caseType" value="아이폰 6+/6s+">아이폰 6+/6s+
-                                <option name="caseType" value="아이폰 7">아이폰 7
-                                <option name="caseType" value="아이폰 7+">아이폰 7+
-                                <option name="caseType" value="아이폰 8">아이폰 8
+                                <option name="phoneType" value="unknown">-----
+                                    <%for (int i = 0; i < phoneTypes.size(); i++) {
+                                            v_phoneType = phoneTypes.get(i);
+                                            String phoneType = v_phoneType.getPhoneType();%>
+                                <option name="phoneType" value="<%=phoneType%>"><%=phoneType%>
+                                    <% }%>
                             </select></div>
-                        <div align="left"><font size="2">색상 선택:</font></div>
-                        <div align="right"><select name="caseType" >
-                                <option name="caseType" value="unknown">-----
-                                <option name="caseType" value="젤리">검정
-                                <option name="caseType" value="하드">하양
-                                <option name="caseType" value="범퍼">핑크</select></div>
-                        <hr size="1">
-                <br><center>
-                    <input type="image" src="image\bt_cartin.jpg" onClick='mySubmit(1)'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="image" src="image\bt_buying.jpg" onClick='mySubmit(2)'>
-                </center>
-                </td>
+                        <div align="left"><font size="2">색상(종류) 선택:</font></div>
+                        <div align="right"><select name="caseColor" >
+                                <option name="caseColor" value="unknown">-----
+                                    <%for (int i = 0; i < caseColors.size(); i++) {
+                                            v_caseColor = caseColors.get(i);
+                                            String caseColor = v_caseColor.getCaseColor();%>
+                                <option name="caseColor" value="<%=caseColor%>"><%=caseColor%>
+                                    <% }%>
+                            </select></div>
+                        <div align="left">수량:</div>
+                        <div align="right"><input type="hidden" name="userID" value="<%=userID%>">
+                            <input type="text" name ="numbers" size="5">개</div>
+                        <hr size="1" width="900">
+                        <br>
+                    </td>
+                <br>
                 </tr>
             </table>
-        </form>
-        <hr size="1" width="1100">
-    </center>
+            <input type="submit" value="장바구니">         
+        </center>
+    </form>
     <br><br>
     <hr size="2" color="black">
     <center>
-
+        <table>
         <td><img src="image/upload/<%=request.getAttribute("detailImg")%>"></td>
-
+        </table>
     </center>
-
+        <br><br><br>
+        <hr size="2" color="black">
+        <br><br>
+        
+    <% if(user == null) { %>   
+    <center>
+        <table>
+            <tr><h2>한줄 리뷰★</h2><tr>
+            <tr>
+                <th width="170" height = "35">별점</th>
+                <th width="120" height = "35">리뷰</th>
+                <th width="120" height = "35">ID</th>
+            </tr>
+            <% for(int i=0; i<reviews.size(); i++) {
+                Review v_review = reviews.get(i);
+                String grade = v_review.getGrade();
+                String content = v_review.getContent();
+                String writeDate = v_review.getWriteDate();
+                String w_userID=v_review.getUserID();
+            %>
+            <tr>
+                <td bgcolor="#dcdcdc" align="center"><%=grade%> <br> <%=writeDate%></td>
+                <td bgcolor="#dcdcdc" align="center"><%=content%></td>
+                <td bgcolor="#dcdcdc" align="center"><%=w_userID%></td>
+            </tr>
+            <% } %>
+        </table>
+    </center> 
+    <% } else { %>
+    <center>
+        <table>
+            <tr><h2>한줄 리뷰★</h2><tr>
+            <tr>
+                <th width="170" height = "35">별점</th>
+                <th width="120" height = "35">리뷰</th>
+                <th width="120" height = "35">ID</th>
+            </tr>
+            <%for(int i=0; i<reviews.size(); i++) {
+                Review v_review = reviews.get(i);
+                String grade = v_review.getGrade();
+                String content = v_review.getContent();
+                String writeDate = v_review.getWriteDate();
+                String w_userID=v_review.getUserID();
+            %>
+            <tr>
+                <td bgcolor="#dcdcdc" align="center"><%=grade%> <br> <%=writeDate%></td>
+                <td bgcolor="#dcdcdc" align="center"><%=content%></td>
+                <td bgcolor="#dcdcdc" align="center"><%=w_userID%></td>
+                <td bgcolor="#dcdcdc" align ="center">
+                    
+                    <% if(w_userID.equals(user.getId())) { %>
+                    <form action="deleteReview" method="post">
+                        <input type="hidden" name="replyNum" value="<%=v_review.getReplyNum()%>">
+                        <input type="hidden" name="userID" value="<%=user.getId()%>">
+                        <input type="hidden" name="caseID" value="<%=request.getAttribute("caseID")%>">
+                        <input type="image" src="image\delete.jpg" name="Submit" value ="삭제" aline="absmiddle">
+                    </form></td>
+                    <% } %> 
+            </tr>
+            <% } %>
+        </table>
+    </center> 
+    <% } %> 
+    
+    <br><br><br>
+    
+    <% if(user != null) { %>
+        <center>
+            <hr size="2" color="black">
+            <form action="wrtieReview" method="post">
+                <table>
+                    <tr><h2>리뷰 작성★</h2><tr>
+                    <tr><td><textarea name="content" cols="100" rows="5"></textarea><td>
+                        <td><select name="grade" >
+                                <option name="grade" value="unknown">-----
+                                <option name="grade" value="★">★
+                                <option name="grade" value="★★">★★
+                                <option name="grade" value="★★★">★★★
+                                <option name="grade" value="★★★★">★★★★
+                                <option name="grade" value="★★★★★">★★★★★
+                            </select></td>
+                    <input type="hidden" name="userID" value="<%=user.getId()%>">
+                    <input type="hidden" name="caseID" value="<%=request.getAttribute("caseID")%>">
+                    <td><input type="submit" value="등록"></td>    
+                    </tr>
+                </table>
+            </form>
+        </center>
+        <br><br><br>
+    <% } %>
+    
     <div id="gotop">
         <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>
         <img src="image\cursor1.jpg" height="50" width="50"> <br>

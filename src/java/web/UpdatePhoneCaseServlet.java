@@ -4,9 +4,16 @@
  * and open the template in the editor.
  */
 package web;
+import domain.CaseColor;
+import domain.CaseColorService;
 import domain.PhoneCase;
 import domain.PhoneCaseService;
+import domain.PhoneType;
+import domain.PhoneTypeService;
+import domain.Review;
+import domain.ReviewService;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,12 +45,25 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
         PhoneCase phoneCase;
         phoneCase = phoneCaseService.getPhoneCase(caseID);
         
+        
+        ArrayList<PhoneType> phoneTypes = new ArrayList<PhoneType>();
+        ArrayList<CaseColor> caseColors = new ArrayList<CaseColor>();
+        ArrayList<Review> reviews = new ArrayList<Review>();
+        
+        PhoneTypeService phoneTypeService = new PhoneTypeService();
+        CaseColorService caseColorService = new CaseColorService();
+        ReviewService reviewService = new ReviewService();
+        
         String caseName = phoneCase.getCaseName();
         String caseType = phoneCase.getCaseType();
         String explanation = phoneCase.getExplanation();
         int price = phoneCase.getPrice();
         String img = phoneCase.getImg();
         String detailImg = phoneCase.getDetailImg();
+        
+        phoneTypes = phoneTypeService.getPhoneType(caseName);
+        caseColors = caseColorService.getCaseColor(caseName);
+        reviews = reviewService.reviewRetrieve(caseID);
         
         request.setAttribute("caseID", caseID);
         request.setAttribute("caseName", caseName);
@@ -55,6 +75,10 @@ public class UpdatePhoneCaseServlet extends HttpServlet {
 
         request.setAttribute("user", HttpSession.getAttribute("user"));
         request.setAttribute("phoneCase", HttpSession.getAttribute("phoneCase"));
+        request.setAttribute("phoneTypes", phoneTypes);
+        request.setAttribute("caseColors", caseColors);
+        request.setAttribute("reviews", reviews);
+        
         
         view = request.getRequestDispatcher("admin/update.jsp");
         view.forward(request, response);

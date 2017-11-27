@@ -47,17 +47,10 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         PhoneCaseService phoneCaseService = new PhoneCaseService();
         HttpSession HttpSession = request.getSession();
         User user = (User) HttpSession.getAttribute("user");
-
-        
-        /*
-        int caseID = Integer.parseInt(request.getParameter("caseID"));
-        
-        String caseType = request.getParameter("caseType");
-        String caseName = request.getParameter("caseName");
-        String explanation = request.getParameter("explanation");
-        int price = Integer.parseInt(request.getParameter("price"));*/
-        
         int caseID = Integer.parseInt(multi.getParameter("caseID"));
+        
+        PhoneCase phoneCase;
+        phoneCase = phoneCaseService.getPhoneCase(caseID);
         
         String caseName = multi.getParameter("caseName");
         String caseType = multi.getParameter("caseType");
@@ -65,6 +58,13 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         int price = Integer.parseInt(multi.getParameter("price"));
         String img = multi.getFilesystemName("img");
         String detailImg = multi.getFilesystemName("detailImg");
+        
+        if(img == null){
+            img = phoneCase.getImg();
+        }
+        if(detailImg == null){
+            detailImg = phoneCase.getDetailImg();
+        }
          
         ArrayList<PhoneCase> phoneCases = new ArrayList<PhoneCase>();
         request.setAttribute("phoneCases", phoneCases);

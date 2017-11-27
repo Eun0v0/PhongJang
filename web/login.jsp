@@ -3,6 +3,7 @@
     Created on : 2017. 11. 4, ?? 11:10:29
     Author     : yukih
 --%>
+<%@page import="domain.User"%>
 <%-- test --%>
 <%@page session="false" import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
 <jsp:useBean id="status" scope="request" class="util.Status"/>
@@ -45,7 +46,15 @@
     <center>
         <table>
             <tr>
-                <td><a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a></td>
+                <% User user = (User) request.getAttribute("user");
+                if (user != null) {%>
+                <td><form action="myCase" method="post">
+                        <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
+                    </form></td>
+                <% } else {%>
+                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                        <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
+                <% } %>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
                 
                 <td><form action ="caseTypePage" method="post">

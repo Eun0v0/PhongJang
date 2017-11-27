@@ -121,12 +121,38 @@
                         <div align="right"><input type="text" name="price" size="10" padding="10px">원</div>
                         <div align="left"><font size="2">설명</font></div>
                         <div align="right"><textarea name="explanation" cols="65" rows="4"></textarea></div>
-
+                        <div align="left"><font size="2">핸드폰 기종</font></div>
+                        <div align="right">
+                        <input type="checkbox" name="phoneType" value="iphone 6/6s">iphone 6/6s
+                        <input type="checkbox" name="phoneType" value="iphone 6+/6s+">iphone 6+/6s+
+                        <input type="checkbox" name="phoneType" value="iphone7">iphone7
+                        <input type="checkbox" name="phoneType" value="iphone7+">iphone7+
+                        <input type="checkbox" name="phoneType" value="iphone8">iphone8
+                        <input type="checkbox" name="phoneType" value="iphone8+">iphone8+
+                        </div>
+                        <div align="right">
+                        <input type="checkbox" name="phoneType" value="GalaxyS7">GalaxyS7
+                        <input type="checkbox" name="phoneType" value="GalaxyS7 Edge">GalaxyS7 Edge
+                        <input type="checkbox" name="phoneType" value="GalaxyS8">GalaxyS8
+                        <input type="checkbox" name="phoneType" value="Galaxy Note8">Galaxy Note8
+                        <input type="checkbox" name="phoneType" value="GalaxyA7">GalaxyA7
+                        <input type="checkbox" name="phoneType" value="GalaxyA8">GalaxyA8
+                        </div>
+                        <div align="right">
+                        <input type="checkbox" name="phoneType" value="LG V20">LG V20
+                        <input type="checkbox" name="phoneType" value="LG V30">LG V30
+                        <input type="checkbox" name="phoneType" value="LG G5">LG G5
+                        <input type="checkbox" name="phoneType" value="LG G6">LG G6
+                        </div>
+                        <div align="left"><font size="2">색상(케이스 종류)</font></div>
+                        <% for(int i=0; i<10; i++) { %>
+                            <div align="right"><%=i+1%>: <input type="text" name="color" size="10" padding="10px"></div>                        
+                        <% } %>
                         <div align="left">상품 메인 이미지 : </div>
                         <div align="right"><input type="file" name="img"><br> </div>
                         <div align="left">상품 상세 이미지 : </div>
                         <div align="right"><input type="file" name="detailImg"><br> </div>
-                        <br> </div>
+                        <br>
                         <hr size="1">
                     </td>
                 </tr>
@@ -136,8 +162,8 @@
                 <td><tr><input type="submit" value="등록"> &nbsp;&nbsp; <input type="reset" value="다시쓰기"> </tr> </td>
             </table>
             <hr size="1" width="1100">
-            </form>
         </center>
+        </form>
     </body>
 
 </html>

@@ -29,6 +29,7 @@ public class PhoneCaseDAO {
             = "SELECT * FROM shoppingProduct WHERE CaseType=?";
     private static final String STOCK_STMT
             = "UPDATE shoppingProduct SET Stock = ? WHERE CaseID=?";
+    private static final String SELECTCASEID_STMT = "SELECT CaseID FROM shoppingProduct WHERE CaseName= ?";
     
 
     //모든 데이터를 가져온다
@@ -259,6 +260,44 @@ public class PhoneCaseDAO {
                 phoneCase = new PhoneCase(CaseID, CaseName, CaseType, Explanation, Price, img, detailImg, stock);
             }
             return phoneCase;
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
+    
+    //상품을 불러온다
+    int getCaseID(String caseName) {
+        PhoneCase phoneCase = null;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        int caseID =0;
+        try {
+            //String SELECTCASEID_STMT = "SELECT CaseID WHERE CaseName= ?";
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(SELECTCASEID_STMT);
+            stmt.setString(1, caseName);
+            rset = stmt.executeQuery();
+            while (rset.next()) {
+                caseID = rset.getInt(1);              
+            }
+            return caseID;
         } catch (SQLException se) {
             throw new RuntimeException(
                     "A database error occurred. " + se.getMessage());

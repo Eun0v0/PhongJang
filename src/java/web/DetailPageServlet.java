@@ -4,9 +4,16 @@
  * and open the template in the editor.
  */
 package web;
+import domain.CaseColor;
+import domain.CaseColorService;
 import domain.PhoneCase;
 import domain.PhoneCaseService;
+import domain.PhoneType;
+import domain.PhoneTypeService;
+import domain.Review;
+import domain.ReviewService;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,11 +39,20 @@ public class DetailPageServlet extends HttpServlet {
         
         response.setContentType("text/html; charset=euc-kr");
         request.setCharacterEncoding("EUC-KR");
-        request.setAttribute("user", HttpSession.getAttribute("user"));
+
         int caseID = Integer.parseInt(request.getParameter("caseID"));
+        ArrayList<PhoneType> phoneTypes = new ArrayList<PhoneType>();
+        ArrayList<CaseColor> caseColors = new ArrayList<CaseColor>();
+        
+        PhoneTypeService phoneTypeService = new PhoneTypeService();
         PhoneCaseService phoneCaseService = new PhoneCaseService();
+        CaseColorService caseColorService = new CaseColorService();
+        ReviewService reviewService = new ReviewService();
+        
         PhoneCase phoneCase;
         phoneCase = phoneCaseService.getPhoneCase(caseID);
+        
+        ArrayList<Review> reviews = reviewService.reviewRetrieve(caseID);
         
         String caseName = phoneCase.getCaseName();
         String caseType = phoneCase.getCaseType();
@@ -44,6 +60,9 @@ public class DetailPageServlet extends HttpServlet {
         int price = phoneCase.getPrice();
         String img = phoneCase.getImg();
         String detailImg = phoneCase.getDetailImg();
+        
+        phoneTypes = phoneTypeService.getPhoneType(caseName);
+        caseColors = caseColorService.getCaseColor(caseName);
         
         request.setAttribute("caseID", caseID);
         request.setAttribute("caseName", caseName);
@@ -55,6 +74,9 @@ public class DetailPageServlet extends HttpServlet {
 
         request.setAttribute("user", HttpSession.getAttribute("user"));
         request.setAttribute("phoneCase", HttpSession.getAttribute("phoneCase"));
+        request.setAttribute("phoneTypes", phoneTypes);
+        request.setAttribute("caseColors", caseColors);
+        request.setAttribute("reviews", reviews);
         
         view = request.getRequestDispatcher("detailPage.jsp");
         view.forward(request, response);

@@ -60,13 +60,22 @@
         <url-pattern>/searchID</url-pattern>
     </servlet-mapping>
 
+<servlet>
+        <servlet-name>SearchPwdController</servlet-name>
+        <servlet-class>web.SearchPwdServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchPwdController</servlet-name>
+        <url-pattern>/searchPwd</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <servlet-name>AddCartController</servlet-name>
         <servlet-class>web.AddCartServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddCartController</servlet-name>
-        <url-pattern>/take</url-pattern>
+        <url-pattern>/addToCart</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>CartController</servlet-name>
@@ -277,6 +286,7 @@
         <url-pattern>/manageSearch</url-pattern>
     </servlet-mapping>
     
+<<<<<<< HEAD
      <servlet>
         <servlet-name>DeleteQnaController</servlet-name>
         <servlet-class>web.DeleteQnaServlet</servlet-class>
@@ -303,4 +313,96 @@
         <servlet-name>UpdateQnaController</servlet-name>
         <url-pattern>/updateQna</url-pattern>
     </servlet-mapping>
+=======
+    <servlet>
+        <servlet-name>MyCaseController</servlet-name>
+        <servlet-class>web.MyCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyCaseController</servlet-name>
+        <url-pattern>/myCase</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ProcessMyCaseController</servlet-name>
+        <servlet-class>web.ProcessMyCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProcessMyCaseController</servlet-name>
+        <url-pattern>/myCaseCreate</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>MyCaseListController</servlet-name>
+        <servlet-class>web.MyCaseListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyCaseListController</servlet-name>
+        <url-pattern>/myCaseList</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ModifyMyCaseController</servlet-name>
+        <servlet-class>web.ModifyMyCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModifyMyCaseController</servlet-name>
+        <url-pattern>/modifyMyCase</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ModifyMyCaseProcessController</servlet-name>
+        <servlet-class>web.ModifyMyCaseProcessServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModifyMyCaseProcessController</servlet-name>
+        <url-pattern>/modifyMyCaseProcess</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeleteMyCaseController</servlet-name>
+        <servlet-class>web.DeleteMyCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteMyCaseController</servlet-name>
+        <url-pattern>/deleteMyCase</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>WriteReviewController</servlet-name>
+        <servlet-class>web.WriteReviewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WriteReviewController</servlet-name>
+        <url-pattern>/wrtieReview</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeleteReviewController</servlet-name>
+        <servlet-class>web.DeleteReviewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteReviewController</servlet-name>
+        <url-pattern>/deleteReview</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ReplyMyCaseController</servlet-name>
+        <servlet-class>web.ReplyMyCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReplyMyCaseController</servlet-name>
+        <url-pattern>/replyMyCase</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>IDOverlapCheckController</servlet-name>
+        <servlet-class>web.IDOverlapCheckServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IDOverlapCheckController</servlet-name>
+        <url-pattern>/idOverlapCheck</url-pattern>
+    </servlet-mapping>
+    
+>>>>>>> a00c4e012a53ee347993b8f98b6122542612fb0d
 </web-app>
