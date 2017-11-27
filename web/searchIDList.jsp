@@ -174,6 +174,8 @@
             회원님의 ID는
             <%= userID %>
             입니다.
+            <br>
+            <input type="image" src="image\back.jpg" width="170" height="50" onClick="location.assign('login.jsp')">
     </center>
     <div id="gotop">
         <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>
