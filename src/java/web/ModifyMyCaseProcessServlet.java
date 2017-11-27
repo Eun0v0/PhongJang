@@ -4,6 +4,8 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import domain.MyCase;
 import domain.MyCaseService;
+import domain.ReplyMyCase;
+import domain.ReplyMyCaseService;
 import domain.UserService;
 import domain.User;
 import java.io.IOException;
@@ -45,6 +47,9 @@ public final class ModifyMyCaseProcessServlet extends HttpServlet {
         MyCase s_myCase = null;
         MyCaseService myCaseService = new MyCaseService();
 
+        ReplyMyCase replyMyCase;
+        ReplyMyCaseService replyMyCaseService = new ReplyMyCaseService();
+
         String userID = user.getId();
         request.setCharacterEncoding("EUC-KR");
 
@@ -55,7 +60,11 @@ public final class ModifyMyCaseProcessServlet extends HttpServlet {
         String color = multi.getParameter("color");
         String content = multi.getParameter("content");
         String image = multi.getFilesystemName("caseImage");
-
+        replyMyCase = replyMyCaseService.getMyCase(myCaseNum);
+        
+        if(image == null){
+            image = myCase.getImage();
+        }
         try {
 
             myCaseService.myCaseUpdate(myCaseNum, title, caseType, phoneType, color, content, image);
@@ -67,6 +76,7 @@ public final class ModifyMyCaseProcessServlet extends HttpServlet {
             request.setAttribute("myCases", myCases);
             request.setAttribute("myCase", s_myCase);
             request.setAttribute("user", user);
+            request.setAttribute("replyMyCase",replyMyCase);
 
             if (!status.isSuccessful()) {
                 view = request.getRequestDispatcher("modifyMyCase.jsp");

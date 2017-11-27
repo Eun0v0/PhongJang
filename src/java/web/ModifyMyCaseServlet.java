@@ -13,6 +13,8 @@ import domain.MyCaseService;
 import domain.PhoneCase;
 import domain.PhoneCaseService;
 import domain.PhoneTypeService;
+import domain.ReplyMyCase;
+import domain.ReplyMyCaseService;
 import domain.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -55,22 +57,26 @@ public class ModifyMyCaseServlet extends HttpServlet {
         HttpSession HttpSession = request.getSession();
         User user = (User) HttpSession.getAttribute("user");
         MyCase myCase = null;
-
+        ReplyMyCase replyMyCase;
+        ReplyMyCaseService replyMyCaseService = new ReplyMyCaseService();
+        
         String userID = user.getId();
         int myCaseNum = Integer.parseInt(request.getParameter("myCaseNum"));
         myCase = myCaseService.getMyCase(myCaseNum);
-
-        /*String title = myCase.getTitle();
-        String caseType = myCase.getCaseType();
-        String phoneType = myCase.getPhoneType();
-        String color = myCase.getColor();
-        String content = myCase.getContent();
-        String image = myCase.getImage();*/
-
+        replyMyCase = replyMyCaseService.getMyCase(myCaseNum);
+        
         request.setAttribute("myCase", myCase);
         request.setAttribute("user", user);
 
-        view = request.getRequestDispatcher("modifyMyCase.jsp");
-        view.forward(request, response);
+        String userType = ((User) HttpSession.getAttribute("user")).getUsertype();    
+        request.setAttribute("replyMyCase",replyMyCase);
+
+        if(userType.equals("C")){
+            view = request.getRequestDispatcher("modifyMyCase.jsp"); //c7stomer 전용
+            view.forward(request, response);
+        } else {
+            view = request.getRequestDispatcher("admin/replyMyCase.jsp");
+            view.forward(request, response);
+        }
     }
 }

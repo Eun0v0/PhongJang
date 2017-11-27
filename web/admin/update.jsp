@@ -32,7 +32,7 @@
             session.setAttribute("user", user);
             session.setAttribute("phoneCases", phoneCases);
             session.setAttribute("phoneTypes", phoneTypes);
-            request.setAttribute("caseColors", caseColors);
+            session.setAttribute("caseColors", caseColors);
         %>
         <script type="text/javascript">
             //<![CDATA[

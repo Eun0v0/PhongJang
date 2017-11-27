@@ -3,29 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/DeleteMyCaseServlet.java</file>
-            <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/MyCaseService.java</file>
-            <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/admin/main.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/admin/update.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/MyCaseListServlet.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/myPage.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/ModifyMyCaseProcessServlet.java</file>
-            <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/modifyMyCase.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/login.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/myCaseList.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/modifyMyCase.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/MyCaseDAO.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/main.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/WEB-INF/web.xml</file>
-=======
-            <file>file:/C:/Users/yhsyj/Documents/PhongJang/src/java/web/SearchIDServlet.java</file>
-            <file>file:/C:/Users/yhsyj/Documents/PhongJang/src/java/web/SearchPwdServlet.java</file>
-            <file>file:/C:/Users/yhsyj/Documents/PhongJang/src/java/domain/UserService.java</file>
-            <file>file:/C:/Users/yhsyj/Documents/PhongJang/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/yhsyj/Documents/PhongJang/web/searchPwd.jsp</file>
-            <file>file:/C:/Users/yhsyj/Documents/PhongJang/src/java/domain/User.java</file>
-            <file>file:/C:/Users/yhsyj/Documents/PhongJang/src/java/domain/UserDAO.java</file>
-            <file>file:/C:/Users/yhsyj/Documents/PhongJang/web/searchPwdList.jsp</file>
-            <file>file:/C:/Users/yhsyj/Documents/PhongJang/web/searchIDList.jsp</file>
-            <file>file:/C:/Users/yhsyj/Documents/PhongJang/web/searchID.jsp</file>
->>>>>>> d76abea62b533b137ab1eebd11b85e69432246f8
         </group>
     </open-files>
 </project-private>

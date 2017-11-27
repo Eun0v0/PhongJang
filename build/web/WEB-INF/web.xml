@@ -357,4 +357,15 @@
         <servlet-name>DeleteReviewController</servlet-name>
         <url-pattern>/deleteReview</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ReplyMyCaseController</servlet-name>
+        <servlet-class>web.ReplyMyCaseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReplyMyCaseController</servlet-name>
+        <url-pattern>/replyMyCase</url-pattern>
+    </servlet-mapping>
+    
+    
 </web-app>

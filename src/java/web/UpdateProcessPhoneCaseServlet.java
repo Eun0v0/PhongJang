@@ -49,12 +49,22 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         User user = (User) HttpSession.getAttribute("user");
         int caseID = Integer.parseInt(multi.getParameter("caseID"));
         
+        PhoneCase phoneCase;
+        phoneCase = phoneCaseService.getPhoneCase(caseID);
+        
         String caseName = multi.getParameter("caseName");
         String caseType = multi.getParameter("caseType");
         String explanation = multi.getParameter("explanation");
         int price = Integer.parseInt(multi.getParameter("price"));
         String img = multi.getFilesystemName("img");
         String detailImg = multi.getFilesystemName("detailImg");
+        
+        if(img == null){
+            img = phoneCase.getImg();
+        }
+        if(detailImg == null){
+            detailImg = phoneCase.getDetailImg();
+        }
          
         ArrayList<PhoneCase> phoneCases = new ArrayList<PhoneCase>();
         request.setAttribute("phoneCases", phoneCases);

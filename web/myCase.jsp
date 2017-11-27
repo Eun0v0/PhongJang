@@ -136,7 +136,10 @@
         <form action="myCaseCreate" method="post" enctype="multipart/form-data"> 
             <table>
                 <tr>
-                    <td><center>
+                <tr><img src="image/색상 이미지.jpg" width="500" height="500"></tr>
+                <br><br> 
+                <tr><font color="red">*주문 확정후 3일 내로 입금해주셔야 합니다.<br>
+                                      *주문 확정후 디자인 변경 및 환불이 불가합니다.</font></tr>
                     <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
                     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
                     <tr>
@@ -167,7 +170,29 @@
                     <tr>
                         <td>&nbsp;</td>
                         <th width="60" height="35">색상</th>
-                        <td><input type="text" name="color"></td>
+                        <td><select name="color" >
+                                <option name="color" value="unknown">-----
+                                <option name="color" value="화이트">화이트
+                                <option name="color" value="아일랜드블루">아일랜드블루
+                                <option name="color" value="체리블러썸">체리블러썸
+                                <option name="color" value="에어리블루">에어리블루
+                                <option name="color" value="오렌지">오렌지
+                                <option name="color" value="옐로우">옐로우
+                                <option name="color" value="그레이">그레이
+                                <option name="color" value="레몬옐로우">레몬옐로우
+                                <option name="color" value="베이크드오렌지">베이크드오렌지
+                                <option name="color" value="그린">그린
+                                <option name="color" value="캔디핑크">캔디핑크
+                                <option name="color" value="라피스블루">라피스블루
+                                <option name="color" value="피치">피치
+                                <option name="color" value="레드">레드
+                                <option name="color" value="핑크">핑크
+                                <option name="color" value="딥그린">딥그린
+                                <option name="color" value="블루">블루
+                                <option name="color" value="라이트민트">라이트민트
+                                <option name="color" value="네이비">네이비
+                                <option name="color" value="블랙">블랙
+                            </select></td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>

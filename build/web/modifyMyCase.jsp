@@ -3,6 +3,7 @@
     Created on : 2017. 11. 17, 오전 2:03:20
     Author     : user
 --%>
+<%@page import="domain.ReplyMyCase"%>
 <%@page import="domain.MyCase"%>
 <%-- test --%>
 <%@page import="java.util.ArrayList"%>
@@ -20,9 +21,12 @@
         <% ArrayList<MyCase> myCases = (ArrayList<MyCase>) request.getAttribute("myCases");
             User user = (User) request.getAttribute("user");
             MyCase myCase = (MyCase) request.getAttribute("myCase");
+            ReplyMyCase replyMyCase = (ReplyMyCase) request.getAttribute("replyMyCase");
             session.setAttribute("user", user);
             session.setAttribute("myCases", myCases);
             session.setAttribute("myCase", myCase);
+            session.setAttribute("replyMyCase", replyMyCase);
+            
         %>
     </head>
     <body>
@@ -155,7 +159,29 @@
                     <tr>
                         <td>&nbsp;</td>
                         <th width="60" height="35">색상</th>
-                        <td><textarea name="color" size="20"><%=color%></textarea></td>
+                        <td><select name="color" >
+                                <option name="color" value="<%=color%>"><%=color%>
+                                <option name="color" value="화이트">화이트
+                                <option name="color" value="아일랜드블루">아일랜드블루
+                                <option name="color" value="체리블러썸">체리블러썸
+                                <option name="color" value="에어리블루">에어리블루
+                                <option name="color" value="오렌지">오렌지
+                                <option name="color" value="옐로우">옐로우
+                                <option name="color" value="그레이">그레이
+                                <option name="color" value="레몬옐로우">레몬옐로우
+                                <option name="color" value="베이크드오렌지">베이크드오렌지
+                                <option name="color" value="그린">그린
+                                <option name="color" value="캔디핑크">캔디핑크
+                                <option name="color" value="라피스블루">라피스블루
+                                <option name="color" value="피치">피치
+                                <option name="color" value="레드">레드
+                                <option name="color" value="핑크">핑크
+                                <option name="color" value="딥그린">딥그린
+                                <option name="color" value="블루">블루
+                                <option name="color" value="라이트민트">라이트민트
+                                <option name="color" value="네이비">네이비
+                                <option name="color" value="블랙">블랙
+                            </select></td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
@@ -180,12 +206,39 @@
                         <input type="hidden" name="userID" value="<%=user.getId()%>">
                         <input type="hidden" name="myCaseNum" value="<%=myCaseNum%>">
                         
-                        <input type="submit" value="등록">
+                        <input type="submit" value="수정">
                     <td>&nbsp;</td>
                     </tr>      
-                </center></td></tr>
+                </center>
             </table>
         </form>
     </center>
+    <center>
+        <hr size="2" color="black">
+        <br><br>
+        
+        <table>
+            <tr><h2>주문 내역서</h2><tr>
+            <tr>
+                <th width="400" height = "35">계좌번호</th>
+                <th width="120" height = "35">예금 기간</th>
+                <th width="120" height = "35">비고</th>
+                <th width="120" height = "35">상태</th>
+            </tr>
+            <%
+                String account = replyMyCase.getAccount();
+                String dueDate = replyMyCase.getDueDate();
+                String v_content = replyMyCase.getContent();
+                String v_status = replyMyCase.getStatus();
+            %>
+            <tr>
+                <td bgcolor="#dcdcdc" align="center"><%=account%></td>
+                <td bgcolor="#dcdcdc" align="center"><%=dueDate%></td>
+                <td bgcolor="#dcdcdc" align="center"><%=v_content%></td>
+                <td bgcolor="#dcdcdc" align="center"><%=v_status%></td>
+            </tr>
+        </table>
+    </center> 
+        <br><br><br>
 </body>
 </html>

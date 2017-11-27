@@ -117,7 +117,7 @@
                 <th width="60" height="35"><img src="image\boardnum.jpg" width=60 height=40"></th>
                 <th width="250" height="35"><img src="image\boardtitle.jpg" width=250 height=40"></th>
                 <th width="140" height="35"><img src="image\writedate.jpg" width=140 height=40"></th>
-                <th width="50" height="35">삭제</th>
+                <th width="50" height="35">주문 상태</th>
 
             </tr>
             <%
@@ -138,11 +138,7 @@
                 <td bgcolor="#dcdcdc" height="40" align="center"><%=myCaseNum%></td>
                 <td bgcolor="#dcdcdc" height="40" align="center"><a href="modifyMyCase?myCaseNum=<%=myCaseNum%>"><%=title%></a></td>
                 <td bgcolor="#dcdcdc" height="40" align="center"><%=writeDate%></td>
-                <td bgcolor="#dcdcdc" height="40" align="center">
-                    <form action="deleteMyCase" method="post">   
-                        <input type="hidden" name="userID" value="<%=user.getId()%>">
-                        <input type="hidden" name="myCaseNum" value="<%=myCaseNum%>">
-                        <input type="submit" value="삭제"></form></td> 
+                <td bgcolor="#dcdcdc" height="40" align="center"> </td> 
             </tr>
             <% }%>
         </table>
