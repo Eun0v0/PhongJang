@@ -118,8 +118,8 @@
             <tr>
                 <th width="170" height = "35"><img src="image\casename2.jpg" width=170 height=40"></th>
                 <th width="120" height = "35"><img src="image\color.jpg" width=120 height=40"></th>
-                <th width="120" height = "35"><img src="image\color.jpg" width=120 height=40"></th>
-                <th width="120" height = "35"><img src="image\color.jpg" width=120 height=40"></th>
+                <th width="120" height = "35"><img src="image\caseType.jpg" width=120 height=40"></th>
+                <th width="120" height = "35"><img src="image\phoneKind.jpg" width=120 height=40"></th>
                 <th width="120" height = "35"><img src="image\amount2.jpg" width=120 height=40"></th>
                 <th width="120" height = "35"><img src="image\price.jpg" width=120 height=40"></th>
                 <th width="40" height = "35"><img src="image\blank2.jpg" width=50 height=40"></th>

@@ -286,7 +286,6 @@
         <url-pattern>/manageSearch</url-pattern>
     </servlet-mapping>
     
-<<<<<<< HEAD
      <servlet>
         <servlet-name>DeleteQnaController</servlet-name>
         <servlet-class>web.DeleteQnaServlet</servlet-class>
@@ -313,7 +312,7 @@
         <servlet-name>UpdateQnaController</servlet-name>
         <url-pattern>/updateQna</url-pattern>
     </servlet-mapping>
-=======
+
     <servlet>
         <servlet-name>MyCaseController</servlet-name>
         <servlet-class>web.MyCaseServlet</servlet-class>
@@ -404,5 +403,4 @@
         <url-pattern>/idOverlapCheck</url-pattern>
     </servlet-mapping>
     
->>>>>>> a00c4e012a53ee347993b8f98b6122542612fb0d
 </web-app>
