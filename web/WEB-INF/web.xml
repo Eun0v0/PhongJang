@@ -184,7 +184,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>MyInfoUpdateController</servlet-name>
-        <servlet-class>web.MyInfoUpdateServlet</servlet-class>
+        <servlet-class>web.MyInfqnaServiceUpdateServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MyInfoUpdateController</servlet-name>
@@ -286,6 +286,33 @@
         <url-pattern>/manageSearch</url-pattern>
     </servlet-mapping>
     
+     <servlet>
+        <servlet-name>DeleteQnaController</servlet-name>
+        <servlet-class>web.DeleteQnaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteQnaController</servlet-name>
+        <url-pattern>/deleteQna</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>RetrieveQnaController</servlet-name>
+        <servlet-class>web.RetrieveQnaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RetrieveQnaController</servlet-name>
+        <url-pattern>/showQna</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>UpdateQnaController</servlet-name>
+        <servlet-class>web.UpdateQnaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateQnaController</servlet-name>
+        <url-pattern>/updateQna</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>MyCaseController</servlet-name>
         <servlet-class>web.MyCaseServlet</servlet-class>

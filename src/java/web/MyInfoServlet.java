@@ -39,7 +39,6 @@ public final class MyInfoServlet extends HttpServlet {
         request.setAttribute("userName", userName);
         request.setAttribute("phoneNumber", phoneNumber);
         request.setAttribute("address", address);
-
         
         view = request.getRequestDispatcher("myInfo.jsp");
         view.forward(request, response);
