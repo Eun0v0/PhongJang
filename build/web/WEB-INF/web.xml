@@ -367,5 +367,13 @@
         <url-pattern>/replyMyCase</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>IDOverlapCheckController</servlet-name>
+        <servlet-class>web.IDOverlapCheckServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IDOverlapCheckController</servlet-name>
+        <url-pattern>/idOverlapCheck</url-pattern>
+    </servlet-mapping>
     
 </web-app>

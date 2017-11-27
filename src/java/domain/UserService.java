@@ -71,5 +71,14 @@ public class UserService {
         }
         return user;
     }
+    public ArrayList<String> findID(){
+        ArrayList<String> findID=null;
+        try{
+            findID=userDataAccess.findID();
+        } catch (Exception e){
+            findID = null;
+        }
+        return findID;
+    }
 }
 

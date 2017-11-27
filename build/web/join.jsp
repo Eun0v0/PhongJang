@@ -3,6 +3,7 @@
     Created on : 2017. 11. 4, ?? 6:34:30
     Author     : yukih
 --%>
+<%@page import="domain.UserService"%>
 <%-- test --%>
 <%@page import="domain.User"%>
 <%@page import="java.util.ArrayList"%>
@@ -10,7 +11,10 @@
 <jsp:useBean id="status" scope="request" class="util.Status"/>
 <html>
     <head><title>회원가입</title>
-        <% ArrayList<User> users = (ArrayList<User>) request.getAttribute("users");%>
+        <% ArrayList<User> users = (ArrayList<User>) request.getAttribute("users");
+           UserService userService = new UserService();
+           ArrayList<String> findID = userService.findID();
+           %>
 
     </head>
     <body>
@@ -49,34 +53,34 @@
         <table>
             <tr>
                 <% User user = (User) request.getAttribute("user");
-                if (user != null) {%>
+                    if (user != null) {%>
                 <td><form action="myCase" method="post">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
                     </form></td>
-                <% } else {%>
+                    <% } else {%>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
-                <% } %>        
+                        <% } %>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\bumperCase2.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="범퍼">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\hardCase.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="하드">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\jellyCase.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="젤리">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a></td> 
             </tr>
         </table>
@@ -90,14 +94,17 @@
         while (errors.hasNext()) {
             Exception ex = (Exception) errors.next();%>
         <li><%= ex.getMessage()%><%}%></ul></font><%}%>
-    <form name ="join" action="join" method="post">
+    <form action="join" method="post">
         <center> <br>
             <img src="image\joinTitle.jpg" height="60" width="150"><br><br>
             <table>
                 <tr>
                     <td><img src="image\id.JPG" width=150 height=35"></td>
-                    <td><input type="text" name="userID" size="24">
-                        <input type="button" name ="confirm_id" value="중복 체크"/></td>
+                    <td><input type="text" name="userID" size="24"></td>
+                        <%--<td><form action="idOverlapCheck" method="post">
+                                <input type="text" name="userID" size="24">
+                                <input type="button" name ="confirm_id" value="중복 체크">
+                            </form></td>--%>
                     </td></tr>
                 <tr>
                     <td><img src="image\password.JPG" width=150 height=35"></td>
@@ -113,14 +120,10 @@
                     <td><input type="text" name="address" size="50"></td></tr>
                 <tr><td><img src="image\white.jpg" height = 35></td></tr>
             </table>
-        </center>
-
-        <center>
-            <form action="join" method="post">
-                <input type="image" src="image\joinbutton.jpg" name="Submit">
-            </form>
+            <input type="image" src="image\joinbutton.jpg" name="Submit">
             <input type="image" src="image\clearbutton.jpg" name="Reset" value ="Reset" aline="absmiddle">
         </center>
     </form>
+
 </body>
 </html>

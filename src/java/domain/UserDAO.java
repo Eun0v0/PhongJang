@@ -18,7 +18,7 @@ public class UserDAO {
 
     private DBConnectionPool connPool;
     private static final String CREATE_STMT = "INSERT INTO shoppingUser VALUES(?,?,?,?,?,?)";
-
+    private static final String ID_STMT="SELECT userID from shoppingUser WHERE userID= ?";
     private static final String RETRIEVE_STMT
             = "SELECT * FROM shoppingUser WHERE UserType=? AND UserID=? AND Password =?";
     private static final String GETID_STMT = "SELECT COUNT(UserID) FROM shoppinguser";
@@ -27,6 +27,8 @@ public class UserDAO {
     private static final String SELECT_STMT = "SELECT * FROM shoppingUser WHERE UserID=?";
     private static final String SEARCHID_STMT =  "SELECT * FROM shoppingUser WHERE UserName=? AND PhoneNum=?";
     private static final String SEARCHPWD_STMT =  "SELECT * FROM shoppingUser WHERE UserID=? AND PhoneNum=?";
+    private static final String GETALLID_STMT = "SELECT userID FROM shoppingUser";
+    
     
     //모든 데이터를 가져온다
     ArrayList<User> allUserRetrieve() throws SQLException {
@@ -165,6 +167,57 @@ public class UserDAO {
                 user = new User(UserID, UserType, UserName, Password, PhoneNum, Address);
             }
             return user;
+            
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("Exception: " + e.getMessage());
+        } finally {
+            if (rset != null) {
+                try {
+                    rset.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
+    ArrayList<String> findID(){
+        ArrayList<String> findID=null;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        int rows = 0;
+        try {
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(GETALLID_STMT);
+            rset = stmt.executeQuery();
+            
+            //데이터 베이스에서 유저 데이터 가져오기
+            while (rset.next()) {
+                String UserID = rset.getString("UserID");
+                rows++;
+                if (rows > 1) {
+                    throw new SQLException("Too many rows were returned.");
+                }
+                findID.add(UserID);
+            }
+            return findID;
             
         } catch (SQLException se) {
             throw new RuntimeException(
