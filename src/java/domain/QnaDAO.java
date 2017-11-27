@@ -6,6 +6,7 @@
 package domain;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,6 +24,7 @@ public class QnaDAO {
     private static final String DELETE_STMT = "DELETE FROM boardQna WHERE QnaNum = ?";
     private static final String RETRIEVE_STMT
             = "SELECT * FROM boardQna WHERE QnaNum = ?";
+    private static final String SELECT_STMT = "SELECT * FROM boardQna WHERE qnaNum=?";
 
     //모든 데이터를 가져온다
     ArrayList<Qna> allQnaRetrieve() throws SQLException {
@@ -198,7 +200,7 @@ public class QnaDAO {
         }
     }
 
-    void qnaUpdate(String userName, String passWord, String qnaTitle, String qnaContent, String s_date) {
+    void qnaUpdate(String userName, String passWord, String qnaTitle, String qnaContent) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
@@ -215,6 +217,64 @@ public class QnaDAO {
             throw new RuntimeException(
                     "A database error occurred. " + se.getMessage());
         } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
+
+    Qna getQnaInfo(int qnaNum) throws SQLException {
+        Qna qna = null;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        int rows = 0;
+        try {
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(SELECT_STMT);
+            stmt.setInt(1, qnaNum);
+            rset = stmt.executeQuery();
+
+            //데이터 베이스에서 유저 데이터 가져오기
+            while (rset.next()) {
+                int QnaNum = rset.getInt("QnaNum");
+                String UserName = rset.getString("UserName");
+                String PassWord = rset.getString("PassWord");
+                String QnaTitle = rset.getString("QnaTitle");
+                String QnaContent = rset.getString("QnaContent");
+                String QnaTime = rset.getString("QnaTime");
+                rows++;
+                if (rows > 1) {
+                    throw new SQLException("Too many rows were returned.");
+                }
+                qna = new Qna(QnaNum, UserName, PassWord, QnaTitle, QnaContent, QnaTime);
+            }
+            return qna;
+
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("Exception: " + e.getMessage());
+        } finally {
+            if (rset != null) {
+                try {
+                    rset.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
             if (stmt != null) {
                 try {
                     stmt.close();

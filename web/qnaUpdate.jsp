@@ -14,17 +14,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Q&A 수정하기</title>
-        <%  ArrayList<Qna> qnas = (ArrayList<Qna>) request.getAttribute("qnas");
-            User user = (User) request.getAttribute("user");
-            int qnaNum = (int) request.getAttribute("qnaNum");
-
-            session.setAttribute("user", user);
-            session.setAttribute("qnas", qnas);
-        %>
-        <!--<% ArrayList<Qna> qnas = (ArrayList<Qna>) request.getAttribute("qnas");%>
         <%User user = (User) request.getAttribute("user");%>
         <%session.setAttribute("user", user);%>
-        <%session.setAttribute("qnas", qnas);%>-->
     </head>
     <table border="0px">
         <tr>
@@ -118,21 +109,21 @@
                     <td><center>
                     <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
                     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-                        <%
-                        for (int i = 0; i < qnas.size(); i++) {
-                            Qna qna = qnas.get(i);
-                        %>  
                     <tr>
                         <td>&nbsp;</td>
                         <th width="120" height="35">제목</th>
-                        <td><input type=text name=title size=48  maxlength=100 value="<%=qnaTitle%>"></td>
+                        <td><!--<input type=text name="qnaTitle" size=48  maxlength=100 value="<%=qnaTitle%>">
+                            <%=request.getAttribute("qnaTitle")%>-->
+                            <textarea name ="qnaTitle" size="48" maxlength="100">
+                                <%=request.getAttribute("qnaTitle")%>
+                            </textarea></td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
                     <tr>
                         <td>&nbsp;</td>
                         <th width="120" height="35">작성자</th>
-                        <td><%=userName%><input type=hidden name="uerName" size=48  maxlength=100 value="<%=QnaUserName%>"></td>
+                        <td><%=request.getAttribute("userName")%></td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
@@ -146,7 +137,8 @@
                     <tr>
                         <td>&nbsp;</td>
                         <th width="60" height="35">내용</th>
-                        <td><textarea name="qnaContent" cols="50" rows="13"><%=qnaContent%></textarea></td>
+                        <td><textarea name="qnaContent" cols="50" rows="13">
+                                <%=request.getAttribute("qnaContent")%></textarea></td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
@@ -158,8 +150,8 @@
                     <td>&nbsp;</td>
                     </tr>      
                 </center></td></tr>
-            </table>
         </form>
-    </center>
+    </table>
+</center>
 </body>
 </html>

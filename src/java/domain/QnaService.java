@@ -43,7 +43,17 @@ public class QnaService {
         qnaDataAccess.qnaDelete(qnaNum);
     }
     
-    public void updateQna(String userName, String passWord, String qnaTitle, String qnaContent, String s_date) {
-        qnaDataAccess.qnaUpdate(userName, passWord, qnaTitle, qnaContent, s_date);
+    public void updateQna(String userName, String passWord, String qnaTitle, String qnaContent) {
+        qnaDataAccess.qnaUpdate(userName, passWord, qnaTitle, qnaContent);
+    }
+
+    public Qna getQnaInfo(int qnaNum) {
+        Qna qna = null;
+        try {
+            qna = qnaDataAccess.getQnaInfo(qnaNum);
+        } catch (Exception e) {
+            qna = null;
+        }
+        return qna;
     }
 }
