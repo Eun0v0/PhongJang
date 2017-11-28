@@ -10,8 +10,9 @@ import domain.User;
 import domain.Qna;
 import domain.QnaService;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import javax.servlet.RequestDispatcher; 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,26 +38,32 @@ public class UpdateQnaProcessServlet extends HttpServlet {
             throws IOException, ServletException {
         RequestDispatcher view = null;
         HttpSession HttpSession = request.getSession();
+        request.setCharacterEncoding("EUC-KR");
+        response.setContentType("text/html; charset=euc-kr");
+        
         Status status = new Status();
         request.setAttribute("status", status);
 
+        
         Qna qna = (Qna) HttpSession.getAttribute("qna");
         Qna qnaSave = null;
         QnaService qnaService = new QnaService();
 
         int qnaNum = qna.getQnaNum();
-        request.setCharacterEncoding("EUC-KR");
+        String passwordCheck = qna.getPassWord();
+        
         String userName = qna.getUserName();
         String qnaTitle = request.getParameter("qnaTitle");
         String passWord = request.getParameter("passWord");
         String qnaContent = request.getParameter("qnaContent");
 
+        PrintWriter out = response.getWriter();
         try {
             if ((qnaTitle == null) || (qnaTitle.length() == 0)) {
                 status.addException(new Exception(
                         "Please enter your qnaTItle"));
             }
-            
+
             if ((passWord == null) || (passWord.length() == 0)) {
                 status.addException(new Exception(
                         "Please enter your Password"));
@@ -65,27 +72,33 @@ public class UpdateQnaProcessServlet extends HttpServlet {
                 status.addException(new Exception(
                         "Please enter your Content"));
             }
+            if (!passwordCheck.equals(passWord)) {
+                status.addException(new Exception(
+                        "비밀번호가 틀렸습니다!"));
+            }
 
             try {
-
-                qnaService.updateQna(qnaNum, userName, passWord, qnaTitle, qnaContent);
-                qnaSave = qnaService.getQnaInfo(qnaNum);
-
-                request.setCharacterEncoding("EUC-KR");
-                request.setAttribute("qna", qnaSave);
-                request.setAttribute("qnaNum", qnaNum);
-                request.setAttribute("userName", userName);
-                request.setAttribute("Password", passWord);
-                request.setAttribute("qnaContent", qnaContent);
-                request.setAttribute("user", HttpSession.getAttribute("user"));
-
-                if (!status.isSuccessful()) {
-                    view = request.getRequestDispatcher("qnaUpdate.jsp");
-                    view.forward(request, response);
-                    return;
+                if (passwordCheck.equals(passWord)) {
+                    qnaService.updateQna(qnaNum, userName, qnaTitle, qnaContent);
                 }
-                view = request.getRequestDispatcher("qnaView.jsp");
-                view.forward(request, response);
+                    qnaSave = qnaService.getQnaInfo(qnaNum);
+                    
+                    request.setCharacterEncoding("EUC-KR");
+                    request.setAttribute("qna", qnaSave);
+                    request.setAttribute("qnaNum", qnaNum);
+                    request.setAttribute("userName", userName);
+                    request.setAttribute("Password", passwordCheck);
+                    request.setAttribute("qnaContent", qnaContent);
+                    request.setAttribute("user", HttpSession.getAttribute("user"));
+
+                    if (!status.isSuccessful()) {
+                        view = request.getRequestDispatcher("qnaUpdate.jsp");
+                        view.forward(request, response);
+                        return;
+                    }
+                    view = request.getRequestDispatcher("qnaView.jsp");
+                    view.forward(request, response);
+               
             } catch (Exception e) {
                 status.addException(e);
                 view = request.getRequestDispatcher("qnaUpdate.jsp");

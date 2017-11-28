@@ -33,11 +33,11 @@ public class ProcessQnaServlet extends HttpServlet {
         processRequest(request, response);
     }
 
-    public void doGet(HttpServletRequest request,
+    /*public void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
         processRequest(request, response);
-    }
+    }*/
 
     public void processRequest(HttpServletRequest request,
             HttpServletResponse response)
@@ -61,14 +61,13 @@ public class ProcessQnaServlet extends HttpServlet {
         ArrayList<Qna> qnas = new ArrayList<Qna>();
         qnas = qnaService.getAllQna();
         request.setAttribute("qnas", qnas);
-        //request.setAttribute("user", user);
+        User user = (User) HttpSession.getAttribute("user");
 
+        String userName = request.getParameter("userName");
+        String passWord = request.getParameter("passWord");
+        String qnaTitle = request.getParameter("qnaTitle");
+        String qnaContent = request.getParameter("qnaContent");
         try {
-            String userName = request.getParameter("userName");
-            String passWord = request.getParameter("passWord");
-            String qnaTitle = request.getParameter("qnaTitle");
-            String qnaContent = request.getParameter("qnaContent");
-            //String qnaTime = request.getParameter("qnaTime");
 
             if ((userName == null) || (userName.length() == 0)) {
                 status.addException(new Exception(
@@ -86,12 +85,10 @@ public class ProcessQnaServlet extends HttpServlet {
                 status.addException(new Exception(
                         "Please enter your qnaContent"));
             }
-
             try {
-                if(!userName.isEmpty() && !passWord.isEmpty() && !qnaTitle.isEmpty() && !qnaContent.isEmpty()){
+                if (!userName.isEmpty() && !passWord.isEmpty() && !qnaTitle.isEmpty() && !qnaContent.isEmpty()) {
                     qnaService.insertQna(userName, passWord, qnaTitle, qnaContent, s_date);
                 }
-                //PhoneCaseService.insertPhoneCase(caseType, caseName, explanation, price, imgPath);
 
                 qnas = qnaService.getAllQna();
                 request.setAttribute("qnas", qnas);
@@ -100,6 +97,7 @@ public class ProcessQnaServlet extends HttpServlet {
                     view.forward(request, response);
                     return;
                 }
+                request.setAttribute("user", user);
                 view = request.getRequestDispatcher("qna.jsp");
                 view.forward(request, response);
             } catch (Exception e) {
@@ -111,6 +109,6 @@ public class ProcessQnaServlet extends HttpServlet {
             status.addException(e);
             view = request.getRequestDispatcher("admin/create.jsp");
             view.forward(request, response);
-        }    
+        }
     }
 }

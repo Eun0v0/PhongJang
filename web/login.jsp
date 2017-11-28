@@ -33,7 +33,10 @@
                     <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE"></a>
             </td>
             <td><a href="join.jsp"><img src="image\join.jpg"></a></td>
-            <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
+            <td><form action="qnaList" methoe="post">
+                        <input type="image" src="image\q&a.jpg" name="Submit" value="Q&A">
+                    </form>
+                </td>
         </table>
 
     <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('main.jsp')"> </div> </center>
@@ -82,13 +85,16 @@
     <hr size="5" color="black">
 
 
-    <%if ((status != null) && !status.isSuccessful()) {%>
-    <font color="red">There were problems processing your request:
-    <ul><%Iterator errors = status.getExceptions();
-        while (errors.hasNext()) {
-            Exception ex = (Exception) errors.next();%>
-        <li><%= ex.getMessage()%><%}%></ul></font>    
-        <%}%>
+    <center>
+        <br><br>
+        <%if ((status != null) && !status.isSuccessful()) {%>
+        <font color="red">오류 발생!!!:
+        <ul><%Iterator errors = status.getExceptions();
+            while (errors.hasNext()) {
+                Exception ex = (Exception) errors.next();%>
+            <li><%= ex.getMessage()%><%}%></ul></font>    
+            <%}%>
+    </center>
     <form action="login" method="post">
         <center> <br><br>
             <img src="image\loginTitle.jpg" height="60" width="150">

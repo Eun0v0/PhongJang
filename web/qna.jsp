@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Q&A</title>
         <% ArrayList<Qna> qnas = (ArrayList<Qna>) request.getAttribute("qnas");%>
         <%User user = (User) request.getAttribute("user");%>
@@ -64,7 +64,10 @@
                     </form>    
                 </td>
 
-                <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
+                <td><form action="qnaList" methoe="post">
+                        <input type="image" src="image\q&a.jpg" name="Submit" value="Q&A">
+                    </form>
+                </td>
             </tr>
         </table>
         <% if (user != null) {%>

@@ -71,10 +71,10 @@ public class UserService {
         }
         return user;
     }
-    public ArrayList<String> findID(){
-        ArrayList<String> findID=null;
+    public String findID(String userID){
+        String findID=null;
         try{
-            findID=userDataAccess.findID();
+            findID=userDataAccess.findID(userID);
         } catch (Exception e){
             findID = null;
         }
