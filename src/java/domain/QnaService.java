@@ -35,6 +35,15 @@ public class QnaService {
         return qnas;
     }
 
+    public ArrayList<Qna> getMyQna(String userName) {
+        ArrayList<Qna> qnas = null;
+        try {
+            qnas = qnaDataAccess.myQna(userName);
+        } catch (Exception e) {
+            qnas = null;
+        }
+        return qnas;
+    }
     public void insertQna(String userName, String passWord, String qnaTitle, String qnaContent, String s_date) {
         qnaDataAccess.qnaInsert(userName, passWord, qnaTitle, qnaContent, s_date);
     }

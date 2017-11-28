@@ -25,7 +25,8 @@ public class QnaDAO {
     private static final String RETRIEVE_STMT
             = "SELECT * FROM boardQna WHERE QnaNum = ?";
     private static final String SELECT_STMT = "SELECT * FROM boardQna WHERE qnaNum=?";
-
+    private static final String GETMY_STMT
+            = "SELECT * FROM boardQna WHERE UserName = ?";
     //모든 데이터를 가져온다
     ArrayList<Qna> allQnaRetrieve() throws SQLException {
         ArrayList<Qna> qna = new ArrayList<Qna>();
@@ -199,7 +200,56 @@ public class QnaDAO {
             }
         }
     }
-
+    ArrayList<Qna> myQna(String userName) throws SQLException {
+        ArrayList<Qna> qnas = new ArrayList<Qna>();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        try {
+            //String RETRIEVE_STMT= "SELECT * FROM shoppingPayment WHERE UserID = ?";
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement("SELECT * FROM boardQna WHERE UserName like '%" + userName + "%'");
+            //stmt.setString(1, userName);
+            rset = stmt.executeQuery();
+            while (rset.next()) {
+                int QnaNum = rset.getInt(1);
+                String UserName = rset.getString(2);
+                String PassWord = rset.getString(3);
+                String QnaTitle = rset.getString(4);
+                String QnaContent = rset.getString(5);
+                String QnaTime = rset.getString(6);
+                qnas.add(new Qna(QnaNum, UserName, PassWord, QnaTitle, QnaContent, QnaTime));
+            }
+            return qnas;
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("Exception: " + e.getMessage());
+        } finally {
+            if (rset != null) {
+                try {
+                    rset.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
     void qnaUpdate(int qnaNum, String userName, String qnaTitle, String qnaContent) {
         Connection conn = null;
         PreparedStatement stmt = null;
