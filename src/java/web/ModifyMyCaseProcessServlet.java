@@ -60,7 +60,7 @@ public final class ModifyMyCaseProcessServlet extends HttpServlet {
         String color = multi.getParameter("color");
         String content = multi.getParameter("content");
         String image = multi.getFilesystemName("caseImage");
-        replyMyCase = replyMyCaseService.getMyCase(myCaseNum);
+        replyMyCase = replyMyCaseService.getMyCaseReply(myCaseNum);
         
         if(image == null){
             image = myCase.getImage();

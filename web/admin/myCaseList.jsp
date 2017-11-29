@@ -140,7 +140,11 @@
                 <td bgcolor="#dcdcdc" height="40" align="center"><%=myCaseNum%></td>
                 <td bgcolor="#dcdcdc" height="40" align="center"><a href="modifyMyCase?myCaseNum=<%=myCaseNum%>"><%=title%></a></td>
                 <td bgcolor="#dcdcdc" height="40" align="center"><%=writeDate%></td>
-                <td bgcolor="#dcdcdc" height="40" align="center"> </td> 
+                <td bgcolor="#dcdcdc" height="40" align="center"> 
+                    <form action="updateMyCaseStatus" method="post">
+                        <input type="hidden" name="myCaseNum" value="<%=myCaseNum%>">
+                        <input type="submit" value="입금 확인">
+                    </form></td> 
             </tr>
             <% }%>
         </table>
