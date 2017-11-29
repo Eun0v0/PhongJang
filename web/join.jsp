@@ -89,7 +89,9 @@
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
 
-                <td><a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a></td> 
+                <td><form action ="eventList" method="post">
+                        <input type="image" src="image\event_.jpg" name="Submit" height="35" width="140">
+                    </form></td> 
             </tr>
         </table>
     </center>
@@ -106,7 +108,7 @@
             <li><%= ex.getMessage()%><%}%></ul></font>    
             <%}%>
     </center>
-    <form action="join" method="post">
+    <form action="join" method="post" name="join">
         <center> <br>
             
             <table>
@@ -134,7 +136,7 @@
             </table>
             <input type="image" src="image\joinbutton.jpg" name="Submit">
             
-            <input type="image" src="image\clearbutton.jpg" name="Reset" onClick ="Reset" aline="absmiddle">
+            <input type="image" src="image\clearbutton.jpg" onClick ="join.reset();return false;" aline="absmiddle">
         </center>
     </form>
 

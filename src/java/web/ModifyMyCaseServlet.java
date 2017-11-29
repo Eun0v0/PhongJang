@@ -63,7 +63,7 @@ public class ModifyMyCaseServlet extends HttpServlet {
         String userID = user.getId();
         int myCaseNum = Integer.parseInt(request.getParameter("myCaseNum"));
         myCase = myCaseService.getMyCase(myCaseNum);
-        replyMyCase = replyMyCaseService.getMyCase(myCaseNum);
+        replyMyCase = replyMyCaseService.getMyCaseReply(myCaseNum);
         
         request.setAttribute("myCase", myCase);
         request.setAttribute("user", user);

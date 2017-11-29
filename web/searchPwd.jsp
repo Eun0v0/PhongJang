@@ -156,17 +156,42 @@
 
     <hr size="5" color="black">
     <center>
-        <a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a>
-        <img src="image\space.jpg" height="35" width="80">
-        <a href="Bottom-main.jsp"><img src="image\bumperCase2.jpg" height="35" width="140"></a>
-        <img src="image\space.jpg" height="35" width="80">
-        <a href="Outer-main.jsp"><img src="image\hardCase.jpg" height="35" width="140"></a>
-        <img src="image\space.jpg" height="35" width="80">
-        <a href="Sho-main.jsp"><img src="image\jellyCase.jpg" height="35" width="140"></a>
-        <img src="image\space.jpg" height="35" width="80">
-        <a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a>
+        <table>
+            <tr>
+                <% if (user != null) {%>
+                <td><form action="myCase" method="post">
+                        <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
+                    </form></td>
+                <% } else {%>
+                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                        <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
+                <% } %>        
+                <td><img src="image\space.jpg" height="35" width="80"></td>
+                
+                <td><form action ="caseTypePage" method="post">
+                        <input type="image" src="image\bumperCase2.jpg" name="Submit" height="35" width="140">
+                        <input type="hidden" name="caseType" value="범퍼">
+                    </form></td>
+                <td><img src="image\space.jpg" height="35" width="80"></td>
+                
+                <td><form action ="caseTypePage" method="post">
+                        <input type="image" src="image\hardCase.jpg" name="Submit" height="35" width="140">
+                        <input type="hidden" name="caseType" value="하드">
+                    </form></td>
+                <td><img src="image\space.jpg" height="35" width="80"></td>
+                
+                <td><form action ="caseTypePage" method="post">
+                        <input type="image" src="image\jellyCase.jpg" name="Submit" height="35" width="140">
+                        <input type="hidden" name="caseType" value="젤리">
+                    </form></td>
+                <td><img src="image\space.jpg" height="35" width="80"></td>
+                
+                <td><form action ="eventList" method="post">
+                        <input type="image" src="image\event_.jpg" name="Submit" height="35" width="140">
+                    </form></td>  
+            </tr>
+        </table>
     </center>
-
     <hr size="5" color="black">
     <center>   
         <br><br>

@@ -107,7 +107,7 @@ public class ReplyMyCaseServlet extends HttpServlet {
                 ReplyMyCase replyMyCase;
 
                 myCase = myCaseService.getMyCase(myCaseNum);
-                replyMyCase = replyMyCaseService.getMyCase(myCaseNum);
+                replyMyCase = replyMyCaseService.getMyCaseReply(myCaseNum);
         
                 request.setAttribute("myCase", myCase);
                 request.setAttribute("user", user);

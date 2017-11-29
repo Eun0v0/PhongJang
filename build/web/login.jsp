@@ -78,7 +78,9 @@
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
                 
-                <td><a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a></td> 
+                <td><form action ="eventList" method="post">
+                        <input type="image" src="image\event_.jpg" name="Submit" height="35" width="140">
+                    </form></td> 
             </tr>
         </table>
     </center>
@@ -95,7 +97,7 @@
             <li><%= ex.getMessage()%><%}%></ul></font>    
             <%}%>
     </center>
-    <form action="login" method="post">
+    <form action="login" method="post" name="login">
         <center> <br><br>
             <img src="image\loginTitle.jpg" height="60" width="150">
             <table>
@@ -118,7 +120,7 @@
             <table>
             <tr>
                 <td><input type="image" src="image\loginbutton.jpg" name="Submit" value ="Submit" aline="absmiddle"></td>
-                <td><input type="image" src="image\clearbutton.jpg" name="Reset" value ="Retry" aline="absmiddle"></td>
+                <td><input type="image" src="image\clearbutton.jpg" aline="absmiddle" onClick="login.reset();return false;"></td>
             </tr>
             </table>
         </center>

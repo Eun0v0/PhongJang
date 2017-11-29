@@ -192,18 +192,19 @@
         while (errors.hasNext()) {
             Exception ex = (Exception) errors.next();%>
         <li><%= ex.getMessage()%><%}%></ul></font><%}%>
+         <center><h1>이벤트 내용 수정</h1>
+             <img src="image/upload/<%=request.getAttribute("image")%>" width="600" height="550"></center>
     <center>
-        <form action="eventUpdateProcess" method="post" enctype="multipart/form-data">
+        <form action="updateEventProcess" method="post" enctype="multipart/form-data">
             <table>
                 <tr>
-                <h1>이벤트 내용 수정</h1>
                 <br><br>
                     <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
                     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
                     <tr>
                         <td>&nbsp;</td>
                         <th width="120" height="35">제목</th>
-                        <td><textarea name="content" cols="70" rows="2"><%=request.getAttribute("title")%></textarea></td>
+                        <td><textarea name="title" cols="70" rows="2"><%=request.getAttribute("title")%></textarea></td>
                         <td>&nbsp;</td>
                     </tr>
                     
@@ -226,7 +227,7 @@
                     <tr align="center">
                         <td>&nbsp;</td><br>
                     <td colspan="2">
-                        <input type="hidden" name="userID" value="<%=user.getId()%>">
+                        <input type="hidden" name="eventID" value="<%=event.getEventID()%>">
                         <input type="submit" value="등록">
                     <td>&nbsp;</td>
                     </tr>      

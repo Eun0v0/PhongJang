@@ -270,7 +270,9 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </form></td>\r\n");
       out.write("                <td><img src=\"image\\space.jpg\" height=\"35\" width=\"80\"></td>\r\n");
       out.write("\r\n");
-      out.write("                <td><a href=\"event.jsp\"><img src=\"image\\event_.jpg\" height=\"35\" width=\"140\"></a></td> \r\n");
+      out.write("                <td><form action =\"eventList\" method=\"post\">\r\n");
+      out.write("                        <input type=\"image\" src=\"image\\event_.jpg\" name=\"Submit\" height=\"35\" width=\"140\">\r\n");
+      out.write("                    </form></td> \r\n");
       out.write("            </tr>\r\n");
       out.write("        </table>\r\n");
       out.write("    </center>\r\n");

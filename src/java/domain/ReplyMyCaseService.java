@@ -29,7 +29,7 @@ public class ReplyMyCaseService {
         return replyMyCases;
     }
     
-    public ReplyMyCase getMyCase(int myCaseNum) {
+    public ReplyMyCase getMyCaseReply(int myCaseNum) {
         ReplyMyCase replyMyCase = null;
         try {
             replyMyCase = replyMyCaseDataAccess.getMyCase(myCaseNum);
