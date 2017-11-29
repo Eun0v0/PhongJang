@@ -14,10 +14,10 @@
                 <% if (user == null) { %>
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                        <input type="submit" value="상품 추가">
+                        <input type="image" src="image\adminAdd2.jpg" name="Submit" value ="로그아웃">
                     </a></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                        <input type="submit" value="재고 관리">
+                        <input type="image" src="image\inventory.jpg" name="Submit" value ="로그아웃">
                     </a></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\order.jpg"></a>
@@ -30,11 +30,11 @@
                     </form> 
                 </td>
                 <td><form action="create" method="post">
-                        <input type="submit" value="상품 추가">
+                        <input type="image" src="image\adminAdd2.jpg" name="Submit" value ="로그아웃">
                     </form>
                 </td>
                 <td><form action="manageStock" method="post">
-                        <input type="submit" value="재고 관리">
+                        <input type="image" src="image\inventory.jpg" name="Submit" value ="로그아웃">
                     </form>
                 </td>
                 <td><form action="paymentlist" method="post">
@@ -98,7 +98,7 @@
     <hr size="5" color="black">
     <%--여기서부터 코드내용--%>
 
-    <center> <h2>상품 추가 페이지 입니다.</h2> </center>
+    <center> <h2></br>상품 추가 페이지 입니다.</h2> </center>
         <%if ((status != null) && !status.isSuccessful()) {%>
     <font color="red">There were problems processing your request:
     <ul><%Iterator errors = status.getExceptions();

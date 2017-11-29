@@ -27,7 +27,7 @@
                 <% if (user == null) { %>
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                        <input type="submit" value="상품 추가">
+                        <input type="image" src="image\adminAdd2.jpg" name="Submit" value ="로그아웃">
                     </a></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\order.jpg"></a>
@@ -40,11 +40,11 @@
                     </form> 
                 </td>
                 <td><form action="create" method="post">
-                        <input type="submit" value="상품 추가">
+                        <input type="image" src="image\adminAdd2.jpg" name="Submit" value ="로그아웃">
                     </form>
                 </td>
                 <td><form action="manageStock" method="post">
-                        <input type="submit" value="재고 관리">
+                        <input type="image" src="image\inventory.jpg" name="Submit" value ="로그아웃">
                     </form>
                 </td>
                 <td><form action="paymentlist" method="post">
@@ -117,7 +117,7 @@
                 <th width="60" height="35"><img src="image\boardnum.jpg" width=60 height=40"></th>
                 <th width="250" height="35"><img src="image\boardtitle.jpg" width=250 height=40"></th>
                 <th width="140" height="35"><img src="image\writedate.jpg" width=140 height=40"></th>
-                <th width="50" height="35">주문 상태</th>
+                <th width="120" height="35"><img src="image\orderState.jpg" width=120 height=40"></th>
 
             </tr>
             <%
