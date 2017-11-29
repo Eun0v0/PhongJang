@@ -58,3 +58,6 @@ build/web/WEB-INF/lib/ojdbc6.jar
 build/web/WEB-INF/lib/cos.jar
 nbproject/private/private.xml
 nbproject/private/private.properties
+build/web/image/upload/공지사항2.jpg
+build/web/image/upload/공지사항1.jpg
+build/web/image/upload/공지사항.jpg

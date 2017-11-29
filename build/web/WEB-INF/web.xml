@@ -250,7 +250,6 @@
         <servlet-name>CaseTypeController</servlet-name>
         <url-pattern>/caseTypePage</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>ManageStockController</servlet-name>
         <servlet-class>web.ManageStockServlet</servlet-class>
@@ -259,7 +258,6 @@
         <servlet-name>ManageStockController</servlet-name>
         <url-pattern>/manageStock</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>StockChangeController</servlet-name>
         <servlet-class>web.StockChangeServlet</servlet-class>
@@ -268,7 +266,6 @@
         <servlet-name>StockChangeController</servlet-name>
         <url-pattern>/stockChange</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>ManageSearchController</servlet-name>
         <servlet-class>web.ManageSearchServlet</servlet-class>
@@ -277,7 +274,6 @@
         <servlet-name>ManageSearchController</servlet-name>
         <url-pattern>/manageSearch</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>DeleteQnaController</servlet-name>
         <servlet-class>web.DeleteQnaServlet</servlet-class>
@@ -286,7 +282,6 @@
         <servlet-name>DeleteQnaController</servlet-name>
         <url-pattern>/deleteQna</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>RetrieveQnaController</servlet-name>
         <servlet-class>web.RetrieveQnaServlet</servlet-class>
@@ -295,7 +290,6 @@
         <servlet-name>RetrieveQnaController</servlet-name>
         <url-pattern>/showQna</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>UpdateQnaController</servlet-name>
         <servlet-class>web.UpdateQnaServlet</servlet-class>
@@ -304,7 +298,6 @@
         <servlet-name>UpdateQnaController</servlet-name>
         <url-pattern>/updateQna</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>UpdateQnaProcessController</servlet-name>
         <servlet-class>web.UpdateQnaProcessServlet</servlet-class>
@@ -313,7 +306,6 @@
         <servlet-name>UpdateQnaProcessController</servlet-name>
         <url-pattern>/updateQnaProcess</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>MyCaseController</servlet-name>
         <servlet-class>web.MyCaseServlet</servlet-class>
@@ -401,5 +393,45 @@
     <servlet-mapping>
         <servlet-name>SearchQnAController</servlet-name>
         <url-pattern>/searchQnA</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>EventListController</servlet-name>
+        <servlet-class>web.EventListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EventListController</servlet-name>
+        <url-pattern>/eventList</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CreateEventController</servlet-name>
+        <servlet-class>web.CreateEventServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateEventController</servlet-name>
+        <url-pattern>/createEvent</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CreateEventProcessController</servlet-name>
+        <servlet-class>web.CreateProcessEventServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateEventProcessController</servlet-name>
+        <url-pattern>/createEventProcess</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateEventController</servlet-name>
+        <servlet-class>web.UpdateEventServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateEventController</servlet-name>
+        <url-pattern>/updateEvent</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateEventProcessController</servlet-name>
+        <servlet-class>web.UpdateEventProcessServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateEventProcessController</servlet-name>
+        <url-pattern>/updateEventProcess</url-pattern>
     </servlet-mapping>
 </web-app>

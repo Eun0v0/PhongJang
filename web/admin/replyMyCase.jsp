@@ -169,7 +169,7 @@
                 <th width="120" height = "35">비고</th>
                 <th width="120" height = "35">상태</th>
             </tr>
-            <%
+            <%  if(replyMyCase != null){
                 String account = replyMyCase.getAccount();
                 String dueDate = replyMyCase.getDueDate();
                 String v_content = replyMyCase.getContent();
@@ -181,6 +181,7 @@
                 <td bgcolor="#dcdcdc" align="center"><%=v_content%></td>
                 <td bgcolor="#dcdcdc" align="center"><%=v_status%></td>
             </tr>
+            <% } %>
         </table>
     </center> 
         <br><br><br>

@@ -154,7 +154,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("                <td><img src=\"image\\login.jpg\" onClick=\"location.assign('login.jsp')\"></td>\r\n");
       out.write("                <td><a OnClick=\"alert('로그인을 해주세요!')\" style=\"cursor:pointer\">\r\n");
-      out.write("                        <input type=\"submit\" value=\"상품 추가\">\r\n");
+      out.write("                        <input type=\"image\" src=\"image\\adminAdd2.jpg\" name=\"Submit\" value =\"로그아웃\">\r\n");
       out.write("                    </a></td>\r\n");
       out.write("                <td><a OnClick=\"alert('로그인을 해주세요!')\" style=\"cursor:pointer\">\r\n");
       out.write("                        <img src=\"image\\order.jpg\"></a>\r\n");
@@ -245,7 +245,9 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </form></td>\r\n");
       out.write("                <td><img src=\"image\\space.jpg\" height=\"35\" width=\"80\"></td>\r\n");
       out.write("\r\n");
-      out.write("                <td><a href=\"event.jsp\"><img src=\"image\\event_.jpg\" height=\"35\" width=\"140\"></a></td> \r\n");
+      out.write("                <td><form action =\"eventList\" method=\"post\">\r\n");
+      out.write("                        <input type=\"image\" src=\"image\\event_.jpg\" name=\"Submit\" height=\"35\" width=\"140\">\r\n");
+      out.write("                    </form></td> \r\n");
       out.write("            </tr>\r\n");
       out.write("        </table>\r\n");
       out.write("    </center>\r\n");

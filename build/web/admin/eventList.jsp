@@ -28,7 +28,7 @@
                 <% if (user == null) { %>
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                        <input type="submit" value="상품 추가">
+                        <input type="image" src="image\adminAdd2.jpg" name="Submit" value ="로그아웃">
                     </a></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\order.jpg"></a>
@@ -41,11 +41,11 @@
                     </form> 
                 </td>
                 <td><form action="create" method="post">
-                        <input type="submit" value="상품 추가">
+                        <input type="image" src="image\adminAdd2.jpg" name="Submit" value ="로그아웃">
                     </form>
                 </td>
                 <td><form action="manageStock" method="post">
-                        <input type="submit" value="재고 관리">
+                        <input type="image" src="image\inventory.jpg" name="Submit" value ="로그아웃">
                     </form>
                 </td>
                 <td><form action="paymentlist" method="post">
@@ -67,7 +67,7 @@
         </div> </center>
         <% } else {%>
     <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('admin/main.jsp')"> </div> </center>
-            <% }%>
+            <% } %>
 
     <form action ="search" method="post">
         <img src="image\search.png" height="17" width="17">
@@ -79,7 +79,7 @@
     <center>
         <table>
             <tr>
-
+                
                 <td><form action="myCaseList" method="post">
                         <input type="hidden" name="userID" value="<%=user.getId()%>">
                         <input type="image" src="image\customCase3.jpg" height="35" width="140">
@@ -114,6 +114,7 @@
     <hr size="5" color="black">
 
 
+
     <center></br></br><img src="image\qnalist.jpg"><br><br></center>
     <center><table>
             <tr>
@@ -134,7 +135,7 @@
             %>
             <tr>
                 <td bgcolor="#dcdcdc" height="40" align="center"><%=eventID%></td>
-                <td bgcolor="#dcdcdc" height="40" align="center"><a href="modifyEvent?eventID=<%=eventID%>"><%=title%></a></td>
+                <td bgcolor="#dcdcdc" height="40" align="center"><a href="updateEvent?eventID=<%=eventID%>"><%=title%></a></td>
                 <td bgcolor="#dcdcdc" height="40" align="center"><%=writeDate%></td>
                 <td bgcolor="#dcdcdc" height="40" align="center">
                     <form action="deleteEvent" method="post">
@@ -145,6 +146,9 @@
             <% }
                 }%>
         </table>
+        <form action="createEvent" method="post">
+            <input type="image" src="image\boardwrite.jpg" value ="글쓰기" aline="absmiddle">
+        </form>
     </center>
 </body>
 </html>
