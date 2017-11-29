@@ -22,7 +22,7 @@ public class MyCaseDAO {
     private static final String GET_STMT = "SELECT * FROM MyCase where MyCaseNum = ?";
     private static final String GETALL_STMT = "SELECT * FROM MyCase";
     
-    private static final String GETID_STMT = "SELECT COUNT(MyCaseNum) FROM MyCase";
+    private static final String GETID_STMT = "SELECT MAX(MyCaseNum) FROM MyCase";
     private static final String UPDATE_STMT = "UPDATE MyCase SET Title = ?, CaseType = ?, PhoneType = ?, Color = ? ,Content = ?, Image = ? WHERE MyCaseNum = ?";
     private static final String ADD_STMT = "INSERT INTO MyCase VALUES(?,?,?,?,?,?,?,?,?)";
     private static final String DELETE_STMT = "DELETE FROM MyCase WHERE userID = ? AND MyCaseNum = ?";
@@ -199,8 +199,10 @@ public class MyCaseDAO {
             rset = stmt.executeQuery();
             int ID = -1;
             rset.next();
-            ID = rset.getInt("COUNT(MyCaseNum)");
+            ID = rset.getInt("MAX(MyCaseNum)");
             ID++;
+            if(ID == 300)
+                ID=1;
             
             stmt = conn.prepareStatement(ADD_STMT);
             stmt.setInt(1, ID);

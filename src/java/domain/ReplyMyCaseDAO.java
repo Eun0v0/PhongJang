@@ -22,7 +22,7 @@ public class ReplyMyCaseDAO {
     private static final String GET_STMT = "SELECT * FROM ReplyMyCase where MyCaseNum = ?";
     private static final String GETALL_STMT = "SELECT * FROM ReplyMyCase";
     
-    private static final String GETID_STMT = "SELECT COUNT(MyCaseNum) FROM ReplyMyCase";
+    private static final String GETID_STMT = "SELECT MAX(MyCaseNum) FROM ReplyMyCase";
     private static final String UPDATE_STMT = "UPDATE ReplyMyCase SET status = ? WHERE MyCaseNum = ?";
     private static final String ADD_STMT = "INSERT INTO ReplyMyCase VALUES(?,?,?,?,?,?,?)";
     //private static final String DELETE_STMT = "DELETE FROM ReplyMyCase WHERE MyCaseNum = ?";

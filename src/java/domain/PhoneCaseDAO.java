@@ -21,7 +21,7 @@ public class PhoneCaseDAO {
             = "SELECT * FROM shoppingproduct ORDER BY CaseID";
     private static final String INSERT_STMT = "INSERT INTO shoppingProduct VALUES(?,?,?,?,?,?,?,?)";
     private static final String UPDATE_STMT = "UPDATE shoppingProduct SET CaseName = ?, CaseType = ?, Explanation = ?, Price = ?, Image = ?, DetailImage = ? WHERE CaseID = ?";
-    private static final String GETID_STMT = "SELECT COUNT(CaseID) FROM shoppingProduct";
+    private static final String GETID_STMT = "SELECT MAX(CaseID) FROM shoppingProduct";
     private static final String DELETE_STMT = "DELETE FROM shoppingProduct WHERE CaseID = ?";
     private static final String SELECT_STMT
             = "SELECT * FROM shoppingproduct WHERE CaseID=?";
@@ -200,8 +200,10 @@ public class PhoneCaseDAO {
             rset = stmt.executeQuery();
             int ID = -1;
             rset.next();
-            ID = rset.getInt("COUNT(CaseID)");
+            ID = rset.getInt("MAX(CaseID)");
             ID++;
+            if(ID == 300)
+                ID=1;
 
             stmt = conn.prepareStatement(INSERT_STMT);
             stmt.setInt(1, ID);
