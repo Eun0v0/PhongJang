@@ -125,7 +125,7 @@
         
         <table>
             <tr>
-                <th width="120" height = "35"><img src="image\adminCasename.jpg" width=120 height=40"></th>
+                <th width="200" height = "35"><img src="image\adminCasename2.jpg" width=200 height=40"></th>
                 <th width="200" height = "35"><img src="image\stock.jpg" width=200 height=40"></th>
                 <th width="60" height = "35"><img src="image\deletePink2.jpg" width=60 height=40"></th>
             </tr>
