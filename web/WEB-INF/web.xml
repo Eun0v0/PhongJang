@@ -434,4 +434,12 @@
         <servlet-name>UpdateEventProcessController</servlet-name>
         <url-pattern>/updateEventProcess</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteEventController</servlet-name>
+        <servlet-class>web.DeleteEventServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteEventController</servlet-name>
+        <url-pattern>/deleteEvent</url-pattern>
+    </servlet-mapping>
 </web-app>

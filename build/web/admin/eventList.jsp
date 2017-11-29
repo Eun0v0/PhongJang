@@ -139,6 +139,7 @@
                 <td bgcolor="#dcdcdc" height="40" align="center"><%=writeDate%></td>
                 <td bgcolor="#dcdcdc" height="40" align="center">
                     <form action="deleteEvent" method="post">
+                        <input type="hidden" name="eventID" value="<%=eventID%>">
                         <input type="submit" value="»èÁ¦">
                     </form>
                 </td> 
