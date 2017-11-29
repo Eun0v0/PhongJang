@@ -117,7 +117,7 @@
                 <th width="60" height="35"><img src="image\boardnum.jpg" width=60 height=40"></th>
                 <th width="250" height="35"><img src="image\boardtitle.jpg" width=250 height=40"></th>
                 <th width="140" height="35"><img src="image\writedate.jpg" width=140 height=40"></th>
-                <th width="50" height="35">주문 상태</th>
+                <th width="120" height="35"><img src="image\orderState.jpg" width=120 height=40"></th>
 
             </tr>
             <%

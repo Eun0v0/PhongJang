@@ -26,6 +26,7 @@
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/StockChangeServlet.java</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/MyInfoUpdateServlet.java</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/UpdateQnaServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/image/address.jpg</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/qnaUpdate.jsp</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/PaymentDAO.java</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/ProcessPaymentServlet.java</file>
@@ -57,6 +58,7 @@
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/admin/payment.jsp</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/qnaCreate.jsp</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/admin/manageStock.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/caseTypePage.jsp</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/User.java</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/qna.jsp</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/admin/managePhoneCase.jsp</file>
@@ -82,6 +84,7 @@
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/UserDAO.java</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/qnaCreate.jsp</file>
             <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/UpdatePaymentServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/join.jsp</file>
         </group>
     </open-files>
 </project-private>

@@ -107,47 +107,42 @@
         </table>
     </center>
     <hr size="5" color="black">
+    <center></br>
+        <h2>고객 결제 목록 입니다.</h2>
+        <hr width="25%" size="1" color="gray"><br>
+        <table>
+            <tr>
+                <th width="170" height = "35"><img src="image\paynum.jpg" width=170 height=40"></th>
+                <th width="120" height = "35"><img src="image\stockId.jpg" width=120 height=40"></th>
+                <th width="170" height = "35"><img src="image\casename2.jpg" width=170 height=40"></th>
+                <th width="200" height = "35"><img src="image\deliverystate.jpg" width=200 height=40"></th>
+                <th width="200" height = "35"><img src="image\deliverynumber.jpg" width=200 height=40"></th>
+            </tr>
+            <%
+                for (int i = 0; i < payments.size(); i++) {
+                    Payment payment = payments.get(i);
+            %> 
+            <tr>
+                <td bgcolor="#dcdcdc" align="center"><%=payment.getPaymentID()%> 
+                    <br> <font size="2"><%=payment.getOrderDate()%> </font></td>
+                <td  bgcolor="#dcdcdc" align="center"><%=payment.getUserID()%></td>                
+                <td bgcolor="#dcdcdc" align="center"><%=payment.getCaseName()%>
+                    <br> <font size="2"><%=payment.getNumbers()%>개 | <%=payment.getPrice()%>원</font></td>
 
-    <h2>고객 결제 목록 입니다.</h2>
-    <table border="2px">
-        <tr>
-            <th width="100">결제 번호</th>
-            <th width="100">결제 날짜</th>
-            <th width="100">주문자 ID</th>
-            <th width="100">제품명</th>
-            <th width="100">수량</th>               
-            <th width="100">가격</th>                                
-            <th width="200">배송 상태</th>
-            <th width="200">송장번호</th>
-        </tr>
-        <%
-            for (int i = 0; i < payments.size(); i++) {
-                Payment payment = payments.get(i);
-        %> 
-        <tr>
-            <td align="center"><%=payment.getPaymentID()%></td>
-            <td align="center"><%=payment.getOrderDate()%></td>
-            <td align="center"><%=payment.getUserID()%></td>                
-            <td align="center"><%=payment.getCaseName()%></td>
-            <td align="center"><%=payment.getNumbers()%></td>
-            <td align="center"><%=payment.getPrice()%></td>
-            <td align="center"><%=payment.getStatus()%></td>
-            <%if ((payment.getParcelNumber()).equals("준비중")) {%>
-            <td align="center"><form action = "updatePayment" method = "post">
-                    <% session.setAttribute("payment", payment);%>
-                    <input type="text" name="parcelNumber">
-                    <input type ="submit" value="송장번호 추가">
-                </form></td>
-            <td>
-                <% } else {%>
-            <td align="center"><%=payment.getParcelNumber()%></td>
-            <% } %>
-        </tr>
-        <% }%>
-    </table>
-    <form action="main" method="post">
-        <input type="hidden" name="userID" value="<%=user.getId()%>">
-        <input type="submit" value="메인으로">
-    </form>
+                <td bgcolor="#dcdcdc" align="center"><%=payment.getStatus()%></td>
+                <%if ((payment.getParcelNumber()).equals("준비중")) {%>
+                <td bgcolor="#dcdcdc" align="center"><form action = "updatePayment" method = "post">
+                        <% session.setAttribute("payment", payment);%>
+                        <input type="text" name="parcelNumber">
+                        <input type ="submit" value="송장번호 추가">
+                    </form></td>
+                <td>
+                    <% } else {%>
+                <td  bgcolor="#dcdcdc" align="center"><%=payment.getParcelNumber()%></td>
+                <% } %>
+            </tr>
+            <% }%>
+        </table>
+    </center>
 </body>
 </html>

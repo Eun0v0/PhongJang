@@ -111,22 +111,21 @@
         </table>
     </center>
     <hr size="5" color="black">
-
-    <form action="paymentlist" method="post">
-        <input type="submit" value="모든 결제내역">
-    </form>        
-    <center> 
+        
+    <center> <h2></br>재고 관리 페이지 입니다.</h2> 
+        <hr width="28%" size="1" color="gray"><br></center>
     <center> 
         <form action ="manageSearch" method="post">
             <img src="image\search.png" height="17" width="17">
             <input type="text" size="16" name="caseName">
             <input type="submit" value="검색">
         </form>
-        <table border="2px">
+        
+        <table>
             <tr>
-                <th width="100">케이스 이름</th>
-                <th width="200">재고</th>
-                <th width="100">삭제</th>
+                <th width="120" height = "35"><img src="image\adminCasename.jpg" width=120 height=40"></th>
+                <th width="200" height = "35"><img src="image\stock.jpg" width=200 height=40"></th>
+                <th width="60" height = "35"><img src="image\deletePink2.jpg" width=60 height=40"></th>
             </tr>
             <%
                 for (int i = 0; i < phoneCases.size(); i++) {
@@ -140,15 +139,15 @@
                     String imgPath = phoneCase.getImg();
             %>      
             <tr>
-                <td align="center"><%=caseName%></td>
-                <td align="center"><form action = "stockChange" method = "post">
+                <td  bgcolor="#dcdcdc" align="center"><%=caseName%></td>
+                <td  bgcolor="#dcdcdc" align="center"><form action = "stockChange" method = "post">
                         <textarea name="stock" cols="10" rows="2"><%=stock%></textarea>
                         <input type="hidden" name="caseID" value="<%=caseID%>"> <input type ="submit" value="재고 수정">
                     </form></td>
-                <td align="center">
+                <td  bgcolor="#dcdcdc" align="center">
                     <form action="deleteCase" method="post">
                         <input type="hidden" name="caseID" value="<%=caseID%>">
-                        <input type="submit" value="삭제">
+                        <input type="image" src="image\delete.jpg" name="Submit" value ="삭제" aline="absmiddle">
                     </form>
                 </td>
             </tr>
