@@ -101,7 +101,9 @@
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
                 
-                <td><a href="event.jsp"><img src="image\event_.jpg" height="35" width="140"></a></td> 
+                <td><form action ="eventList" method="post">
+                        <input type="image" src="image\event_.jpg" name="Submit" height="35" width="140">
+                    </form></td>  
             </tr>
         </table>
 </center>

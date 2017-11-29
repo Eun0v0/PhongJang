@@ -1,25 +1,29 @@
 <%-- 
-    Document   : main
-    Created on : 2017. 11. 3, ?? 12:35:30
+    Document   : update
+    Created on : 2017. 11. 12, 오후 8:13:24
     Author     : yukih
-    modify     : ha0
 --%>
-<%@page import="domain.PhoneCaseService"%>
-<%@page import="java.net.URLEncoder"%>
+<%@page import="domain.Event"%>
+<%@page import="domain.Review"%>
+<%@page import="domain.CaseColor"%>
+<%@page import="domain.PhoneType"%>
 <%-- test --%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="domain.PhoneCase"%>
-<%@page import="domain.Payment"%>
-<%@page import="domain.User"%>
 <%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
+<%@page import="domain.PhoneCase"%>
+<%@page import="domain.User"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.ArrayList"%>
 <jsp:useBean id="status" scope="request" class="util.Status"/>
-<%@ page import="java.sql.*" %>
-<% request.setCharacterEncoding("UTF-8"); %>
-<!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>퐁장-나만의 폰 공장</title>
+
+        <title>수정 페이지</title>
+        <%  User user = (User) request.getAttribute("user");
+
+            Event event = (Event) request.getAttribute("event");
+            session.setAttribute("user", user);
+            session.setAttribute("event", event);
+        %>
         <script type="text/javascript">
             //<![CDATA[
             function initMoving(target, position, topLimit, btmLimit) {
@@ -93,8 +97,7 @@
     <body>
         <table border="0px">
             <tr>
-                <%  User user = (User) request.getAttribute("user");
-                    if (user == null) {
+                <% if (user == null) {
                         session.setAttribute("user", user); %>
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
@@ -167,10 +170,10 @@
                 <td><form action="myCase" method="post">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
                     </form></td>
-                <% } else {%>
+                    <% } else {%>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
-                <% } %>        
+                        <% } %>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
 
                 <td><form action ="caseTypePage" method="post">
@@ -191,7 +194,7 @@
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
 
-                <td><form action ="eventList" method="post">
+               <td><form action ="eventList" method="post">
                         <input type="image" src="image\event_.jpg" name="Submit" height="35" width="140">
                     </form></td> 
             </tr>
@@ -199,84 +202,47 @@
     </center>
     <hr size="5" color="black">
 
+
+    <%if ((status != null) && !status.isSuccessful()) {%>
+    <font color="red">There were problems processing your request:
+    <ul><%Iterator errors = status.getExceptions();
+        while (errors.hasNext()) {
+            Exception ex = (Exception) errors.next();%>
+        <li><%= ex.getMessage()%><%}%></ul></font><%}%>
+    <center><h1>★이벤트 내용★</h1></center>
+    <center>
+        <table>
+            <tr>
+            <br><br>
+            <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
+            <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+            <tr>
+                <td>&nbsp;</td>
+                <th width="120" height="35">제목</th>
+                <td><%=request.getAttribute("title")%></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
+            <tr>
+                <td>&nbsp;</td>
+                <th width="60" height="35">부가 설명</th>
+                <td><%=request.getAttribute("content")%></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+            <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
+            <tr align="center">
+                <td>&nbsp;</td><br>
+
+            </tr>      
+            </center></td></tr>
+        </table>
+
+        <center><img src="image/upload/<%=request.getAttribute("image")%>" width="600" height="550"></center>
+        <hr size="1" width="1100">
+    </center>
     <br><br>
-    <font size="5"><center><b>&nbsp;&nbsp;BEST ITEMS<sup><font size="1" color="red">HIT!</font></sup></b></font>
-        <hr width="13%" size="2" color="gray"></center><br>
 
-    <table align="center" width ="1000" height="400" cellpadding="15">
-        <tr>
-            <%
-                PhoneCaseService phoneCaseService = new PhoneCaseService();
-                ArrayList<PhoneCase> phoneCases = phoneCaseService.getAllPhoneCase();
-
-                if (phoneCases.size() != 0) {
-                    for (int i = 0; i < 4; i++) {
-                        PhoneCase phoneCase = phoneCases.get(i);
-                        int caseID = phoneCase.getCaseID();
-                        String caseType = phoneCase.getCaseType();
-                        String caseName = phoneCase.getCaseName();
-                        String explanation = phoneCase.getExplanation();
-                        int price = phoneCase.getPrice();
-                        String imgPath = phoneCase.getImg();
-            %>
-            <td width="25%">
-                <a href="detailPage?caseID=<%=caseID%>"><img src = "image/upload/<%=imgPath%>" height="240" width="280" alt="<%=caseName%>" title="<%=caseName%>"/><br><br><%=caseName%>(<%=caseType%>)</a>
-                <br><hr size="1" color="black">
-                <img src = "image\ic_best.png"><br>
-                <font size="4"><b><%=price%>원</b></font>
-            </td>
-            <% }
-                }%>
-        </tr>
-    </table>
-
-    <br><br>
-    <hr size="2" color="gray"><br><br>
-    <font size="5"><center><b>NEW GOODS</b></font>
-        <hr width="13%" size="2" color="gray"></center><br>
-
-    <table align="center" width ="1000" height="400" cellpadding="15">
-        <tr>
-            <%  for (int j = phoneCases.size() - 1; j >= phoneCases.size() - 4; j--) {
-                    PhoneCase phoneCase = phoneCases.get(j);
-                    int caseID = phoneCase.getCaseID();
-                    String caseType = phoneCase.getCaseType();
-                    String caseName = phoneCase.getCaseName();
-                    String explanation = phoneCase.getExplanation();
-                    int price = phoneCase.getPrice();
-                    String imgPath = phoneCase.getImg();
-            %>
-            <td width="25%">
-                <a href="detailPage?caseID=<%=caseID%>"><img src = "image/upload/<%=imgPath%>" height="240" width="280" alt="<%=caseName%>" title="<%=caseName%>"/><br><br><%=caseName%>(<%=caseType%>)</a>
-                <br><hr size="1" color="black">
-                <img src = "image\ic_best.png"><br>
-                <font size="4"><b><%=price%>원</b></font>
-            </td>
-            <%}%>
-        </tr>
-    </table>
-    <table align="center" width ="1000" height="400" cellpadding="15">
-        <tr>
-            <%  if (phoneCases.size() >= 8) {
-                    for (int j = phoneCases.size() - 5; j >= phoneCases.size() - 8; j--) {
-                        PhoneCase phoneCase = phoneCases.get(j);
-                        int caseID = phoneCase.getCaseID();
-                        String caseType = phoneCase.getCaseType();
-                        String caseName = phoneCase.getCaseName();
-                        String explanation = phoneCase.getExplanation();
-                        int price = phoneCase.getPrice();
-                        String imgPath = phoneCase.getImg();
-            %>
-            <td width="25%">
-                <a href="detailPage?caseID=<%=caseID%>"><img src = "image/upload/<%=imgPath%>" height="240" width="280" alt="<%=caseName%>" title="<%=caseName%>"/><br><br><%=caseName%>(<%=caseType%>)</a>
-                <br><hr size="1" color="black">
-                <img src = "image\ic_best.png"><br>
-                <font size="4"><b><%=price%>원</b></font>
-            </td>
-            <% }
-                }%>
-        </tr>
-    </table>    
     <div id="gotop">
         <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>
         <img src="image\cursor1.jpg" height="50" width="50"> <br>
@@ -286,6 +252,5 @@
     <script type="text/javascript">initMoving(document.getElementById("gotop"), 50, 50, 50);</script> 
 
     <a href="#top" name="bottom"><img src="image\totop.jpg" align="right"></a>
-
 </body>
 </html>
