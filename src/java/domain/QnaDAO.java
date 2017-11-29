@@ -20,7 +20,7 @@ public class QnaDAO {
     private static final String ALLRETRIEVE_STMT = "SELECT * FROM boardQna";
     private static final String INSERT_STMT = "INSERT INTO boardQna VALUES(?,?,?,?,?,?)";
     private static final String UPDATE_STMT = "UPDATE boardQna SET QnaTitle = ?, UserName = ?, QnaContent = ? WHERE QnaNum = ?";
-    private static final String GETNUM_STMT = "SELECT COUNT(QnaNum) FROM boardQna";
+    private static final String GETNUM_STMT = "SELECT MAX(QnaNum) FROM boardQna";
     private static final String DELETE_STMT = "DELETE FROM boardQna WHERE QnaNum = ?";
     private static final String RETRIEVE_STMT
             = "SELECT * FROM boardQna WHERE QnaNum = ?";
@@ -88,8 +88,10 @@ public class QnaDAO {
             rset = stmt.executeQuery();
             int Num = -1;
             rset.next();
-            Num = rset.getInt("COUNT(QnaNum)");
+            Num = rset.getInt("MAX(QnaNum)");
             Num++;
+            if(Num == 1000)
+                Num=1;
             stmt = conn.prepareStatement(INSERT_STMT);
             stmt.setInt(1, Num);
             stmt.setString(2, userName);

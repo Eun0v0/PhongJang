@@ -19,7 +19,7 @@ import util.DBConnectionPool;
 public class CartDAO {
     private DBConnectionPool connPool;
     private static final String RETRIEVE_STMT = "SELECT * FROM shoppingCart2 where UserID = ?";
-    private static final String GETID_STMT = "SELECT COUNT(CartID) FROM shoppingCart2";
+    private static final String GETID_STMT = "SELECT MAX(CartID) FROM shoppingCart2";
     private static final String ADD_STMT = "INSERT INTO shoppingCart2 VALUES(?,?,?,?,?,?,?,?)";
     private static final String DELETE_STMT = "DELETE FROM shoppingCart2 WHERE userID = ? AND CartID = ?";
     private static final String CLEAN_STMT = "DELETE FROM shoppingCart2 WHERE userID = ? AND CartID = ?";
@@ -88,8 +88,10 @@ public class CartDAO {
             rset = stmt.executeQuery();
             int ID = -1;
             rset.next();
-            ID = rset.getInt("COUNT(CartID)");
+            ID = rset.getInt("MAX(CartID)");
             ID++;
+            if(ID == 1000)
+                ID=1;
             //ADD_STMT = "INSERT INTO shoppingCart VALUES(?,?,?,?,?,?)";
     
             stmt = conn.prepareStatement(ADD_STMT);

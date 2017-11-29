@@ -21,7 +21,7 @@ public class ReviewDAO {
     private static final String RETRIEVE_STMT = "SELECT * FROM Review where CaseID = ?";
     private static final String GET_STMT = "SELECT * FROM Review where ReplyNum = ?";
     
-    private static final String GETID_STMT = "SELECT COUNT(ReplyNum) FROM Review";
+    private static final String GETID_STMT = "SELECT MAX(ReplyNum) FROM Review";
     //private static final String UPDATE_STMT = "UPDATE Review SET Title = ?, CaseType = ?, PhoneType = ?, Color = ? ,Content = ?, Image = ? WHERE MyCaseNum = ?";
     private static final String ADD_STMT = "INSERT INTO Review VALUES(?,?,?,?,?,?)";
     private static final String DELETE_STMT = "DELETE FROM Review WHERE userID = ? AND ReplyNum = ? AND CaseID = ?";
@@ -91,6 +91,7 @@ public class ReviewDAO {
             rset.next();
             ID = rset.getInt("COUNT(ReplyNum)");
             ID++;
+            
             
             stmt = conn.prepareStatement(ADD_STMT);
             stmt.setInt(1, ID);

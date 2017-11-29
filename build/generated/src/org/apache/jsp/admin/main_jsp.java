@@ -169,11 +169,11 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </form> \r\n");
       out.write("                </td>\r\n");
       out.write("                <td><form action=\"create\" method=\"post\">\r\n");
-      out.write("                        <input type=\"image\" src=\"image\\adminAdd.jpg\" name=\"Submit\" value =\"로그아웃\">\r\n");
+      out.write("                        <input type=\"image\" src=\"image\\adminAdd2.jpg\" name=\"Submit\" value =\"로그아웃\">\r\n");
       out.write("                    </form>\r\n");
       out.write("                </td>\r\n");
       out.write("                <td><form action=\"manageStock\" method=\"post\">\r\n");
-      out.write("                        <input type=\"submit\" value=\"재고 관리\">\r\n");
+      out.write("                        <input type=\"image\" src=\"image\\inventory.jpg\" name=\"Submit\" value =\"로그아웃\">\r\n");
       out.write("                    </form>\r\n");
       out.write("                </td>\r\n");
       out.write("                <td><form action=\"paymentlist\" method=\"post\">\r\n");

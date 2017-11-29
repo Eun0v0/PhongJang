@@ -13,7 +13,7 @@ public class PaymentDAO {
             = "SELECT * FROM shoppingPayment";
     private static final String RETRIEVE_STMT
             = "SELECT * FROM shoppingPayment WHERE UserID = ?";
-    private static final String GETID_STMT = "SELECT COUNT(PaymentID) FROM shoppingPayment";
+    private static final String GETID_STMT = "SELECT MAX(PaymentID) FROM shoppingPayment";
     private static final String ADD_STMT = "INSERT INTO shoppingPayment VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String DELETE_STMT = "DELETE FROM shoppingPayment WHERE PaymentID = ?";
     private static final String UPDATE_STMT = "UPDATE shoppingPayment SET ParcelNumber = ?, Status=? WHERE PaymentID = ?";
@@ -158,8 +158,10 @@ public class PaymentDAO {
             rset = stmt.executeQuery();
             int ID = -1;
             rset.next();
-            ID = rset.getInt("COUNT(PaymentID)")+ 1103010720;
+            ID = rset.getInt("MAX(PaymentID)")+ 1103010720;
             ID++;
+            if(ID == 300)
+                ID=1;
             stmt = conn.prepareStatement(ADD_STMT);
             stmt.setInt(1, ID);
             stmt.setString(2, userID);
