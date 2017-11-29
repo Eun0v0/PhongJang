@@ -110,11 +110,11 @@
                     </form> 
                 </td>
                 <td><form action="create" method="post">
-                        <input type="submit" value="상품 추가">
+                        <input type="image" src="image\adminAdd2.jpg" name="Submit" value ="로그아웃">
                     </form>
                 </td>
                 <td><form action="manageStock" method="post">
-                        <input type="submit" value="재고 관리">
+                        <input type="image" src="image\inventory.jpg" name="Submit" value ="로그아웃">
                     </form>
                 </td>
                 <td><form action="paymentlist" method="post">
