@@ -19,13 +19,14 @@ public class QnaDAO {
     private DBConnectionPool connPool;
     private static final String ALLRETRIEVE_STMT = "SELECT * FROM boardQna";
     private static final String INSERT_STMT = "INSERT INTO boardQna VALUES(?,?,?,?,?,?)";
-    private static final String UPDATE_STMT = "UPDATE boardQna SET QnaTitle = ?, UserName = ?, PassWord = ?, QnaContent = ? WHERE QnaNum = ?";
+    private static final String UPDATE_STMT = "UPDATE boardQna SET QnaTitle = ?, UserName = ?, QnaContent = ? WHERE QnaNum = ?";
     private static final String GETNUM_STMT = "SELECT COUNT(QnaNum) FROM boardQna";
     private static final String DELETE_STMT = "DELETE FROM boardQna WHERE QnaNum = ?";
     private static final String RETRIEVE_STMT
             = "SELECT * FROM boardQna WHERE QnaNum = ?";
     private static final String SELECT_STMT = "SELECT * FROM boardQna WHERE qnaNum=?";
-
+    private static final String GETMY_STMT
+            = "SELECT * FROM boardQna WHERE UserName = ?";
     //모든 데이터를 가져온다
     ArrayList<Qna> allQnaRetrieve() throws SQLException {
         ArrayList<Qna> qna = new ArrayList<Qna>();
@@ -199,20 +200,68 @@ public class QnaDAO {
             }
         }
     }
-
-    void qnaUpdate(int qnaNum, String userName, String passWord, String qnaTitle, String qnaContent) {
+    ArrayList<Qna> myQna(String userName) throws SQLException {
+        ArrayList<Qna> qnas = new ArrayList<Qna>();
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
-        //UPDATE boardQna SET QnaTitle = ?, UserName = ?, PassWord = ?, QnaContent = ? WHERE QnaNum = ?
+        try {
+            //String RETRIEVE_STMT= "SELECT * FROM shoppingPayment WHERE UserID = ?";
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement("SELECT * FROM boardQna WHERE UserName like '%" + userName + "%'");
+            //stmt.setString(1, userName);
+            rset = stmt.executeQuery();
+            while (rset.next()) {
+                int QnaNum = rset.getInt(1);
+                String UserName = rset.getString(2);
+                String PassWord = rset.getString(3);
+                String QnaTitle = rset.getString(4);
+                String QnaContent = rset.getString(5);
+                String QnaTime = rset.getString(6);
+                qnas.add(new Qna(QnaNum, UserName, PassWord, QnaTitle, QnaContent, QnaTime));
+            }
+            return qnas;
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("Exception: " + e.getMessage());
+        } finally {
+            if (rset != null) {
+                try {
+                    rset.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
+    void qnaUpdate(int qnaNum, String userName, String qnaTitle, String qnaContent) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        //UPDATE boardQna SET QnaTitle = ?, UserName = ?, QnaContent = ? WHERE QnaNum = ?
         try {
             conn = connPool.getPoolConnection();
             stmt = conn.prepareStatement(UPDATE_STMT);
             stmt.setString(1, qnaTitle);
             stmt.setString(2, userName);
-            stmt.setString(3, passWord);
-            stmt.setString(4, qnaContent);
-            stmt.setInt(5, qnaNum);
+            stmt.setString(3, qnaContent);
+            stmt.setInt(4, qnaNum);
             stmt.executeQuery();
         } catch (SQLException se) {
             throw new RuntimeException(

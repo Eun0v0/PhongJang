@@ -188,18 +188,38 @@
 
     <table align="center" width ="1000" height="400" cellpadding="15">
         <tr>
-            <%
-                ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
-                session.setAttribute("phoneCases", phoneCases);
-                for (int i = 0; i < phoneCases.size(); i++) {
-                    PhoneCase phoneCase = phoneCases.get(i);
-                    int caseID = phoneCase.getCaseID();
-                    String caseType = phoneCase.getCaseType();
-                    String caseName = phoneCase.getCaseName();
-                    String explanation = phoneCase.getExplanation();
-                    int price = phoneCase.getPrice();
-                    String imgPath = phoneCase.getImg();
-            %>
+             <%
+                    ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
+                    session.setAttribute("phoneCases", phoneCases);
+                    int index =0;
+                    int size = (phoneCases.size() / 4) + 1;
+                    PhoneCase[][] n_phoneCases = new PhoneCase[size][4];
+                    for(int a=0; a<size; a++){
+                        for(int b=0; b<4; b++){
+                            if(index == phoneCases.size())
+                                break;
+                            n_phoneCases[a][b] = phoneCases.get(index++);
+                        }
+                    }
+                    int n_index=0;
+                    for (int i = 0; i <= size; i++) { %>
+            <tr> 
+                <% for (int j = 0; j < 4; j++) {
+                    if(n_index == phoneCases.size())
+                                break;
+                        PhoneCase phoneCase = n_phoneCases[i][j];
+                        int caseID = phoneCase.getCaseID();
+                        String caseType = phoneCase.getCaseType();
+                        String caseName = phoneCase.getCaseName();
+                        String explanation = phoneCase.getExplanation();
+                        int price = phoneCase.getPrice();
+                        String imgPath = phoneCase.getImg();
+
+                        String pcaseType = URLEncoder.encode(caseType);
+                        String pcaseName = URLEncoder.encode(caseName);
+                        String pexplanation = URLEncoder.encode(explanation);
+                        n_index++;
+                %>
             <td width="25%">
                 <a href="update?caseID=<%=caseID%>"><img src = "image/upload/<%=imgPath%>" height="240" width="280" alt="<%=caseName%>" title="<%=caseName%>"/><br><br><%=caseName%>(<%=caseType%>)</a>
                 <br><hr size="1" color="black">
@@ -207,6 +227,8 @@
                 <font size="4"><b><%=price%>¿ø</b></font>
             </td>
             <% }%>
+            </tr>
+            <%}%>
     </table>
     <div id="gotop">
         <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>

@@ -33,12 +33,13 @@ public class JoinServlet extends HttpServlet {
             throws IOException, ServletException {
 
         RequestDispatcher view = null;
-        UserService UserService = null;
+        UserService userService = new UserService();;
         Status status = new Status();
         User user = null;
 
         request.setAttribute("status", status);
         request.setAttribute("user", user);
+       
 
         request.setCharacterEncoding("EUC-KR");
         try {
@@ -47,31 +48,36 @@ public class JoinServlet extends HttpServlet {
             String password = request.getParameter("password");
             String phoneNumber = request.getParameter("phoneNumber");
             String address = request.getParameter("address");
+            String findID = userService.findID(userID);
 
             if ((userID == null) || (userID.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your ID"));
+                        "아이디를 입력해주세요"));
             }
             if ((userName == null) || (userName.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your name"));
+                        "이름을 입력해주세요"));
             }
             if ((password == null) || (password.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your password"));
+                        "비밀번호를 입력해주세요"));
             }
             if ((phoneNumber == null) || (phoneNumber.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your phone number"));
+                        "핸드폰 번호를 입력해주세요"));
             }
             if ((address == null) || (address.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your address"));
+                        "주소를 입력해주세요"));
             }
+            if ((findID != null) || (findID.length() != 0)) {
+                status.addException(new Exception(
+                        "이미 가입된 아이디 입니다"));
+            }
+            
             try {
-                if (!userID.isEmpty() && !password.isEmpty() && !phoneNumber.isEmpty() && !address.isEmpty()) {
-                    UserService = new UserService();
-                    UserService.userCreate(userID, "C", userName, password, phoneNumber, address);
+                if (!userID.isEmpty() && !password.isEmpty() && !phoneNumber.isEmpty() && !address.isEmpty() && findID.isEmpty()) {
+                    userService.userCreate(userID, "C", userName, password, phoneNumber, address);
                 }
                 if (!status.isSuccessful()) {
                     view = request.getRequestDispatcher("join.jsp");

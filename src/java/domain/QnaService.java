@@ -35,6 +35,15 @@ public class QnaService {
         return qnas;
     }
 
+    public ArrayList<Qna> getMyQna(String userName) {
+        ArrayList<Qna> qnas = null;
+        try {
+            qnas = qnaDataAccess.myQna(userName);
+        } catch (Exception e) {
+            qnas = null;
+        }
+        return qnas;
+    }
     public void insertQna(String userName, String passWord, String qnaTitle, String qnaContent, String s_date) {
         qnaDataAccess.qnaInsert(userName, passWord, qnaTitle, qnaContent, s_date);
     }
@@ -43,8 +52,8 @@ public class QnaService {
         qnaDataAccess.qnaDelete(qnaNum);
     }
     
-    public void updateQna(int qnaNum, String userName, String passWord, String qnaTitle, String qnaContent) {
-        qnaDataAccess.qnaUpdate(qnaNum, userName, passWord, qnaTitle, qnaContent);
+    public void updateQna(int qnaNum, String userName, String qnaTitle, String qnaContent) {
+        qnaDataAccess.qnaUpdate(qnaNum, userName, qnaTitle, qnaContent);
     }
 
     public Qna getQnaInfo(int qnaNum) {

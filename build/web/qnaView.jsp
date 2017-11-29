@@ -63,7 +63,10 @@
                 </form>    
             </td>
 
-            <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
+            <td><form action="qnaList" methoe="post">
+                        <input type="image" src="image\q&a.jpg" name="Submit" value="Q&A">
+                    </form>
+                </td>
         </tr>
     </table>
     <% if (user != null) {%>
@@ -122,13 +125,6 @@
                 <td>&nbsp;</td>
                 <th width="120" height="35">작성자</th>
                 <td align="center"><%=qna.getUserName()%></td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
-            <tr>
-                <td>&nbsp;</td>
-                <th width="60" height="35">비밀번호</th>
-                <td align="center"><%=qna.getPassWord()%></td>
                 <td>&nbsp;</td>
             </tr>
             <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>

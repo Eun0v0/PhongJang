@@ -193,7 +193,7 @@
     <center>
         <table width="1100" height="100">
             <tr>
-                <td width="900"><div align="center"><h2>caseName</h2></div> 
+                <td width="900"><div align="center"><h2><%=caseName%></h2></div> 
                     <div align="right"><form action="deleteCase" method="post">
                         <input type="hidden" name="caseID" value="<%=caseID%>">
                         <input type="hidden" name="caseName" value="<%=caseName%>">

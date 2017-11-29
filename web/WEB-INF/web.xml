@@ -394,4 +394,12 @@
         <servlet-name>IDOverlapCheckController</servlet-name>
         <url-pattern>/idOverlapCheck</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>SearchQnAController</servlet-name>
+        <servlet-class>web.SearchQnAServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchQnAController</servlet-name>
+        <url-pattern>/searchQnA</url-pattern>
+    </servlet-mapping>
 </web-app>

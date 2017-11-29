@@ -197,25 +197,20 @@ public class UserDAO {
             }
         }
     }
-    ArrayList<String> findID(){
-        ArrayList<String> findID=null;
+    String findID(String userID){
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
-        int rows = 0;
+        String findID = null;
         try {
+            //GETALLID_STMT = "SELECT userID FROM shoppingUser";
             conn = connPool.getPoolConnection();
             stmt = conn.prepareStatement(GETALLID_STMT);
             rset = stmt.executeQuery();
             
             //데이터 베이스에서 유저 데이터 가져오기
             while (rset.next()) {
-                String UserID = rset.getString("UserID");
-                rows++;
-                if (rows > 1) {
-                    throw new SQLException("Too many rows were returned.");
-                }
-                findID.add(UserID);
+                findID = rset.getString(1);
             }
             return findID;
             

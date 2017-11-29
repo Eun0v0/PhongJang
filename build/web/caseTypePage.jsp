@@ -166,10 +166,10 @@
                 <td><form action="myCase" method="post">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
                     </form></td>
-                <% } else {%>
+                    <% } else {%>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
-                <% } %>        
+                        <% } %>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
 
                 <td><form action ="caseTypePage" method="post">
@@ -202,16 +202,32 @@
     <font size="5"><center><b>&nbsp;&nbsp; 검색 케이스 목록</b></font>
         <% } else {%>
         <font size="5"><center><b>&nbsp;&nbsp;<%=m_caseType%> 케이스<sup><font size="1" color="red">HIT!</font></sup></b></font>
-        <% } %>
+                    <% } %>
             <hr width="13%" size="2" color="gray"></center><br>
 
         <table align="center" width ="1000" height="400" cellpadding="15">
             <tr>
+                
                 <%
                     ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
                     session.setAttribute("phoneCases", phoneCases);
-                    for (int i = 0; i < phoneCases.size(); i++) {
-                        PhoneCase phoneCase = phoneCases.get(i);
+                    int index =0;
+                    int size = (phoneCases.size() / 4) + 1;
+                    PhoneCase[][] n_phoneCases = new PhoneCase[size][4];
+                    for(int a=0; a<size; a++){
+                        for(int b=0; b<4; b++){
+                            if(index == phoneCases.size())
+                                break;
+                            n_phoneCases[a][b] = phoneCases.get(index++);
+                        }
+                    }
+                    int n_index=0;
+                    for (int i = 0; i <= size; i++) { %>
+            <tr> 
+                <% for (int j = 0; j < 4; j++) {
+                    if(n_index == phoneCases.size())
+                                break;
+                        PhoneCase phoneCase = n_phoneCases[i][j];
                         int caseID = phoneCase.getCaseID();
                         String caseType = phoneCase.getCaseType();
                         String caseName = phoneCase.getCaseName();
@@ -222,7 +238,9 @@
                         String pcaseType = URLEncoder.encode(caseType);
                         String pcaseName = URLEncoder.encode(caseName);
                         String pexplanation = URLEncoder.encode(explanation);
+                        n_index++;
                 %>
+
                 <td width="25%">
                     <a href="detailPage?caseID=<%=caseID%>"><img src = "image/upload/<%=imgPath%>" height="240" width="280" alt="<%=caseName%>" title="<%=caseName%>"/><br><br><%=caseName%>(<%=caseType%>)</a>
                     <br><hr size="1" color="black">
@@ -230,6 +248,8 @@
                     <font size="4"><b><%=price%>원</b></font>
                 </td>
                 <%}%>
+            </tr>
+            <%}%>
         </table>
 
 

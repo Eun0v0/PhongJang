@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%--<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">--%>
+        <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
         <title>Q&A 작성하기</title>
         <% ArrayList<Qna> qnas = (ArrayList<Qna>) request.getAttribute("qnas");%>
         <%User user = (User) request.getAttribute("user");%>
@@ -60,7 +60,10 @@
                     </form>    
                 </td>
 
-                <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
+                <td><form action="qnaList" methoe="post">
+                        <input type="image" src="image\q&a.jpg" name="Submit" value="Q&A">
+                    </form>
+                </td>
             </tr>
         </table>
         <% if (user != null) {%>
@@ -94,16 +97,19 @@
     </center>
     <hr size="5" color="black">
     
-    <%if ((status != null) && !status.isSuccessful()) {%>
-    <font color="red">There were problems processing your request:
-    <ul><%Iterator errors = status.getExceptions();
-        while (errors.hasNext()) {
-            Exception ex = (Exception) errors.next();%>
-        <li><%= ex.getMessage()%><%}%></ul></font>    
-        <%}%>
+    <center>
+        <br><br>
+        <%if ((status != null) && !status.isSuccessful()) {%>
+        <font color="red">오류 발생!!!:
+        <ul><%Iterator errors = status.getExceptions();
+            while (errors.hasNext()) {
+                Exception ex = (Exception) errors.next();%>
+            <li><%= ex.getMessage()%><%}%></ul></font>    
+            <%}%>
+    </center>
     <center></br></br><img src="image\qnawrite.jpg"><br></center>
     <center>
-        <form action="writeQna" methor="post">
+        <form action="writeQna" method="post">
             <table>
                 <tr>
                     <td><center>

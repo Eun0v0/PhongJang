@@ -46,7 +46,10 @@
             <%  }%>
 
             <td><a href="join.jsp"><img src="image\join.jpg"></a></td>
-            <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
+            <td><form action="qnaList" methoe="post">
+                        <input type="image" src="image\q&a.jpg" name="Submit" value="Q&A">
+                    </form>
+                </td>
         </tr>
     </table>
     <% if (user != null) {%>
