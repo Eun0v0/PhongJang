@@ -173,8 +173,8 @@ public class ReplyMyCaseDAO {
         try {
             conn = connPool.getPoolConnection();
             stmt = conn.prepareStatement(UPDATE_STMT);
-            stmt.setInt(1, myCaseNum);
-            stmt.setString(2, status);
+            stmt.setString(1, status);
+            stmt.setInt(2, myCaseNum);
             stmt.executeQuery();
         } catch (SQLException se) {
             throw new RuntimeException(
