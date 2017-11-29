@@ -44,7 +44,9 @@
 
                 <%  }%>
 
-                <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
+                <td><form action ="eventList" method="post">
+                        <input type="image" src="image\event_.jpg" name="Submit" height="35" width="140">
+                    </form></td> 
             </tr>
         </table>
         <% if (user != null) {%>

@@ -13,8 +13,14 @@
     <head><title>회원가입</title>
         <% ArrayList<User> users = (ArrayList<User>) request.getAttribute("users");
            UserService userService = new UserService();
-           %>
-
+             
+        %>
+        <script>
+            function ResetForm(){
+                document.frm.reset();
+            }
+        </script>
+           
     </head>
     <body>
 
@@ -127,7 +133,8 @@
                 <tr><td><img src="image\white.jpg" height = 35></td></tr>
             </table>
             <input type="image" src="image\joinbutton.jpg" name="Submit">
-            <input type="image" src="image\clearbutton.jpg" name="Reset" value ="Reset" aline="absmiddle">
+            
+            <input type="image" src="image\clearbutton.jpg" name="Reset" onClick ="Reset" aline="absmiddle">
         </center>
     </form>
 
