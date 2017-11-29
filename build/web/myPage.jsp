@@ -126,7 +126,7 @@
     <center>
         <br><br>
         <img src="image\myPage.JPG" height="60" width="150">
-        <br><br><br><br><br>
+        <br><br>
         <table>
             <tr><td><form action="paymentlist" method="post">
                     <input type="image" src="image\orderBut.jpg" height="85" width="200" name="Submit" value ="주문 목록" >

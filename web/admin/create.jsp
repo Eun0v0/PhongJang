@@ -165,8 +165,7 @@
                 <td><tr>
                 <input type="image" src="image\adminAdd3.jpg" name="submit" value ="등록하기" aline="absmiddle">
                 &nbsp;&nbsp;
-                <input type="image" src="image\adminReset.jpg" name="reset" value ="다시쓰기" aline="absmiddle" onclick="createprocess.reset()">
-                &nbsp;&nbsp;</tr> </td>
+                <input type="image" src="image\adminReset.jpg" aline="absmiddle" onclick="createprocess.reset();return false;">                &nbsp;&nbsp;</tr> </td>
             </table>
             <hr size="1" width="1100">
         </center>

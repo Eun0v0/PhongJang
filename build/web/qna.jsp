@@ -95,30 +95,30 @@
                 <td><form action="myCase" method="post">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
                     </form></td>
-                <% } else {%>
+                    <% } else {%>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
-                <% } %>        
+                        <% } %>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\bumperCase2.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="범퍼">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\hardCase.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="하드">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\jellyCase.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="젤리">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="eventList" method="post">
                         <input type="image" src="image\event_.jpg" name="Submit" height="35" width="140">
                     </form></td>  
@@ -129,17 +129,17 @@
 
     <center></br></br><img src="image\qnalist.jpg"><br><br></center>
     <center><form action ="searchQnA" method="post">
-        <img src="image\search.png" height="17" width="17">
-        <input type="text" size="16" name="userName">
-        <input type="submit" value="검색">
-    </form></center>
+            <img src="image\search.png" height="17" width="17">
+            <input type="text" size="16" name="userName">
+            <input type="submit" value="검색">
+        </form></center>
     <center><table>
             <tr>
-                <th width="60" height="35"><img src="image\boardnum.jpg" width=60 height=40"></th>
+                </br><th width="60" height="35"><img src="image\boardnum.jpg" width=60 height=40"></th>
                 <th width="250" height="35"><img src="image\boardtitle.jpg" width=250 height=40"></th>
                 <th width="120" height="35"><img src="image\writer.jpg" width=120 height=40"></th>
                 <th width="140" height="35"><img src="image\writedate.jpg" width=140 height=40"></th>
-                <th width="50" height="35">삭제</th>
+                <th width="40" height="40"><input type="image" src="image\deletePink.jpg" value ="삭제" aline="absmiddle" width=50 height=40>
 
             </tr>
             <%
