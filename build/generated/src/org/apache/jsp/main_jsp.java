@@ -290,8 +290,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
                 ArrayList<PhoneCase> phoneCases = phoneCaseService.getAllPhoneCase();
 
                 if (phoneCases!=null) {
-                    for (int i = 0; i < phoneCases.size(); i++) {
-                        if(phoneCases.size() == 4) break;
+                    for (int i = 0; i <4; i++) {
                         PhoneCase phoneCase = phoneCases.get(i);
                         int caseID = phoneCase.getCaseID();
                         String caseType = phoneCase.getCaseType();
@@ -336,7 +335,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <table align=\"center\" width =\"1000\" height=\"400\" cellpadding=\"15\">\r\n");
       out.write("        <tr>\r\n");
       out.write("            ");
-if (phoneCases.size() > 4 ) {
+if (phoneCases.size() >= 4 ) {
                     for (int j = phoneCases.size() - 1; j >= phoneCases.size() - 4; j--) {
                         PhoneCase phoneCase = phoneCases.get(j);
                         int caseID = phoneCase.getCaseID();

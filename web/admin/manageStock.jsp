@@ -153,8 +153,9 @@
                                 <option name="caseColor" value="unknown">-----
                                     <%for (int j = 0; j < caseColors.size(); j++) {
                                             v_caseColor = caseColors.get(j);
-                                            String caseColor = v_caseColor.getCaseColor();%>
-                                <option name="caseColor" value="<%=caseColor%>"><%=caseColor%>
+                                            String caseColor = v_caseColor.getCaseColor();
+                                            int v_stock = v_caseColor.getStock();%>
+                                <option name="caseColor" value="<%=caseColor%>"><%=caseColor%> <%=v_stock%>°³
                                     <% }%>
                             </select>
                             <br>
