@@ -198,14 +198,15 @@ public class UserDAO {
         }
     }
     String findID(String userID){
+        String findID = "X";
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
-        String findID = null;
         try {
             //GETALLID_STMT = "SELECT userID FROM shoppingUser";
             conn = connPool.getPoolConnection();
-            stmt = conn.prepareStatement(GETALLID_STMT);
+            stmt = conn.prepareStatement(ID_STMT);
+            stmt.setString(1, userID);
             rset = stmt.executeQuery();
             
             //데이터 베이스에서 유저 데이터 가져오기

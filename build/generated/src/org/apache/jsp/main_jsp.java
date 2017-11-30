@@ -164,6 +164,10 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        &nbsp;\r\n");
       out.write("                        <input type=\"image\" src=\"image\\myPageUp_1.jpg\" name=\"Submit\" value =\"MY PAGE\"></a>\r\n");
       out.write("                </td>\r\n");
+      out.write("                <td><form action=\"IDCheck\" method=\"post\">\r\n");
+      out.write("                        <input type=\"image\" src=\"image\\join.jpg\" name=\"Submit\" value =\"회원가입\">\r\n");
+      out.write("                    </form>    \r\n");
+      out.write("                </td>\r\n");
       out.write("                ");
  } else {
                     session.setAttribute("user", user);
@@ -196,10 +200,6 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                ");
   }
       out.write("\r\n");
-      out.write("                <td><form action=\"IDCheck\" method=\"post\">\r\n");
-      out.write("                        <input type=\"image\" src=\"image\\join.jpg\" name=\"Submit\" value =\"회원가입\">\r\n");
-      out.write("                    </form>    \r\n");
-      out.write("                </td>\r\n");
       out.write("\r\n");
       out.write("                <td><form action=\"qnaList\" methoe=\"post\">\r\n");
       out.write("                        <input type=\"image\" src=\"image\\q&a.jpg\" name=\"Submit\" value=\"Q&A\">\r\n");

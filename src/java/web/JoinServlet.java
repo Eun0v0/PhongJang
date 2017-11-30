@@ -51,7 +51,8 @@ public class JoinServlet extends HttpServlet {
             String password = request.getParameter("password");
             String phoneNumber = request.getParameter("phoneNumber");
             String address = request.getParameter("address");
-            String findID = userService.findID(userID);
+            String findID = null;
+            findID = userService.findID(userID);
 
             if ((userID == null) || (userID.length() == 0)) {
                 status.addException(new Exception(
@@ -73,7 +74,7 @@ public class JoinServlet extends HttpServlet {
                 status.addException(new Exception(
                         "주소를 입력해주세요"));
             }
-            if ((findID != null) || (findID.length() != 0)) {
+            if (!findID.equals("X")) {
                 status.addException(new Exception(
                         "이미 가입된 아이디 입니다"));
             }

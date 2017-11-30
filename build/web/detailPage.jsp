@@ -123,8 +123,7 @@
     <body>
          <table border="0px">
             <tr>
-                <%  User user = (User) request.getAttribute("user");
-                    if (user == null) {
+                <% if (user == null) {
                         session.setAttribute("user", user); %>
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
@@ -273,7 +272,8 @@
                             </select></div>
                         <div align="left">수량:</div>
                         <div align="right"><input type="hidden" name="userID" value="<%=userID%>">
-                            <input type="text" name ="numbers" size="5">개</div>
+                            <input type="hidden" name="caseID" value="<%=request.getAttribute("caseID")%>">
+                            <input type="text" name ="numbers" size="5" value="0">개</div>
                         <hr size="1" width="900">
                         <br>
                     </td>
