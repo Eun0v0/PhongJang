@@ -176,6 +176,19 @@
     <input type="hidden" name ="qnaContent" value="<%=qna.getQnaContent()%>">
     <input type="submit" value="수정하기">
 </form>
+    <%--
+    <hr size="2" color="black">
+            <form action="wrtieReview" method="post">
+                <table>
+                    <tr><h2>리뷰 작성★</h2><tr>
+                    <tr><td><textarea name="content" cols="100" rows="5"></textarea><td>
+                    <input type="hidden" name="userID" value="<%=user.getId()%>">
+                    <input type="hidden" name="caseID" value="<%=request.getAttribute("caseID")%>">
+                    <td><input type="submit" value="등록"></td>    
+                    </tr>
+                </table>
+            </form>
+       --%>
 </center>
 </body>
 </html>

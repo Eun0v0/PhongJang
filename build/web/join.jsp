@@ -108,7 +108,7 @@
             <li><%= ex.getMessage()%><%}%></ul></font>    
             <%}%>
     </center>
-    <form action="join" method="post">
+    <form action="join" method="post" name="join">
         <center> <br>
             
             <table>
@@ -136,7 +136,7 @@
             </table>
             <input type="image" src="image\joinbutton.jpg" name="Submit">
             
-            <input type="image" src="image\clearbutton.jpg" name="Reset" onClick ="Reset" aline="absmiddle">
+            <input type="image" src="image\clearbutton.jpg" onClick ="join.reset();return false;" aline="absmiddle">
         </center>
     </form>
 

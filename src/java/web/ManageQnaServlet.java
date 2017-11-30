@@ -46,8 +46,18 @@ public class ManageQnaServlet extends HttpServlet {
         request.setAttribute("qnas", qnas);
         
         //view = request.getRequestDispatcher("admin/managePhoneCase.jsp");
-        view = request.getRequestDispatcher("qna.jsp");
+       // view = request.getRequestDispatcher("qna.jsp");
         
-        view.forward(request, response);
+        //view.forward(request, response);
+        
+        String userType = ((User) HttpSession.getAttribute("user")).getUsertype();    
+        
+        if(userType.equals("C")){
+            view = request.getRequestDispatcher("qna.jsp"); //c7stomer 전용
+            view.forward(request, response);
+        } else {
+            view = request.getRequestDispatcher("admin/qna.jsp");
+            view.forward(request, response);
+        }
     }
 }
