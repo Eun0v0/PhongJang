@@ -9,6 +9,7 @@
 <%@page import="domain.Cart"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
+<jsp:useBean id="status" scope="request" class="util.Status"/>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -128,9 +129,18 @@
     </center>
     <hr size="5" color="black">
 
-
     <center>
-        <br><h2>Hello, <%= user.getName()%></h2>
+        <br><br>
+        <%if ((status != null) && !status.isSuccessful()) {%>
+        <font color="red">오류 발생!!!:
+        <ul><%Iterator errors = status.getExceptions();
+            while (errors.hasNext()) {
+                Exception ex = (Exception) errors.next();%>
+            <li><%= ex.getMessage()%><%}%></ul></font>    
+            <%}%>
+    </center>
+    <center>
+        <br><h2>안녕하세요, <%= user.getName()%>님</h2>
         <table>
             <thead>
                 <tr>
@@ -171,10 +181,10 @@
                 <tr>
                     <td align="center" td bgcolor="#dcdcdc" height ="35">
                         <form action="pay" method="post">
-                            신용 카드 번호를 입력하세요
-                            <input type="text" name="creditcardnumber"></br>
-                            신용 카드 비밀번호를 입력하세요
-                            <input type="password" name="creditcardpassword">
+                            신용 카드 번호를 입력하세요 (16자리)
+                            <input type="text" name="creditcardNumber"></br>
+                            신용 카드 비밀번호를 입력하세요 (4자리)
+                            <input type="password" name="creditcardPassword">
                             </br>
                             <input type="image" src="image\paymentbutton.jpg" name="Submit" value ="삭제" aline="absmiddle">   
                         </form>

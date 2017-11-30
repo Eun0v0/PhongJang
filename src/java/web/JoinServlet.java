@@ -36,7 +36,7 @@ public class JoinServlet extends HttpServlet {
         HttpSession HttpSession=request.getSession();
         
         RequestDispatcher view = null;
-        UserService userService = new UserService();;
+        UserService userService = new UserService();
         Status status = new Status();
         User user = null;
 
