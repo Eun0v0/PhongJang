@@ -107,6 +107,10 @@
                         &nbsp;
                         <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE"></a>
                 </td>
+                <td><form action="IDCheck" method="post">
+                        <input type="image" src="image\join.jpg" name="Submit" value ="회원가입">
+                    </form>    
+                </td>
                 <% } else {
                     session.setAttribute("user", user);%>
                 <td><form action="logout" method="post">
@@ -131,10 +135,6 @@
                 </td>
 
                 <%  }%>
-                <td><form action="IDCheck" method="post">
-                        <input type="image" src="image\join.jpg" name="Submit" value ="회원가입">
-                    </form>    
-                </td>
 
                 <td><form action="qnaList" methoe="post">
                         <input type="image" src="image\q&a.jpg" name="Submit" value="Q&A">

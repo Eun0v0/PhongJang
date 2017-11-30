@@ -22,10 +22,11 @@
         <%session.setAttribute("myCases", myCases);%>
     </head>
     <body>
-        <table border="0px">
+         <table border="0px">
             <tr>
-                <%
-                    if (user == null) { %>
+                <%  User user = (User) request.getAttribute("user");
+                    if (user == null) {
+                        session.setAttribute("user", user); %>
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\cart.jpg"></a>
@@ -36,6 +37,10 @@
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         &nbsp;
                         <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE"></a>
+                </td>
+                <td><form action="IDCheck" method="post">
+                        <input type="image" src="image\join.jpg" name="Submit" value ="회원가입">
+                    </form>    
                 </td>
                 <% } else {
                     session.setAttribute("user", user);%>
@@ -59,11 +64,8 @@
                         <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE">
                     </form>    
                 </td>
+
                 <%  }%>
-                <td><form action="IDCheck" method="post">
-                        <input type="image" src="image\join.jpg" name="Submit" value ="회원가입">
-                    </form>    
-                </td>
 
                 <td><form action="qnaList" methoe="post">
                         <input type="image" src="image\q&a.jpg" name="Submit" value="Q&A">
@@ -80,7 +82,7 @@
         </div> </center>
         <% } else {%>
     <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('main.jsp')"> </div> </center>
-            <% }%>
+            <% } %>
 
     <form action ="search" method="post">
         <img src="image\search.png" height="17" width="17">
@@ -127,6 +129,7 @@
         </table>
     </center>
     <hr size="5" color="black">
+
 
     <center></br></br><img src="image\qnalist.jpg"><br><br></center>
     <center><table>

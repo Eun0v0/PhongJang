@@ -34,7 +34,8 @@ public final class IDCheckServlet extends HttpServlet {
             
         request.setCharacterEncoding("EUC-KR");
         request.setAttribute("users", users);
-        
+        request.setAttribute("user", HttpSession.getAttribute("user"));
+                
         view = request.getRequestDispatcher("join.jsp");
         view.forward(request, response);
     }

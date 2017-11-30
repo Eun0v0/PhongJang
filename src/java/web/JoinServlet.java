@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import util.Status;
 
 public class JoinServlet extends HttpServlet {
@@ -32,6 +33,8 @@ public class JoinServlet extends HttpServlet {
             HttpServletResponse response)
             throws IOException, ServletException {
 
+        HttpSession HttpSession=request.getSession();
+        
         RequestDispatcher view = null;
         UserService userService = new UserService();;
         Status status = new Status();
@@ -84,6 +87,7 @@ public class JoinServlet extends HttpServlet {
                     view.forward(request, response);
                     return;
                 }
+                request.setAttribute("user", HttpSession.getAttribute("user"));
                 view = request.getRequestDispatcher("joinConfirm.jsp");
                 view.forward(request, response);
 

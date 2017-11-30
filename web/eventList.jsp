@@ -23,8 +23,10 @@
             session.setAttribute("events", events);%>
     </head>
     <body>
-        <table border="0px">
-            <tr><%if (user == null) {
+         <table border="0px">
+            <tr>
+                <%  User user = (User) request.getAttribute("user");
+                    if (user == null) {
                         session.setAttribute("user", user); %>
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
@@ -36,6 +38,10 @@
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         &nbsp;
                         <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE"></a>
+                </td>
+                <td><form action="IDCheck" method="post">
+                        <input type="image" src="image\join.jpg" name="Submit" value ="회원가입">
+                    </form>    
                 </td>
                 <% } else {
                     session.setAttribute("user", user);%>
@@ -61,10 +67,6 @@
                 </td>
 
                 <%  }%>
-                <td><form action="IDCheck" method="post">
-                        <input type="image" src="image\join.jpg" name="Submit" value ="회원가입">
-                    </form>    
-                </td>
 
                 <td><form action="qnaList" methoe="post">
                         <input type="image" src="image\q&a.jpg" name="Submit" value="Q&A">
@@ -128,6 +130,7 @@
         </table>
     </center>
     <hr size="5" color="black">
+
 
     <center></br></br><img src="image\qnalist.jpg"><br><br></center>
     <center><table>
