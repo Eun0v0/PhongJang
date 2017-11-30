@@ -16,65 +16,54 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Qna</title>
-        <% Qna qna = (Qna) request.getAttribute("qna");
-            User user = (User) request.getAttribute("user");
+        <%Qna qna = (Qna) request.getAttribute("qna");
             ArrayList<QnaReply> qnaReplys = (ArrayList<QnaReply>) request.getAttribute("qnaReplys");
             QnaReply qnaReply = null;
+            User user = (User) request.getAttribute("user");
             session.setAttribute("user", user);
             session.setAttribute("qnaReplys", qnaReplys);
 
             session.setAttribute("qna", qna);%>
+
     </head>
-    <table border="0px">
-        <tr>
-            <%
-                if (user == null) { %>
-            <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
-            <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                    <img src="image\cart.jpg"></a>
-            </td>
-            <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                    <img src="image\order.jpg"></a>
-            </td>
-            <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                    &nbsp;
-                    <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE"></a>
-            </td>
-            <% } else {
-                session.setAttribute("user", user);%>
-            <td><form action="logout" method="post">
-                    <input type="image" src="image\logout.jpg" name="Submit" value ="로그아웃">
-                </form> 
-            </td>
-            <td><form action="cart" method="post">
-                    <input type="hidden" name="userID" value="<%=user.getId()%>">
-                    <input type="image" src="image\cart.jpg" name="Submit" value ="장바구니">
-                </form> 
-            </td>
+    <body>
 
-            <td><form action="paymentlist" method="post">
-                    <input type="image" src="image\order.jpg" name="Submit" value ="주문 목록">
-                </form>    
-            </td>
-            <td><form action="myPage" method="post">
-                    <input type="hidden" name="userID" value="<%=user.getId()%>">
-                    &nbsp;
-                    <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE">
-                </form>    
-            </td>
-            <%  }%>
-            <td><form action="IDCheck" method="post">
-                    <input type="image" src="image\join.jpg" name="Submit" value ="회원가입">
-                </form>    
-            </td>
+        <table border="0px">
+            <tr>
+                <% if (user == null) { %>
+                <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
+                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                        <input type="image" src="image\adminAdd2.jpg" name="Submit" value ="로그아웃">
+                    </a></td>
+                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                        <img src="image\order.jpg"></a>
+                </td>
 
-            <td><form action="qnaList" methoe="post">
-                    <input type="image" src="image\q&a.jpg" name="Submit" value="Q&A">
-                </form>
-            </td>
-        </tr>
-    </table>
-    <% if (user != null) {%>
+                <% } else {
+                    session.setAttribute("user", user); %>
+                <td><form action="logout" method="post">
+                        <input type="image" src="image\logout.jpg" name="Submit" value ="로그아웃">
+                    </form> 
+                </td>
+                <td><form action="create" method="post">
+                        <input type="image" src="image\adminAdd2.jpg" name="Submit" value ="로그아웃">
+                    </form>
+                </td>
+                <td><form action="manageStock" method="post">
+                        <input type="image" src="image\inventory.jpg" name="Submit" value ="로그아웃">
+                    </form>
+                </td>
+                <td><form action="paymentlist" method="post">
+                        <input type="image" src="image\order.jpg" name="Submit" value="모든 결제내역">
+                    </form> 
+                </td>
+
+                <%  }%>
+
+                <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
+            </tr>
+        </table>
+        <% if (user != null) {%>
     <center> <div align="middle">
             <form action="main" method="post">
                 <input type="hidden" name="userID" value="<%=user.getId()%>">
@@ -82,7 +71,7 @@
             </form>
         </div> </center>
         <% } else {%>
-    <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('main.jsp')"> </div> </center>
+    <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('admin/main.jsp')"> </div> </center>
             <% }%>
 
     <form action ="search" method="post">
@@ -95,14 +84,12 @@
     <center>
         <table>
             <tr>
-                <% if (user != null) {%>
-                <td><form action="myCase" method="post">
-                        <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
+
+                <td><form action="myCaseList" method="post">
+                        <input type="hidden" name="userID" value="<%=user.getId()%>">
+                        <input type="image" src="image\customCase3.jpg" height="35" width="140">
+                        &nbsp;&nbsp;&nbsp;
                     </form></td>
-                    <% } else {%>
-                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                        <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
-                        <% } %>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
 
                 <td><form action ="caseTypePage" method="post">
@@ -125,11 +112,12 @@
 
                 <td><form action ="eventList" method="post">
                         <input type="image" src="image\event_.jpg" name="Submit" height="35" width="140">
-                    </form></td>  
+                    </form></td> 
             </tr>
         </table>
     </center>
     <hr size="5" color="black">
+
 
     <%if ((status != null) && !status.isSuccessful()) {%>
     <font color="red">There were problems processing your request:
@@ -165,6 +153,8 @@
                 <td align="center"><%=qna.getQnaContent()%></td>
                 <td>&nbsp;</td>
             </tr>
+
+
             <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
             <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
             <tr align="center">
@@ -173,15 +163,6 @@
             </tr>      
     </center>
 </table>
-<form action="updateQna"  method="post">
-    <input type="hidden" name ="qnaNum" value="<%=qna.getQnaNum()%>">
-    <input type="hidden" name ="qnaTitle" value="<%=qna.getQnaTitle()%>">
-    <input type="hidden" name ="userName" value="<%=qna.getUserName()%>">
-    <input type="hidden" name ="password" value="<%=qna.getPassWord()%>">
-    <input type="hidden" name ="qnaContent" value="<%=qna.getQnaContent()%>">
-    <input type="submit" value="수정하기">
-</form>
-
 <center>
     <hr size="2" color="black">
     <br><br>
@@ -205,11 +186,36 @@
             <td bgcolor="#dcdcdc" align="center"><%=writeDate%></td>
             <td bgcolor="#dcdcdc" align="center"><%=content%></td>
 
+            <%  if (user.getId().equals(qnaReply.getUserID())) {%>
+            <td bgcolor="#dcdcdc" align="center">
+                <form action="deleteQnaReply" method="post">
+                    <input type="hidden" name = "userID" value="<%=qnaReply.getUserID()%>">
+                    <input type="hidden" name = "qnaNum" value="<%=qna.getQnaNum()%>">
+                    <input type="submit" value="삭제">
+                </form>
+            </td>
+            <% }%>
+
         </tr>
         <% }
             }%>
     </table>
 </center> 
+<br><br><br>
+<hr size="2" color="black">
+<form action="qnaReply" method="post">
+    <table>
+        <tr><h2>댓글 작성</h2><tr>
+        <tr>
+            <td><textarea name="content" cols="100" rows="5"></textarea></td>
+            <td><input type="hidden" name="userID" value="<%=user.getId()%>"></td>
+            <td><input type="hidden" name="qnaNum" value="<%=qna.getQnaNum()%>"></td>
+            <td><input type="submit" value="등록"></td>
+
+        </tr>
+    </table>
+</form>
+
 </center>
 </body>
 </html>

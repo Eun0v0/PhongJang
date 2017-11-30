@@ -3,6 +3,7 @@
     Created on : 2017. 11. 25, 오후 1:36:13
     Author     : user
 --%>
+<%@page import="domain.QnaReply"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.User"%>
 <%@page import="java.net.URLEncoder"%>
@@ -15,10 +16,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Qna</title>
-        <% Qna qna = (Qna) request.getAttribute("qna");%>
-        <%User user = (User) request.getAttribute("user");%>
-        <%session.setAttribute("user", user);%>
-        <%session.setAttribute("qna", qna);%>
+        <% Qna qna = (Qna) request.getAttribute("qna");
+            User user = (User) request.getAttribute("user");
+            ArrayList<QnaReply> qnaReplys = (ArrayList<QnaReply>) request.getAttribute("qnaReplys");
+            QnaReply qnaReply = null;
+            session.setAttribute("user", user);
+            session.setAttribute("qnaReplys", qnaReplys);
+
+            session.setAttribute("qna", qna);%>
     </head>
     <table border="0px">
         <tr>
@@ -64,9 +69,9 @@
             </td>
 
             <td><form action="qnaList" methoe="post">
-                        <input type="image" src="image\q&a.jpg" name="Submit" value="Q&A">
-                    </form>
-                </td>
+                    <input type="image" src="image\q&a.jpg" name="Submit" value="Q&A">
+                </form>
+            </td>
         </tr>
     </table>
     <% if (user != null) {%>
@@ -94,30 +99,30 @@
                 <td><form action="myCase" method="post">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
                     </form></td>
-                <% } else {%>
+                    <% } else {%>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
-                <% } %>        
+                        <% } %>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\bumperCase2.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="범퍼">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\hardCase.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="하드">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="caseTypePage" method="post">
                         <input type="image" src="image\jellyCase.jpg" name="Submit" height="35" width="140">
                         <input type="hidden" name="caseType" value="젤리">
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
-                
+
                 <td><form action ="eventList" method="post">
                         <input type="image" src="image\event_.jpg" name="Submit" height="35" width="140">
                     </form></td>  
@@ -176,19 +181,35 @@
     <input type="hidden" name ="qnaContent" value="<%=qna.getQnaContent()%>">
     <input type="submit" value="수정하기">
 </form>
-    <%--
+
+<center>
     <hr size="2" color="black">
-            <form action="wrtieReview" method="post">
-                <table>
-                    <tr><h2>리뷰 작성★</h2><tr>
-                    <tr><td><textarea name="content" cols="100" rows="5"></textarea><td>
-                    <input type="hidden" name="userID" value="<%=user.getId()%>">
-                    <input type="hidden" name="caseID" value="<%=request.getAttribute("caseID")%>">
-                    <td><input type="submit" value="등록"></td>    
-                    </tr>
-                </table>
-            </form>
-       --%>
+    <br><br>
+
+    <table>
+        <tr><h2>댓글 내용</h2><tr>
+        <tr>
+            <th width="400" height = "35">ID</th>
+            <th width="120" height = "35">작성일</th>
+            <th width="120" height = "35">내용</th>
+        </tr>
+        <%  if (qnaReplys != null) {
+                for (int i = 0; i < qnaReplys.size(); i++) {
+                    qnaReply = qnaReplys.get(i);
+                    String userID = qnaReply.getUserID();
+                    String content = qnaReply.getContent();
+                    String writeDate = qnaReply.getWriteDate();
+        %>
+        <tr>
+            <td bgcolor="#dcdcdc" align="center"><%=userID%></td>
+            <td bgcolor="#dcdcdc" align="center"><%=writeDate%></td>
+            <td bgcolor="#dcdcdc" align="center"><%=content%></td>
+
+        </tr>
+        <% }
+            }%>
+    </table>
+</center> 
 </center>
 </body>
 </html>

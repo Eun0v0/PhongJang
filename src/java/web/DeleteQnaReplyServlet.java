@@ -5,11 +5,21 @@
  */
 package web;
 
-import domain.User;
+import domain.Cart;
+import domain.CartService;
+import domain.CaseColor;
+import domain.CaseColorService;
+import domain.PhoneCase;
+import domain.PhoneCaseService;
+import domain.PhoneType;
+import domain.PhoneTypeService;
 import domain.Qna;
 import domain.QnaReply;
 import domain.QnaReplyService;
 import domain.QnaService;
+import domain.Review;
+import domain.ReviewService;
+import domain.User;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -18,38 +28,47 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-public class RetrieveQnaServlet extends HttpServlet {
-     /*public void doPost(HttpServletRequest request,
-            HttpServletResponse response)
-            throws IOException, ServletException {
-        processRequest(request, response);
-    }*/
-     public void doGet(HttpServletRequest request,
+import util.Status;
+
+public class DeleteQnaReplyServlet extends HttpServlet {
+
+    public void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
         processRequest(request, response);
     }
-     public void processRequest(HttpServletRequest request,
+
+    public void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
         RequestDispatcher view = null;
-        QnaService qnaService = null;
-        HttpSession HttpSession=request.getSession();
-        int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
-        Qna qna = null;
-        qnaService = new QnaService();
-        qna = qnaService.getQnaInfo(qnaNum);
-        request.setAttribute("user", HttpSession.getAttribute("user"));
-        request.setAttribute("qna", qna);
-        
+
+        HttpSession HttpSession = request.getSession();
+
         QnaReplyService qnaReplyService = new QnaReplyService();
+        Status status = new Status();
+        response.setContentType("text/html; charset=euc-kr");
+        request.setAttribute("status", status);
+        request.setCharacterEncoding("EUC-KR");
+        
+        int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
+        String userID = request.getParameter("userID");
+        
+        qnaReplyService.deleteQnaReply(userID, qnaNum);
+        
         
         ArrayList<QnaReply> qnaReplys = null;
         qnaReplys = qnaReplyService.getAllReply(qnaNum);
         request.setAttribute("qnaReplys", qnaReplys);
 
+        request.setAttribute("user", HttpSession.getAttribute("user"));
         
         String userType = ((User) HttpSession.getAttribute("user")).getUsertype();    
+        
+        QnaService qnaService = new QnaService();
+        Qna qna = qnaService.getQnaInfo(qnaNum);
+        
+        request.setAttribute("qna", qna);
         
         if(userType.equals("C")){
             view = request.getRequestDispatcher("qnaView.jsp"); //c7stomer 전용
@@ -58,5 +77,6 @@ public class RetrieveQnaServlet extends HttpServlet {
             view = request.getRequestDispatcher("admin/qnaView.jsp");
             view.forward(request, response);
         }
+        
     }
 }
