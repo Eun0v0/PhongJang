@@ -17,7 +17,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
-        <title>Q&A</title>
+        <title>나만의 케이스 주문서</title>
         <% ArrayList<MyCase> myCases = (ArrayList<MyCase>) request.getAttribute("myCases");
             User user = (User) request.getAttribute("user");
             MyCase myCase = (MyCase) request.getAttribute("myCase");
@@ -26,14 +26,18 @@
             session.setAttribute("myCases", myCases);
             session.setAttribute("myCase", myCase);
             session.setAttribute("replyMyCase", replyMyCase);
-            
+
         %>
     </head>
     <body>
         <table border="0px">
             <tr>
+<<<<<<< HEAD
+                <%                    if (user == null) { %>
+=======
                 <%  if (user == null) {
                         session.setAttribute("user", user); %>
+>>>>>>> b7b097b170ecaff5114ddcea772377fafc4280a6
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\cart.jpg"></a>
@@ -105,10 +109,10 @@
                 <td><form action="myCase" method="post">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
                     </form></td>
-                <% } else {%>
+                    <% } else {%>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
-                <% } %>        
+                        <% } %>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
 
                 <td><form action ="caseTypePage" method="post">
@@ -145,7 +149,7 @@
             Exception ex = (Exception) errors.next();%>
         <li><%= ex.getMessage()%><%}%></ul></font>    
         <%}%>
-    <center></br></br><img src="image\qnalist.jpg"><br><br></center>
+    <center></br><h2>나만의 케이스 주문서</h2> <hr width="20%" size="1" color="gray"><br></center>
     <center>
         <%  int myCaseNum = myCase.getMyCaseNum();
             String title = myCase.getTitle();
@@ -160,86 +164,85 @@
         <form action="modifyMyCaseProcess" method="post" enctype="multipart/form-data">
             <table>
                 <tr>
-                    <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
-                    <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <th width="120" height="35">제목</th>
-                        <td><textarea name="title" size="20"><%=title%></textarea></td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <th width="60" height="35">케이스 타입</th>
-                        <td><select name="caseType" >
-                                <option name="caseType" value="<%=caseType%>"><%=caseType%>
-                                <option name="caseType" value="젤리">젤리
-                                <option name="caseType" value="하드">하드
-                                <option name="caseType" value="범퍼">범퍼</select></td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <th width="60" height="35">핸드폰 기종</th>
-                        <td><textarea name="phoneType" size="20"><%=phoneType%></textarea></td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <th width="60" height="35">색상</th>
-                        <td><select name="color" >
-                                <option name="color" value="<%=color%>"><%=color%>
-                                <option name="color" value="화이트">화이트
-                                <option name="color" value="아일랜드블루">아일랜드블루
-                                <option name="color" value="체리블러썸">체리블러썸
-                                <option name="color" value="에어리블루">에어리블루
-                                <option name="color" value="오렌지">오렌지
-                                <option name="color" value="옐로우">옐로우
-                                <option name="color" value="그레이">그레이
-                                <option name="color" value="레몬옐로우">레몬옐로우
-                                <option name="color" value="베이크드오렌지">베이크드오렌지
-                                <option name="color" value="그린">그린
-                                <option name="color" value="캔디핑크">캔디핑크
-                                <option name="color" value="라피스블루">라피스블루
-                                <option name="color" value="피치">피치
-                                <option name="color" value="레드">레드
-                                <option name="color" value="핑크">핑크
-                                <option name="color" value="딥그린">딥그린
-                                <option name="color" value="블루">블루
-                                <option name="color" value="라이트민트">라이트민트
-                                <option name="color" value="네이비">네이비
-                                <option name="color" value="블랙">블랙
-                            </select></td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <th width="60" height="35">케이스 이미지</th>
-                        <td><input type="file" name="caseImage" size="48" maxlength="50"><%=image%></td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <th width="60" height="35">부가 설명</th>
-                        <td><textarea name="content" cols="50" rows="13"><%=content%></textarea></td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-                    <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
-                    <tr align="center">
-                        <td>&nbsp;</td><br>
-                    <td colspan="2">
-                        <input type="hidden" name="userID" value="<%=user.getId()%>">
-                        <input type="hidden" name="myCaseNum" value="<%=myCaseNum%>">
-                        
-                        <input type="submit" value="수정">
+                <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
+                <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+                <tr>
                     <td>&nbsp;</td>
-                    </tr>      
+                    <th width="120" height="35">제목</th>
+                    <td><textarea name="title" size="20"><%=title%></textarea></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <th width="60" height="35">케이스 타입</th>
+                    <td><select name="caseType" >
+                            <option name="caseType" value="<%=caseType%>"><%=caseType%>
+                            <option name="caseType" value="젤리">젤리
+                            <option name="caseType" value="하드">하드
+                            <option name="caseType" value="범퍼">범퍼</select></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <th width="60" height="35">핸드폰 기종</th>
+                    <td><textarea name="phoneType" size="20"><%=phoneType%></textarea></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <th width="60" height="35">색상</th>
+                    <td><select name="color" >
+                            <option name="color" value="<%=color%>"><%=color%>
+                            <option name="color" value="화이트">화이트
+                            <option name="color" value="아일랜드블루">아일랜드블루
+                            <option name="color" value="체리블러썸">체리블러썸
+                            <option name="color" value="에어리블루">에어리블루
+                            <option name="color" value="오렌지">오렌지
+                            <option name="color" value="옐로우">옐로우
+                            <option name="color" value="그레이">그레이
+                            <option name="color" value="레몬옐로우">레몬옐로우
+                            <option name="color" value="베이크드오렌지">베이크드오렌지
+                            <option name="color" value="그린">그린
+                            <option name="color" value="캔디핑크">캔디핑크
+                            <option name="color" value="라피스블루">라피스블루
+                            <option name="color" value="피치">피치
+                            <option name="color" value="레드">레드
+                            <option name="color" value="핑크">핑크
+                            <option name="color" value="딥그린">딥그린
+                            <option name="color" value="블루">블루
+                            <option name="color" value="라이트민트">라이트민트
+                            <option name="color" value="네이비">네이비
+                            <option name="color" value="블랙">블랙
+                        </select></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <th width="60" height="35">케이스 이미지</th>
+                    <td><input type="file" name="caseImage" size="48" maxlength="50"><%=image%></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <th width="60" height="35">부가 설명</th>
+                    <td><textarea name="content" cols="50" rows="13"><%=content%></textarea></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+                <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
+                <tr align="center">
+                    <td>&nbsp;</td><br>
+                <td colspan="2">
+                    <input type="hidden" name="userID" value="<%=user.getId()%>">
+                    <input type="hidden" name="myCaseNum" value="<%=myCaseNum%>">
+                    <input type="image" src="image\modify.jpg" name="Submit" value ="수정하기">       
+                <td>&nbsp;</td>
+                </tr>      
                 </center>
             </table>
         </form>
@@ -247,7 +250,7 @@
     <center>
         <hr size="2" color="black">
         <br><br>
-        
+
         <table>
             <tr><h2>주문 내역서</h2><tr>
             <tr>
@@ -256,11 +259,19 @@
                 <th width="120" height = "35">비고</th>
                 <th width="120" height = "35">상태</th>
             </tr>
+<<<<<<< HEAD
             <% if(replyMyCase!= null){
                 String account = replyMyCase.getAccount();
                 String dueDate = replyMyCase.getDueDate();
                 String v_content = replyMyCase.getContent();
                 String v_status = replyMyCase.getStatus();
+=======
+            <% if (replyMyCase != null) {
+                    String account = replyMyCase.getAccount();
+                    String dueDate = replyMyCase.getDueDate();
+                    String v_content = replyMyCase.getContent();
+                    String v_status = replyMyCase.getStatus();
+>>>>>>> e6256c6a2655faa4ba0115ca77f6f948f95302ce
             %>
             <tr>
                 <td bgcolor="#dcdcdc" align="center"><%=account%></td>
@@ -268,9 +279,13 @@
                 <td bgcolor="#dcdcdc" align="center"><%=v_content%></td>
                 <td bgcolor="#dcdcdc" align="center"><%=v_status%></td>
             </tr>
+<<<<<<< HEAD
             <% } %>
+=======
+            <% }%>
+>>>>>>> e6256c6a2655faa4ba0115ca77f6f948f95302ce
         </table>
     </center> 
-        <br><br><br>
+    <br><br><br>
 </body>
 </html>

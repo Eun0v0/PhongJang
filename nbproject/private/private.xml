@@ -3,6 +3,102 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/myCase.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/UpdateProcessPhoneCaseServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/paymentConfirm.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/phoneCaseList.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/ProcessPhoneCaseServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/qnaView.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/ManageSearchServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/ManageQnaServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/addPayment.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/WEB-INF/web.xml</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/QnaService.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/login.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/SearchPhoneCaseServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/main.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/util/DBConnectionPool.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/eventList.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/cart.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/PhoneCaseService.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/admin/eventWrite.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/admin/caseTypePage.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/admin/eventList.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/Payment.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/searchID.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/LoginServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/StockChangeServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/MyInfoUpdateServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/UpdateQnaServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/image/address.jpg</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/qnaUpdate.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/PaymentDAO.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/ProcessPaymentServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/DeleteCartServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/PaymentService.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/image/banner.jpg</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/Cart.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/RetrievePaymentServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/DeletePaymentServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/detailPage.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/MyInfoServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/DeletePhoneCaseServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/DetailPageServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/PhoneCase.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/DeleteQnaServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/image/id.JPG</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/image/shoppingcart.jpg</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/AddPaymentServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/UpdatePhoneCaseServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/ManageStockServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/image/bottom.jpg</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/Qna.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/PhoneCaseDAO.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/payment.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/CreatePhoneCaseServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/admin/update.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/admin/myCaseList.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/RetrieveCartServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/AddCartServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/modifyMyCase.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/admin/payment.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/qnaCreate.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/admin/manageStock.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/caseTypePage.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/User.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/qna.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/admin/managePhoneCase.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/ProcessQnaServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/CreateQnaServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/myInfo.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/CartDAO.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/CartService.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/image/paybutton.jpg</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/SearchIDServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/ManagePhoneCaseServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/MainServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/QnaDAO.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/joinConfirm.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/myCaseList.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/admin/create.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/UserService.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/image/number.jpg</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/admin/eventUpdate.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/myPage.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/admin/main.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/util/Status.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/RetrieveQnaServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/admin/replyMyCase.jsp</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/domain/UserDAO.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/src/java/web/UpdatePaymentServlet.java</file>
+            <file>file:/D:/3-2학기/소프트웨어공학개론/팀프로젝트/코딩/phongjang/web/join.jsp</file>
+=======
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/SearchPhoneCaseServlet.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/SearchIDServlet.java</file>
+>>>>>>> e6256c6a2655faa4ba0115ca77f6f948f95302ce
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/ProcessQnaServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/admin/myCaseList.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/admin/qnaView.jsp</file>
@@ -103,6 +199,7 @@
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/payment.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/ProcessPaymentServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/searchPwdList.jsp</file>
+>>>>>>> b7b097b170ecaff5114ddcea772377fafc4280a6
         </group>
     </open-files>
 </project-private>
