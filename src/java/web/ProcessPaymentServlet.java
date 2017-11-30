@@ -6,6 +6,8 @@
 package web;
 import domain.Cart;
 import domain.CartService;
+import domain.CaseColor;
+import domain.CaseColorService;
 import domain.PaymentService;
 import domain.PhoneCase;
 import domain.PhoneCaseService;
@@ -50,6 +52,7 @@ public class ProcessPaymentServlet extends HttpServlet {
         String parcelNumber = "준비중";
         ArrayList<PhoneCase> phonecases = null;
         PhoneCaseService phoneCaseService = new PhoneCaseService();
+        CaseColorService caseColorService = new CaseColorService();
         
         PaymentService PaymentService = new PaymentService();
         for (int i = 0; i < carts.size(); i++) {
@@ -62,8 +65,21 @@ public class ProcessPaymentServlet extends HttpServlet {
             String caseName = carts.get(i).getCaseName();
             int caseID = phoneCaseService.getCaseID(caseName);
             PhoneCase phoneCase = phoneCaseService.getPhoneCase(caseID);
-            int newStock = phoneCase.getStock() - carts.get(i).getNumbers();
-            phoneCaseService.stockChange(caseID, newStock);
+            ArrayList<CaseColor> caseColors = caseColorService.getCaseColor(caseName);
+            CaseColor caseColor;
+            String v_caseColor = carts.get(i).getColor();
+            int tempStock = 0;
+            for(int j=0; j<caseColors.size(); j++){
+                caseColor =  caseColors.get(j);
+                if(caseColor.getCaseColor().equals(v_caseColor)){
+                    tempStock = caseColor.getStock();
+                    break;
+                }
+            }
+            int newStock = tempStock - carts.get(i).getNumbers();
+            
+            caseColorService.stockChange(newStock, caseName, v_caseColor);
+            //phoneCaseService.stockChange(caseID, newStock);
         }
         
         phonecases = phoneCaseService.getAllPhoneCase();

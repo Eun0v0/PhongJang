@@ -164,6 +164,10 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        &nbsp;\r\n");
       out.write("                        <input type=\"image\" src=\"image\\myPageUp_1.jpg\" name=\"Submit\" value =\"MY PAGE\"></a>\r\n");
       out.write("                </td>\r\n");
+      out.write("                <td><form action=\"IDCheck\" method=\"post\">\r\n");
+      out.write("                        <input type=\"image\" src=\"image\\join.jpg\" name=\"Submit\" value =\"회원가입\">\r\n");
+      out.write("                    </form>    \r\n");
+      out.write("                </td>\r\n");
       out.write("                ");
  } else {
                     session.setAttribute("user", user);
@@ -196,10 +200,6 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                ");
   }
       out.write("\r\n");
-      out.write("                <td><form action=\"IDCheck\" method=\"post\">\r\n");
-      out.write("                        <input type=\"image\" src=\"image\\join.jpg\" name=\"Submit\" value =\"회원가입\">\r\n");
-      out.write("                    </form>    \r\n");
-      out.write("                </td>\r\n");
       out.write("\r\n");
       out.write("                <td><form action=\"qnaList\" methoe=\"post\">\r\n");
       out.write("                        <input type=\"image\" src=\"image\\q&a.jpg\" name=\"Submit\" value=\"Q&A\">\r\n");
@@ -242,12 +242,12 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <td><form action=\"myCase\" method=\"post\">\r\n");
       out.write("                        <input type=\"image\" src=\"image\\customCase3.jpg\" name=\"Submit\" height=\"35\" width=\"140\">\r\n");
       out.write("                    </form></td>\r\n");
-      out.write("                ");
+      out.write("                    ");
  } else {
       out.write("\r\n");
       out.write("                <td><a OnClick=\"alert('로그인을 해주세요!')\" style=\"cursor:pointer\">\r\n");
       out.write("                        <input type=\"image\" src=\"image\\customCase3.jpg\" name=\"Submit\" height=\"35\" width=\"140\"></a></td>\r\n");
-      out.write("                ");
+      out.write("                        ");
  } 
       out.write("        \r\n");
       out.write("                <td><img src=\"image\\space.jpg\" height=\"35\" width=\"80\"></td>\r\n");
@@ -289,8 +289,8 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
                 PhoneCaseService phoneCaseService = new PhoneCaseService();
                 ArrayList<PhoneCase> phoneCases = phoneCaseService.getAllPhoneCase();
 
-                if (phoneCases.size() != 0) {
-                    for (int i = 0; i < 4; i++) {
+                if (phoneCases!=null) {
+                    for (int i = 0; i <4; i++) {
                         PhoneCase phoneCase = phoneCases.get(i);
                         int caseID = phoneCase.getCaseID();
                         String caseType = phoneCase.getCaseType();
@@ -335,14 +335,15 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <table align=\"center\" width =\"1000\" height=\"400\" cellpadding=\"15\">\r\n");
       out.write("        <tr>\r\n");
       out.write("            ");
-  for (int j = phoneCases.size() - 1; j >= phoneCases.size() - 4; j--) {
-                    PhoneCase phoneCase = phoneCases.get(j);
-                    int caseID = phoneCase.getCaseID();
-                    String caseType = phoneCase.getCaseType();
-                    String caseName = phoneCase.getCaseName();
-                    String explanation = phoneCase.getExplanation();
-                    int price = phoneCase.getPrice();
-                    String imgPath = phoneCase.getImg();
+if (phoneCases.size() >= 4 ) {
+                    for (int j = phoneCases.size() - 1; j >= phoneCases.size() - 4; j--) {
+                        PhoneCase phoneCase = phoneCases.get(j);
+                        int caseID = phoneCase.getCaseID();
+                        String caseType = phoneCase.getCaseType();
+                        String caseName = phoneCase.getCaseName();
+                        String explanation = phoneCase.getExplanation();
+                        int price = phoneCase.getPrice();
+                        String imgPath = phoneCase.getImg();
             
       out.write("\r\n");
       out.write("            <td width=\"25%\">\r\n");
@@ -367,6 +368,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </td>\r\n");
       out.write("            ");
 }
+                }
       out.write("\r\n");
       out.write("        </tr>\r\n");
       out.write("    </table>\r\n");

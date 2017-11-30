@@ -95,7 +95,7 @@
 
     </head>
     <body>
-        <table border="0px">
+         <table border="0px">
             <tr>
                 <% if (user == null) {
                         session.setAttribute("user", user); %>
@@ -109,6 +109,10 @@
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         &nbsp;
                         <input type="image" src="image\myPageUp_1.jpg" name="Submit" value ="MY PAGE"></a>
+                </td>
+                <td><form action="IDCheck" method="post">
+                        <input type="image" src="image\join.jpg" name="Submit" value ="회원가입">
+                    </form>    
                 </td>
                 <% } else {
                     session.setAttribute("user", user);%>
@@ -134,10 +138,6 @@
                 </td>
 
                 <%  }%>
-                <td><form action="IDCheck" method="post">
-                        <input type="image" src="image\join.jpg" name="Submit" value ="회원가입">
-                    </form>    
-                </td>
 
                 <td><form action="qnaList" methoe="post">
                         <input type="image" src="image\q&a.jpg" name="Submit" value="Q&A">
@@ -170,10 +170,10 @@
                 <td><form action="myCase" method="post">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
                     </form></td>
-                    <% } else {%>
+                <% } else {%>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
-                        <% } %>        
+                <% } %>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
 
                 <td><form action ="caseTypePage" method="post">
@@ -194,7 +194,7 @@
                     </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
 
-               <td><form action ="eventList" method="post">
+                <td><form action ="eventList" method="post">
                         <input type="image" src="image\event_.jpg" name="Submit" height="35" width="140">
                     </form></td> 
             </tr>

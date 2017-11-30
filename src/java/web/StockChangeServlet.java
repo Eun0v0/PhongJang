@@ -7,6 +7,7 @@ package web;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import domain.CaseColorService;
 import domain.PhoneCase;
 import domain.PhoneCaseService;
 import domain.User;
@@ -41,10 +42,12 @@ public class StockChangeServlet extends HttpServlet {
         request.setAttribute("status", status);
 
         PhoneCaseService phoneCaseService = new PhoneCaseService();
+        CaseColorService caseColorService = new CaseColorService();
         User user = (User) HttpSession.getAttribute("user");
 
-        int caseID = Integer.parseInt(request.getParameter("caseID"));
+        String caseName = request.getParameter("caseName");
         int stock = Integer.parseInt(request.getParameter("stock"));
+        String caseColor = request.getParameter("caseColor");
 
         ArrayList<PhoneCase> phoneCases = new ArrayList<PhoneCase>();
         try {
@@ -53,11 +56,11 @@ public class StockChangeServlet extends HttpServlet {
                         "Please enter your producttype"));
             }
             try {
-                phoneCaseService.stockChange(caseID, stock);
+                caseColorService.stockChange(stock, caseName, caseColor);
                 phoneCases = phoneCaseService.getAllPhoneCase();
                 request.setAttribute("phoneCases", phoneCases);
                 request.setAttribute("user", user);
-                request.setAttribute("caseID", caseID);
+                //request.setAttribute("caseID", caseID);
                 if (!status.isSuccessful()) {
                     view = request.getRequestDispatcher("admin/manageStock.jsp");
                     view.forward(request, response);

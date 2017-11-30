@@ -7,6 +7,8 @@ package web;
 
 import domain.User;
 import domain.Qna;
+import domain.QnaReply;
+import domain.QnaReplyService;
 import domain.QnaService;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,7 +41,22 @@ public class RetrieveQnaServlet extends HttpServlet {
         qna = qnaService.getQnaInfo(qnaNum);
         request.setAttribute("user", HttpSession.getAttribute("user"));
         request.setAttribute("qna", qna);
-        view = request.getRequestDispatcher("qnaView.jsp"); //c7stomer 전용
-        view.forward(request, response);
+        
+        QnaReplyService qnaReplyService = new QnaReplyService();
+        
+        ArrayList<QnaReply> qnaReplys = null;
+        qnaReplys = qnaReplyService.getAllReply(qnaNum);
+        request.setAttribute("qnaReplys", qnaReplys);
+
+        
+        String userType = ((User) HttpSession.getAttribute("user")).getUsertype();    
+        
+        if(userType.equals("C")){
+            view = request.getRequestDispatcher("qnaView.jsp"); //c7stomer 전용
+            view.forward(request, response);
+        } else {
+            view = request.getRequestDispatcher("admin/qnaView.jsp");
+            view.forward(request, response);
+        }
     }
 }

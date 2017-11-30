@@ -33,4 +33,8 @@ public class CaseColorService {
     public void caseColorDelete(String CaseName) {
         caseColorDataAccess.caseColorDelete(CaseName);
     }
+    public void stockChange(int stock, String caseName, String caseColor) {
+        caseColorDataAccess.stockChange(stock, caseName, caseColor);
+    }
+    
 }

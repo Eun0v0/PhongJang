@@ -451,4 +451,21 @@
         <servlet-name>UpdateMyCaseStatusController</servlet-name>
         <url-pattern>/updateMyCaseStatus</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>QnaReplyController</servlet-name>
+        <servlet-class>web.QnaReplyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>QnaReplyController</servlet-name>
+        <url-pattern>/qnaReply</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteQnaReplyController</servlet-name>
+        <servlet-class>web.DeleteQnaReplyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteQnaReplyController</servlet-name>
+        <url-pattern>/deleteQnaReply</url-pattern>
+    </servlet-mapping>
 </web-app>

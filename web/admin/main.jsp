@@ -195,7 +195,7 @@
                 PhoneCaseService phoneCaseService = new PhoneCaseService();
                 ArrayList<PhoneCase> phoneCases = phoneCaseService.getAllPhoneCase();
                 session.setAttribute("phoneCases", phoneCases);
-                if (phoneCases.size() != 0) {
+                if (phoneCases!=null) {
                     for (int i = 0; i < 4; i++) {
                         PhoneCase phoneCase = phoneCases.get(i);
                         int caseID = phoneCase.getCaseID();
@@ -222,7 +222,7 @@
 
     <table align="center" width ="1000" height="400" cellpadding="15">
         <tr>
-            <%if (phoneCases.size() != 0) {
+            <%if (phoneCases.size() >= 4 ) {
                     for (int j = phoneCases.size() - 1; j >= phoneCases.size() - 4; j--) {
                         PhoneCase phoneCase = phoneCases.get(j);
                         int caseID = phoneCase.getCaseID();

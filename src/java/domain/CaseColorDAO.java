@@ -19,9 +19,11 @@ import util.DBConnectionPool;
 public class CaseColorDAO {
     private DBConnectionPool connPool;
     private static final String SELECT_STMT
-            = "SELECT * FROM CaseColor WHERE CaseName=?";
-    private static final String INSERT_STMT = "INSERT INTO CaseColor VALUES(?,?)";
-    private static final String DELETE_STMT = "DELETE FROM CaseColor WHERE CaseName = ?";
+            = "SELECT * FROM CaseColor2 WHERE CaseName=?";
+    private static final String INSERT_STMT = "INSERT INTO CaseColor2 VALUES(?,?,?)";
+    private static final String DELETE_STMT = "DELETE FROM CaseColor2 WHERE CaseName = ?";
+    private static final String UPDATE_STMT = "UPDATE CaseColor2 SET Stock=? WHERE CaseName= ? AND Color=?";
+    
     
      //검색된 단어를 포함하는 데이터를 가져온다.
     ArrayList<CaseColor> caseColorRetrieve(String caseName) throws SQLException {
@@ -37,7 +39,8 @@ public class CaseColorDAO {
             while (rset.next()) {
                 String CaseName = rset.getString(1);
                 String caseColor = rset.getString(2);
-                caseColors.add(new CaseColor(CaseName, caseColor));
+                int stock = rset.getInt(3);
+                caseColors.add(new CaseColor(CaseName, caseColor, stock));
             }
             return caseColors;
         } catch (SQLException se) {
@@ -76,12 +79,14 @@ public class CaseColorDAO {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
+        int stock = 10;
         try {
             //INSERT_STMT = "INSERT INTO CasePhoneType VALUES(?,?)
             conn = connPool.getPoolConnection();
             stmt = conn.prepareStatement(INSERT_STMT);
             stmt.setString(1, caseName);
             stmt.setString(2, caseColor);
+            stmt.setInt(3, stock);
             stmt.executeQuery();
         } catch (SQLException se) {
             throw new RuntimeException(
@@ -112,6 +117,39 @@ public class CaseColorDAO {
             conn = connPool.getPoolConnection();
             stmt = conn.prepareStatement(DELETE_STMT);
             stmt.setString(1, caseName);
+            stmt.executeQuery();
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
+     //상품 데이터를 재고를 수정한다.
+    void stockChange(int stock, String caseName,  String caseColor) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        //String UPDATE_STMT = "UPDATE CaseColor2 SET Stock=? WHERE CaseName= ? AND Color=?";
+        try {
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(UPDATE_STMT);
+            stmt.setInt(1, stock);
+            stmt.setString(2, caseName);
+            stmt.setString(3, caseColor);
             stmt.executeQuery();
         } catch (SQLException se) {
             throw new RuntimeException(
