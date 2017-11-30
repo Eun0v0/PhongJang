@@ -9,12 +9,16 @@
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/admin/myCaseList.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/modifyMyCase.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/phoneCaseList.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/admin/qnaView.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/eventList.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/SearchQnAServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/EventService.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/UpdateQnaProcessServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/IDOverlapCheckServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/cart.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/admin/manageStock.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/admin/qna.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/DeleteQnaReplyServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/myInfo.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/UpdateQnaServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/main.jsp</file>
@@ -27,15 +31,14 @@
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/CreateProcessEventServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/login.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/UserService.java</file>
-            <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/QnaDAO.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/MyCaseDAO.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/ReplyMyCaseDAO.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/searchID.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/ReplyMyCaseService.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/paymentConfirm.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/admin/eventWrite.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/AddPaymentServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/MyCaseServlet.java</file>
-            <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/detailPage.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/Qna.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/join.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/IDCheckServlet.java</file>
@@ -50,11 +53,14 @@
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/CartDAO.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/AddCartServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/Payment.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/LogoutServlet.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/LoginServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/admin/managePhoneCase.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/admin/payment.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/addPayment.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/admin/caseTypePage.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/SearchPwdServlet.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/QnaReplyServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/ProcessMyCaseServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/PhoneCase.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/PhoneCaseDAO.java</file>
@@ -67,8 +73,11 @@
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/WEB-INF/web.xml</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/myCase.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/joinConfirm.jsp</file>
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/QnaReplyDAO.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/eventView.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/PhoneType.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/RetrieveQnaServlet.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/ReplyMyCaseServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/DetailPageServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/admin/eventList.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/searchIDList.jsp</file>
@@ -79,6 +88,7 @@
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/WriteReviewServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/UpdateProcessPhoneCaseServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/ReviewDAO.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/QnaReply.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/admin/main.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/payment.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/MyCaseListServlet.java</file>

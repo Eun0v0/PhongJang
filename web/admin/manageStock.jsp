@@ -3,6 +3,8 @@
     Created on : 2017. 11. 3, ?? 4:28:19
     Author     : yukih
 --%>
+<%@page import="domain.CaseColorService"%>
+<%@page import="domain.CaseColor"%>
 <%@page import="java.io.FileInputStream"%>
 <%@page import="java.io.BufferedOutputStream"%>
 <%@page import="java.io.BufferedInputStream"%>
@@ -19,10 +21,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
         <title>Product List</title>
-        <% ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");%>
-        <% User user = (User) request.getAttribute("user");%>
-        <% session.setAttribute("user", user);%>
-        <% session.setAttribute("phoneCases", phoneCases);%>
+        <% ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
+        ArrayList<CaseColor> caseColors = new ArrayList<CaseColor>();
+        CaseColorService caseColorService = new CaseColorService();
+        CaseColor v_caseColor = null;
+         User user = (User) request.getAttribute("user");
+         session.setAttribute("user", user);
+         session.setAttribute("phoneCases", phoneCases);%>
 
     </head>
     <body>
@@ -139,12 +144,22 @@
                     String explanation = phoneCase.getExplanation();
                     int price = phoneCase.getPrice();
                     String imgPath = phoneCase.getImg();
+                    caseColors = caseColorService.getCaseColor(caseName);
             %>      
             <tr>
                 <td  bgcolor="#dcdcdc" align="center"><%=caseName%></td>
                 <td  bgcolor="#dcdcdc" align="center"><form action = "stockChange" method = "post">
-                        <textarea name="stock" cols="10" rows="2"><%=stock%></textarea>
-                        <input type="hidden" name="caseID" value="<%=caseID%>"> <input type ="submit" value="재고 수정">
+                        <select name="caseColor" width="10">
+                                <option name="caseColor" value="unknown">-----
+                                    <%for (int j = 0; j < caseColors.size(); j++) {
+                                            v_caseColor = caseColors.get(j);
+                                            String caseColor = v_caseColor.getCaseColor();%>
+                                <option name="caseColor" value="<%=caseColor%>"><%=caseColor%>
+                                    <% }%>
+                            </select>
+                            <br>
+                            <input type="text" name="stock"><br>
+                        <input type="hidden" name="caseName" value="<%=caseName%>"> <input type ="submit" value="재고 수정">
                     </form></td>
                 <td  bgcolor="#dcdcdc" align="center">
                     <form action="deleteCase" method="post">

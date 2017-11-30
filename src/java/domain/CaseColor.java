@@ -12,12 +12,23 @@ package domain;
 public class CaseColor {
     String CaseName;
     String CaseColor;
+    int stock;
 
-    public CaseColor(String CaseName, String CaseColor) {
+    public CaseColor(String CaseName, String CaseColor, int stock) {
         this.CaseName = CaseName;
         this.CaseColor = CaseColor;
+        this.stock = stock;
     }
 
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    
     public String getCaseName() {
         return CaseName;
     }

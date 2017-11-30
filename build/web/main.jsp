@@ -167,10 +167,10 @@
                 <td><form action="myCase" method="post">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
                     </form></td>
-                <% } else {%>
+                    <% } else {%>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
-                <% } %>        
+                        <% } %>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
 
                 <td><form action ="caseTypePage" method="post">
@@ -209,8 +209,9 @@
                 PhoneCaseService phoneCaseService = new PhoneCaseService();
                 ArrayList<PhoneCase> phoneCases = phoneCaseService.getAllPhoneCase();
 
-                if (phoneCases.size() != 0) {
-                    for (int i = 0; i < 4; i++) {
+                if (phoneCases!=null) {
+                    for (int i = 0; i < phoneCases.size(); i++) {
+                        if(phoneCases.size() == 4) break;
                         PhoneCase phoneCase = phoneCases.get(i);
                         int caseID = phoneCase.getCaseID();
                         String caseType = phoneCase.getCaseType();
@@ -237,14 +238,15 @@
 
     <table align="center" width ="1000" height="400" cellpadding="15">
         <tr>
-            <%  for (int j = phoneCases.size() - 1; j >= phoneCases.size() - 4; j--) {
-                    PhoneCase phoneCase = phoneCases.get(j);
-                    int caseID = phoneCase.getCaseID();
-                    String caseType = phoneCase.getCaseType();
-                    String caseName = phoneCase.getCaseName();
-                    String explanation = phoneCase.getExplanation();
-                    int price = phoneCase.getPrice();
-                    String imgPath = phoneCase.getImg();
+            <%if (phoneCases.size() > 4 ) {
+                    for (int j = phoneCases.size() - 1; j >= phoneCases.size() - 4; j--) {
+                        PhoneCase phoneCase = phoneCases.get(j);
+                        int caseID = phoneCase.getCaseID();
+                        String caseType = phoneCase.getCaseType();
+                        String caseName = phoneCase.getCaseName();
+                        String explanation = phoneCase.getExplanation();
+                        int price = phoneCase.getPrice();
+                        String imgPath = phoneCase.getImg();
             %>
             <td width="25%">
                 <a href="detailPage?caseID=<%=caseID%>"><img src = "image/upload/<%=imgPath%>" height="240" width="280" alt="<%=caseName%>" title="<%=caseName%>"/><br><br><%=caseName%>(<%=caseType%>)</a>
@@ -252,7 +254,8 @@
                 <img src = "image\ic_best.png"><br>
                 <font size="4"><b><%=price%>원</b></font>
             </td>
-            <%}%>
+            <%}
+                }%>
         </tr>
     </table>
     <table align="center" width ="1000" height="400" cellpadding="15">
