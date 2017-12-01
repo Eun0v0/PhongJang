@@ -27,15 +27,16 @@ public final class MainServlet extends HttpServlet {
         RequestDispatcher view = null;
         HttpSession HttpSession=request.getSession();
         
-        PhoneCaseService PhoneCaseService = null;
+        PhoneCaseService phoneCaseService = null;
         ArrayList<PhoneCase> phoneCases = null; 
         
-        PhoneCaseService = new PhoneCaseService();     
-        phoneCases = PhoneCaseService.getAllPhoneCase();
-            
+        phoneCaseService = new PhoneCaseService();     
+        phoneCases = phoneCaseService.getAllPhoneCase();
+        ArrayList<PhoneCase> p_phoneCases = phoneCaseService.popPhoneCaseRetrieve();
         request.setCharacterEncoding("EUC-KR");
         request.setAttribute("user", HttpSession.getAttribute("user"));
         request.setAttribute("phoneCases", phoneCases);
+        request.setAttribute("p_phoneCases", p_phoneCases);
         
         
         String userType = ((User) HttpSession.getAttribute("user")).getUsertype();    

@@ -64,7 +64,7 @@ public class ProcessPhoneCaseServlet extends HttpServlet {
             int price = Integer.parseInt(multi.getParameter("price"));
             String img = multi.getFilesystemName("img");
             String detailImg = multi.getFilesystemName("detailImg");
-            int stock = 10; //기본 수량은 10개로 지정
+            int stock = 0; //인기 케이스 카운트를 위한 것
             String [] select_phoneTypes = multi.getParameterValues("phoneType"); //핸드폰 기종 체크박스에서 받아오기
             String [] selet_caseColors = multi.getParameterValues("color"); //핸드폰 기종 체크박스에서 받아오기
             

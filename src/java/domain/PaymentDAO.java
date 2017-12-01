@@ -13,6 +13,13 @@ public class PaymentDAO {
             = "SELECT * FROM shoppingPayment";
     private static final String RETRIEVE_STMT
             = "SELECT * FROM shoppingPayment WHERE UserID = ?";
+    private static final String NUMBER_STMT
+            = "SELECT Numbers FROM shoppingPayment WHERE PaymentID = ?";
+    private static final String COLOR_STMT
+            = "SELECT Color FROM shoppingPayment WHERE PaymentID = ?";
+    private static final String NAME_STMT
+            = "SELECT CaseName FROM shoppingPayment WHERE PaymentID = ?";
+    
     private static final String GETID_STMT = "SELECT MAX(PaymentID) FROM shoppingPayment";
     private static final String ADD_STMT = "INSERT INTO shoppingPayment VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String DELETE_STMT = "DELETE FROM shoppingPayment WHERE PaymentID = ?";
@@ -141,7 +148,138 @@ public class PaymentDAO {
             }
         }
     }
-    
+    int getNumbers(int paymentID) throws SQLException {
+        int numbers = 0;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        try {
+            //String RETRIEVE_STMT= "SELECT * FROM shoppingPayment WHERE UserID = ?";
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(NUMBER_STMT);
+            stmt.setInt(1, paymentID);
+            rset = stmt.executeQuery();
+            while (rset.next()) {
+                numbers = rset.getInt(1);
+            }
+            return numbers;
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("Exception: " + e.getMessage());
+        } finally {
+            if (rset != null) {
+                try {
+                    rset.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
+    //색상을 가져온다
+    String getColor(int paymentID) throws SQLException {
+        String color =null;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        try {
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(COLOR_STMT);
+            stmt.setInt(1, paymentID);
+            rset = stmt.executeQuery();
+            while (rset.next()) {
+                color = rset.getString(1);
+            }
+            return color;
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("Exception: " + e.getMessage());
+        } finally {
+            if (rset != null) {
+                try {
+                    rset.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
+    //케이스 이름을 가져온다
+    String getCaseName(int paymentID) throws SQLException {
+        String caseName =null;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        try {
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(NAME_STMT);
+            stmt.setInt(1, paymentID);
+            rset = stmt.executeQuery();
+            while (rset.next()) {
+                caseName = rset.getString(1);
+            }
+            return caseName;
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("Exception: " + e.getMessage());
+        } finally {
+            if (rset != null) {
+                try {
+                    rset.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
     //고객이 결제한 내용을 데이터베이스에 저장한다.
     void paymentAdd(String userID, String caseName, int numbers, int price, String address, String phoneNumber, 
                     String creditCardNumber, String creditcardPassword, String status, String parcelNumber, String s_date,

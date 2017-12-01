@@ -93,6 +93,7 @@ public class ProcessPaymentServlet extends HttpServlet {
                         String caseName = carts.get(i).getCaseName();
                         int caseID = phoneCaseService.getCaseID(caseName);
                         PhoneCase phoneCase = phoneCaseService.getPhoneCase(caseID);
+                        int pop = phoneCase.getStock() + carts.get(i).getNumbers();//인기케이스
                         ArrayList<CaseColor> caseColors = caseColorService.getCaseColor(caseName);
                         CaseColor caseColor;
                         String v_caseColor = carts.get(i).getColor();
@@ -107,7 +108,7 @@ public class ProcessPaymentServlet extends HttpServlet {
                         int newStock = tempStock - carts.get(i).getNumbers();
 
                         caseColorService.stockChange(newStock, caseName, v_caseColor);
-                        //phoneCaseService.stockChange(caseID, newStock);
+                        phoneCaseService.stockChange(caseID, pop);
                     }
                 }
                 phonecases = phoneCaseService.getAllPhoneCase();

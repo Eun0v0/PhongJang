@@ -207,11 +207,11 @@
         <tr>
             <%
                 PhoneCaseService phoneCaseService = new PhoneCaseService();
-                ArrayList<PhoneCase> phoneCases = phoneCaseService.getAllPhoneCase();
-
-                if (phoneCases!=null) {
+                ArrayList<PhoneCase> p_phoneCases = phoneCaseService.popPhoneCaseRetrieve();
+                session.setAttribute("p_phoneCases", p_phoneCases);
+                if (p_phoneCases!=null) {
                     for (int i = 0; i <4; i++) {
-                        PhoneCase phoneCase = phoneCases.get(i);
+                        PhoneCase phoneCase = p_phoneCases.get(i);
                         int caseID = phoneCase.getCaseID();
                         String caseType = phoneCase.getCaseType();
                         String caseName = phoneCase.getCaseName();
@@ -237,7 +237,9 @@
 
     <table align="center" width ="1000" height="400" cellpadding="15">
         <tr>
-            <%if (phoneCases.size() >= 4 ) {
+            <%ArrayList<PhoneCase> phoneCases = phoneCaseService.getAllPhoneCase();
+                session.setAttribute("phoneCases", phoneCases);
+                if (phoneCases.size() >= 4 ) {
                     for (int j = phoneCases.size() - 1; j >= phoneCases.size() - 4; j--) {
                         PhoneCase phoneCase = phoneCases.get(j);
                         int caseID = phoneCase.getCaseID();
@@ -259,7 +261,8 @@
     </table>
     <table align="center" width ="1000" height="400" cellpadding="15">
         <tr>
-            <%  if (phoneCases.size() >= 8) {
+            <%  
+                if (phoneCases.size() >= 8) {
                     for (int j = phoneCases.size() - 5; j >= phoneCases.size() - 8; j--) {
                         PhoneCase phoneCase = phoneCases.get(j);
                         int caseID = phoneCase.getCaseID();

@@ -18,7 +18,10 @@ public class PhoneCaseDAO {
 
     private DBConnectionPool connPool;
     private static final String ALLRETRIEVE_STMT
-            = "SELECT * FROM shoppingproduct ORDER BY CaseID";
+            = "SELECT * FROM shoppingproduct ORDER BY CaseID DESC";
+    private static final String POP_STMT
+            = "SELECT * FROM shoppingproduct ORDER BY Stock DESC";
+    
     private static final String INSERT_STMT = "INSERT INTO shoppingProduct VALUES(?,?,?,?,?,?,?,?)";
     private static final String UPDATE_STMT = "UPDATE shoppingProduct SET CaseName = ?, CaseType = ?, Explanation = ?, Price = ?, Image = ?, DetailImage = ? WHERE CaseID = ?";
     private static final String GETID_STMT = "SELECT MAX(CaseID) FROM shoppingProduct";
@@ -42,6 +45,7 @@ public class PhoneCaseDAO {
             conn = connPool.getPoolConnection();
             stmt = conn.prepareStatement(ALLRETRIEVE_STMT);
             rset = stmt.executeQuery();
+            
             while (rset.next()) {
                 int CaseID = rset.getInt(1);
                 String CaseName = rset.getString(2);
@@ -52,6 +56,7 @@ public class PhoneCaseDAO {
                 String detailImg = rset.getString(7);
                 int stock = rset.getInt(8);
                 phoneCase.add(new PhoneCase(CaseID, CaseName, CaseType, Explanation, Price, img, detailImg, stock));
+                
             }
             return phoneCase;
         } catch (SQLException se) {
@@ -83,7 +88,59 @@ public class PhoneCaseDAO {
             }
         }
     }
-
+    //인기 케이스를 가져온다
+    ArrayList<PhoneCase> popPhoneCaseRetrieve() throws SQLException {
+        ArrayList<PhoneCase> phoneCase = new ArrayList<PhoneCase>();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        try {
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(POP_STMT);
+            rset = stmt.executeQuery();
+            
+            while (rset.next()) {
+                int CaseID = rset.getInt(1);
+                String CaseName = rset.getString(2);
+                String CaseType = rset.getString(3);
+                String Explanation = rset.getString(4);
+                int Price = rset.getInt(5);
+                String img = rset.getString(6);
+                String detailImg = rset.getString(7);
+                int stock = rset.getInt(8);
+                phoneCase.add(new PhoneCase(CaseID, CaseName, CaseType, Explanation, Price, img, detailImg, stock));
+               
+            }
+            return phoneCase;
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("Exception: " + e.getMessage());
+        } finally {
+            if (rset != null) {
+                try {
+                    rset.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
      //검색된 단어를 포함하는 데이터를 가져온다.
     ArrayList<PhoneCase> phoneCaseRetrieve(String caseName) throws SQLException {
         ArrayList<PhoneCase> phoneCase = new ArrayList<PhoneCase>();

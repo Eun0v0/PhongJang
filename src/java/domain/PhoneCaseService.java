@@ -25,6 +25,15 @@ public class PhoneCaseService {
         }
         return phoneCases;
     }
+    public ArrayList<PhoneCase> popPhoneCaseRetrieve() {
+        ArrayList<PhoneCase> phoneCases = null;
+        try {
+            phoneCases = phoneCaseDataAccess.popPhoneCaseRetrieve();
+        } catch (Exception e) {
+            phoneCases = null;
+        }
+        return phoneCases;
+    }
     
     public ArrayList<PhoneCase> getPhoneCase(String caseName) {
         ArrayList<PhoneCase> phoneCases = null;
