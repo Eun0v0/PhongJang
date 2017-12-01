@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ * 검색 관리 서블릿
+*/
 public final class ManageSearchServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -34,7 +36,7 @@ public final class ManageSearchServlet extends HttpServlet {
 
         ArrayList<PhoneCase> cases = null;
         phoneCaseService = new PhoneCaseService();
-        cases = phoneCaseService.getPhoneCase(phoneCaseName);
+        cases = phoneCaseService.getPhoneCase(phoneCaseName); //검색 단어를 포함한 모든 케이스를 가져온다
         request.setAttribute("phoneCases", cases);
         request.setAttribute("user", HttpSession.getAttribute("user"));
 

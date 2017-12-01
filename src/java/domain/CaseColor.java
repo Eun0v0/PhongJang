@@ -8,6 +8,8 @@ package domain;
 /**
  *
  * @author yukih
+ * 
+ * 케이스 색상(종류) 데이터 구조
  */
 public class CaseColor {
     String CaseName;

@@ -8,6 +8,8 @@ package domain;
 /**
  *
  * @author yukih
+ * 
+ * 리뷰 작성을 위한 데이터 구조
  */
 public class Review {
     int replyNum;

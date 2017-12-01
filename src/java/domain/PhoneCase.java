@@ -4,7 +4,12 @@
  * and open the template in the editor.
  */
 package domain;
-
+/**
+ *
+ * @author yukih
+ * 
+ * 케이스 데이터 구조
+ */
 public class PhoneCase {
     
     int caseID;

@@ -24,7 +24,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import util.Status;
-
+/**
+ * QnA 작성 서블릿
+*/
 public class ProcessQnaServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -53,7 +55,7 @@ public class ProcessQnaServlet extends HttpServlet {
         String year = String.valueOf(cal.get(cal.YEAR));
         String month = String.valueOf(cal.get(cal.MONTH) + 1);
         String date = String.valueOf(cal.get(cal.DATE));
-        String s_date = year + "-" + month + "-" + date;	//date which user did slot machine
+        String s_date = year + "-" + month + "-" + date;//작성일 저장
 
         QnaService qnaService = new QnaService();
         HttpSession HttpSession = request.getSession();

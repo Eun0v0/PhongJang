@@ -197,6 +197,7 @@ public class UserDAO {
             }
         }
     }
+    //아이디를 찾는다
     String findID(String userID){
         String findID = "X";
         Connection conn = null;

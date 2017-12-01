@@ -77,7 +77,7 @@ public class QnaDAO {
         }
     }
 
-    //새로운 상품 데이터를 입력한다.
+    //새로운 질문에 대한 데이터를 입력한다.
     void qnaInsert(String userName, String passWord, String qnaTitle, String qnaContent, String s_date) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -120,7 +120,7 @@ public class QnaDAO {
             }
         }
     }
-
+    //질문을 삭제한다
     void qnaDelete(int qnaNum) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -151,7 +151,7 @@ public class QnaDAO {
             }
         }
     }
-
+    //모든 질문 내역을 가져온다
     ArrayList<Qna> qnaRetrieve(int qnaNum) throws SQLException {
         ArrayList<Qna> qnas = new ArrayList<Qna>();
         Connection conn = null;
@@ -202,6 +202,8 @@ public class QnaDAO {
             }
         }
     }
+    
+    //특정 고객이 작성한 질문 내역을 모두 가져온다
     ArrayList<Qna> myQna(String userName) throws SQLException {
         ArrayList<Qna> qnas = new ArrayList<Qna>();
         Connection conn = null;
@@ -252,6 +254,7 @@ public class QnaDAO {
             }
         }
     }
+    //질문 내용을 수정한다
     void qnaUpdate(int qnaNum, String userName, String qnaTitle, String qnaContent) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -285,7 +288,7 @@ public class QnaDAO {
             }
         }
     }
-
+    //클릭하여 내용을 보고자 하는 질문의 데이터를 가져온다
     Qna getQnaInfo(int qnaNum) throws SQLException {
         Qna qna = null;
         Connection conn = null;

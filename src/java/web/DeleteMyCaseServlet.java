@@ -26,9 +26,8 @@ import javax.servlet.http.HttpSession;
 import util.Status;
 
 /**
- *
- * @author yukih
- */
+ * 나만의 케이스 게시글을 삭제하기 위한 서블릿
+*/
 public class DeleteMyCaseServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -53,7 +52,7 @@ public class DeleteMyCaseServlet extends HttpServlet {
         String userID = request.getParameter("userID");
         int myCaseNum  = Integer.parseInt(request.getParameter("myCaseNum"));
         
-        myCaseService.deleteMyCase(userID, myCaseNum);
+        myCaseService.deleteMyCase(userID, myCaseNum); //나만의 케이스 문의글을 삭제한다
         
         myCases = myCaseService.getAllMyCases(userID);
         request.setAttribute("myCases", myCases);

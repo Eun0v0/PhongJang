@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ * 메인 화면을 위한 서블릿
+*/
 public final class MainServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -31,8 +33,8 @@ public final class MainServlet extends HttpServlet {
         ArrayList<PhoneCase> phoneCases = null; 
         
         phoneCaseService = new PhoneCaseService();     
-        phoneCases = phoneCaseService.getAllPhoneCase();
-        ArrayList<PhoneCase> p_phoneCases = phoneCaseService.popPhoneCaseRetrieve();
+        phoneCases = phoneCaseService.getAllPhoneCase();//모든 케이스 정보
+        ArrayList<PhoneCase> p_phoneCases = phoneCaseService.popPhoneCaseRetrieve();//인기 케이스 정보
         request.setCharacterEncoding("EUC-KR");
         request.setAttribute("user", HttpSession.getAttribute("user"));
         request.setAttribute("phoneCases", phoneCases);

@@ -26,6 +26,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import util.Status;
 
+/**
+ * 장바구니에 상품 추가
+*/
 public class AddCartServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -110,6 +113,7 @@ public class AddCartServlet extends HttpServlet {
         cartService = new CartService();
 
         try {
+            //공란이 없을 경우 장바구니에 데이터 추가
             if (!phoneType.equals("unknown") && !caseColor.equals("unknown") && !request.getParameter("numbers").equals("0")) {
                 cartService.addToCart(userID, caseName, caseColor, numbers, price, phoneType, caseType);
             }

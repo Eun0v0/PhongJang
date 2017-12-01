@@ -27,7 +27,7 @@ public class ReplyMyCaseDAO {
     private static final String ADD_STMT = "INSERT INTO ReplyMyCase VALUES(?,?,?,?,?,?,?)";
     //private static final String DELETE_STMT = "DELETE FROM ReplyMyCase WHERE MyCaseNum = ?";
     
-    //전체 마이케이스 문의 내역을 가져온다
+    //전체 마이케이스에 대한 답변을 가져온다
     ArrayList<ReplyMyCase> myCaseReplyRetrieve() throws SQLException{
         ArrayList<ReplyMyCase> replyMyCases = new ArrayList<ReplyMyCase>();
         Connection conn = null;
@@ -77,7 +77,7 @@ public class ReplyMyCaseDAO {
             }
         }
     }
-    
+    //특정 마이케이스에 대한 답변 목록을 가져온다
     ReplyMyCase getMyCase(int myCaseNum) throws SQLException{
         ReplyMyCase replyMyCase = null;
         Connection conn = null;
@@ -128,7 +128,7 @@ public class ReplyMyCaseDAO {
             }
         }
     }
-    // 마이 케이스 문의 글을 추가한다
+    //답변을 추가한다
     void addMyCaseReply(int myCaseNum, String account, String image, String dueDate, String content, String status, int price){
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -164,7 +164,7 @@ public class ReplyMyCaseDAO {
             }
         }
     }
-    //상품 데이터를 수정한다.
+    //답변을 수정한다.
     void myCaseReplyUpdate(int myCaseNum, String status){
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -196,36 +196,4 @@ public class ReplyMyCaseDAO {
             }
         }
     }
-    //장바구니에서 상품을 삭제한다
-    /*void deleteMyCase(String userID, int myCaseNum){
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rset = null;
-        //String DELETE_STMT = "DELETE FROM MyCase WHERE userID = ? AND MyCaseNum = ?";
-    
-        try{
-            conn = connPool.getPoolConnection();
-            stmt = conn.prepareStatement(DELETE_STMT);
-            stmt.setString(1, userID);
-            stmt.setInt(2, myCaseNum);
-            stmt.executeQuery();
-        } catch(SQLException se){
-            throw new RuntimeException("A database eroor occured." + se.getMessage());
-        }finally {
-            if(stmt != null){
-                try{
-                    stmt.close();
-                } catch (SQLException se){
-                    se.printStackTrace(System.err);
-                }
-            }
-            if(conn != null){
-                try{
-                    conn.close();
-                } catch(Exception e){
-                    e.printStackTrace(System.err);
-                }
-            }
-        }
-    }*/
 }

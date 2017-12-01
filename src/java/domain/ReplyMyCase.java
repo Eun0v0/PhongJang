@@ -8,6 +8,8 @@ package domain;
 /**
  *
  * @author yukih
+ * 
+ * 마이 케이스 글에 대해 답변을 달기 위한 데이터 구조
  */
 public class ReplyMyCase {
     int myCaseNum;

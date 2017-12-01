@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 /**
  *
  * @author Hayoung_2
+ * ID찾기
  */
 public final class SearchIDServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
@@ -27,7 +28,6 @@ public final class SearchIDServlet extends HttpServlet {
         processRequest(request, response);
     }
 
-    //검색 함수?
     public void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
@@ -40,8 +40,8 @@ public final class SearchIDServlet extends HttpServlet {
         String userName = request.getParameter("userName");
         String PhoneNum = request.getParameter("PhoneNum");
         
-        user = userService.getSearchID(userName,PhoneNum);
-        String userID = user.getId();
+        user = userService.getSearchID(userName,PhoneNum); // 유저정보를 찾아옴
+        String userID = user.getId(); // ID를 가져옴
         //request.setAttribute("user", user);
         request.setAttribute("userID", userID);
         view = request.getRequestDispatcher("searchIDList.jsp");

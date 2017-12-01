@@ -8,6 +8,8 @@ package domain;
 /**
  *
  * @author yukih
+ * 
+ * 케이스 별로 핸드폰 기종에 대한 정보를 저장하기 위한 데이터 구조
  */
 public class PhoneType {
     String caseName;

@@ -28,9 +28,8 @@ import javax.servlet.http.HttpSession;
 import util.Status;
 
 /**
- *
- * @author yukih
- */
+ * 나만의 케이스 게시글 목록을 위한 서블릿
+*/
 public class MyCaseListServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,

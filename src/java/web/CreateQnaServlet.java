@@ -16,7 +16,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ * QnA를 작성하는 페이지로 넘어가기 위한 서블릿
+*/
 public class CreateQnaServlet extends HttpServlet {
       public void doPost(HttpServletRequest request,
             HttpServletResponse response)

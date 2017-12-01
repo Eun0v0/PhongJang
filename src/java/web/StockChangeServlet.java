@@ -21,7 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import util.Status;
-
+/**
+ * 재고관리 서블릿
+*/
 public class StockChangeServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -53,10 +55,10 @@ public class StockChangeServlet extends HttpServlet {
         try {
             if (stock == 0) {
                 status.addException(new Exception(
-                        "Please enter your producttype"));
+                        "재고를 다시 입력해주세요"));
             }
             try {
-                caseColorService.stockChange(stock, caseName, caseColor);
+                caseColorService.stockChange(stock, caseName, caseColor);//재고를 수정한다
                 phoneCases = phoneCaseService.getAllPhoneCase();
                 request.setAttribute("phoneCases", phoneCases);
                 request.setAttribute("user", user);

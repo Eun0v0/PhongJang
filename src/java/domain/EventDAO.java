@@ -26,7 +26,7 @@ public class EventDAO {
     private static final String ADD_STMT = "INSERT INTO Event VALUES(?,?,?,?,?)";
     private static final String DELETE_STMT = "DELETE FROM Event WHERE EventID = ?";
     
-    //전체 마이케이스 문의 내역을 가져온다
+    //전체 이벤트 글의 데이터를 가져온다
     ArrayList<Event> eventRetrieve() throws SQLException{
         ArrayList<Event> events = new ArrayList<Event>();
         Connection conn = null;
@@ -74,7 +74,7 @@ public class EventDAO {
             }
         }
     }
-    
+    //클릭하여 정보를 볼 이벤트 페이지의 정보를 가져온다
     Event getEvent(int eventID) throws SQLException{
         Event event = null;
         Connection conn = null;
@@ -124,7 +124,7 @@ public class EventDAO {
             }
         }
     }
-    // 마이 케이스 문의 글을 추가한다
+    // 이벤트를 추가한다
     void addEvent(String title, String image, String writeDate, String content){
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -166,7 +166,7 @@ public class EventDAO {
             }
         }
     }
-    //상품 데이터를 수정한다.
+    //이벤트를 수정한다.
     void updateEvent(int eventID, String title, String image, String writeDate, String content){
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -202,7 +202,7 @@ public class EventDAO {
             }
         }
     }
-    //장바구니에서 상품을 삭제한다
+    //이벤트를 삭제한다
     void deleteEvent(int eventID){
         Connection conn = null;
         PreparedStatement stmt = null;

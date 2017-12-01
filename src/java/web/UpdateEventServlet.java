@@ -23,6 +23,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+/**
+ * 이벤트 열람/수정 페이지로 이동
+*/
 public class UpdateEventServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
@@ -60,10 +63,10 @@ public class UpdateEventServlet extends HttpServlet {
         String userType = ((User) HttpSession.getAttribute("user")).getUsertype();    
         
         if(userType.equals("C")){
-            view = request.getRequestDispatcher("eventView.jsp"); //c7stomer 전용
+            view = request.getRequestDispatcher("eventView.jsp"); //고객은 열람만 가능
             view.forward(request, response);
         } else {
-            view = request.getRequestDispatcher("admin/eventUpdate.jsp");
+            view = request.getRequestDispatcher("admin/eventUpdate.jsp"); //관리자는 열람 동시에 수정 가능
             view.forward(request, response);
         }
     }

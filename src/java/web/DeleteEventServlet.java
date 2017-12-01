@@ -28,9 +28,8 @@ import javax.servlet.http.HttpSession;
 import util.Status;
 
 /**
- *
- * @author yukih
- */
+ * 이벤트를 삭제하기 위한 서블릿
+*/
 public class DeleteEventServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -55,7 +54,7 @@ public class DeleteEventServlet extends HttpServlet {
         String userID = request.getParameter("userID");
         int eventID = Integer.parseInt(request.getParameter("eventID"));
 
-        eventService.deleteEvent(eventID);
+        eventService.deleteEvent(eventID); // 해당 이벤트를 삭제한다
 
         events = eventService.getAllEvents();
         request.setAttribute("events", events);

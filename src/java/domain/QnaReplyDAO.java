@@ -23,6 +23,7 @@ public class QnaReplyDAO {
     private static final String ADD_STMT = "INSERT INTO QnaReply VALUES(?,?,?,?)";
     private static final String DELETE_STMT = "DELETE FROM QnaReply WHERE qnaNum = ?";
     
+    //해당 질문에 대한 답변의 전체 데이터를 가져온다
     public ArrayList<QnaReply> getAllReply(int qnaNum) throws SQLException{
         ArrayList<QnaReply> qnaReplys = new ArrayList<QnaReply>();
         Connection conn = null;
@@ -70,6 +71,8 @@ public class QnaReplyDAO {
             }
         }
     }
+    
+    
     public QnaReply getReply(int qnaNum) throws SQLException{
         QnaReply qnaReply = null;
         Connection conn = null;
@@ -117,7 +120,7 @@ public class QnaReplyDAO {
             }
         }
     }
-    // 마이 케이스 문의 글을 추가한다
+    //답변을 추가한다
     public void addQnaReply(int qnaNum, String userID, String content, String writeDate){
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -151,7 +154,7 @@ public class QnaReplyDAO {
         }
     }
     
-    //장바구니에서 상품을 삭제한다
+    //답변을 삭제한다
     public void deleteQnaReply(String userID, int qnaNum){
         Connection conn = null;
         PreparedStatement stmt = null;

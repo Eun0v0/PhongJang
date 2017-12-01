@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ * 회원가입 세션 처리를 위한 서블릿
+*/
 public final class IDCheckServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,

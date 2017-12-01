@@ -9,6 +9,7 @@ package domain;
 /**
  *
  * @author yukih
+ * 고객에 대한 데이터 구조
  */
 public class User {
     String id;

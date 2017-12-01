@@ -23,6 +23,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+/**
+ * 리뷰글 삭제
+*/
 public class DeleteReviewServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
@@ -54,7 +57,7 @@ public class DeleteReviewServlet extends HttpServlet {
         PhoneCase phoneCase;
         phoneCase = phoneCaseService.getPhoneCase(caseID);
         
-        reviewService.deleteReview(userID, replyNum, caseID);
+        reviewService.deleteReview(userID, replyNum, caseID); //해당 리뷰글 삭제
         
         ArrayList<Review> reviews = reviewService.reviewRetrieve(caseID);
         

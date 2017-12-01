@@ -26,11 +26,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import util.Status;
-
 /**
- *
- * @author yukih
- */
+ * 마이케이스 수정을 위한 서블릿
+*/
 public class ModifyMyCaseServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -63,7 +61,7 @@ public class ModifyMyCaseServlet extends HttpServlet {
         String userID = user.getId();
         int myCaseNum = Integer.parseInt(request.getParameter("myCaseNum"));
         myCase = myCaseService.getMyCase(myCaseNum);
-        replyMyCase = replyMyCaseService.getMyCaseReply(myCaseNum);
+        replyMyCase = replyMyCaseService.getMyCaseReply(myCaseNum); //댓글 정보 가져오기
         
         request.setAttribute("myCase", myCase);
         request.setAttribute("user", user);

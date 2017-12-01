@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+/**
+ * 결제한 모든 내역을 보여줌
+*/
 public final class RetrievePaymentServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
@@ -32,9 +35,9 @@ public final class RetrievePaymentServlet extends HttpServlet {
         PaymentService PaymentService = new PaymentService();
         
         if(userType.equals("C")){
-            payments = PaymentService.getAllPayment(userID);
+            payments = PaymentService.getAllPayment(userID); // 고객은 본인이 결제한 목록만을 가져옴
         } else {
-            payments = PaymentService.getAllPayment();
+            payments = PaymentService.getAllPayment(); //관리자 모드에서는 모든 결제 내역을 가져옴
         }
         request.setAttribute("user", HttpSession.getAttribute("user"));
         request.setAttribute("payments", payments);

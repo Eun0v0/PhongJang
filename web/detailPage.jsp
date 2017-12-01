@@ -9,15 +9,6 @@
 <%--해야할 것 : 장바구니, 바로결제 버튼 바꾸기?--%>
 <%-- test --%>
 <script type ="text/javascript" src="smarteditor/js/HuskyEZCreator.js" charset="euc-kr"></script>
-<%--<script>
-    function submitContents(elClickedObj) {
-        oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
-        try {
-            elClickedObj.form.submit();
-        } catch (e) {
-        }
-    }
-</script>--%>
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.PhoneCase"%>
@@ -266,8 +257,9 @@
                                 <option name="caseColor" value="unknown">-----
                                     <%for (int i = 0; i < caseColors.size(); i++) {
                                             v_caseColor = caseColors.get(i);
-                                            String caseColor = v_caseColor.getCaseColor();%>
-                                <option name="caseColor" value="<%=caseColor%>"><%=caseColor%>
+                                            String caseColor = v_caseColor.getCaseColor();
+                                            int stock = v_caseColor.getStock();%>
+                                <option name="caseColor" value="<%=caseColor%>"><%=caseColor%> | <%=stock%>개 남음
                                     <% }%>
                             </select></div>
                         <div align="left">수량:</div>

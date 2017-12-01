@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ * QnA 검색 서블릿
+*/
 public final class SearchQnAServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -36,7 +38,7 @@ public final class SearchQnAServlet extends HttpServlet {
 
         ArrayList<Qna> qnas = new ArrayList<Qna>();
         qnaService = new QnaService();
-        qnas = qnaService.getMyQna(userName);
+        qnas = qnaService.getMyQna(userName);//유저의 이름으로 QnA를 검색할 수 있음. 해당 이름으로 작성된 QnA를 가져옴
         
         request.setAttribute("qnas", qnas);
         request.setAttribute("user", HttpSession.getAttribute("user"));

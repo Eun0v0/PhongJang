@@ -25,7 +25,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import util.Status;
-
+/**
+ * 리뷰 작성 서블릿
+*/
 public class WriteReviewServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -57,8 +59,8 @@ public class WriteReviewServlet extends HttpServlet {
         String year =String.valueOf(cal.get(cal.YEAR));
         String month=String.valueOf(cal.get(cal.MONTH)+1);
         String date=String.valueOf(cal.get(cal.DATE));
-        String writeDate=year+"-"+month+"-"+date;	//date which user did slot machine
-      
+        String writeDate=year+"-"+month+"-"+date;//날짜 저장
+        
         if (content.isEmpty()) {
             status.addException(new Exception("내용을 입력해주세요"));
         }

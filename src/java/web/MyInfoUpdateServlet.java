@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import util.Status;
-
+/**
+ * 내정보 수정 서블릿
+*/
 public final class MyInfoUpdateServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -59,7 +61,7 @@ public final class MyInfoUpdateServlet extends HttpServlet {
             
             try {
 
-                userSerice.userUpdate(userID, userName, phoneNumber, address);
+                userSerice.userUpdate(userID, userName, phoneNumber, address);//정보 수정
                 userSave = userSerice.getUserInfo(userID);
 
                 request.setCharacterEncoding("EUC-KR");

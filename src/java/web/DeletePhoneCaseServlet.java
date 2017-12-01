@@ -43,9 +43,9 @@ public class DeletePhoneCaseServlet extends HttpServlet {
         int caseID = Integer.parseInt(request.getParameter("caseID"));
         String caseName = request.getParameter("caseName");
         ArrayList<PhoneCase> phoneCases = null;
-        phoneCaseService.deletePhoneCase(caseID);
-        phoneTypeService.phoneTypeDelete(caseName);
-        caseColorService.caseColorDelete(caseName);
+        phoneCaseService.deletePhoneCase(caseID); //케이스 삭제
+        phoneTypeService.phoneTypeDelete(caseName); //해당 케이스에 대한 핸드폰 기종 삭제
+        caseColorService.caseColorDelete(caseName); //해당 케이스에 대한 색상(종류) 삭제
         
         phoneCases = phoneCaseService.getAllPhoneCase();
 

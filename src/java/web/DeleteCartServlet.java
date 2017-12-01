@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+/**
+ * 장바구니에서 상품 삭제
+*/
 public class DeleteCartServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
@@ -31,8 +34,8 @@ public class DeleteCartServlet extends HttpServlet {
         int cartID = Integer.parseInt(request.getParameter("cartID"));
         
         ArrayList<Cart> carts = null;
-        CartService.deleteFromCart(userID, cartID);
-        carts = CartService.getCart(userID);
+        CartService.deleteFromCart(userID, cartID); // 장바구니에서 해당 상품 삭제
+        carts = CartService.getCart(userID); //장바구니 내역 다시 조회
         request.setAttribute("carts", carts);
         request.setAttribute("user", HttpSession.getAttribute("user"));
         

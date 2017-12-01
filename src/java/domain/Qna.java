@@ -4,7 +4,12 @@
  * and open the template in the editor.
  */
 package domain;
-
+/**
+ *
+ * @author yukih
+ * 
+ * 질문 게시판 데이터 구조
+ */
 public class Qna {
     int qnaNum;
     String userName;

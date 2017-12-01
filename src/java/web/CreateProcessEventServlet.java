@@ -28,9 +28,8 @@ import javax.servlet.http.HttpSession;
 import util.Status;
 
 /**
- *
- * @author yukih
- */
+ * 이벤트 추가 기능을 수행하는 서블릿
+*/
 public class CreateProcessEventServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -56,7 +55,7 @@ public class CreateProcessEventServlet extends HttpServlet {
         String year = String.valueOf(cal.get(cal.YEAR));
         String month = String.valueOf(cal.get(cal.MONTH) + 1);
         String date = String.valueOf(cal.get(cal.DATE));
-        String s_date = year + "-" + month + "-" + date;	//date which user did slot machine
+        String s_date = year + "-" + month + "-" + date; //작성일을 저장하기 위해 날짜 저장
 
         MultipartRequest multi = new MultipartRequest(request, path, 1024 * 1024 * 5, "euc-kr",
                 new DefaultFileRenamePolicy());
@@ -91,6 +90,7 @@ public class CreateProcessEventServlet extends HttpServlet {
             }
 
             try {
+                //공란이 없다면 이벤트 추가
                 if (!title.isEmpty() && !image.isEmpty() && !content.isEmpty()) {
                     eventService.addEvent(title, image, s_date, content);
                 }

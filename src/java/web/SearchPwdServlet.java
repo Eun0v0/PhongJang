@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 /**
  *
  * @author Hayoung_2
+ * 비밀번호 찾기
  */
 public final class SearchPwdServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
@@ -40,8 +41,8 @@ public final class SearchPwdServlet extends HttpServlet {
         String userID = request.getParameter("userID");
         String PhoneNum = request.getParameter("PhoneNum");
         
-        user = userService.getSearchPwd(userID,PhoneNum);
-        String userPwd = user.getPw();
+        user = userService.getSearchPwd(userID,PhoneNum);//해당 유저의 정보를 가져옴
+        String userPwd = user.getPw();//비밀번호를 가져옴
         //request.setAttribute("user", user);
         request.setAttribute("userPwd", userPwd);
         view = request.getRequestDispatcher("searchPwdList.jsp");

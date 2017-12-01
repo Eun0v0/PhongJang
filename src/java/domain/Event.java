@@ -8,6 +8,7 @@ package domain;
 /**
  *
  * @author yukih
+ * 이벤트 페이지 데이터 구조
  */
 public class Event {
    int eventID;

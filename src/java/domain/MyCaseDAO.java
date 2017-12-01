@@ -134,6 +134,8 @@ public class MyCaseDAO {
             }
         }
     }
+    
+    //클릭하여 내용을 확인할 마이케이스의 글 정보를 가져온다
     MyCase getMyCase(int myCaseNum) throws SQLException{
         MyCase myCase = null;
         Connection conn = null;
@@ -234,7 +236,7 @@ public class MyCaseDAO {
             }
         }
     }
-    //상품 데이터를 수정한다.
+    //마이 케이스 게시글을 수정한다.
     void myCaseUpdate(int myCaseNum, String title, String caseType, String phoneType,
             String color, String content, String image){
         Connection conn = null;
@@ -272,7 +274,7 @@ public class MyCaseDAO {
             }
         }
     }
-    //장바구니에서 상품을 삭제한다
+    //마이케이스 게시글을 삭제한다
     void deleteMyCase(String userID, int myCaseNum){
         Connection conn = null;
         PreparedStatement stmt = null;

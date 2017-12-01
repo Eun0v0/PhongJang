@@ -8,6 +8,8 @@ package domain;
 /**
  *
  * @author yukih
+ * 
+ * 나만의 케이스 만들기 데이터 구조
  */
 public class MyCase {
     int myCaseNum;

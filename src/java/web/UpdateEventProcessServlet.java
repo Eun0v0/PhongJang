@@ -21,7 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import util.Status;
-
+/**
+ * 이벤트 내용 수정
+*/
 public class UpdateEventProcessServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
@@ -56,7 +58,7 @@ public class UpdateEventProcessServlet extends HttpServlet {
         String year = String.valueOf(cal.get(cal.YEAR));
         String month = String.valueOf(cal.get(cal.MONTH) + 1);
         String date = String.valueOf(cal.get(cal.DATE));
-        String s_date = year + "-" + month + "-" + date;	//date which user did slot machine
+        String s_date = year + "-" + month + "-" + date;//날짜 저장
 
         EventService eventService = new EventService();
         Event event;
@@ -66,7 +68,7 @@ public class UpdateEventProcessServlet extends HttpServlet {
         String image = multi.getParameter("image");
         String content = multi.getParameter("content");
         
-        if(image == null){
+        if(image == null){ //재업로드한 이미지가 없다면 기존 이미지 그대로 사용
             image = event.getImage();
         }
         ArrayList<Event> events = new ArrayList<Event>();
@@ -77,17 +79,14 @@ public class UpdateEventProcessServlet extends HttpServlet {
         try {
             if ((title == null) || (title.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your producttype"));
-            }
-            if ((image == null) || (image.length() == 0)) {
-                status.addException(new Exception(
-                        "Please enter your productname"));
+                        "제목을 입력해주세요"));
             }
             if ((content == null) || (content.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your explanation"));
+                        "내용을 입력해주세요"));
             }
             try {
+                //공란이 없다면 업데이트
                 if(!title.isEmpty() && !image.isEmpty() && !content.isEmpty()){
                     eventService.updateEvent(eventID, title, image, s_date, content);
                 }

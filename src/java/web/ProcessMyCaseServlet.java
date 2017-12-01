@@ -26,9 +26,8 @@ import javax.servlet.http.HttpSession;
 import util.Status;
 
 /**
- *
- * @author yukih
- */
+ * 나만의 케이스 게시글 작성 서블릿
+*/
 public class ProcessMyCaseServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
@@ -52,7 +51,7 @@ public class ProcessMyCaseServlet extends HttpServlet {
         String year =String.valueOf(cal.get(cal.YEAR));
         String month=String.valueOf(cal.get(cal.MONTH)+1);
         String date=String.valueOf(cal.get(cal.DATE));
-        String s_date=year+"-"+month+"-"+date;	//date which user did slot machine
+        String s_date=year+"-"+month+"-"+date;	//글 작성일 저장
 	
         MultipartRequest multi = new MultipartRequest(request, path, 1024 * 1024 * 5, "euc-kr",
                     new DefaultFileRenamePolicy());
@@ -78,23 +77,23 @@ public class ProcessMyCaseServlet extends HttpServlet {
             
             if ((caseType == null) || (caseType.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your producttype"));
+                        "케이스 타입을 선택해주세요"));
             }
             if ((title == null) || (title.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your productname"));
+                        "제목을 입력해주세요"));
             }
             if ((phoneType == null) || (phoneType.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your explanation"));
+                        "기종을 선택해 주세요"));
             }
              if ((color == null) || (color.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your explanation"));
+                        "색상(종류)를 선택해 주세요"));
             }
              if ((content == null) || (content.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your explanation"));
+                        "내용을 입력해주세요"));
             }
             
             try {

@@ -20,6 +20,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+/**
+ * 케이스 상세 페이지를 위한 서블릿
+*/
 public class DetailPageServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
@@ -50,9 +53,9 @@ public class DetailPageServlet extends HttpServlet {
         ReviewService reviewService = new ReviewService();
         
         PhoneCase phoneCase;
-        phoneCase = phoneCaseService.getPhoneCase(caseID);
+        phoneCase = phoneCaseService.getPhoneCase(caseID); //케이스 정보 가져오기
         
-        ArrayList<Review> reviews = reviewService.reviewRetrieve(caseID);
+        ArrayList<Review> reviews = reviewService.reviewRetrieve(caseID); //리뷰글 내용 가져오기
         
         String caseName = phoneCase.getCaseName();
         String caseType = phoneCase.getCaseType();
@@ -61,8 +64,8 @@ public class DetailPageServlet extends HttpServlet {
         String img = phoneCase.getImg();
         String detailImg = phoneCase.getDetailImg();
         
-        phoneTypes = phoneTypeService.getPhoneType(caseName);
-        caseColors = caseColorService.getCaseColor(caseName);
+        phoneTypes = phoneTypeService.getPhoneType(caseName);//핸드폰 기종 정보 가져오기
+        caseColors = caseColorService.getCaseColor(caseName);//케이스 색상(종류) 정보 가져오기
         
         request.setAttribute("caseID", caseID);
         request.setAttribute("caseName", caseName);

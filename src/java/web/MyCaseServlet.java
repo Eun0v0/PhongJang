@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ * 나만의 케이스 추가 페이지로 이동하기 위한 서블릿
+*/
 public final class MyCaseServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,

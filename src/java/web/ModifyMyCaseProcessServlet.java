@@ -18,7 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import util.Status;
-
+/**
+ * 케이스 정보 수정 서블릿
+*/
 public final class ModifyMyCaseProcessServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -62,11 +64,12 @@ public final class ModifyMyCaseProcessServlet extends HttpServlet {
         String image = multi.getFilesystemName("caseImage");
         replyMyCase = replyMyCaseService.getMyCaseReply(myCaseNum);
         
+        //재업로드한 사진이 없을 경우 기존 이미지로 유지
         if(image == null){
             image = myCase.getImage();
         }
         try {
-
+            //정보 업데이트
             myCaseService.myCaseUpdate(myCaseNum, title, caseType, phoneType, color, content, image);
             s_myCase = myCaseService.getMyCase(myCaseNum);
 

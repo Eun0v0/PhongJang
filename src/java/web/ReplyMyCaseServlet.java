@@ -28,9 +28,8 @@ import javax.servlet.http.HttpSession;
 import util.Status;
 
 /**
- *
- * @author yukih
- */
+ * 나만의 케이스 답글 달기
+*/
 public class ReplyMyCaseServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -56,7 +55,7 @@ public class ReplyMyCaseServlet extends HttpServlet {
         String year = String.valueOf(cal.get(cal.YEAR));
         String month = String.valueOf(cal.get(cal.MONTH) + 1);
         String date = String.valueOf(cal.get(cal.DATE) + 3);
-        String dueDate = year + "-" + month + "-" + date;	//date which user did slot machine
+        String dueDate = year + "-" + month + "-" + date;//답글 작성 날짜 저장
 
         MultipartRequest multi = new MultipartRequest(request, path, 1024 * 1024 * 5, "euc-kr",
                 new DefaultFileRenamePolicy());
@@ -73,8 +72,8 @@ public class ReplyMyCaseServlet extends HttpServlet {
         int myCaseNum = Integer.parseInt(multi.getParameter("myCaseNum"));
         String content = multi.getParameter("content");
         String image = multi.getFilesystemName("image");
-        String account = "524932-01-347928 국민은행 <예금주: 퐁장>";
-        String v_status = "입금 대기";
+        String account = "524932-01-347928 국민은행 <예금주: 퐁장>"; //계좌 번호
+        String v_status = "입금 대기"; //상태를 입금 대기로 세팅
         int price = Integer.parseInt(multi.getParameter("price"));
 
         MyCase myCase = null;
@@ -88,16 +87,12 @@ public class ReplyMyCaseServlet extends HttpServlet {
         try {
 
             if (image == null) {
-                image = "사진 없음";
+                image = "사진 없음"; //업로드된 사진이 없을 경우 '사진없음'을 데이터베이스에 저장
             }
 
             if ((content == null) || (content.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your producttype"));
-            }
-            if ((image == null) || (image.length() == 0)) {
-                status.addException(new Exception(
-                        "Please enter your productname"));
+                        "내용을 입력해주세요"));
             }
 
             try {

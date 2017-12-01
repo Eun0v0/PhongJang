@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ * 내 정보 열람 및 수정을 위한 서블릿
+*/
 public final class MyInfoServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,

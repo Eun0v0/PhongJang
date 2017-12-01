@@ -19,7 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import util.Status;
-
+/**
+ * QnA 등록 서블릿
+*/
 public class UpdateQnaProcessServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -61,16 +63,16 @@ public class UpdateQnaProcessServlet extends HttpServlet {
         try {
             if ((qnaTitle == null) || (qnaTitle.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your qnaTItle"));
+                        "제목을 입력해주세요"));
             }
 
             if ((passWord == null) || (passWord.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your Password"));
+                        "비밀번호를 입력해주세요"));
             }
             if ((qnaContent == null) || (qnaContent.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your Content"));
+                        "내용을 입력해주세요"));
             }
             if (!passwordCheck.equals(passWord)) {
                 status.addException(new Exception(

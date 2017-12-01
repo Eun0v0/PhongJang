@@ -191,7 +191,7 @@
 
     <table align="center" width ="1000" height="400" cellpadding="15">
         <tr>
-            <%
+            <%  //인기 케이스 4개 보여주기
                 PhoneCaseService phoneCaseService = new PhoneCaseService();
                 ArrayList<PhoneCase> p_phoneCases = phoneCaseService.popPhoneCaseRetrieve();
                 session.setAttribute("p_phoneCases", p_phoneCases);
@@ -222,7 +222,7 @@
 
     <table align="center" width ="1000" height="400" cellpadding="15">
         <tr>
-            <%
+            <% //신상케이스
                 ArrayList<PhoneCase> phoneCases = phoneCaseService.getAllPhoneCase();
                 session.setAttribute("phoneCases", phoneCases);
                 if (phoneCases.size() >= 4 ) {

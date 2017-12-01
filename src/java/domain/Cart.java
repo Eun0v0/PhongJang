@@ -8,6 +8,8 @@ package domain;
 /**
  *
  * @author yukih
+ * 
+ * 장바구니 데이터 구조
  */
 public class Cart {
     int cartID;

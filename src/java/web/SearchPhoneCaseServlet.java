@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ * 핸드폰 케이스 검색
+*/
 public final class SearchPhoneCaseServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
@@ -33,7 +35,7 @@ public final class SearchPhoneCaseServlet extends HttpServlet {
 
         ArrayList<PhoneCase> cases = null;
         phoneCaseService = new PhoneCaseService();
-        cases = phoneCaseService.getPhoneCase(phoneCaseName);
+        cases = phoneCaseService.getPhoneCase(phoneCaseName); //검색어가 포함된 이름을 가진 케이스들을 찾아옴
         request.setAttribute("phoneCases", cases);
         request.setAttribute("user", HttpSession.getAttribute("user"));
         

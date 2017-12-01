@@ -29,7 +29,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import util.Status;
-
+/**
+ * QnA에 답글 달기 서블릿
+*/
 public class QnaReplyServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -60,12 +62,13 @@ public class QnaReplyServlet extends HttpServlet {
         String year =String.valueOf(cal.get(cal.YEAR));
         String month=String.valueOf(cal.get(cal.MONTH)+1);
         String date=String.valueOf(cal.get(cal.DATE));
-        String writeDate=year+"-"+month+"-"+date;	//date which user did slot machine
+        String writeDate=year+"-"+month+"-"+date;//답글 작성 날짜 작성
       
         if (content.isEmpty()) {
             status.addException(new Exception("내용을 입력해주세요"));
         }
-
+        
+        //공란이 없을때 답글 작성
         if(!content.isEmpty()){
             qnaReplyService.addQnaReply(qnaNum, userID, content, writeDate);
         }

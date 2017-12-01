@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ * 마이 페이지 서블릿
+*/
 public final class MyPageServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,

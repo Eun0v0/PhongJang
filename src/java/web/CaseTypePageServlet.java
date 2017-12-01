@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ * 케이스 타입별로 모아서 보여주기 위한 서블릿
+*/
 public final class CaseTypePageServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -34,7 +36,7 @@ public final class CaseTypePageServlet extends HttpServlet {
         User user = (User)HttpSession.getAttribute("user");
         PhoneCaseService = new PhoneCaseService();  
         String caseType = request.getParameter("caseType");
-        phoneCases = PhoneCaseService.getPhoneCaseType(caseType);
+        phoneCases = PhoneCaseService.getPhoneCaseType(caseType); //해당 케이스 타입을 가진 케이스만을 가져옴
             
         
         request.setAttribute("caseType", caseType);

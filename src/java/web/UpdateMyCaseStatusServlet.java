@@ -24,7 +24,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ * 나만의 케이스 상태 수정
+*/
 public class UpdateMyCaseStatusServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -50,7 +52,7 @@ public class UpdateMyCaseStatusServlet extends HttpServlet {
         ArrayList<ReplyMyCase> replyMyCases = new ArrayList<ReplyMyCase>();
 
         
-        String myCaseStatus = "제작중";
+        String myCaseStatus = "제작중"; //관리자가 입금 확인 버튼을 눌렀을 때, 상태를 '제작중'으로 바꿈
         int myCaseNum = Integer.parseInt(request.getParameter("myCaseNum"));
         replyMyCaseService.myCaseReplyUpdate(myCaseNum, myCaseStatus);
 

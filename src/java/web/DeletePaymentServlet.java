@@ -20,9 +20,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import util.Status;
 
-/*
-    관리자모드 - 상품 삭제
- */
+/**
+ * 결제 취소 서블릿
+*/
 public class DeletePaymentServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -65,8 +65,7 @@ public class DeletePaymentServlet extends HttpServlet {
         }
         int newStock = numbers + tempStock;
 
-        caseColorService.stockChange(newStock, caseName, v_caseColor);
-        //phoneCaseService.stockChange(caseID, pop);
+        caseColorService.stockChange(newStock, caseName, v_caseColor);//결제를 취소하였으므로, 재고에 다시 추가한다
         paymentService.paymentDelete(paymentID);
 
         if (userType.equals("C")) {

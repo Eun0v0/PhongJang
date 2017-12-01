@@ -18,7 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+/**
+ * 로그인을 위한 서블릿
+*/
 public final class LoginServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -63,11 +65,11 @@ public final class LoginServlet extends HttpServlet {
             phoneCases = PhoneCaseService.getAllPhoneCase();
             if (user == null) {
                 status.addException(new Exception(
-                        "Fill in forms correctly"));
+                        "해당 고객이 존재하지 않습니다"));
             }
             if (phoneCases == null) {
                 status.addException(new Exception(
-                        "The product database error"));
+                        "케이스 상품 정보 데이터가 이상합니다"));
             }
             if (!status.isSuccessful()) {
                 view = request.getRequestDispatcher("login.jsp");

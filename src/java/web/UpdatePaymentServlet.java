@@ -19,6 +19,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+/**
+ * 결제 상태 수정
+*/
 public class UpdatePaymentServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
@@ -38,8 +41,8 @@ public class UpdatePaymentServlet extends HttpServlet {
         PaymentService paymentService = new PaymentService();
         
         int paymentID = payment.getPaymentID();
-        String parcelNumber = request.getParameter("parcelNumber");
-        paymentService.paymentUpdate(paymentID, parcelNumber);
+        String parcelNumber = request.getParameter("parcelNumber"); //송장 번호 받아오기
+        paymentService.paymentUpdate(paymentID, parcelNumber); //송장번호 업데이트
         
         ArrayList<Payment> payments = null;
         PaymentService PaymentService = new PaymentService();

@@ -190,7 +190,7 @@
 
     <table align="center" width ="1000" height="400" cellpadding="15">
         <tr>
-             <%
+             <% // 한줄에 4개씩 배치하기 위해 ArrayList를 2차원 배열에 다시 저장해서 화면에 출력
                     ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
                     session.setAttribute("phoneCases", phoneCases);
                     int index =0;

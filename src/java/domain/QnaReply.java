@@ -8,6 +8,8 @@ package domain;
 /**
  *
  * @author yukih
+ * 
+ * 질문에 대한 답변을 위한 데이터 구조
  */
 public class QnaReply {
     int qnaNum;

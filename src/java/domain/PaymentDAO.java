@@ -148,6 +148,8 @@ public class PaymentDAO {
             }
         }
     }
+    
+    //결제한 항목에 대한 수량을 가져온다
     int getNumbers(int paymentID) throws SQLException {
         int numbers = 0;
         Connection conn = null;
@@ -338,6 +340,7 @@ public class PaymentDAO {
             }
         }
     }
+    //결제 내역을 삭제한다
      void paymentDelete(int paymentID) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -368,7 +371,7 @@ public class PaymentDAO {
         }
     }
      
-     //상품 데이터를 수정한다.
+     //결제 내용을 수정한다.
     void paymentUpdate(int paymentID, String parcelNumber) {
         Connection conn = null;
         PreparedStatement stmt = null;

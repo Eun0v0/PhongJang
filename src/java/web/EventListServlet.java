@@ -28,9 +28,8 @@ import javax.servlet.http.HttpSession;
 import util.Status;
 
 /**
- *
- * @author yukih
- */
+ * 이벤트 리스트 서블릿
+*/
 public class EventListServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -58,13 +57,13 @@ public class EventListServlet extends HttpServlet {
         String userType = ((User) HttpSession.getAttribute("user")).getUsertype();
 
         if (userType.equals("C")) {
-            events = eventService.getAllEvents();
+            events = eventService.getAllEvents();//전체 이벤트 내용을 가져온다
             request.setAttribute("events", events);
             request.setAttribute("user", user);
-            view = request.getRequestDispatcher("eventList.jsp"); //c7stomer 전용
+            view = request.getRequestDispatcher("eventList.jsp");
             view.forward(request, response);
         } else {
-             events = eventService.getAllEvents();
+             events = eventService.getAllEvents();//전체 이벤트 내용을 가져온다
             request.setAttribute("events", events);
             request.setAttribute("user", user);
             view = request.getRequestDispatcher("admin/eventList.jsp");

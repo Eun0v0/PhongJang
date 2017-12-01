@@ -22,7 +22,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import util.Status;
-
+/**
+ * 결제 진행 서블릿
+*/
 public class ProcessPaymentServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -44,7 +46,7 @@ public class ProcessPaymentServlet extends HttpServlet {
         String year = String.valueOf(cal.get(cal.YEAR));
         String month = String.valueOf(cal.get(cal.MONTH) + 1);
         String date = String.valueOf(cal.get(cal.DATE));
-        String s_date = year + "-" + month + "-" + date;	//date which user did slot machine
+        String s_date = year + "-" + month + "-" + date;//결제한 날짜 저장
 
         ArrayList<Cart> carts = (ArrayList<Cart>) HttpSession.getAttribute("carts");
         User user = (User) HttpSession.getAttribute("user");
@@ -60,8 +62,8 @@ public class ProcessPaymentServlet extends HttpServlet {
         String phoneNumber = user.getPhone();
         String creditcardNumber = request.getParameter("creditcardNumber");
         String creditcardPassword = request.getParameter("creditcardPassword");
-        String v_status = "배송 준비중";
-        String parcelNumber = "준비중";
+        String v_status = "배송 준비중"; // 기본 상태는 '배송준비중'
+        String parcelNumber = "준비중"; // 송장 번호 기본 상태는 '준비중'
 
         try {
 
@@ -82,18 +84,20 @@ public class ProcessPaymentServlet extends HttpServlet {
                         "카드 비밀번호는 4자리 입니다"));
             }
             try {
+                //모든 조건을 만족하면 결제 진행
                 if (!creditcardNumber.isEmpty() && !creditcardPassword.isEmpty() && (creditcardNumber.length() == 16) && (creditcardPassword.length() == 4)) {
                     for (int i = 0; i < carts.size(); i++) {
                         PaymentService.paymentAdd(userID, carts.get(i).getCaseName(), carts.get(i).getNumbers(), carts.get(i).getPrice() * carts.get(i).getNumbers(),
                                 address, phoneNumber, creditcardNumber, creditcardPassword, v_status, parcelNumber, s_date,
                                 carts.get(i).getPhoneType(), carts.get(i).getCaseType(), carts.get(i).getColor());
+                        //장바구니의 내용을 결제 데이터베이스에 넣음
                         int cartID = carts.get(i).getCartID();
                         CartService CartService = new CartService();
                         CartService.cleanCart(userID, cartID);
                         String caseName = carts.get(i).getCaseName();
                         int caseID = phoneCaseService.getCaseID(caseName);
                         PhoneCase phoneCase = phoneCaseService.getPhoneCase(caseID);
-                        int pop = phoneCase.getStock() + carts.get(i).getNumbers();//인기케이스
+                        int pop = phoneCase.getStock() + carts.get(i).getNumbers();//인기케이스를 위한 카운트 추가
                         ArrayList<CaseColor> caseColors = caseColorService.getCaseColor(caseName);
                         CaseColor caseColor;
                         String v_caseColor = carts.get(i).getColor();
@@ -107,8 +111,8 @@ public class ProcessPaymentServlet extends HttpServlet {
                         }
                         int newStock = tempStock - carts.get(i).getNumbers();
 
-                        caseColorService.stockChange(newStock, caseName, v_caseColor);
-                        phoneCaseService.stockChange(caseID, pop);
+                        caseColorService.stockChange(newStock, caseName, v_caseColor); //재고 차감
+                        phoneCaseService.stockChange(caseID, pop); // 인기 케이스 카운트 추가
                     }
                 }
                 phonecases = phoneCaseService.getAllPhoneCase();

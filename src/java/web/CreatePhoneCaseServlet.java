@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+/**
+ * 폰케이스를 새로 추가하는 페이지로 넘어가기 위한 서블릿
+*/
 public class CreatePhoneCaseServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)

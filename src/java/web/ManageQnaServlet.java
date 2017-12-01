@@ -16,7 +16,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ * Qna 관리 서블릿
+*/
 public class ManageQnaServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -44,11 +46,6 @@ public class ManageQnaServlet extends HttpServlet {
         request.setCharacterEncoding("EUC-KR");
         request.setAttribute("user", HttpSession.getAttribute("user"));
         request.setAttribute("qnas", qnas);
-        
-        //view = request.getRequestDispatcher("admin/managePhoneCase.jsp");
-       // view = request.getRequestDispatcher("qna.jsp");
-        
-        //view.forward(request, response);
         
         String userType = ((User) HttpSession.getAttribute("user")).getUsertype();    
         

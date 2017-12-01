@@ -19,7 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import util.Status;
-
+/**
+ * 캐이스 수정 진행 서블릿
+*/
 public class UpdateProcessPhoneCaseServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
@@ -59,6 +61,7 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         String img = multi.getFilesystemName("img");
         String detailImg = multi.getFilesystemName("detailImg");
         
+        //이미지를 재업로드 하지 않았을 경우 기존 이미지 사용
         if(img == null){
             img = phoneCase.getImg();
         }
@@ -74,15 +77,15 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         try {
             if ((caseType == null) || (caseType.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your producttype"));
+                        "케이스 타입을 선택해주세요"));
             }
             if ((caseName == null) || (caseName.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your productname"));
+                        "케이스 이름을 입력해주세요"));
             }
             if ((explanation == null) || (explanation.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your explanation"));
+                        "설명을 입력해주세요"));
             }
             try {
                 //(int caseID, String caseType, String caseName, String explanation, int price)

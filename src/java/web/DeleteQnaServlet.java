@@ -17,7 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import util.Status;
-
+/**
+ * QnA 게시글 삭제
+*/
 public class DeleteQnaServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -44,7 +46,7 @@ public class DeleteQnaServlet extends HttpServlet {
 
         int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
         ArrayList<Qna> qnas = null;
-        qnaService.deleteQna(qnaNum);
+        qnaService.deleteQna(qnaNum); //해당 QnA 삭제
 
         qnas = qnaService.getAllQna();
 

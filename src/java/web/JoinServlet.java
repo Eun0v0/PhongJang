@@ -20,7 +20,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import util.Status;
-
+/**
+ * 회원가입 서블릿
+*/
 public class JoinServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -80,6 +82,7 @@ public class JoinServlet extends HttpServlet {
             }
             
             try {
+                //공란이 없을때 유저 데이터 등록
                 if (!userID.isEmpty() && !password.isEmpty() && !phoneNumber.isEmpty() && !address.isEmpty() && findID.isEmpty()) {
                     userService.userCreate(userID, "C", userName, password, phoneNumber, address);
                 }

@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+/**
+ * QnA 수정 서블릿
+*/
 public class UpdateQnaServlet extends HttpServlet {
      public void doPost(HttpServletRequest request,
             HttpServletResponse response)
@@ -39,7 +42,7 @@ public class UpdateQnaServlet extends HttpServlet {
         qna = qnaService.getQnaInfo(qnaNum);
         request.setAttribute("user", HttpSession.getAttribute("user"));
         request.setAttribute("qna", qna);
-        view = request.getRequestDispatcher("qnaUpdate.jsp"); //c7stomer 전용
+        view = request.getRequestDispatcher("qnaUpdate.jsp");
         view.forward(request, response);
     }
 }

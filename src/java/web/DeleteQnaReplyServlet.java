@@ -29,7 +29,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import util.Status;
-
+/**
+ * QnA 답변 삭제
+*/
 public class DeleteQnaReplyServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -54,7 +56,7 @@ public class DeleteQnaReplyServlet extends HttpServlet {
         int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
         String userID = request.getParameter("userID");
         
-        qnaReplyService.deleteQnaReply(userID, qnaNum);
+        qnaReplyService.deleteQnaReply(userID, qnaNum);//답변 삭제
         
         
         ArrayList<QnaReply> qnaReplys = null;

@@ -1,7 +1,12 @@
 package domain;
 
 import java.util.Date;
-
+/**
+ *
+ * @author yukih
+ * 
+ * 결제 데이터 구조
+ */
 public class Payment {
     int paymentID;
     String userID;
