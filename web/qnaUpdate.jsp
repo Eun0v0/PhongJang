@@ -20,7 +20,7 @@
             session.setAttribute("user", user);%>
     </head>
     <body>
-          <table border="0px">
+        <table border="0px">
             <tr>
                 <% if (user == null) {
                         session.setAttribute("user", user); %>
@@ -95,10 +95,10 @@
                 <td><form action="myCase" method="post">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
                     </form></td>
-                <% } else {%>
+                    <% } else {%>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
-                <% } %>        
+                        <% } %>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
 
                 <td><form action ="caseTypePage" method="post">
@@ -128,7 +128,8 @@
     <hr size="5" color="black">
 
 
-    <center></br></br><img src="image\qnawrite.jpg"><br></center>
+    <center> <h2></br>Q&A 수정</h2> 
+        <hr width="20%" size="1" color="gray"></center>
     <center>
         <br><br>
         <%if ((status != null) && !status.isSuccessful()) {%>
@@ -139,7 +140,7 @@
             <li><%= ex.getMessage()%><%}%></ul></font>    
             <%}%>
     </center>
-    
+
     <center>
         <form action="updateQnaProcess" method="post">
             <table>
@@ -178,8 +179,8 @@
                 </tr>
                 <tr align="center">
                     <td>&nbsp;</td><br>
-                <td colspan="2">
-                    <input type="submit" value="수정">
+                <td colspan="2"></br>
+                    <input type="image" src="image\update.jpg" value ="수정하기" aline="absmiddle">
                 <td>&nbsp;</td>
                 </tr> 
             </table>

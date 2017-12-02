@@ -112,7 +112,7 @@
 
     </head>
     <body>
-         <table border="0px">
+        <table border="0px">
             <tr>
                 <% if (user == null) {
                         session.setAttribute("user", user); %>
@@ -144,7 +144,7 @@
                 </td>
 
                 <td><form action="paymentlist" method="post">
-                        <input type="image" src="image\putCart.jpg" name="Submit" value ="주문 목록">
+                        <input type="image" src="image\order.jpg" name="Submit" value ="주문 목록">
                     </form>    
                 </td>
                 <td><form action="myPage" method="post">
@@ -187,10 +187,10 @@
                 <td><form action="myCase" method="post">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
                     </form></td>
-                <% } else {%>
+                    <% } else {%>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
-                <% } %>        
+                        <% } %>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
 
                 <td><form action ="caseTypePage" method="post">
@@ -316,10 +316,12 @@
     <center>
         <table>
             <tr><h2>한줄 리뷰★</h2><tr>
+            <hr width="15%" size="1" color="gray"></center><br>
+
             <tr>
-                <th width="170" height = "35">별점</th>
-                <th width="120" height = "35">리뷰</th>
-                <th width="120" height = "35">ID</th>
+                <th width="140" height = "35"><img src="image\별점.jpg" width=140 height=40"></th>
+                <th width="400" height = "35"><img src="image\review.jpg" width=400 height=40"></th>
+                <th width="140" height = "35"><img src="image\id.JPG" width=140 height=40"></th>
             </tr>
             <%for (int i = 0; i < reviews.size(); i++) {
                     Review v_review = reviews.get(i);
@@ -356,6 +358,8 @@
         <form action="wrtieReview" method="post">
             <table>
                 <tr><h2>리뷰 작성★</h2><tr>
+                <hr width="15%" size="1" color="gray"></center><br>
+
                 <tr><td><textarea name="content" cols="100" rows="5"></textarea><td>
                     <td><select name="grade" >
                             <option name="grade" value="unknown">-----
@@ -367,8 +371,12 @@
                         </select></td>
                 <input type="hidden" name="userID" value="<%=user.getId()%>">
                 <input type="hidden" name="caseID" value="<%=request.getAttribute("caseID")%>">
-                <td><input type="submit" value="등록"></td>    
+                <!--<td>><input type="submit" value="등록"></td>    -->
                 </tr>
+                <tr><td><center><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                    
+                    <input type="image" src="image\qnaAdd.jpg" name="Submit" value ="등록하기" aline="absmiddle"></center></td></tr>
+
             </table>
         </form>
     </center>
