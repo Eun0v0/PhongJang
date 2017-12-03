@@ -50,10 +50,6 @@ public class UpdateQnaServlet extends HttpServlet {
         User user = (User) HttpSession.getAttribute("user");
 
         try {
-            if (user == null) {
-                status.addException(new Exception(
-                        "회원 본인만 수정할 수 있습니다"));
-            }
             try {
                 request.setAttribute("user", user);
                 request.setAttribute("qna", qna);

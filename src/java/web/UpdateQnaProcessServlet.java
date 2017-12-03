@@ -61,10 +61,6 @@ public class UpdateQnaProcessServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         try {
-            if (user == null) {
-                status.addException(new Exception(
-                        "회원 본인만 수정할 수 있습니다"));
-            }
             if ((qnaTitle == null) || (qnaTitle.length() == 0)) {
                 status.addException(new Exception(
                         "제목을 입력해주세요"));
@@ -84,7 +80,7 @@ public class UpdateQnaProcessServlet extends HttpServlet {
             }
 
             try {
-                if (passwordCheck.equals(passWord) && user != null) {
+                if (passwordCheck.equals(passWord)) {
                     qnaService.updateQna(qnaNum, userName, qnaTitle, qnaContent);
                 }
                     qnaSave = qnaService.getQnaInfo(qnaNum);

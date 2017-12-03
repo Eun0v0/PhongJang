@@ -54,10 +54,6 @@ public class DeleteQnaServlet extends HttpServlet {
         ArrayList<Qna> qnas = null;
 
         try {
-            if(user == null){
-                status.addException(new Exception(
-                        "회원 본인만 삭제할 수 있습니다."));
-            }
             if ((password == null) || (password.length() == 0)) {
                 status.addException(new Exception(
                         "비밀번호를 입력해주세요"));
@@ -68,7 +64,7 @@ public class DeleteQnaServlet extends HttpServlet {
             }
 
             try {
-                if (passwordCheck.equals(password) && user!=null) {
+                if (passwordCheck.equals(password)) {
                     qnaService.deleteQna(qnaNum, password); //해당 QnA 삭제
                 }
                 qnas = qnaService.getAllQna();
