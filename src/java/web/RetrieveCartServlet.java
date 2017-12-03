@@ -21,9 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 /**
- *
- * @author yukih
- */
+ * 장바구니의 모든 내용을 보여줌
+*/
 public final class RetrieveCartServlet extends HttpServlet {
      public void doPost(HttpServletRequest request,
             HttpServletResponse response)

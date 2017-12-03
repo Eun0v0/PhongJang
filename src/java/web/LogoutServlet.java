@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ * 로그아웃 처리 서블릿
+*/
 public final class LogoutServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,

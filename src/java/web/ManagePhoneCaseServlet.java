@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+/**
+ * 케이스 관리 서블릿
+*/
 public final class ManagePhoneCaseServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,

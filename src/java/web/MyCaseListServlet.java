@@ -60,7 +60,7 @@ public class MyCaseListServlet extends HttpServlet {
         String userType = ((User) HttpSession.getAttribute("user")).getUsertype();
 
         if (userType.equals("C")) {
-            myCases = myCaseService.getAllMyCases(userID);
+            myCases = myCaseService.getAllMyCases(userID); // 해당 고객이 작성한 마이케이스 글을 가져온다
             replyMyCases = replyMyCaseService.myCaseReplyRetrieve();
             request.setAttribute("myCases", myCases);
             request.setAttribute("replyMyCases", replyMyCases);
@@ -69,7 +69,7 @@ public class MyCaseListServlet extends HttpServlet {
             view = request.getRequestDispatcher("myCaseList.jsp"); //c7stomer 전용
             view.forward(request, response);
         } else {
-            myCases = myCaseService.getAllMyCases();
+            myCases = myCaseService.getAllMyCases(); // 관리자는 모든 글을 열람해야 하므로 전체 마이케이스 글을 가져온다
             replyMyCases = replyMyCaseService.myCaseReplyRetrieve();
         
             request.setAttribute("myCases", myCases);

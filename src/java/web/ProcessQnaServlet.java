@@ -88,6 +88,7 @@ public class ProcessQnaServlet extends HttpServlet {
                         "Please enter your qnaContent"));
             }
             try {
+                //공란이 없다면 QnA 입력
                 if (!userName.isEmpty() && !passWord.isEmpty() && !qnaTitle.isEmpty() && !qnaContent.isEmpty()) {
                     qnaService.insertQna(userName, passWord, qnaTitle, qnaContent, s_date);
                 }

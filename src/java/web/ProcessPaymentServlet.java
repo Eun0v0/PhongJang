@@ -121,7 +121,7 @@ public class ProcessPaymentServlet extends HttpServlet {
                 for (int i = 0; i < carts.size(); i++) {
                     for (int j = 0; j < phonecases.size(); j++) {
                         if ((carts.get(i).getCaseName()).equals(phonecases.get(j).getCaseName())) {
-                            totalprice += phonecases.get(j).getPrice() * carts.get(i).getNumbers();
+                            totalprice += phonecases.get(j).getPrice() * carts.get(i).getNumbers(); //결제 금액 계산
                             myCases.add(phonecases.get(j));
                         }
                     }
