@@ -46,7 +46,7 @@ public class UpdateQnaProcessServlet extends HttpServlet {
         Status status = new Status();
         request.setAttribute("status", status);
 
-        
+        User user = (User)  HttpSession.getAttribute("user");
         Qna qna = (Qna) HttpSession.getAttribute("qna");
         Qna qnaSave = null;
         QnaService qnaService = new QnaService();
@@ -61,6 +61,10 @@ public class UpdateQnaProcessServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         try {
+            if (user == null) {
+                status.addException(new Exception(
+                        "회원 본인만 수정할 수 있습니다"));
+            }
             if ((qnaTitle == null) || (qnaTitle.length() == 0)) {
                 status.addException(new Exception(
                         "제목을 입력해주세요"));
@@ -80,7 +84,7 @@ public class UpdateQnaProcessServlet extends HttpServlet {
             }
 
             try {
-                if (passwordCheck.equals(passWord)) {
+                if (passwordCheck.equals(passWord) && user != null) {
                     qnaService.updateQna(qnaNum, userName, qnaTitle, qnaContent);
                 }
                     qnaSave = qnaService.getQnaInfo(qnaNum);
@@ -91,7 +95,7 @@ public class UpdateQnaProcessServlet extends HttpServlet {
                     request.setAttribute("userName", userName);
                     request.setAttribute("Password", passwordCheck);
                     request.setAttribute("qnaContent", qnaContent);
-                    request.setAttribute("user", HttpSession.getAttribute("user"));
+                    request.setAttribute("user", user);
 
                     if (!status.isSuccessful()) {
                         view = request.getRequestDispatcher("qnaUpdate.jsp");

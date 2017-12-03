@@ -133,7 +133,7 @@
     <center><form action ="searchQnA" method="post">
             <img src="image\search.png" height="17" width="17">
             <input type="text" size="16" name="userName">
-            <input type="submit" value="검색">
+            <input type="submit" value="작성자명 검색">
         </form></center>
     <center><table>
             <tr>
@@ -141,8 +141,6 @@
                 <th width="250" height="35"><img src="image\boardtitle.jpg" width=250 height=40"></th>
                 <th width="120" height="35"><img src="image\writer.jpg" width=120 height=40"></th>
                 <th width="140" height="35"><img src="image\writedate.jpg" width=140 height=40"></th>
-                <th width="50" height="40"><input type="image" src="image\deletePink.jpg" value ="삭제" aline="absmiddle" width=60 height=40>
-
             </tr>
             <%
                 for (int i = 0; i < qnas.size(); i++) {
@@ -161,11 +159,6 @@
                     <a href="showQna?qnaNum=<%=qnaNum%>"><%=qnaTitle%></a></td>
                 <td bgcolor="#dcdcdc" height="40" align="center"><%=userName%></td>
                 <td bgcolor="#dcdcdc" height="40" align="center"><%=qnaTime%></td>
-                <td bgcolor="#dcdcdc" height="40" align="center">
-                    <form action="deleteQna" methor="post">
-                        <input type="hidden" name="qnaNum" value="<%=qnaNum%>">
-                        <input type="image" src="image\delete.jpg" value ="삭제" aline="absmiddle">
-                    </form>
                 </td>   
             </tr>
             <% }%>

@@ -16,33 +16,64 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import util.Status;
+
 /**
  * QnA 수정 서블릿
-*/
+ */
 public class UpdateQnaServlet extends HttpServlet {
-     public void doPost(HttpServletRequest request,
+
+    public void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
         processRequest(request, response);
     }
-     public void doGet(HttpServletRequest request,
+
+    public void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
         processRequest(request, response);
     }
-     public void processRequest(HttpServletRequest request,
+
+    public void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
         RequestDispatcher view = null;
         QnaService qnaService = null;
-        HttpSession HttpSession=request.getSession();
+        HttpSession HttpSession = request.getSession();
+        Status status = new Status();
+
         int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
         Qna qna = null;
         qnaService = new QnaService();
         qna = qnaService.getQnaInfo(qnaNum);
-        request.setAttribute("user", HttpSession.getAttribute("user"));
-        request.setAttribute("qna", qna);
-        view = request.getRequestDispatcher("qnaUpdate.jsp");
-        view.forward(request, response);
+        User user = (User) HttpSession.getAttribute("user");
+
+        try {
+            if (user == null) {
+                status.addException(new Exception(
+                        "회원 본인만 수정할 수 있습니다"));
+            }
+            try {
+                request.setAttribute("user", user);
+                request.setAttribute("qna", qna);
+                if (!status.isSuccessful()) {
+                    view = request.getRequestDispatcher("qnaView.jsp");
+                    view.forward(request, response);
+                    return;
+                }
+                view = request.getRequestDispatcher("qnaUpdate.jsp");
+                view.forward(request, response);
+
+            } catch (Exception e) {
+                status.addException(e);
+                view = request.getRequestDispatcher("qnaView.jsp");
+                view.forward(request, response);
+            }
+        } catch (IllegalArgumentException e) {
+            status.addException(e);
+            view = request.getRequestDispatcher("qnaView.jsp");
+            view.forward(request, response);
+        }
     }
 }

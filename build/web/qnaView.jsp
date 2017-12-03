@@ -133,14 +133,15 @@
     </center>
     <hr size="5" color="black">
 
-
+    <center>
     <%if ((status != null) && !status.isSuccessful()) {%>
-    <font color="red">There were problems processing your request:
+    <font color="red">에러 발생!:
     <ul><%Iterator errors = status.getExceptions();
         while (errors.hasNext()) {
             Exception ex = (Exception) errors.next();%>
         <li><%= ex.getMessage()%><%}%></ul></font>    
         <%}%>
+    </center>
     <center></br></br><img src="image\qnawrite.jpg"><br></center>
     <center>
         <table>
@@ -184,6 +185,12 @@
     <input type="hidden" name ="qnaContent" value="<%=qna.getQnaContent()%>">
     <input type="image" src="image\update.jpg" value ="수정하기" aline="absmiddle">
     <br></br>
+</form>
+    <form action="deleteQna"  method="post">
+    비밀번호: <input type="password" name ="password">
+    <input type="hidden" name ="qnaNum" value="<%=qna.getQnaNum()%>">
+    <br><br><input type="image" src="image\delete.jpg" value ="삭제하기" aline="absmiddle">
+    <br><br>
 </form>
 
 <center>

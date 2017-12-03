@@ -21,7 +21,7 @@ public class QnaDAO {
     private static final String INSERT_STMT = "INSERT INTO boardQna VALUES(?,?,?,?,?,?)";
     private static final String UPDATE_STMT = "UPDATE boardQna SET QnaTitle = ?, UserName = ?, QnaContent = ? WHERE QnaNum = ?";
     private static final String GETNUM_STMT = "SELECT MAX(QnaNum) FROM boardQna";
-    private static final String DELETE_STMT = "DELETE FROM boardQna WHERE QnaNum = ?";
+    private static final String DELETE_STMT = "DELETE FROM boardQna WHERE QnaNum = ? AND Password = ?";
     private static final String RETRIEVE_STMT
             = "SELECT * FROM boardQna WHERE QnaNum = ?";
     private static final String SELECT_STMT = "SELECT * FROM boardQna WHERE qnaNum=?";
@@ -121,15 +121,17 @@ public class QnaDAO {
         }
     }
     //질문을 삭제한다
-    void qnaDelete(int qnaNum) {
+    void qnaDelete(int qnaNum, String password) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rset = null;
 
         try {
+            //DELETE FROM boardQna WHERE QnaNum = ? AND Password = ?
             conn = connPool.getPoolConnection();
             stmt = conn.prepareStatement(DELETE_STMT);
             stmt.setInt(1, qnaNum);
+            stmt.setString(2, password);
             stmt.executeQuery();
         } catch (SQLException se) {
             throw new RuntimeException(

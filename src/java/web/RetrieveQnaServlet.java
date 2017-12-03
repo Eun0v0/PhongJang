@@ -47,9 +47,16 @@ public class RetrieveQnaServlet extends HttpServlet {
         qnaReplys = qnaReplyService.getAllReply(qnaNum); //해당 QnA의 모든 답글을 가져옴
         request.setAttribute("qnaReplys", qnaReplys);
 
-        String userType = ((User) HttpSession.getAttribute("user")).getUsertype();    
-        
-        if(userType.equals("C")){
+        User user = (User) HttpSession.getAttribute("user");
+        String userType = null;
+        if (user != null) {
+            userType = ((User) HttpSession.getAttribute("user")).getUsertype();
+        }
+
+        if (user == null) {
+            view = request.getRequestDispatcher("qnaView.jsp"); //c7stomer 전용
+            view.forward(request, response);
+        } else if(userType.equals("C")){
             view = request.getRequestDispatcher("qnaView.jsp");
             view.forward(request, response);
         } else {

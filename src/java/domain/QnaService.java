@@ -48,8 +48,8 @@ public class QnaService {
         qnaDataAccess.qnaInsert(userName, passWord, qnaTitle, qnaContent, s_date);
     }
 
-    public void deleteQna(int qnaNum) {
-        qnaDataAccess.qnaDelete(qnaNum);
+    public void deleteQna(int qnaNum, String password) {
+        qnaDataAccess.qnaDelete(qnaNum, password);
     }
     
     public void updateQna(int qnaNum, String userName, String qnaTitle, String qnaContent) {

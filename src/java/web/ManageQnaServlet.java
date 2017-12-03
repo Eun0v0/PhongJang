@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package web;
+
 import domain.Qna;
 import domain.QnaService;
 import domain.UserService;
@@ -16,9 +17,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 /**
  * Qna 관리 서블릿
-*/
+ */
 public class ManageQnaServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -26,30 +28,39 @@ public class ManageQnaServlet extends HttpServlet {
             throws IOException, ServletException {
         processRequest(request, response);
     }
+
     public void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
         processRequest(request, response);
     }
+
     public void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
         RequestDispatcher view = null;
-        HttpSession HttpSession=request.getSession();
-        
+        HttpSession HttpSession = request.getSession();
+
         QnaService QnaService = null;
-        ArrayList<Qna> qnas = null; 
-        
-        QnaService = new QnaService();     
+        ArrayList<Qna> qnas = null;
+
+        QnaService = new QnaService();
         qnas = QnaService.getAllQna();
-            
+
         request.setCharacterEncoding("EUC-KR");
         request.setAttribute("user", HttpSession.getAttribute("user"));
         request.setAttribute("qnas", qnas);
-        
-        String userType = ((User) HttpSession.getAttribute("user")).getUsertype();    
-        
-        if(userType.equals("C")){
+
+        User user = (User) HttpSession.getAttribute("user");
+        String userType = null;
+        if (user != null) {
+            userType = ((User) HttpSession.getAttribute("user")).getUsertype();
+        }
+
+        if (user == null) {
+            view = request.getRequestDispatcher("qna.jsp"); //c7stomer 전용
+            view.forward(request, response);
+        } else if (userType.equals("C")) {
             view = request.getRequestDispatcher("qna.jsp"); //c7stomer 전용
             view.forward(request, response);
         } else {
