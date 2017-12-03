@@ -89,9 +89,10 @@ public class ReviewDAO {
             rset = stmt.executeQuery();
             int ID = -1;
             rset.next();
-            ID = rset.getInt("COUNT(ReplyNum)");
+            ID = rset.getInt("MAX(ReplyNum)");
             ID++;
-            
+            if(ID == 10000)
+                ID=1;
             
             stmt = conn.prepareStatement(ADD_STMT);
             stmt.setInt(1, ID);
