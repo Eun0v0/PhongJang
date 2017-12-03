@@ -32,12 +32,10 @@
     <body>
         <table border="0px">
             <tr>
-<<<<<<< HEAD
-                <%                    if (user == null) { %>
-=======
+
                 <%  if (user == null) {
                         session.setAttribute("user", user); %>
->>>>>>> b7b097b170ecaff5114ddcea772377fafc4280a6
+
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\cart.jpg"></a>
@@ -259,19 +257,12 @@
                 <th width="120" height = "35">비고</th>
                 <th width="120" height = "35">상태</th>
             </tr>
-<<<<<<< HEAD
+            
             <% if(replyMyCase!= null){
                 String account = replyMyCase.getAccount();
                 String dueDate = replyMyCase.getDueDate();
                 String v_content = replyMyCase.getContent();
                 String v_status = replyMyCase.getStatus();
-=======
-            <% if (replyMyCase != null) {
-                    String account = replyMyCase.getAccount();
-                    String dueDate = replyMyCase.getDueDate();
-                    String v_content = replyMyCase.getContent();
-                    String v_status = replyMyCase.getStatus();
->>>>>>> e6256c6a2655faa4ba0115ca77f6f948f95302ce
             %>
             <tr>
                 <td bgcolor="#dcdcdc" align="center"><%=account%></td>
@@ -279,11 +270,9 @@
                 <td bgcolor="#dcdcdc" align="center"><%=v_content%></td>
                 <td bgcolor="#dcdcdc" align="center"><%=v_status%></td>
             </tr>
-<<<<<<< HEAD
+
             <% } %>
-=======
-            <% }%>
->>>>>>> e6256c6a2655faa4ba0115ca77f6f948f95302ce
+
         </table>
     </center> 
     <br><br><br>

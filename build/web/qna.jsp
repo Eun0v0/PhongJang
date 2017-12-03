@@ -141,7 +141,7 @@
                 <th width="250" height="35"><img src="image\boardtitle.jpg" width=250 height=40"></th>
                 <th width="120" height="35"><img src="image\writer.jpg" width=120 height=40"></th>
                 <th width="140" height="35"><img src="image\writedate.jpg" width=140 height=40"></th>
-                <th width="40" height="40"><input type="image" src="image\deletePink.jpg" value ="삭제" aline="absmiddle" width=50 height=40>
+                <th width="50" height="40"><input type="image" src="image\deletePink.jpg" value ="삭제" aline="absmiddle" width=60 height=40>
 
             </tr>
             <%

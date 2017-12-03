@@ -17,7 +17,7 @@ import util.DBConnectionPool;
 public class QnaDAO {
 
     private DBConnectionPool connPool;
-    private static final String ALLRETRIEVE_STMT = "SELECT * FROM boardQna";
+    private static final String ALLRETRIEVE_STMT = "SELECT * FROM boardQna ORDER BY QnaNum desc";
     private static final String INSERT_STMT = "INSERT INTO boardQna VALUES(?,?,?,?,?,?)";
     private static final String UPDATE_STMT = "UPDATE boardQna SET QnaTitle = ?, UserName = ?, QnaContent = ? WHERE QnaNum = ?";
     private static final String GETNUM_STMT = "SELECT MAX(QnaNum) FROM boardQna";

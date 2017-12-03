@@ -95,7 +95,7 @@
 
     </head>
     <body>
-         <table border="0px">
+        <table border="0px">
             <tr>
                 <% if (user == null) {
                         session.setAttribute("user", user); %>
@@ -170,10 +170,10 @@
                 <td><form action="myCase" method="post">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
                     </form></td>
-                <% } else {%>
+                    <% } else {%>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
-                <% } %>        
+                        <% } %>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
 
                 <td><form action ="caseTypePage" method="post">
@@ -210,47 +210,48 @@
             Exception ex = (Exception) errors.next();%>
         <li><%= ex.getMessage()%><%}%></ul></font><%}%>
     <center><h1>★이벤트 내용★</h1></center>
-    <center>
-        <table>
-            <tr>
-            <br><br>
-            <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
-            <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-            <tr>
-                <td>&nbsp;</td>
-                <th width="120" height="35">제목</th>
-                <td><%=request.getAttribute("title")%></td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
-            <tr>
-                <td>&nbsp;</td>
-                <th width="60" height="35">부가 설명</th>
-                <td><%=request.getAttribute("content")%></td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-            <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
-            <tr align="center">
-                <td>&nbsp;</td><br>
+    <hr width="30%" size="1" color="gray"></center>
+<center>
+    <table>
+        <tr>
+        <br><br>
+        <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
+        <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+        <tr>
+            <td>&nbsp;</td>
+            <th width="120" height="35">제목</th>
+            <td><%=request.getAttribute("title")%></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr height="1" bgcolor="#dddddd"><td colspan="3"></td></tr>
+        <tr>
+            <td>&nbsp;</td>
+            <th width="60" height="35">부가 설명</th>
+            <td><%=request.getAttribute("content")%></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+        <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
+        <tr align="center">
+            <td>&nbsp;</td><br>
 
-            </tr>      
-            </center></td></tr>
-        </table>
+        </tr>      
+        </center></td></tr>
+    </table>
 
-        <center><img src="image/upload/<%=request.getAttribute("image")%>" width="600" height="550"></center>
-        <hr size="1" width="1100">
-    </center>
-    <br><br>
+    <center><img src="image/upload/<%=request.getAttribute("image")%>" width="600" height="550"></center>
+    <hr size="1" width="1100">
+</center>
+<br><br>
 
-    <div id="gotop">
-        <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>
-        <img src="image\cursor1.jpg" height="50" width="50"> <br>
-        <a href="#bottom"> <img src="image\down.jpg" height="35" width="50"> </a> 
-    </div>
+<div id="gotop">
+    <a href="#top"><img src="image\up.jpg" height="35" width="50"></a><br>
+    <img src="image\cursor1.jpg" height="50" width="50"> <br>
+    <a href="#bottom"> <img src="image\down.jpg" height="35" width="50"> </a> 
+</div>
 
-    <script type="text/javascript">initMoving(document.getElementById("gotop"), 50, 50, 50);</script> 
+<script type="text/javascript">initMoving(document.getElementById("gotop"), 50, 50, 50);</script> 
 
-    <a href="#top" name="bottom"><img src="image\totop.jpg" align="right"></a>
+<a href="#top" name="bottom"><img src="image\totop.jpg" align="right"></a>
 </body>
 </html>

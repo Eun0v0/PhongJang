@@ -128,13 +128,8 @@
         </table>
     </center>
     <hr size="5" color="black">
-<<<<<<< HEAD
-    <center></br><h2>나만의 케이스 문의 목록</h2> <hr width="20%" size="1" color="gray"><br></center>
-=======
 
-
-    <center></br></br><img src="image\qnalist.jpg"><br><br></center>
->>>>>>> b7b097b170ecaff5114ddcea772377fafc4280a6
+    <center></br></br><img src="image\MyCaseListTitle.jpg" height="60" width="280"><br><br></center>
     <center><table>
             <tr>
                 <th width="60" height="35"><img src="image\boardnum.jpg" width=60 height=40"></th>
