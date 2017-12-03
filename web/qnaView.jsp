@@ -26,7 +26,7 @@
             session.setAttribute("qna", qna);%>
     </head>
     <body>
-     <table border="0px">
+        <table border="0px">
             <tr>
                 <% if (user == null) {
                         session.setAttribute("user", user); %>
@@ -101,10 +101,10 @@
                 <td><form action="myCase" method="post">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
                     </form></td>
-                <% } else {%>
+                    <% } else {%>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
-                <% } %>        
+                        <% } %>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
 
                 <td><form action ="caseTypePage" method="post">
@@ -182,7 +182,8 @@
     <input type="hidden" name ="userName" value="<%=qna.getUserName()%>">
     <input type="hidden" name ="password" value="<%=qna.getPassWord()%>">
     <input type="hidden" name ="qnaContent" value="<%=qna.getQnaContent()%>">
-    <input type="submit" value="수정하기">
+    <input type="image" src="image\update.jpg" value ="수정하기" aline="absmiddle">
+    <br></br>
 </form>
 
 <center>
@@ -192,9 +193,13 @@
     <table>
         <tr><h2>댓글 내용</h2><tr>
         <tr>
-            <th width="120" height = "35">ID</th>
+            <th width="140" height = "35"><img src="image\id.JPG" width=140 height=40"></th>
+            <th width="140" height = "35"><img src="image\writedate.jpg" width=140 height=40"></th>
+            <th width="450" height = "35"><img src="image\qnaTitle.jpg" width=450 height=40"></th>
+
+            <!--<th width="400" height = "35">ID</th>
             <th width="120" height = "35">작성일</th>
-            <th width="400" height = "35">내용</th>
+            <th width="120" height = "35">내용</th>-->
         </tr>
         <%  if (qnaReplys != null) {
                 for (int i = 0; i < qnaReplys.size(); i++) {
