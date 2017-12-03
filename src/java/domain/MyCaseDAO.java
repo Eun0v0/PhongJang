@@ -18,7 +18,7 @@ import util.DBConnectionPool;
  */
 public class MyCaseDAO {
     private DBConnectionPool connPool;
-    private static final String RETRIEVE_STMT = "SELECT * FROM MyCase where UserID = ?";
+    private static final String RETRIEVE_STMT = "SELECT * FROM MyCase where UserID = ? ORDER BY MyCaseNum desc";
     private static final String GET_STMT = "SELECT * FROM MyCase where MyCaseNum = ?";
     private static final String GETALL_STMT = "SELECT * FROM MyCase";
     

@@ -102,7 +102,7 @@ public class ReviewDAO {
             stmt.setString(6, writeDate);
             stmt.executeQuery();
         } catch(SQLException se){
-            throw new RuntimeException("A database eroor occured." + se.getMessage());
+            throw new RuntimeException("A database error occured." + se.getMessage());
         }finally {
             if(stmt != null){
                 try{

@@ -192,9 +192,9 @@
     <table>
         <tr><h2>댓글 내용</h2><tr>
         <tr>
-            <th width="400" height = "35">ID</th>
+            <th width="120" height = "35">ID</th>
             <th width="120" height = "35">작성일</th>
-            <th width="120" height = "35">내용</th>
+            <th width="400" height = "35">내용</th>
         </tr>
         <%  if (qnaReplys != null) {
                 for (int i = 0; i < qnaReplys.size(); i++) {
