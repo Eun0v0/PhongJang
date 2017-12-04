@@ -48,12 +48,14 @@ public class DeletePhoneCaseServlet extends HttpServlet {
         caseColorService.caseColorDelete(caseName); //해당 케이스에 대한 색상(종류) 삭제
         
         phoneCases = phoneCaseService.getAllPhoneCase();
-
+        ArrayList<PhoneCase> p_phoneCases = phoneCaseService.popPhoneCaseRetrieve();//인기 케이스 정보
+        
         request.setCharacterEncoding("EUC-KR");
         request.setAttribute("user", user);
         request.setAttribute("phoneCases", phoneCases);
+        request.setAttribute("p_phoneCases", p_phoneCases);
         
-        view = request.getRequestDispatcher("admin/manageStock.jsp");
+        view = request.getRequestDispatcher("admin/main.jsp");
         view.forward(request, response);
     }
 }

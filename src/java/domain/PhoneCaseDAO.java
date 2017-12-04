@@ -18,7 +18,7 @@ public class PhoneCaseDAO {
 
     private DBConnectionPool connPool;
     private static final String ALLRETRIEVE_STMT
-            = "SELECT * FROM shoppingproduct ORDER BY CaseID DESC";
+            = "SELECT * FROM shoppingproduct ORDER BY CaseID ASC";
     private static final String POP_STMT
             = "SELECT * FROM shoppingproduct ORDER BY Stock DESC";
     

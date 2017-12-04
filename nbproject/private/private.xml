@@ -7,7 +7,6 @@
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/MyInfoServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/admin/myCaseList.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/admin/qnaView.jsp</file>
-            <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/MainServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/EventService.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/cart.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/Review.java</file>
@@ -86,7 +85,6 @@
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/DeleteQnaServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/login.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/UserService.java</file>
-            <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/MyCaseDAO.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/MyCase.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/searchID.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/DeletePaymentServlet.java</file>
@@ -114,18 +112,17 @@
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/addPayment.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/JoinServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/UpdateMyCaseStatusServlet.java</file>
+            <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/ReviewService.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/admin/create.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/PaymentService.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/WEB-INF/web.xml</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/RetrievePaymentServlet.java</file>
-            <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/DetailPageServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/searchIDList.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/UserDAO.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/DeletePhoneCaseServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/UpdatePaymentServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/searchPwd.jsp</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/EventListServlet.java</file>
-            <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/web/UpdateProcessPhoneCaseServlet.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/ReviewDAO.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/src/java/domain/QnaReply.java</file>
             <file>file:/E:/채은3-2/소공/팀플/PhongJang/web/payment.jsp</file>

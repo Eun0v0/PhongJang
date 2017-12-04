@@ -6,8 +6,14 @@
 package web;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import domain.CaseColor;
+import domain.CaseColorService;
 import domain.PhoneCase;
 import domain.PhoneCaseService;
+import domain.PhoneType;
+import domain.PhoneTypeService;
+import domain.Review;
+import domain.ReviewService;
 import domain.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -46,10 +52,17 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         
         request.setAttribute("status", status);
 
-        PhoneCaseService phoneCaseService = new PhoneCaseService();
         HttpSession HttpSession = request.getSession();
         User user = (User) HttpSession.getAttribute("user");
         int caseID = Integer.parseInt(multi.getParameter("caseID"));
+        
+        ArrayList<PhoneType> phoneTypes = new ArrayList<PhoneType>();
+        ArrayList<CaseColor> caseColors = new ArrayList<CaseColor>();
+        
+        PhoneTypeService phoneTypeService = new PhoneTypeService();
+        PhoneCaseService phoneCaseService = new PhoneCaseService();
+        CaseColorService caseColorService = new CaseColorService();
+        ReviewService reviewService = new ReviewService();
         
         PhoneCase phoneCase;
         phoneCase = phoneCaseService.getPhoneCase(caseID);
@@ -61,6 +74,10 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
         String img = multi.getFilesystemName("img");
         String detailImg = multi.getFilesystemName("detailImg");
         
+        ArrayList<Review> reviews = reviewService.reviewRetrieve(caseID); //리뷰글 내용 가져오기
+        phoneTypes = phoneTypeService.getPhoneType(caseName);//핸드폰 기종 정보 가져오기
+        caseColors = caseColorService.getCaseColor(caseName);//케이스 색상(종류) 정보 가져오기
+        
         //이미지를 재업로드 하지 않았을 경우 기존 이미지 사용
         if(img == null){
             img = phoneCase.getImg();
@@ -71,8 +88,20 @@ public class UpdateProcessPhoneCaseServlet extends HttpServlet {
          
         ArrayList<PhoneCase> phoneCases = new ArrayList<PhoneCase>();
         request.setAttribute("phoneCases", phoneCases);
-        request.setAttribute("user", user);
         request.setAttribute("caseID", caseID);
+        request.setAttribute("caseName", caseName);
+        request.setAttribute("caseType", caseType);
+        request.setAttribute("explanation", explanation);
+        request.setAttribute("price", price);
+        request.setAttribute("img", img);
+        request.setAttribute("detailImg", detailImg);
+
+        request.setAttribute("user", HttpSession.getAttribute("user"));
+        request.setAttribute("phoneCase", HttpSession.getAttribute("phoneCase"));
+        request.setAttribute("phoneTypes", phoneTypes);
+        request.setAttribute("caseColors", caseColors);
+        request.setAttribute("reviews", reviews);
+        
 
         try {
             if ((caseType == null) || (caseType.length() == 0)) {

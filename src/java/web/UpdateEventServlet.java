@@ -60,9 +60,12 @@ public class UpdateEventServlet extends HttpServlet {
         request.setAttribute("image", image);
         request.setAttribute("content", content);
         
-        String userType = ((User) HttpSession.getAttribute("user")).getUsertype();    
-        
-        if(userType.equals("C")){
+        String userType = null;
+        User user =(User) HttpSession.getAttribute("user"); 
+        if(user != null)
+            userType = user.getUsertype();    
+         
+        if(user == null || userType.equals("C")){
             view = request.getRequestDispatcher("eventView.jsp"); //고객은 열람만 가능
             view.forward(request, response);
         } else {

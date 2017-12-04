@@ -274,7 +274,12 @@
             </table>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <input type="image" src="image\putCart.jpg" name="Submit" value ="주문 목록">       
+            <% if(user == null) { %>
+            <a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
+                <input type="image" src="image\putCart.jpg" name="Submit" value ="주문 목록"> </a>
+            <% } else { %>
+            <input type="image" src="image\putCart.jpg" name="Submit" value ="주문 목록">     
+            <% } %>
         </center>
     </form>
     <br><br>

@@ -200,7 +200,7 @@
                             <input type="hidden" name="caseID" value="<%=caseID%>">
                             <input type="hidden" name="caseName" value="<%=caseName%>">
 
-                            <input type="submit" value="삭제">
+                            <input type="image" src="image/trash.JPG" value="삭제" width="30" height="40">
                         </form></div>
                 </td>
             </tr>
@@ -237,15 +237,15 @@
                         <div align="left"><font size="2">가격:</font></div>
                         <div align="right"><textarea name="price" cols="20" rows="3"><%=request.getAttribute("price")%></textarea></div>
                         <div align="right"><select name="phoneType" >
-                                <option name="caseType" value="unknown">-----
+                                <option name="phoneType" value="unknown">-----
                                     <%for (int i = 0; i < phoneTypes.size(); i++) {
                                         v_phoneType = phoneTypes.get(i);
                                         String phoneType = v_phoneType.getPhoneType();%>
-                                <option name="caseType" value="<%=phoneType%>"><%=phoneType%>
+                                <option name="phoneType" value="<%=phoneType%>"><%=phoneType%>
                                     <% }%>
                             </select></div>
-                        <div align="right"><select name="caseType" >
-                                <option name="caseType" value="unknown">-----
+                        <div align="right"><select name="caseColor" >
+                                <option name="caseColor" value="unknown">-----
                                     <%for (int i = 0; i < caseColors.size(); i++) {
                                         v_caseColor = caseColors.get(i);
                                         String caseColor = v_caseColor.getCaseColor();%>
@@ -259,7 +259,7 @@
                         <hr size="1">
                 <br><center>
                     <input type="hidden" name="caseID" value="<%=caseID%>">
-                    <input type="submit" value="수정하기">
+                    <input type="image" src="image/update.jpg" value="수정하기">
                 </center>
                 </td>
                 </tr>

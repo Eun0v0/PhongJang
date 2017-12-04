@@ -29,7 +29,7 @@ import util.Status;
 
 /**
  * 이벤트 리스트 서블릿
-*/
+ */
 public class EventListServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
@@ -52,22 +52,32 @@ public class EventListServlet extends HttpServlet {
         User user = (User) HttpSession.getAttribute("user");
         ArrayList<Event> events = new ArrayList<Event>();
 
-        String userID = user.getId();
+        //String userID = user.getId();
+        String userType = null;
+        if (user != null) {
+            userType = user.getUsertype();
+        }
 
-        String userType = ((User) HttpSession.getAttribute("user")).getUsertype();
-
-        if (userType.equals("C")) {
+        if (user == null) {
             events = eventService.getAllEvents();//전체 이벤트 내용을 가져온다
             request.setAttribute("events", events);
             request.setAttribute("user", user);
             view = request.getRequestDispatcher("eventList.jsp");
             view.forward(request, response);
         } else {
-             events = eventService.getAllEvents();//전체 이벤트 내용을 가져온다
-            request.setAttribute("events", events);
-            request.setAttribute("user", user);
-            view = request.getRequestDispatcher("admin/eventList.jsp");
-            view.forward(request, response);
+            if (userType.equals("C")) {
+                events = eventService.getAllEvents();//전체 이벤트 내용을 가져온다
+                request.setAttribute("events", events);
+                request.setAttribute("user", user);
+                view = request.getRequestDispatcher("eventList.jsp");
+                view.forward(request, response);
+            } else {
+                events = eventService.getAllEvents();//전체 이벤트 내용을 가져온다
+                request.setAttribute("events", events);
+                request.setAttribute("user", user);
+                view = request.getRequestDispatcher("admin/eventList.jsp");
+                view.forward(request, response);
+            }
         }
     }
 }

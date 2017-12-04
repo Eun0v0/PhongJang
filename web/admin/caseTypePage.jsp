@@ -184,10 +184,14 @@
     <hr size="5" color="black">
 
     <br><br>
-    <%String m_caseType = (String) request.getAttribute("caseType");%>
+    <%String m_caseType = (String) request.getAttribute("caseType");
+    if(m_caseType == null) { %>
+    <font size="5"><center><b>&nbsp;&nbsp; 검색 케이스<sup><font size="1" color="red">HIT!</font></sup></b></font>
+        <hr width="13%" size="2" color="gray"></center><br>
+        <% } else { %>
     <font size="5"><center><b>&nbsp;&nbsp;<%=m_caseType%> 케이스<sup><font size="1" color="red">HIT!</font></sup></b></font>
         <hr width="13%" size="2" color="gray"></center><br>
-
+        <% } %>
     <table align="center" width ="1000" height="400" cellpadding="15">
         <tr>
              <% // 한줄에 4개씩 배치하기 위해 ArrayList를 2차원 배열에 다시 저장해서 화면에 출력
