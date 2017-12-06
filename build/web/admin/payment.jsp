@@ -9,6 +9,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="domain.User"%>
 <%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
+<jsp:useBean id="status" scope="request" class="util.Status"/>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -109,6 +110,16 @@
         </table>
     </center>
     <hr size="5" color="black">
+    
+    <center>
+        <%if ((status != null) && !status.isSuccessful()) {%>
+        <font color="red">오류 발생!!!:
+        <ul><%Iterator errors = status.getExceptions();
+            while (errors.hasNext()) {
+                Exception ex = (Exception) errors.next();%>
+            <li><%= ex.getMessage()%><%}%></ul></font>    
+            <%}%>
+    </center>  
     <center></br>
         <h2>고객 결제 목록 입니다.</h2>
         <hr width="25%" size="1" color="gray"><br>

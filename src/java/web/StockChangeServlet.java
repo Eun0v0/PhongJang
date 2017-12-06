@@ -48,7 +48,9 @@ public class StockChangeServlet extends HttpServlet {
         User user = (User) HttpSession.getAttribute("user");
 
         String caseName = request.getParameter("caseName");
-        int stock = Integer.parseInt(request.getParameter("stock"));
+        int stock = 0;
+        if(!request.getParameter("stock").isEmpty())
+            stock = Integer.parseInt(request.getParameter("stock"));
         String caseColor = request.getParameter("caseColor");
 
         ArrayList<PhoneCase> phoneCases = new ArrayList<PhoneCase>();
@@ -57,8 +59,15 @@ public class StockChangeServlet extends HttpServlet {
                 status.addException(new Exception(
                         "재고를 다시 입력해주세요"));
             }
+            if (caseColor.isEmpty()) {
+                status.addException(new Exception(
+                        "제품 색상(종류)를 선택해주세요"));
+            }
+            
             try {
-                caseColorService.stockChange(stock, caseName, caseColor);//재고를 수정한다
+                if(stock != 0 && !caseColor.isEmpty()){
+                    caseColorService.stockChange(stock, caseName, caseColor);//재고를 수정한다
+                }
                 phoneCases = phoneCaseService.getAllPhoneCase();
                 request.setAttribute("phoneCases", phoneCases);
                 request.setAttribute("user", user);

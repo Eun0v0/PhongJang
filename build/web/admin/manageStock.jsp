@@ -17,17 +17,18 @@
 <%@page import="java.net.URLDecoder"%>
 <%@page import="domain.PhoneCase"%>
 <%@page import="java.util.Iterator" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
+<jsp:useBean id="status" scope="request" class="util.Status"/>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
         <title>Product List</title>
         <% ArrayList<PhoneCase> phoneCases = (ArrayList<PhoneCase>) request.getAttribute("phoneCases");
-        ArrayList<CaseColor> caseColors = new ArrayList<CaseColor>();
-        CaseColorService caseColorService = new CaseColorService();
-        CaseColor v_caseColor = null;
-         User user = (User) request.getAttribute("user");
-         session.setAttribute("user", user);
-         session.setAttribute("phoneCases", phoneCases);%>
+            ArrayList<CaseColor> caseColors = new ArrayList<CaseColor>();
+            CaseColorService caseColorService = new CaseColorService();
+            CaseColor v_caseColor = null;
+            User user = (User) request.getAttribute("user");
+            session.setAttribute("user", user);
+            session.setAttribute("phoneCases", phoneCases);%>
 
     </head>
     <body>
@@ -118,7 +119,16 @@
         </table>
     </center>
     <hr size="5" color="black">
-        
+
+    <center>
+        <%if ((status != null) && !status.isSuccessful()) {%>
+        <font color="red">오류 발생!!!:
+        <ul><%Iterator errors = status.getExceptions();
+            while (errors.hasNext()) {
+                Exception ex = (Exception) errors.next();%>
+            <li><%= ex.getMessage()%><%}%></ul></font>    
+            <%}%>
+    </center>    
     <center> <h2></br>재고 관리 페이지 입니다.</h2> 
         <hr width="28%" size="1" color="gray"><br></center>
     <center> 
@@ -127,7 +137,7 @@
             <input type="text" size="16" name="caseName">
             <input type="submit" value="검색">
         </form>
-        
+
         <table>
             <tr>
                 <th width="200" height = "35"><img src="image\adminCasename2.jpg" width=200 height=40"></th>
@@ -150,16 +160,16 @@
                 <td  bgcolor="#dcdcdc" align="center"><%=caseName%></td>
                 <td  bgcolor="#dcdcdc" align="center"><form action = "stockChange" method = "post">
                         <select name="caseColor" width="10">
-                                <option name="caseColor" value="unknown">-----
-                                    <%for (int j = 0; j < caseColors.size(); j++) {
-                                            v_caseColor = caseColors.get(j);
-                                            String caseColor = v_caseColor.getCaseColor();
-                                            int v_stock = v_caseColor.getStock();%>
-                                <option name="caseColor" value="<%=caseColor%>"><%=caseColor%> <%=v_stock%>개
-                                    <% }%>
-                            </select>
-                            <br>
-                            <input type="text" name="stock"><br>
+                            <option name="caseColor" value="unknown">-----
+                                <%for (int j = 0; j < caseColors.size(); j++) {
+                                        v_caseColor = caseColors.get(j);
+                                        String caseColor = v_caseColor.getCaseColor();
+                                        int v_stock = v_caseColor.getStock();%>
+                            <option name="caseColor" value="<%=caseColor%>"><%=caseColor%> <%=v_stock%>개
+                                <% }%>
+                        </select>
+                        <br>
+                        <input type="text" name="stock"><br>
                         <input type="hidden" name="caseName" value="<%=caseName%>"> <input type ="submit" value="재고 수정">
                     </form></td>
                 <td  bgcolor="#dcdcdc" align="center">
