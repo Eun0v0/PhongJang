@@ -298,10 +298,8 @@ public class PaymentDAO {
             rset = stmt.executeQuery();
             int ID = -1;
             rset.next();
-            ID = rset.getInt("MAX(PaymentID)")+ 1103010720;
+            ID = rset.getInt("MAX(PaymentID)");
             ID++;
-            if(ID == 300)
-                ID=1;
             stmt = conn.prepareStatement(ADD_STMT);
             stmt.setInt(1, ID);
             stmt.setString(2, userID);

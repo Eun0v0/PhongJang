@@ -214,7 +214,7 @@
 <center>
     <table>
         <tr>
-        <br><br>
+        <br>
         <tr height="1" bgcolor="#ECBFD8"><td colspan="4"></td></tr>
         <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
         <tr>
@@ -238,8 +238,8 @@
         </tr>      
         </center></td></tr>
     </table>
-
-    <center><img src="image/upload/<%=request.getAttribute("image")%>" width="600" height="550"></center>
+            <br>
+    <center><img src="image/upload/<%=request.getAttribute("image")%>" width="600" height="750"></center>
     <hr size="1" width="1100">
 </center>
 <br><br>

@@ -83,7 +83,7 @@ public class JoinServlet extends HttpServlet {
             
             try {
                 //공란이 없을때 유저 데이터 등록
-                if (!userID.isEmpty() && !password.isEmpty() && !phoneNumber.isEmpty() && !address.isEmpty() && findID.isEmpty()) {
+                if (!userID.isEmpty() && !password.isEmpty() && !phoneNumber.isEmpty() && !address.isEmpty() && findID.equals("X")) {
                     userService.userCreate(userID, "C", userName, password, phoneNumber, address);
                 }
                 if (!status.isSuccessful()) {

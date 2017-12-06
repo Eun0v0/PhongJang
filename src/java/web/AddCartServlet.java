@@ -104,6 +104,7 @@ public class AddCartServlet extends HttpServlet {
         if (caseColor.equals("unknown")) {
             status.addException(new Exception("타입을 선택해주세요"));
         }
+        
 
         ArrayList<PhoneCase> cases = null;
         phoneCaseService = new PhoneCaseService();

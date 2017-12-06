@@ -158,7 +158,7 @@
             String content = myCase.getContent();
             String image = myCase.getImage();
             String writeDate = myCase.getWriteDate();%>
-        <center><img src="image/upload/<%=image%>" width="400" height="360"></center>
+        <center><img src="image/myCase/<%=image%>" width="400" height="360"></center>
         <form action="modifyMyCaseProcess" method="post" enctype="multipart/form-data">
             <table>
                 <tr>

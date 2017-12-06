@@ -193,7 +193,7 @@
             Exception ex = (Exception) errors.next();%>
         <li><%= ex.getMessage()%><%}%></ul></font><%}%>
          <center><h1>이벤트 내용 수정</h1>
-             <img src="image/upload/<%=request.getAttribute("image")%>" width="600" height="550"></center>
+             <img src="image/upload/<%=request.getAttribute("image")%>" width="600" height="750"></center>
     <center>
         <form action="updateEventProcess" method="post" enctype="multipart/form-data">
             <table>

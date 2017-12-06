@@ -13,7 +13,7 @@
         <title>회원가입 완료</title>
     </head>
     <body>
-         <table border="0px">
+        <table border="0px">
             <tr>
                 <%  User user = (User) request.getAttribute("user");
                     if (user == null) {
@@ -89,10 +89,10 @@
                 <td><form action="myCase" method="post">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140">
                     </form></td>
-                <% } else {%>
+                    <% } else {%>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <input type="image" src="image\customCase3.jpg" name="Submit" height="35" width="140"></a></td>
-                <% } %>        
+                        <% }%>        
                 <td><img src="image\space.jpg" height="35" width="80"></td>
 
                 <td><form action ="caseTypePage" method="post">
@@ -120,9 +120,11 @@
         </table>
     </center>
     <hr size="5" color="black">
-
-    <h1>회원가입 완료!</h1>
-    <form action="main.jsp" method="post">
-        <input type="submit" value="main">
-        </body>
-        </html>
+    <center>
+        <h1>회원가입 완료!</h1>
+        <form action="main.jsp" method="post">
+            <input type="submit" value="main">
+        </form>
+    </center>
+</body>
+</html>
