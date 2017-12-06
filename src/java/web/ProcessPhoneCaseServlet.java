@@ -70,19 +70,19 @@ public class ProcessPhoneCaseServlet extends HttpServlet {
             
             if ((caseType == null) || (caseType.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your producttype"));
+                        " 케이스 타입을 입력해주세요"));
             }
             if ((caseName == null) || (caseName.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your productname"));
+                        "케이스 이름을 입력해주세요"));
             }
             if ((explanation == null) || (explanation.length() == 0)) {
                 status.addException(new Exception(
-                        "Please enter your explanation"));
+                        "설명을 입력해주세요"));
             }
             if ((price == 0)) {
                 status.addException(new Exception(
-                        "Please enter your price"));
+                        "상품 가격은 0일수 없습니다."));
             }
           
             try {
