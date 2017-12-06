@@ -31,9 +31,6 @@
                         <input type="image" src="image\adminAdd2.jpg" name="Submit" value ="로그아웃">
                     </a></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                        <input type="image" src="image\inventory.jpg" name="Submit" value ="로그아웃">
-                    </a></td>
-                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\order.jpg"></a>
                 </td>
 
@@ -58,7 +55,10 @@
 
                 <%  }%>
 
-                <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
+                <td><form action="qnaList" methoe="post">
+                        <input type="image" src="image\q&a.jpg" name="Submit" value="Q&A">
+                    </form>
+                </td>
             </tr>
         </table>
         <% if (user != null) {%>

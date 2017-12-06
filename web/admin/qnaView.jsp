@@ -27,8 +27,7 @@
 
     </head>
     <body>
-
-        <table border="0px">
+<table border="0px">
             <tr>
                 <% if (user == null) { %>
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
@@ -60,7 +59,10 @@
 
                 <%  }%>
 
-                <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
+                <td><form action="qnaList" methoe="post">
+                        <input type="image" src="image\q&a.jpg" name="Submit" value="Q&A">
+                    </form>
+                </td>
             </tr>
         </table>
         <% if (user != null) {%>
@@ -72,7 +74,7 @@
         </div> </center>
         <% } else {%>
     <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('admin/main.jsp')"> </div> </center>
-            <% }%>
+            <% } %>
 
     <form action ="search" method="post">
         <img src="image\search.png" height="17" width="17">
@@ -84,7 +86,7 @@
     <center>
         <table>
             <tr>
-
+                
                 <td><form action="myCaseList" method="post">
                         <input type="hidden" name="userID" value="<%=user.getId()%>">
                         <input type="image" src="image\customCase3.jpg" height="35" width="140">
@@ -117,7 +119,6 @@
         </table>
     </center>
     <hr size="5" color="black">
-
 
     <%if ((status != null) && !status.isSuccessful()) {%>
     <font color="red">There were problems processing your request:

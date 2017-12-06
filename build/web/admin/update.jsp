@@ -113,9 +113,6 @@
                         <input type="image" src="image\adminAdd2.jpg" name="Submit" value ="로그아웃">
                     </a></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
-                        <input type="image" src="image\inventory.jpg" name="Submit" value ="로그아웃">
-                    </a></td>
-                <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
                         <img src="image\order.jpg"></a>
                 </td>
 
@@ -140,7 +137,10 @@
 
                 <%  }%>
 
-                <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
+                <td><form action="qnaList" methoe="post">
+                        <input type="image" src="image\q&a.jpg" name="Submit" value="Q&A">
+                    </form>
+                </td>
             </tr>
         </table>
         <% if (user != null) {%>
@@ -152,7 +152,7 @@
         </div> </center>
         <% } else {%>
     <center> <div align="middle"> <img src="image\banner2.jpg" onClick="location.assign('admin/main.jsp')"> </div> </center>
-            <% }%>
+            <% } %>
 
     <form action ="search" method="post">
         <img src="image\search.png" height="17" width="17">
@@ -164,7 +164,12 @@
     <center>
         <table>
             <tr>
-                <td><a href="Top-main.jsp"><img src="image\customCase3.jpg" height="35" width="140"></a></td>
+                
+                <td><form action="myCaseList" method="post">
+                        <input type="hidden" name="userID" value="<%=user.getId()%>">
+                        <input type="image" src="image\customCase3.jpg" height="35" width="140">
+                        &nbsp;&nbsp;&nbsp;
+                    </form></td>
                 <td><img src="image\space.jpg" height="35" width="80"></td>
 
                 <td><form action ="caseTypePage" method="post">

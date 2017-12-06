@@ -97,6 +97,8 @@
     <body>
         <table border="0px">
             <tr>
+                <table border="0px">
+            <tr>
                 <% if (user == null) { %>
                 <td><img src="image\login.jpg" onClick="location.assign('login.jsp')"></td>
                 <td><a OnClick="alert('로그인을 해주세요!')" style="cursor:pointer">
@@ -127,7 +129,10 @@
 
                 <%  }%>
 
-                <td><a href="board\board-list.jsp"><img src="image\q&a.jpg"></a></td>
+                <td><form action="qnaList" methoe="post">
+                        <input type="image" src="image\q&a.jpg" name="Submit" value="Q&A">
+                    </form>
+                </td>
             </tr>
         </table>
         <% if (user != null) {%>
@@ -185,7 +190,6 @@
     </center>
     <hr size="5" color="black">
 
-    
     <%if ((status != null) && !status.isSuccessful()) {%>
     <font color="red">There were problems processing your request:
     <ul><%Iterator errors = status.getExceptions();
