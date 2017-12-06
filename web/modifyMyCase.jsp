@@ -251,11 +251,12 @@
 
         <table>
             <tr><h2>주문 내역서</h2><tr>
+            <hr width="20%" size="1" color="gray"><br>
             <tr>
-                <th width="400" height = "35">계좌번호</th>
-                <th width="120" height = "35">예금 기간</th>
-                <th width="120" height = "35">비고</th>
-                <th width="120" height = "35">상태</th>
+                <th width="300" height = "35"><img src="image\account.jpg" width=300 height=40"></th>
+                <th width="200" height = "35"><img src="image\date.jpg" width=200 height=40"></th>
+                <th width="300" height = "35"><img src="image\etc.jpg" width=300 height=40"></th>
+                <th width="140" height = "35"><img src="image\state.jpg" width=140 height=40"></th>
             </tr>
             
             <% if(replyMyCase!= null){
