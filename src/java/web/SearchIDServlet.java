@@ -15,13 +15,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import util.Status;
 
 /**
  *
- * @author Hayoung_2
- * ID찾기
+ * @author Hayoung_2 ID찾기
  */
 public final class SearchIDServlet extends HttpServlet {
+
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
@@ -33,18 +34,47 @@ public final class SearchIDServlet extends HttpServlet {
             throws IOException, ServletException {
         RequestDispatcher view = null;
         UserService userService = new UserService();
+        Status status = new Status();
+
         request.setCharacterEncoding("EUC-KR");
-        HttpSession HttpSession=request.getSession();
+        HttpSession HttpSession = request.getSession();
         User user = (User) HttpSession.getAttribute("user");
-        
+
         String userName = request.getParameter("userName");
         String PhoneNum = request.getParameter("PhoneNum");
-        
-        user = userService.getSearchID(userName,PhoneNum); // 유저정보를 찾아옴
-        String userID = user.getId(); // ID를 가져옴
-        //request.setAttribute("user", user);
-        request.setAttribute("userID", userID);
-        view = request.getRequestDispatcher("searchIDList.jsp");
-        view.forward(request, response);
+
+        if ((userName.isEmpty())) {
+            status.addException(new Exception(
+                    "이름을 입력해주세요"));
+        }
+        if ((PhoneNum.isEmpty())) {
+            status.addException(new Exception(
+                    "핸드폰 번호를 입력해주세요"));
+        }
+        try {
+            //공란이 없다면 업데이트
+            if (!userName.isEmpty() && !PhoneNum.isEmpty()) {
+                user = userService.getSearchID(userName, PhoneNum); // 유저정보를 찾아옴
+            }
+            String userID = user.getId(); // ID를 가져옴
+
+            if ((userID == null) || (userID.length() == 0)) {
+                status.addException(new Exception(
+                        "해당 아이디가 존재하지 않습니다."));
+            }
+            request.setAttribute("userID", userID);
+            if (!status.isSuccessful()) {
+                view = request.getRequestDispatcher("searchID.jsp");
+                view.forward(request, response);
+                return;
+            }
+            view = request.getRequestDispatcher("searchIDList.jsp");
+            view.forward(request, response);
+
+        } catch (Exception e) {
+            status.addException(e);
+            view = request.getRequestDispatcher("searchID.jsp");
+            view.forward(request, response);
+        }
     }
 }

@@ -15,13 +15,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import util.Status;
 
 /**
  *
- * @author Hayoung_2
- * 비밀번호 찾기
+ * @author Hayoung_2 비밀번호 찾기
  */
 public final class SearchPwdServlet extends HttpServlet {
+
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
@@ -35,17 +36,51 @@ public final class SearchPwdServlet extends HttpServlet {
         RequestDispatcher view = null;
         UserService userService = new UserService();
         request.setCharacterEncoding("EUC-KR");
-        HttpSession HttpSession=request.getSession();
+        HttpSession HttpSession = request.getSession();
         User user = (User) HttpSession.getAttribute("user");
-        
+        Status status = new Status();
+
         String userID = request.getParameter("userID");
         String PhoneNum = request.getParameter("PhoneNum");
-        
-        user = userService.getSearchPwd(userID,PhoneNum);//해당 유저의 정보를 가져옴
-        String userPwd = user.getPw();//비밀번호를 가져옴
-        //request.setAttribute("user", user);
-        request.setAttribute("userPwd", userPwd);
-        view = request.getRequestDispatcher("searchPwdList.jsp");
-        view.forward(request, response);
+
+        try {
+            if ((userID.isEmpty())) {
+                status.addException(new Exception(
+                        "아이디를 입력해주세요"));
+            }
+            if ((PhoneNum.isEmpty())) {
+                status.addException(new Exception(
+                        "핸드폰 번호를 입력해주세요"));
+            }
+            try {
+                //공란이 없다면 업데이트
+                if (!userID.isEmpty() && !PhoneNum.isEmpty()) {
+                    user = userService.getSearchPwd(userID, PhoneNum);//해당 유저의 정보를 가져옴
+                }
+                String userPwd = user.getPw();//비밀번호를 가져옴
+
+                if ((userPwd == null) || (userPwd.length() == 0)) {
+                    status.addException(new Exception(
+                            "해당 정보를 찾을 수 없습니다."));
+                }
+                if (!status.isSuccessful()) {
+                    view = request.getRequestDispatcher("searchPwd.jsp");
+                    view.forward(request, response);
+                    return;
+                }
+                request.setAttribute("userPwd", userPwd);
+                view = request.getRequestDispatcher("searchPwdList.jsp");
+                view.forward(request, response);
+
+            } catch (Exception e) {
+                status.addException(e);
+                view = request.getRequestDispatcher("searchPwd.jsp");
+                view.forward(request, response);
+            }
+        } catch (IllegalArgumentException e) {
+            status.addException(e);
+            view = request.getRequestDispatcher("searchPwd.jsp");
+            view.forward(request, response);
+        }
     }
 }

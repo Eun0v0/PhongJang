@@ -40,5 +40,7 @@ public final class IDCheckServlet extends HttpServlet {
                 
         view = request.getRequestDispatcher("join.jsp");
         view.forward(request, response);
+        
+        
     }
 }

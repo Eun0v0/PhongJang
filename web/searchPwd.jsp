@@ -196,6 +196,16 @@
     </center>
     <hr size="5" color="black">
 
+    <center>
+        <br><br>
+        <%if ((status != null) && !status.isSuccessful()) {%>
+        <font color="red">오류 발생!!!:
+        <ul><%Iterator errors = status.getExceptions();
+            while (errors.hasNext()) {
+                Exception ex = (Exception) errors.next();%>
+            <li><%= ex.getMessage()%><%}%></ul></font>    
+            <%}%>
+    </center>
     <center>   
         <br><br>
         <img src="image\searchPwd.jpg" height="60" width="150"><br>
